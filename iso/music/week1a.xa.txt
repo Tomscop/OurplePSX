@@ -1,0 +1,4 @@
+1 xa guy/Vocals.xa 1 0
+1 xa guy/Inst.xa 1 1
+1 xa midnight/Vocals.xa 1 2
+1 xa midnight/Inst.xa 1 3

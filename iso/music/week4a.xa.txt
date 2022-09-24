@@ -1,0 +1,4 @@
+1 xa go-fish/Vocals.xa 1 0
+1 xa go-fish/Inst.xa 1 1
+1 xa watchful/Vocals.xa 1 2
+1 xa watchful/Inst.xa 1 3

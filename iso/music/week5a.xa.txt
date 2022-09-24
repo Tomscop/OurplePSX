@@ -1,0 +1,4 @@
+1 xa showtime/Vocals.xa 1 0
+1 xa showtime/Inst.xa 1 1
+1 xa man/Vocals.xa 1 2
+1 xa man/Inst.xa 1 3

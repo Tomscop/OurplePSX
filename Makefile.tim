@@ -1,0 +1,176 @@
+all: \
+	iso/menu/menu.arc \
+	iso/menu/loading.tim \
+	iso/icon16.tim \
+	iso/font/boldfont.tim \
+	iso/font/arial.tim \
+	iso/font/cdr.tim \
+	iso/stage/hud0.tim \
+	iso/stage/hud1-1.tim \
+	iso/stage/hud1-2.tim \
+	iso/stage/hud1-3.tim \
+	iso/stage/hud1-4.tim \
+	iso/stage/hud1-5.tim \
+	iso/stage/hud1-6.tim \
+	iso/stage/hud0weeb.tim \
+	iso/stage/scanline.tim \
+	iso/stage/flashb.tim \
+	iso/stage/count.tim \
+	iso/bf/main.arc \
+	iso/bf/bfo.arc \
+	iso/bf/dead.tim \
+	iso/bf/deado.tim \
+	iso/gf/main.arc \
+	iso/gf/xmas.arc \
+	iso/gf/tut.arc \
+	iso/gf/gfo.arc \
+	iso/gf/speaker.tim \
+	iso/gf/speakerx.tim \
+	iso/ourple/main.arc \
+	iso/henry/main.arc \
+	iso/henrytv/main.arc \
+	iso/henryp/main.arc \
+	iso/bfp/main.arc \
+	iso/matpat/main.arc \
+	iso/lphone/main.arc \
+	iso/fatjones/main.arc \
+	iso/gphone/main.arc \
+	iso/goldenf/main.arc \
+	iso/mark/main.arc \
+	iso/freddy/main.arc \
+	iso/plush/main.arc \
+	iso/criminal/main.arc \
+	iso/dad/main.arc \
+	iso/spook/main.arc \
+	iso/monster/main.arc \
+	iso/pico/main.arc \
+	iso/xmasp/main.arc \
+    iso/monster/xmas.arc \
+	iso/senpai/main.arc \
+	iso/senpaim/main.arc \
+	iso/spirit/main.arc \
+	iso/storage/back.arc \
+	iso/deskroom/back.arc \
+	iso/black/back.arc \
+	iso/officeg/back.arc \
+	iso/officeb/back.arc \
+	iso/week1/back.arc \
+	iso/week3/back.arc \
+	iso/week5/back.arc \
+	iso/week6/back.arc \
+	iso/week6/back2.tim 
+
+iso/%.tim: iso/%.png
+	tools/funkintimconv/funkintimconv $@ $<
+
+iso/%.arc:
+	tools/funkinarcpak/funkinarcpak $@ $^
+
+# Menu
+iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu/title.tim
+
+# BF
+iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/bf6.tim
+iso/bf/bfo.arc: iso/bf/bfo0.tim iso/bf/bfo1.tim iso/bf/bfo2.tim iso/bf/bfo3.tim
+
+# GF
+iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
+iso/gf/xmas.arc: iso/gf/xmasgf0.tim iso/gf/xmasgf1.tim iso/gf/xmasgf2.tim
+iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
+iso/gf/gfo.arc: iso/gf/gfo0.tim iso/gf/gfo1.tim iso/gf/gfo2.tim iso/gf/gfo3.tim iso/gf/gfo4.tim iso/gf/gfo5.tim iso/gf/gfo6.tim iso/gf/gfo7.tim
+
+# Ourple
+iso/ourple/main.arc: iso/ourple/idle1.tim iso/ourple/idle2.tim iso/ourple/idle3.tim iso/ourple/idle4.tim iso/ourple/idle5.tim iso/ourple/idle6.tim iso/ourple/idle7.tim iso/ourple/idle8.tim iso/ourple/left1.tim iso/ourple/left2.tim iso/ourple/leftm1.tim iso/ourple/leftm2.tim iso/ourple/lefta1.tim iso/ourple/lefta2.tim iso/ourple/down1.tim iso/ourple/down2.tim iso/ourple/downm1.tim iso/ourple/downm2.tim iso/ourple/downa1.tim iso/ourple/downa2.tim iso/ourple/up1.tim iso/ourple/up2.tim iso/ourple/upm1.tim iso/ourple/upm2.tim iso/ourple/upa1.tim iso/ourple/upa2.tim iso/ourple/right1.tim iso/ourple/right2.tim iso/ourple/rightm1.tim iso/ourple/rightm2.tim iso/ourple/righta1.tim iso/ourple/righta2.tim
+
+# Henry
+iso/henry/main.arc: iso/henry/idle0.tim iso/henry/idle1.tim iso/henry/idle2.tim iso/henry/idle3.tim iso/henry/left0.tim iso/henry/left1.tim iso/henry/down0.tim iso/henry/down1.tim iso/henry/up0.tim iso/henry/up1.tim iso/henry/right0.tim iso/henry/right1.tim iso/henry/idiot.tim
+
+# Henry TV
+iso/henrytv/main.arc: iso/henrytv/idle0.tim iso/henrytv/idle1.tim iso/henrytv/left0.tim iso/henrytv/left1.tim iso/henrytv/down0.tim iso/henrytv/down1.tim iso/henrytv/up0.tim iso/henrytv/up1.tim iso/henrytv/right0.tim iso/henrytv/right1.tim
+
+# HenryP
+iso/henryp/main.arc: iso/henryp/henryp0.tim iso/henryp/henryp1.tim iso/henryp/henryp2.tim
+
+# BFP
+iso/bfp/main.arc: iso/bfp/bfp0.tim
+
+# Matpat
+iso/matpat/main.arc: iso/matpat/idle0.tim iso/matpat/idle1.tim iso/matpat/idle2.tim iso/matpat/idle3.tim iso/matpat/idle4.tim iso/matpat/left0.tim iso/matpat/left1.tim iso/matpat/left2.tim iso/matpat/left3.tim iso/matpat/left4.tim iso/matpat/left5.tim iso/matpat/down0.tim iso/matpat/down1.tim iso/matpat/up0.tim iso/matpat/up1.tim iso/matpat/right0.tim iso/matpat/right1.tim
+
+# Lore Phone
+iso/lphone/main.arc: iso/lphone/idle0.tim iso/lphone/idle1.tim iso/lphone/idle2.tim iso/lphone/idle3.tim iso/lphone/idle4.tim iso/lphone/left0.tim iso/lphone/left1.tim iso/lphone/down0.tim iso/lphone/down1.tim iso/lphone/up0.tim iso/lphone/up1.tim iso/lphone/right0.tim iso/lphone/right1.tim iso/lphone/ring0.tim iso/lphone/ring1.tim iso/lphone/ring2.tim iso/lphone/ring3.tim iso/lphone/ring4.tim iso/lphone/ring5.tim iso/lphone/ring6.tim iso/lphone/ring7.tim iso/lphone/ring8.tim iso/lphone/ring9.tim
+
+# Fat Jones
+iso/fatjones/main.arc: iso/fatjones/idle0.tim iso/fatjones/idle1.tim iso/fatjones/idle2.tim iso/fatjones/idle3.tim iso/fatjones/idle4.tim iso/fatjones/idle5.tim iso/fatjones/left.tim iso/fatjones/down.tim iso/fatjones/up.tim iso/fatjones/right.tim
+
+# Golden Phone
+iso/gphone/main.arc: iso/gphone/gphone0.tim iso/gphone/gphone1.tim iso/gphone/gphone2.tim iso/gphone/gphone3.tim
+
+# GoldenF
+iso/goldenf/main.arc: iso/goldenf/goldenf0.tim iso/goldenf/goldenf1.tim
+
+# Mark
+iso/mark/main.arc: iso/mark/idle.tim iso/mark/left.tim iso/mark/leftm.tim iso/mark/down.tim iso/mark/downm.tim iso/mark/up.tim iso/mark/upm.tim iso/mark/right.tim iso/mark/rightm.tim
+
+# Freddy
+iso/freddy/main.arc: iso/freddy/idle0.tim iso/freddy/idle1.tim iso/freddy/left0.tim iso/freddy/left1.tim iso/freddy/down0.tim iso/freddy/down1.tim iso/freddy/up0.tim iso/freddy/up1.tim iso/freddy/right0.tim iso/freddy/right1.tim
+
+# Plush
+iso/plush/main.arc: iso/plush/plush.tim
+
+# Criminal
+iso/criminal/main.arc: iso/criminal/intro.tim iso/criminal/idle.tim iso/criminal/left0.tim iso/criminal/left1.tim iso/criminal/down0.tim iso/criminal/down1.tim iso/criminal/up0.tim iso/criminal/up1.tim iso/criminal/right0.tim iso/criminal/right1.tim
+
+# Dad
+iso/dad/main.arc: iso/dad/idle0.tim iso/dad/idle1.tim iso/dad/left.tim iso/dad/down.tim iso/dad/up.tim iso/dad/right.tim
+
+# Spook
+iso/spook/main.arc: iso/spook/idle0.tim iso/spook/idle1.tim iso/spook/idle2.tim iso/spook/left.tim iso/spook/down.tim iso/spook/up.tim iso/spook/right.tim
+
+# Pico
+iso/pico/main.arc: iso/pico/idle.tim iso/pico/hit0.tim iso/pico/hit1.tim
+
+# Xmas Parents
+iso/xmasp/main.arc: iso/xmasp/idle0.tim iso/xmasp/idle1.tim iso/xmasp/idle2.tim iso/xmasp/idle3.tim iso/xmasp/lefta0.tim iso/xmasp/lefta1.tim iso/xmasp/leftb0.tim iso/xmasp/leftb1.tim iso/xmasp/downa0.tim iso/xmasp/downa1.tim iso/xmasp/downb0.tim iso/xmasp/downb1.tim iso/xmasp/upa0.tim iso/xmasp/upa1.tim iso/xmasp/upb0.tim iso/xmasp/upb1.tim iso/xmasp/righta0.tim iso/xmasp/righta1.tim iso/xmasp/rightb0.tim iso/xmasp/rightb1.tim
+
+# Monster
+iso/monster/xmas.arc: iso/monster/idleb0.tim iso/monster/idleb1.tim iso/monster/leftb.tim iso/monster/downb.tim iso/monster/upb.tim iso/monster/rightb.tim
+
+iso/monster/main.arc: iso/monster/idle0.tim iso/monster/idle1.tim iso/monster/left.tim iso/monster/down.tim iso/monster/up.tim iso/monster/right.tim
+
+# Senpai
+iso/senpai/main.arc: iso/senpai/senpai0.tim iso/senpai/senpai1.tim
+iso/senpaim/main.arc: iso/senpaim/senpai0.tim iso/senpaim/senpai1.tim
+
+# Spirit
+iso/spirit/main.arc: iso/spirit/spirit0.tim iso/spirit/spirit1.tim
+
+# Storage
+iso/storage/back.arc: iso/storage/back0.tim iso/storage/back1.tim
+
+# Deskroom
+iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim
+
+# Black
+iso/black/back.arc: iso/black/back0.tim iso/black/back1.tim
+
+# OfficeG
+iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim iso/officeg/back2.tim
+
+# OfficeB
+iso/officeb/back.arc: iso/officeb/back0.tim iso/officeb/back1.tim iso/officeb/back2.tim
+
+# Week 1
+iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
+
+# Week 3
+iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim iso/week3/back3.tim iso/week3/back4.tim 
+
+# Week 5
+iso/week5/back.arc: iso/week5/back0.tim iso/week5/back1.tim iso/week5/back2.tim iso/week5/back3.tim iso/week5/back4.tim iso/week5/back5.tim iso/week5/back6.tim 
+
+# Week6
+iso/week6/back.arc: iso/week6/back0.tim iso/week6/back1.tim
+
+# Week 7
+iso/week7/back.arc: iso/week7/back0.tim iso/week7/back1.tim iso/week7/back2.tim iso/week7/back3.tim

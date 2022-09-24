@@ -1,0 +1,35 @@
+all: \
+  iso/music/menu.xa \
+  iso/music/week1a.xa \
+  iso/music/week1b.xa \
+  iso/music/week2a.xa \
+  iso/music/week2b.xa \
+  iso/music/week3a.xa \
+  iso/music/week3b.xa \
+  iso/music/week4a.xa \
+  iso/music/week4b.xa \
+  iso/music/week5a.xa \
+  iso/music/week5b.xa \
+  iso/music/week6a.xa \
+  iso/music/week6b.xa 
+
+# XA converts
+iso/music/%.xa: iso/music/%.ogg
+	tools/psxavenc/psxavenc -f 37800 -t xa -b 4 -c 2 -F 1 -C 0 $< $@
+iso/music/%.xa:
+	tools/xainterleave/xainterleave $@
+
+# XA interleaves
+iso/music/menu.xa: iso/music/mainmenu.xa iso/music/gameover.xa
+iso/music/week1a.xa: iso/music/guy/Inst.xa iso/music/guy/Vocals.xa iso/music/midnight/Inst.xa iso/music/midnight/Vocals.xa
+iso/music/week1b.xa: iso/music/terminated/Inst.xa iso/music/terminated/Vocals.xa iso/music/lurking/Inst.xa iso/music/lurking/Vocals.xa
+iso/music/week2a.xa: iso/music/lore/Inst.xa iso/music/lore/Vocals.xa iso/music/blubber/Inst.xa iso/music/blubber/Vocals.xa
+iso/music/week2b.xa: iso/music/golden/Inst.xa iso/music/golden/Vocals.xa
+iso/music/week3a.xa: iso/music/performance/Inst.xa iso/music/performance/Vocals.xa iso/music/bite/Inst.xa iso/music/bite/Vocals.xa
+iso/music/week3b.xa: iso/music/trapped/Inst.xa iso/music/trapped/Vocals.xa
+iso/music/week4a.xa: iso/music/go-fish/Inst.xa iso/music/go-fish/Vocals.xa iso/music/watchful/Inst.xa iso/music/watchful/Vocals.xa
+iso/music/week4b.xa: iso/music/restless/Inst.xa iso/music/restless/Vocals.xa iso/music/beatbox/Inst.xa iso/music/beatbox/Vocals.xa
+iso/music/week5a.xa: iso/music/showtime/Inst.xa iso/music/showtime/Vocals.xa iso/music/man/Inst.xa iso/music/man/Vocals.xa
+iso/music/week5b.xa: iso/music/followed/Inst.xa iso/music/followed/Vocals.xa
+iso/music/week6a.xa: iso/music/fazfuck-news/Inst.xa iso/music/fazfuck-news/Vocals.xa iso/music/criminal/Inst.xa iso/music/criminal/Vocals.xa
+iso/music/week6b.xa: iso/music/miller/Inst.xa iso/music/miller/Vocals.xa

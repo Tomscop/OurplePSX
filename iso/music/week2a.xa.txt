@@ -1,0 +1,4 @@
+1 xa lore/Vocals.xa 1 0
+1 xa lore/Inst.xa 1 1
+1 xa blubber/Vocals.xa 1 2
+1 xa blubber/Inst.xa 1 3

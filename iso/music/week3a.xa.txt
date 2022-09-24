@@ -1,0 +1,4 @@
+1 xa performance/Vocals.xa 1 0
+1 xa performance/Inst.xa 1 1
+1 xa bite/Vocals.xa 1 2
+1 xa bite/Inst.xa 1 3
