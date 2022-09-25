@@ -21,14 +21,11 @@ SRCS = src/main.c \
        src/stage/storage.c \
 	   src/stage/deskroom.c \
        src/stage/black.c \
+	   src/stage/week1.c \
 	   src/stage/officeg.c \
 	   src/stage/officeb.c \
 	   src/stage/fnaf3.c \
 	   src/stage/dummy.c \
-	   src/stage/week1.c \
-       src/stage/week3.c \
-       src/stage/week5.c \
-       src/stage/week6.c \
        src/animation.c \
        src/character.c \
        src/character/bf.c \
@@ -49,15 +46,8 @@ SRCS = src/main.c \
 	   src/character/salvage.c \
 	   src/character/plush.c \
 	   src/character/abdul.c \
+	   src/character/criminal.c \
 	   src/character/dad.c \
-       src/character/spook.c \
-       src/character/pico.c \
-       src/character/criminal.c \
-       src/character/xmasp.c \
-       src/character/monster.c \
-       src/character/senpai.c \
-       src/character/senpaim.c \
-       src/character/spirit.c \
        src/character/speaker.c \
        src/object.c \
        src/object/combo.c \

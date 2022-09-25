@@ -76,9 +76,6 @@
 			
 			<!-- Week 3 assets -->
 			<dir name = "week3">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week3/back.arc"/>
-				
 				<!-- Performance charts -->
 				<file name = "3.1n.cht" type = "data" source = "iso/chart/performance.json.cht"/>
 				<!-- Bite charts -->
@@ -101,9 +98,6 @@
 			
 			<!-- Week 5 assets -->
 			<dir name = "week5">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week5/back.arc"/>
-				
 				<!-- Showtime charts -->
 				<file name = "5.1n.cht" type = "data" source = "iso/chart/showtime.json.cht"/>
 				<!-- Man charts -->
@@ -114,10 +108,6 @@
 			
 			<!-- Week 6 assets -->
 			<dir name = "week6">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week6/back.arc"/>
-				<file name = "back2.tim" type = "data" source = "iso/week6/back2.tim"/>
-				
 				<!-- Fazfuck News charts -->
 				<file name = "6.1n.cht" type = "data" source = "iso/chart/fazfuck-news.json.cht"/>
 				<!-- Criminal charts -->
@@ -171,11 +161,9 @@
 				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
-				<file name = "gftut.arc" type = "data" source = "iso/gf/tut.arc"/>
 				<file name = "gfo.arc" type = "data" source = "iso/gf/gfo.arc"/>
-				<file name = "gfx.arc" type = "data" source = "iso/gf/xmas.arc"/>
+				<file name = "gfos.arc" type = "data" source = "iso/gf/gfos.arc"/>
 				<file name = "speaker.tim" type = "data" source = "iso/gf/speaker.tim"/>
-				<file name = "speakerx.tim" type = "data" source = "iso/gf/speakerx.tim"/>
 				
 				<!-- Ourple assets -->
 				<file name = "ourple.arc" type = "data" source = "iso/ourple/main.arc"/>
@@ -227,24 +215,6 @@
 				
 				<!-- Dad assets -->
 				<file name = "dad.arc" type = "data" source = "iso/dad/main.arc"/>
-				
-				<!-- Spook assets -->
-				<file name = "spook.arc" type = "data" source = "iso/spook/main.arc"/>
-
-				<!-- Monster assets -->
-				<file name = "monster.arc" type = "data" source = "iso/monster/main.arc"/>
-				
-				<!-- Pico assets -->
-				<file name = "pico.arc" type = "data" source = "iso/pico/main.arc"/>
-				
-				<!-- Christmas assets -->
-				<file name = "xmasp.arc" type = "data" source = "iso/xmasp/main.arc"/>
-				<file name = "monsterx.arc" type = "data" source = "iso/monster/xmas.arc"/>
-				
-				<!-- Senpai assets -->
-				<file name = "senpai.arc" type = "data" source = "iso/senpai/main.arc"/>
-				<file name = "senpaim.arc" type = "data" source = "iso/senpaim/main.arc"/>
-				<file name = "spirit.arc" type = "data" source = "iso/spirit/main.arc"/>
 			</dir>
 		    
 			<!-- Sound effects -->

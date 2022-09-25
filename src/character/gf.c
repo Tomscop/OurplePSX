@@ -192,58 +192,18 @@ Character *Char_GF_New(fixed_t x, fixed_t y)
 	this->character.focus_y = FIXED_DEC(-40,1);
 	this->character.focus_zoom = FIXED_DEC(2,1);
 	
-	if (stage.stage_id >= StageId_5_1 && stage.stage_id <= StageId_5_3)
-	{
-		//Load art
-		this->arc_main = IO_Read("\\CHAR\\GFX.ARC;1");
+	//Load art
+	this->arc_main = IO_Read("\\CHAR\\GF.ARC;1");
 		
-		const char **pathp = (const char *[]){
-			"xmasgf0.tim", //GF_ArcMain_GF0
-			"xmasgf1.tim", //GF_ArcMain_GF1
-			"xmasgf2.tim", //GF_ArcMain_GF2
-			NULL
-		};
-		IO_Data *arc_ptr = this->arc_ptr;
-		for (; *pathp != NULL; pathp++)
-			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-	}
-	else
-	{
-		//Load art
-		this->arc_main = IO_Read("\\CHAR\\GF.ARC;1");
-		
-		const char **pathp = (const char *[]){
-			"gf0.tim", //GF_ArcMain_GF0
-			"gf1.tim", //GF_ArcMain_GF1
-			"gf2.tim", //GF_ArcMain_GF2
-			NULL
-		};
-		IO_Data *arc_ptr = this->arc_ptr;
-		for (; *pathp != NULL; pathp++)
-			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-	}
-	
-	//Load scene specific art
-	switch (stage.stage_id)
-	{
-		case StageId_1_4: //Tutorial
-		{
-			this->arc_scene = IO_Read("\\CHAR\\GFTUT.ARC;1");
-			
-			const char **pathp = (const char *[]){
-				"tut0.tim", //GF_ArcScene_0
-				"tut1.tim", //GF_ArcScene_1
-				NULL
-			};
-			IO_Data *arc_ptr = &this->arc_ptr[GF_ArcScene_0];
-			for (; *pathp != NULL; pathp++)
-				*arc_ptr++ = Archive_Find(this->arc_scene, *pathp);
-			break;
-		}
-		default:
-			this->arc_scene = NULL;
-			break;
-	}
+	const char **pathp = (const char *[]){
+		"gf0.tim", //GF_ArcMain_GF0
+		"gf1.tim", //GF_ArcMain_GF1
+		"gf2.tim", //GF_ArcMain_GF2
+		NULL
+	};
+	IO_Data *arc_ptr = this->arc_ptr;
+	for (; *pathp != NULL; pathp++)
+		*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
 	
 	//Initialize render state
 	this->tex_id = this->frame = 0xFF;

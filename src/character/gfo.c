@@ -54,6 +54,18 @@ static const CharFrame char_gfo_frame[] = {
 	{GFO_ArcMain_GFO7, {  0,  0,136,152}, { 52, 92}}, //7 right 3
 };
 
+static const CharFrame char_gfo_frame2[] = {
+	{GFO_ArcMain_GFO0, {  0,  0, 63,112}, { 52, 92}}, //0 left 0
+	{GFO_ArcMain_GFO0, { 64,  0, 63,112}, { 52, 92}}, //1 left 1
+	{GFO_ArcMain_GFO0, {128,  0, 63,112}, { 52, 92}}, //2 left 2
+	{GFO_ArcMain_GFO0, {192,  0, 63,112}, { 52, 92}}, //3 left 3
+	
+	{GFO_ArcMain_GFO0, {  0,113, 63,112}, { 52, 92}}, //4 right 0
+	{GFO_ArcMain_GFO0, { 64,113, 63,112}, { 52, 92}}, //5 right 1
+	{GFO_ArcMain_GFO0, {128,113, 63,112}, { 52, 92}}, //6 right 2
+	{GFO_ArcMain_GFO0, {192,113, 63,112}, { 52, 92}}, //7 right 3
+};
+
 static const Animation char_gfo_anim[CharAnim_Max] = {
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Left}},                           //CharAnim_Idle
 	{1, (const u8[]){ 0,  0,  1,  1,  1,  2,  2,  2,  2,  3, ASCR_BACK, 1}}, //CharAnim_Left
@@ -72,10 +84,15 @@ void Char_GFO_SetFrame(void *user, u8 frame)
 	Char_GFO *this = (Char_GFO*)user;
 	
 	//Check if this is a new frame
+	CharFrame *cframe;
+	
 	if (frame != this->frame)
 	{
 		//Check if new art shall be loaded
-		const CharFrame *cframe = &char_gfo_frame[this->frame = frame];
+		if (stage.stage_id == StageId_1_2 || stage.stage_id == StageId_1_4 || stage.stage_id == StageId_5_1)
+			cframe = &char_gfo_frame2[this->frame = frame];
+		else
+			cframe = &char_gfo_frame[this->frame = frame];
 		if (cframe->tex != this->tex_id)
 			Gfx_LoadTex(&this->tex, this->arc_ptr[this->tex_id = cframe->tex], 0);
 	}
@@ -100,10 +117,17 @@ void Char_GFO_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_GFO_SetFrame);
-	if (stage.stage_id == StageId_1_3 && stage.song_step <= 270 || stage.stage_id == StageId_1_3 && stage.song_step >= 1680 && stage.song_step <= 2200)
-		Character_Draw(character, &this->tex, &char_gfo_frame[this->frame]);
-	else if (stage.stage_id != StageId_1_3)
-		Character_Draw(character, &this->tex, &char_gfo_frame[this->frame]);
+	if (stage.stage_id == StageId_1_2 || stage.stage_id == StageId_1_4 || stage.stage_id == StageId_5_1)
+	{
+		Character_Draw(character, &this->tex, &char_gfo_frame2[this->frame]);
+	}
+	else
+	{
+		if (stage.stage_id == StageId_1_3 && stage.song_step <= 270 || stage.stage_id == StageId_1_3 && stage.song_step >= 1680 && stage.song_step <= 2200)
+			Character_Draw(character, &this->tex, &char_gfo_frame[this->frame]);
+		else if (stage.stage_id != StageId_1_3)
+			Character_Draw(character, &this->tex, &char_gfo_frame[this->frame]);
+	}
 }
 
 void Char_GFO_SetAnim(Character *character, u8 anim)
@@ -151,22 +175,37 @@ Character *Char_GFO_New(fixed_t x, fixed_t y)
 	this->character.focus_zoom = FIXED_DEC(13,10);
 	
 	//Load art
-	this->arc_main = IO_Read("\\CHAR\\GFO.ARC;1");
+	if (stage.stage_id == StageId_1_2 || stage.stage_id == StageId_1_4 || stage.stage_id == StageId_5_1)
+	{
+		this->arc_main = IO_Read("\\CHAR\\GFOS.ARC;1");
 	
-	const char **pathp = (const char *[]){
-		"gfo0.tim",  //GFO_ArcMain_GFO0
-		"gfo1.tim",  //GFO_ArcMain_GFO1
-		"gfo2.tim",  //GFO_ArcMain_GFO2
-		"gfo3.tim",  //GFO_ArcMain_GFO3
-		"gfo4.tim",  //GFO_ArcMain_GFO4
-		"gfo5.tim",  //GFO_ArcMain_GFO5
-		"gfo6.tim",  //GFO_ArcMain_GFO6
-		"gfo7.tim",  //GFO_ArcMain_GFO7
-		NULL
-	};
-	IO_Data *arc_ptr = this->arc_ptr;
-	for (; *pathp != NULL; pathp++)
-		*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
+		const char **pathp = (const char *[]){
+			"gfos.tim",  //GFO_ArcMain_GFO0
+			NULL
+		};
+		IO_Data *arc_ptr = this->arc_ptr;
+		for (; *pathp != NULL; pathp++)
+			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
+	}
+	else
+	{
+		this->arc_main = IO_Read("\\CHAR\\GFO.ARC;1");
+	
+		const char **pathp = (const char *[]){
+			"gfo0.tim",  //GFO_ArcMain_GFO0
+			"gfo1.tim",  //GFO_ArcMain_GFO1
+			"gfo2.tim",  //GFO_ArcMain_GFO2
+			"gfo3.tim",  //GFO_ArcMain_GFO3
+			"gfo4.tim",  //GFO_ArcMain_GFO4
+			"gfo5.tim",  //GFO_ArcMain_GFO5
+			"gfo6.tim",  //GFO_ArcMain_GFO6
+			"gfo7.tim",  //GFO_ArcMain_GFO7
+			NULL
+		};
+		IO_Data *arc_ptr = this->arc_ptr;
+		for (; *pathp != NULL; pathp++)
+			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
+	}
 	
 	//Initialize render state
 	this->tex_id = this->frame = 0xFF;
