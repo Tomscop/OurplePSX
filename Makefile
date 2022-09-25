@@ -23,6 +23,7 @@ SRCS = src/main.c \
        src/stage/black.c \
 	   src/stage/officeg.c \
 	   src/stage/officeb.c \
+	   src/stage/fnaf3.c \
 	   src/stage/dummy.c \
 	   src/stage/week1.c \
        src/stage/week3.c \

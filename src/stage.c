@@ -82,6 +82,7 @@ static u32 Sounds[7];
 #include "stage/black.h"
 #include "stage/officeg.h"
 #include "stage/officeb.h"
+#include "stage/fnaf3.h"
 #include "stage/week5.h"
 #include "stage/week6.h"
 

@@ -155,6 +155,12 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/officeb/back.arc"/>
 			</dir>
+			
+				<!-- FNAF 3 assets -->
+			<dir name = "fnaf3">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/fnaf3/back.arc"/>
+			</dir>
 		
 			<!-- Character assets -->
 			<dir name = "char">

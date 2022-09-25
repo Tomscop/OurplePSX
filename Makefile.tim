@@ -56,6 +56,7 @@ all: \
 	iso/black/back.arc \
 	iso/officeg/back.arc \
 	iso/officeb/back.arc \
+	iso/fnaf3/back.arc \
 	iso/week1/back.arc \
 	iso/week3/back.arc \
 	iso/week5/back.arc \
@@ -167,6 +168,9 @@ iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim iso/officeg/ba
 
 # OfficeB
 iso/officeb/back.arc: iso/officeb/back0.tim iso/officeb/back1.tim iso/officeb/back2.tim
+
+# FNAF 3
+iso/fnaf3/back.arc: iso/fnaf3/back0.tim
 
 # Week 1
 iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim

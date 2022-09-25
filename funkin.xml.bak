@@ -150,6 +150,12 @@
 				<file name = "back.arc" type = "data" source = "iso/officeg/back.arc"/>
 			</dir>
 			
+				<!-- FNAF 3 assets -->
+			<dir name = "fnaf3">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/fnaf3/back.arc"/>
+			</dir>
+			
 				<!-- OfficeB assets -->
 			<dir name = "officeb">
 				<!-- Background art -->
@@ -206,6 +212,9 @@
 				
 				<!-- Freddy assets -->
 				<file name = "freddy.arc" type = "data" source = "iso/freddy/main.arc"/>
+				
+				<!-- Salvage assets -->
+				<file name = "salvage.arc" type = "data" source = "iso/salvage/main.arc"/>
 				
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>

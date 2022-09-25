@@ -146,13 +146,13 @@ Character *Char_Salvage_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 9;
+	this->character.health_i = 10;
 
 	//health bar color
-	this->character.health_bar = 0xFFFFCB05;
+	this->character.health_bar = 0xFF413A0F;
 	
-	this->character.focus_x = FIXED_DEC(92,1);
-	this->character.focus_y = FIXED_DEC(-86,1);
+	this->character.focus_x = FIXED_DEC(118,1);
+	this->character.focus_y = FIXED_DEC(-82,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art

@@ -191,18 +191,18 @@
 	},
 	{ //StageId_3_3 (Trapped)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_BF_New,    FIXED_DEC(137,1),  FIXED_DEC(64,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Salvage_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Salvage_New, FIXED_DEC(-106,1),  FIXED_DEC(27,1)},
 		{NULL},
         {NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_FNAF3_New,
 		
 		//Song info
 		3, 3,
