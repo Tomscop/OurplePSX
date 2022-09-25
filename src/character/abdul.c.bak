@@ -69,7 +69,7 @@ static const CharFrame char_abdul_frame[] = {
 	{Abdul_ArcMain_Right1, {  0,  0,160,173}, { 42,183+4}}, //13 right 2
 	{Abdul_ArcMain_Right2, {  0,  0,160,173}, { 42,183+4}}, //14 right 3
 	
-	{Abdul_ArcMain_Alt, {  0,  0,160,173}, { 16,239+4}}, //15 alt
+	{Abdul_ArcMain_Alt, {  0,  0,160,173}, { 68,239+4}}, //15 alt
 };
 
 static const Animation char_abdul_anim[CharAnim_Max] = {

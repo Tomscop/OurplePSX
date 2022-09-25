@@ -207,6 +207,9 @@
 				<!-- Freddy assets -->
 				<file name = "freddy.arc" type = "data" source = "iso/freddy/main.arc"/>
 				
+				<!-- Salvage assets -->
+				<file name = "salvage.arc" type = "data" source = "iso/salvage/main.arc"/>
+				
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>
 				

@@ -38,6 +38,7 @@ all: \
 	iso/goldenf/main.arc \
 	iso/mark/main.arc \
 	iso/freddy/main.arc \
+	iso/salvage/main.arc \
 	iso/plush/main.arc \
 	iso/abdul/main.arc \
 	iso/criminal/main.arc \
@@ -115,6 +116,9 @@ iso/mark/main.arc: iso/mark/idle.tim iso/mark/left.tim iso/mark/leftm.tim iso/ma
 
 # Freddy
 iso/freddy/main.arc: iso/freddy/idle0.tim iso/freddy/idle1.tim iso/freddy/left0.tim iso/freddy/left1.tim iso/freddy/down0.tim iso/freddy/down1.tim iso/freddy/up0.tim iso/freddy/up1.tim iso/freddy/right0.tim iso/freddy/right1.tim
+
+# Salvage
+iso/salvage/main.arc: iso/salvage/idle0.tim iso/salvage/idle1.tim iso/salvage/idle2.tim iso/salvage/left0.tim iso/salvage/left1.tim iso/salvage/left2.tim iso/salvage/down0.tim iso/salvage/down1.tim iso/salvage/down2.tim iso/salvage/up0.tim iso/salvage/up1.tim iso/salvage/up2.tim iso/salvage/right0.tim iso/salvage/right1.tim iso/salvage/right2.tim
 
 # Plush
 iso/plush/main.arc: iso/plush/plush.tim

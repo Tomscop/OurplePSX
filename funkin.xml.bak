@@ -210,6 +210,9 @@
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>
 				
+				<!-- Abdul assets -->
+				<file name = "abdul.arc" type = "data" source = "iso/abdul/main.arc"/>
+				
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
 				

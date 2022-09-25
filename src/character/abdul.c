@@ -152,7 +152,7 @@ Character *Char_Abdul_New(fixed_t x, fixed_t y)
 	this->character.health_i = 7;
 
 	//health bar color
-	this->character.health_bar = 0xFFBB9500;
+	this->character.health_bar = 0xFFFFCB05;
 	
 	this->character.focus_x = FIXED_DEC(92,1);
 	this->character.focus_y = FIXED_DEC(-86,1);
