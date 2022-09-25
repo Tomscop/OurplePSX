@@ -62,7 +62,6 @@ static u32 Sounds[7];
 #include "character/mark.h"
 #include "character/freddy.h"
 #include "character/plush.h"
-#include "character/abdul.h"
 #include "character/criminal.h"
 #include "character/dad.h"
 #include "character/spook.h"

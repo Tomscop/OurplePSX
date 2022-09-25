@@ -120,7 +120,7 @@ iso/freddy/main.arc: iso/freddy/idle0.tim iso/freddy/idle1.tim iso/freddy/left0.
 iso/plush/main.arc: iso/plush/plush.tim
 
 # Abdul
-iso/abdul/main.arc: iso/abdul/idle0.tim iso/abdul/idle1.tim iso/abdul/idle2.tim iso/abdul/left0.tim iso/abdul/left1.tim iso/abdul/left2.tim iso/abdul/down0.tim iso/abdul/down1.tim iso/abdul/down2.tim iso/abdul/up0.tim iso/abdul/up1.tim iso/abdul/up2.tim iso/abdul/right0.tim iso/abdul/right1.tim iso/abdul/right2.tim iso/abdul/alt.tim
+iso/abdul/main.arc: iso/abdul/idle0.tim iso/abdul/idle1.tim iso/abdul/idle2.tim iso/abdul/left0.tim iso/abdul/left1.tim iso/abdul/left2.tim iso/abdul/down0.tim iso/abdul/down1.tim iso/abdul/down2.tim iso/abdul/up0.tim iso/abdul/up1.tim iso/abdul/up2.tim iso/abdul/right0.tim iso/abdul/right1.tim iso/abdul/right2.tim
 
 # Criminal
 iso/criminal/main.arc: iso/criminal/intro.tim iso/criminal/idle.tim iso/criminal/left0.tim iso/criminal/left1.tim iso/criminal/down0.tim iso/criminal/down1.tim iso/criminal/up0.tim iso/criminal/up1.tim iso/criminal/right0.tim iso/criminal/right1.tim
