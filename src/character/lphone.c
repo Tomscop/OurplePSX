@@ -217,7 +217,7 @@ Character *Char_LPhone_New(fixed_t x, fixed_t y)
 	
 	if (stage.stage_id == StageId_2_1)
 	{	
-		this->character.focus_x = FIXED_DEC(7,1);
+		this->character.focus_x = FIXED_DEC(-1,1);
 		this->character.focus_y = FIXED_DEC(22,1);
 		this->character.focus_zoom = FIXED_DEC(597,512);
 	}

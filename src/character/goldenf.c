@@ -134,7 +134,7 @@ Character *Char_GoldenF_New(fixed_t x, fixed_t y)
 	
 	if (stage.stage_id == StageId_2_3)
 	{	
-		this->character.focus_x = FIXED_DEC(-21,1);
+		this->character.focus_x = FIXED_DEC(1,1);
 		this->character.focus_y = FIXED_DEC(-28,1);
 		this->character.focus_zoom = FIXED_DEC(597,512);
 	}

@@ -2092,7 +2092,7 @@ void Stage_Tick(void)
 				if (stage.stage_id == StageId_1_3 && stage.song_step == 911|| stage.stage_id == StageId_1_3 && stage.song_step == 1166 || stage.stage_id == StageId_1_3 && stage.song_step == 1423 || stage.stage_id == StageId_1_3 && stage.song_step == 1679)
 				{
 					fade = FIXED_DEC(255,1);
-					fadespd = FIXED_DEC(75,1);
+					fadespd = FIXED_DEC(175,1);
 				}
 				if (fade > 0)
 				{
