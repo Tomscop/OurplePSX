@@ -32,13 +32,9 @@ void Back_OfficeG_DrawFG(StageBack *back)
 	if ((stage.song_step >= 888 && stage.song_step <= 895) || (stage.song_step >= 1336 && stage.song_step <= 1344) || (stage.song_step >= 1400 && stage.song_step <= 1408) || (stage.song_step >= 2168 && stage.song_step <= 2176) || (stage.song_step >= 2432))
 	{
 		Back_OfficeG *this = (Back_OfficeG*)back;
-	
-	
-	
+		
 		fixed_t fx, fy;
-	
-	
-	
+		
 		//Draw black
 		fx = stage.camera.x;
 		fy = stage.camera.y;
@@ -59,13 +55,9 @@ void Back_OfficeG_DrawFG(StageBack *back)
 void Back_OfficeG_DrawBG(StageBack *back)
 {
 	Back_OfficeG *this = (Back_OfficeG*)back;
-	
-	
-	
+
 	fixed_t fx, fy;
-	
-	
-	
+
 	//Draw officeg
 	fx = stage.camera.x;
 	fy = stage.camera.y;

@@ -45,6 +45,7 @@ all: \
 	iso/storage/back.arc \
 	iso/jrs/back.arc \
 	iso/jrs/green.arc \
+	iso/jrs/rain.arc \
 	iso/deskroom/back.arc \
 	iso/black/back.arc \
 	iso/week1/back.arc \
@@ -130,6 +131,7 @@ iso/storage/back.arc: iso/storage/back0.tim iso/storage/back1.tim
 # Jrs
 iso/jrs/back.arc: iso/jrs/back0.tim iso/jrs/back1.tim
 iso/jrs/green.arc: iso/jrs/green.tim
+iso/jrs/rain.arc: iso/jrs/rain0.tim iso/jrs/rain1.tim
 
 # Deskroom
 iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim

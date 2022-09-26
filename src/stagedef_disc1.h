@@ -17,7 +17,7 @@
 		1, 1,
 		XA_Guy, 0,
 		
-		StageId_1_2, STAGE_LOAD_FLAG
+		StageId_1_2, 0
 	},
 	{ //StageId_1_2 (Midnight)
 		//Characters
@@ -38,7 +38,7 @@
 		1, 2,
 		XA_Midnight, 2,
 		
-		StageId_1_3, STAGE_LOAD_FLAG
+		StageId_1_3, 0
 	},
 	{ //StageId_1_3 (Terminated)
 		//Characters

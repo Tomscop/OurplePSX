@@ -127,6 +127,7 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/jrs/back.arc"/>
 				<file name = "green.arc" type = "data" source = "iso/jrs/green.arc"/>
+				<file name = "rain.arc" type = "data" source = "iso/jrs/rain.arc"/>
 			</dir>
 			
 				<!-- Deskroom assets -->
