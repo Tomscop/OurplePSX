@@ -19,6 +19,7 @@ SRCS = src/main.c \
        src/psx/pad.c \
        src/psx/timer.c \
        src/stage/storage.c \
+	   src/stage/jrs.c \
 	   src/stage/deskroom.c \
        src/stage/black.c \
 	   src/stage/week1.c \
@@ -32,6 +33,7 @@ SRCS = src/main.c \
        src/character/gf.c \
        src/character/gfo.c \
 	   src/character/ourple.c \
+	   src/character/prange.c \
 	   src/character/henry.c \
 	   src/character/henrytv.c \
 	   src/character/henryp.c \

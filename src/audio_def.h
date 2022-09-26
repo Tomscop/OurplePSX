@@ -22,7 +22,7 @@ static const XA_TrackDef xa_tracks[] = {
 	//WEEK2B.XA
 	{XA_Week2B, XA_LENGTH(20300)}, //XA_Golden
 	//WEEK3A.XA
-	{XA_Week3A, XA_LENGTH(9700)},  //XA_Performance
+	{XA_Week3A, XA_LENGTH(9800)},  //XA_Performance
 	{XA_Week3A, XA_LENGTH(18300)}, //XA_Bite
 	//WEEK3B.XA
 	{XA_Week3B, XA_LENGTH(18600)}, //XA_Trapped

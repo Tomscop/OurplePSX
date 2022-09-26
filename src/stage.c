@@ -50,6 +50,7 @@ static u32 Sounds[7];
 #include "character/gf.h"
 #include "character/gfo.h"
 #include "character/ourple.h"
+#include "character/prange.h"
 #include "character/henry.h"
 #include "character/henrytv.h"
 #include "character/henryp.h"
@@ -69,6 +70,7 @@ static u32 Sounds[7];
 
 #include "stage/dummy.h"
 #include "stage/storage.h"
+#include "stage/jrs.h"
 #include "stage/deskroom.h"
 #include "stage/black.h"
 #include "stage/week1.h"

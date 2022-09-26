@@ -122,6 +122,13 @@
 				<file name = "back.arc" type = "data" source = "iso/storage/back.arc"/>
 			</dir>
 			
+				<!-- Jrs assets -->
+			<dir name = "jrs">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/jrs/back.arc"/>
+				<file name = "green.arc" type = "data" source = "iso/jrs/green.arc"/>
+			</dir>
+			
 				<!-- Deskroom assets -->
 			<dir name = "deskroom">
 				<!-- Background art -->
@@ -167,6 +174,9 @@
 				
 				<!-- Ourple assets -->
 				<file name = "ourple.arc" type = "data" source = "iso/ourple/main.arc"/>
+				
+				<!-- Prange assets -->
+				<file name = "prange.arc" type = "data" source = "iso/prange/main.arc"/>
 				
 				<!-- Henry assets -->
 				<file name = "henry.arc" type = "data" source = "iso/henry/main.arc"/>

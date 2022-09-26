@@ -25,6 +25,7 @@ all: \
 	iso/gf/gfos.arc \
 	iso/gf/speaker.tim \
 	iso/ourple/main.arc \
+	iso/prange/main.arc \
 	iso/henry/main.arc \
 	iso/henrytv/main.arc \
 	iso/henryp/main.arc \
@@ -42,6 +43,8 @@ all: \
 	iso/criminal/main.arc \
 	iso/dad/main.arc \
 	iso/storage/back.arc \
+	iso/jrs/back.arc \
+	iso/jrs/green.arc \
 	iso/deskroom/back.arc \
 	iso/black/back.arc \
 	iso/week1/back.arc \
@@ -69,6 +72,9 @@ iso/gf/gfos.arc: iso/gf/gfos.tim
 
 # Ourple
 iso/ourple/main.arc: iso/ourple/idle1.tim iso/ourple/idle2.tim iso/ourple/idle3.tim iso/ourple/idle4.tim iso/ourple/idle5.tim iso/ourple/idle6.tim iso/ourple/idle7.tim iso/ourple/idle8.tim iso/ourple/left1.tim iso/ourple/left2.tim iso/ourple/leftm1.tim iso/ourple/leftm2.tim iso/ourple/lefta1.tim iso/ourple/lefta2.tim iso/ourple/down1.tim iso/ourple/down2.tim iso/ourple/downm1.tim iso/ourple/downm2.tim iso/ourple/downa1.tim iso/ourple/downa2.tim iso/ourple/up1.tim iso/ourple/up2.tim iso/ourple/upm1.tim iso/ourple/upm2.tim iso/ourple/upa1.tim iso/ourple/upa2.tim iso/ourple/right1.tim iso/ourple/right2.tim iso/ourple/rightm1.tim iso/ourple/rightm2.tim iso/ourple/righta1.tim iso/ourple/righta2.tim
+
+# Prange
+iso/prange/main.arc: iso/prange/prange0.tim iso/prange/prange1.tim
 
 # Henry
 iso/henry/main.arc: iso/henry/idle0.tim iso/henry/idle1.tim iso/henry/idle2.tim iso/henry/idle3.tim iso/henry/left0.tim iso/henry/left1.tim iso/henry/down0.tim iso/henry/down1.tim iso/henry/up0.tim iso/henry/up1.tim iso/henry/right0.tim iso/henry/right1.tim iso/henry/idiot.tim
@@ -120,6 +126,10 @@ iso/dad/main.arc: iso/dad/idle0.tim iso/dad/idle1.tim iso/dad/left.tim iso/dad/d
 
 # Storage
 iso/storage/back.arc: iso/storage/back0.tim iso/storage/back1.tim
+
+# Jrs
+iso/jrs/back.arc: iso/jrs/back0.tim iso/jrs/back1.tim
+iso/jrs/green.arc: iso/jrs/green.tim
 
 # Deskroom
 iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim

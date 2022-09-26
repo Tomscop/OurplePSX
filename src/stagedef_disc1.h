@@ -21,18 +21,18 @@
 	},
 	{ //StageId_1_2 (Midnight)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_BF_New,    FIXED_DEC(289,1),  FIXED_DEC(163,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Prange_New, FIXED_DEC(40,1),  FIXED_DEC(224,1)},
         {NULL},
 		{NULL},
-		{Char_GFO_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{Char_GFO_New,     FIXED_DEC(195,1),  FIXED_DEC(121,1)},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_Jrs_New,
 		
 		//Song info
 		1, 2,

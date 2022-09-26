@@ -455,8 +455,8 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	}
 	if (stage.stage_id == StageId_1_2)
 	{	
-		this->character.focus_x = FIXED_DEC(-50,1);
-		this->character.focus_y = FIXED_DEC(-65,1);
+		this->character.focus_x = FIXED_DEC(-87,1);
+		this->character.focus_y = FIXED_DEC(-54,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
 	if (stage.stage_id == StageId_1_3)
