@@ -129,7 +129,7 @@ typedef struct
 	u8 music_track, music_channel;
 	
 	StageId next_stage;
-	u8 next_load;
+	u16 next_load;
 } StageDef;
 
 //Stage state

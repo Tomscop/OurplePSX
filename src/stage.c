@@ -248,19 +248,10 @@ static u8 Stage_HitNote(PlayerState *this, u8 type, fixed_t offset)
 	};
 	this->score += score_inc[hit_type];
 
-	this->min_accuracy += 1;
+	this->min_accuracy += 100;
 
-	if (hit_type == 3)
-	this->max_accuracy += 4;
+	this->max_accuracy += 100 + (hit_type*25);
 
-	else if (hit_type == 2)
-	this->max_accuracy += 3;
-
-	else if (hit_type == 1)
-	this->max_accuracy += 2;
-
-	else
-	this->max_accuracy += 1;
 	this->refresh_accuracy = true;
 	this->refresh_score = true;
 	
@@ -299,7 +290,7 @@ static u8 Stage_HitNote(PlayerState *this, u8 type, fixed_t offset)
 
 static void Stage_MissNote(PlayerState *this)
 {
-	this->max_accuracy += 1;
+	this->max_accuracy += 150;
 	this->refresh_accuracy = true;
 	this->miss += 1;
 	this->refresh_miss = true;
@@ -767,7 +758,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			dst.x = dst.x;
 		}
 		
-		if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 			Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
 	}
 	else
@@ -804,7 +795,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			dst.x = dst.x;
 		}
 			
-		if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 			Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
 	}
 }
@@ -832,7 +823,7 @@ static void Stage_DrawHealthBar(s16 x, s32 color)
 	if (stage.prefs.downscroll)
 		dst.y = -dst.y - dst.h;
 	
-	if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+	if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 		Stage_DrawTexCol(&stage.tex_hud1, &src, &dst, stage.bump, red >> 1, blue >> 1, green >> 1);
 }
 
@@ -1223,7 +1214,7 @@ static void Stage_DrawNotes(void)
 						}
 						
 						//draw for opponent
-						if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 						{
 							if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 								Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1255,7 +1246,7 @@ static void Stage_DrawNotes(void)
 							note_dst.y = -note_dst.y - note_dst.h;
 
 						//draw for opponent
-						if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 						{
 							if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 								Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1286,7 +1277,7 @@ static void Stage_DrawNotes(void)
 					note_dst.y = -note_dst.y - note_dst.h;
 
 				//draw for opponent
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 				{
 					if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 						Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1316,7 +1307,7 @@ static void Stage_DrawNotes(void)
 					note_dst.y = -note_dst.y - note_dst.h;
 			
 				//draw for opponent
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 				{
 					if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 						Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1881,7 +1872,7 @@ static boolean Stage_NextLoad(void)
 	CheckNewScore();
 	writeSaveFile();
 
-	u8 load = stage.stage_def->next_load;
+	u16 load = stage.stage_def->next_load;
 	if (load == 0)
 	{
 		//Do stage transition if full reload
@@ -2079,11 +2070,11 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{ 
-			if (stage.prefs.debug)
-				Debug_StageDebug();
+			  if (stage.prefs.debug)
+					Debug_StageDebug();
 			
 				//Draw FlashB
-				if (stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271 || stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
 				{
 					RECT flashb_src = {0, 0, 256, 256};
 					RECT flashb_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
@@ -2091,7 +2082,7 @@ void Stage_Tick(void)
 				}
 				
 				//Draw white fade
-				if (stage.stage_id == StageId_1_3 && stage.song_step == 911|| stage.stage_id == StageId_1_3 && stage.song_step == 1166 || stage.stage_id == StageId_1_3 && stage.song_step == 1423 || stage.stage_id == StageId_1_3 && stage.song_step == 1679)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step == 911)|| (stage.stage_id == StageId_1_3 && stage.song_step == 1166) || (stage.stage_id == StageId_1_3 && stage.song_step == 1423) || (stage.stage_id == StageId_1_3 && stage.song_step == 1679))
 				{
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(175,1);
@@ -2105,13 +2096,13 @@ void Stage_Tick(void)
 				}
 				
 				//Draw scanline
-				if (stage.stage_id == StageId_1_4 || stage.stage_id == StageId_4_1 || stage.stage_id == StageId_4_3 || stage.stage_id == StageId_5_3)
+				if ((stage.stage_id == StageId_1_4) || (stage.stage_id == StageId_4_1) || (stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
 				{
 					RECT scanline_src = {0, 0, 256, 256};
 					RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
 					Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
 				}
-				else if (stage.stage_id == StageId_1_3 && stage.song_step >= 911 && stage.song_step <= 1167 || stage.stage_id == StageId_1_3 && stage.song_step >= 1423 && stage.song_step <= 1680)
+				else if ((stage.stage_id == StageId_1_3 && stage.song_step >= 911 && stage.song_step <= 1167) || (stage.stage_id == StageId_1_3 && stage.song_step >= 1423 && stage.song_step <= 1680))
 				{
 					RECT scanline_src = {0, 0, 256, 256};
 					RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
@@ -2119,7 +2110,7 @@ void Stage_Tick(void)
 				}
 			
 			if (stage.prefs.songtimer)
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 					StageTimer_Draw();
 
 			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
@@ -2142,7 +2133,7 @@ void Stage_Tick(void)
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
 				
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 					if (!stage.prefs.debug)
 						Stage_DrawTex(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump);
 			}
@@ -2324,7 +2315,7 @@ void Stage_Tick(void)
 			}
 			
 			//Scroll camera
-			if (stage.cur_section->flag & SECTION_FLAG_OPPFOCUS || stage.stage_id == StageId_4_2 || stage.stage_id == StageId_4_3 || stage.stage_id == StageId_5_3 || stage.stage_id == StageId_6_2)
+			if ((stage.cur_section->flag & SECTION_FLAG_OPPFOCUS) || (stage.stage_id == StageId_4_2) || (stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3 || stage.stage_id == StageId_6_2))
 				Stage_FocusCharacter(stage.opponent, FIXED_UNIT / 24);
 			else
 				Stage_FocusCharacter(stage.player, FIXED_UNIT / 24);
@@ -2344,7 +2335,7 @@ void Stage_Tick(void)
 					this->refresh_score = false;
 				}
 				
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->score_text,
@@ -2369,7 +2360,7 @@ void Stage_Tick(void)
 					this->refresh_miss = false;
 				}
 
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->miss_text,
@@ -2406,7 +2397,7 @@ void Stage_Tick(void)
 					this->refresh_accuracy = false;
 				}
 				//sorry for this shit lmao
-				if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->accuracy_text,
@@ -2519,7 +2510,7 @@ void Stage_Tick(void)
 					
 					Stage_DrawStrum(i, &note_src, &note_dst);
 
-					if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 						Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					
 					//Opponent
@@ -2530,9 +2521,9 @@ void Stage_Tick(void)
 						note_dst.y = -note_dst.y - note_dst.h;
 					Stage_DrawStrum(i | 4, &note_src, &note_dst);
 
-					if (stage.stage_id == StageId_1_3 && stage.song_step <= 2193 || stage.stage_id != StageId_1_3)
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
 					{
-						if (stage.stage_id != StageId_4_3 || stage.stage_id != StageId_6_2)
+						if ((stage.stage_id != StageId_4_3)|| (stage.stage_id != StageId_6_2))
 						{
 							if (stage.prefs.middlescroll)
 								Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);

@@ -28,15 +28,11 @@ typedef struct
 
 void Back_Deskroom_DrawBG(StageBack *back)
 {
-	if (stage.song_step >= 270 && stage.song_step <= 911 || stage.song_step >= 1167 && stage.song_step <= 1423 || stage.song_step >= 2193)
+	if ((stage.song_step >= 270 && stage.song_step <= 911) || (stage.song_step >= 1167 && stage.song_step <= 1423) || (stage.song_step >= 2193))
 	{
 		Back_Deskroom *this = (Back_Deskroom*)back;
 	
-	
-	
 		fixed_t fx, fy;
-	
-	
 	
 		//Draw deskroombg
 		fx = stage.camera.x;
@@ -67,11 +63,7 @@ void Back_Deskroom_DrawBG(StageBack *back)
 	{
 		Back_Deskroom *this = (Back_Deskroom*)back;
 	
-	
-	
 		fixed_t fx, fy;
-	
-	
 	
 		//Draw deskroombg
 		fx = stage.camera.x;
