@@ -25,17 +25,37 @@ typedef struct
 
 } Back_Black;
 
+void Back_Black_DrawFG(StageBack *back)
+{
+	if ((stage.song_step >= 124 && stage.song_step <= 128) || (stage.song_step >= 380 && stage.song_step <= 384) || (stage.song_step >= 828 && stage.song_step <= 832) || (stage.song_step >= 1020))
+	{
+		Back_Black *this = (Back_Black*)back;
+		
+		fixed_t fx, fy;
+		
+		//Draw blackf
+		fx = stage.camera.x;
+		fy = stage.camera.y;
+	
+		RECT blackf_src = {0, 0, 255, 255};
+		RECT_FIXED blackf_dst = {
+			FIXED_DEC(-265 - screen.SCREEN_WIDEOADD2,1) - fx,
+			FIXED_DEC(-145,1) - fy,
+			FIXED_DEC(600 + screen.SCREEN_WIDEOADD,1),
+			FIXED_DEC(450,1)
+		};
+	
+		Debug_StageMoveDebug(&blackf_dst, 9, fx, fy);
+		Stage_DrawTex(&this->tex_back0, &blackf_src, &blackf_dst, stage.camera.bzoom);
+	}
+}
 
 void Back_Black_DrawBG(StageBack *back)
 {
 	Back_Black *this = (Back_Black*)back;
-	
-	
-	
+
 	fixed_t fx, fy;
-	
-	
-	
+
 	//Draw blackbg
 	fx = stage.camera.x;
 	fy = stage.camera.y;
@@ -55,10 +75,10 @@ void Back_Black_DrawBG(StageBack *back)
 		FIXED_DEC(400 + screen.SCREEN_WIDEOADD,1),
 		FIXED_DEC(400,1)
 	};
-	if (stage.stage_id == StageId_6_2)
+	if ((stage.stage_id == StageId_6_2) || (stage.stage_id == StageId_1_4))
 	{
 		blackbg_dst.w = FIXED_DEC(600 + screen.SCREEN_WIDEOADD,1);
-		blackbg_dst.h = FIXED_DEC(600,1);
+		blackbg_dst.h = FIXED_DEC(450,1);
 	}
 	if (stage.stage_id == StageId_4_2)
 	{
@@ -105,7 +125,7 @@ StageBack *Back_Black_New(void)
 	else
 	{
 		//Set background functions
-		this->back.draw_fg = NULL;
+		this->back.draw_fg = Back_Black_DrawFG;
 		this->back.draw_md = NULL;
 		this->back.draw_bg = Back_Black_DrawBG;
 		this->back.free = Back_Black_Free;

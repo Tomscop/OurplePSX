@@ -55,10 +55,11 @@ static const Animation green_anim[] = {
 static const CharFrame rain_frame[] = {
 	{0, {  0,  0,255,255}, { 71, 98}}, //0 rain 1
 	{1, {  0,  0,255,255}, { 71, 98}}, //1 rain 2
+	{2, {  0,  0,255,255}, { 71, 98}}, //2 rain 3
 };
 
 static const Animation rain_anim[] = {
-	{3, (const u8[]){0, 1, ASCR_CHGANI, 0}}, //Rain
+	{2, (const u8[]){0, 1, 2, ASCR_CHGANI, 0}}, //Rain
 };
 
 //Green functions
@@ -114,9 +115,9 @@ void Jrs_Rain_Draw(Back_Jrs *this, fixed_t x, fixed_t y)
 	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
 	
 	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
-	RECT_FIXED dst = {ox, oy,428 << FIXED_SHIFT,327 << FIXED_SHIFT};
+	RECT_FIXED dst = {ox, oy,576 << FIXED_SHIFT,454 << FIXED_SHIFT};
 	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
-	Stage_DrawTex(&this->tex_rain, &src, &dst, stage.camera.bzoom);
+	Stage_BlendTex(&this->tex_rain, &src, &dst, stage.camera.bzoom, 1);
 }
 
 void Back_Jrs_DrawFG(StageBack *back)
@@ -134,7 +135,7 @@ void Back_Jrs_DrawFG(StageBack *back)
 		
 	Animatable_Animate(&this->rain_animatable, (void*)this, Jrs_Rain_SetFrame);
 	
-	Jrs_Rain_Draw(this, FIXED_DEC(-60 + 71,1) - fx, FIXED_DEC(-31 + 98,1) - fy);
+	Jrs_Rain_Draw(this, FIXED_DEC(-123 + 71,1) - fx, FIXED_DEC(-115 + 98,1) - fy);
 }
 
 void Back_Jrs_DrawBG(StageBack *back)
@@ -147,7 +148,7 @@ void Back_Jrs_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x3 )== 0)
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x7 )== 0)
 		Animatable_SetAnim(&this->green_animatable, 0);
 		
 	Animatable_Animate(&this->green_animatable, (void*)this, Jrs_Green_SetFrame);
@@ -221,6 +222,7 @@ StageBack *Back_Jrs_New(void)
 	this->arc_rain = IO_Read("\\JRS\\RAIN.ARC;1");
 	this->arc_rain_ptr[0] = Archive_Find(this->arc_rain, "rain0.tim");
 	this->arc_rain_ptr[1] = Archive_Find(this->arc_rain, "rain1.tim");
+	this->arc_rain_ptr[2] = Archive_Find(this->arc_rain, "rain2.tim");
 	
 	//Initialize green state
 	Animatable_Init(&this->green_animatable, green_anim);

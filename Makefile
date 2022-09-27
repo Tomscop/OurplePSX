@@ -38,6 +38,7 @@ SRCS = src/main.c \
 	   src/character/henrytv.c \
 	   src/character/henryp.c \
 	   src/character/bfp.c \
+	   src/character/sunny.c \
 	   src/character/matpat.c \
 	   src/character/lphone.c \
        src/character/fatjones.c \

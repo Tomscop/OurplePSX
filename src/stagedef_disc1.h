@@ -63,15 +63,15 @@
 	},
 	{ //StageId_1_4 (Lurking)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_BF_New,    FIXED_DEC(148,1),  FIXED_DEC(162,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Sunny_New, FIXED_DEC(-118,1),  FIXED_DEC(101,1)},
         {NULL},
 		{NULL},
-		{Char_GFO_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{Char_GFO_New,     FIXED_DEC(104,1),  FIXED_DEC(125,1)},
 		
 		//Stage background
 		Back_Black_New,

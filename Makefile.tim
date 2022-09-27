@@ -30,6 +30,7 @@ all: \
 	iso/henrytv/main.arc \
 	iso/henryp/main.arc \
 	iso/bfp/main.arc \
+	iso/sunny/main.arc \
 	iso/matpat/main.arc \
 	iso/lphone/main.arc \
 	iso/fatjones/main.arc \
@@ -89,6 +90,9 @@ iso/henryp/main.arc: iso/henryp/henryp0.tim iso/henryp/henryp1.tim iso/henryp/he
 # BFP
 iso/bfp/main.arc: iso/bfp/bfp0.tim
 
+# Sunny
+iso/sunny/main.arc: iso/sunny/idle0.tim iso/sunny/idle1.tim iso/sunny/idle2.tim iso/sunny/idle3.tim iso/sunny/idle4.tim iso/sunny/left0.tim iso/sunny/left1.tim iso/sunny/left2.tim iso/sunny/down0.tim iso/sunny/down1.tim iso/sunny/down2.tim iso/sunny/up0.tim iso/sunny/up1.tim iso/sunny/up2.tim iso/sunny/right0.tim iso/sunny/right1.tim iso/sunny/right2.tim
+
 # Matpat
 iso/matpat/main.arc: iso/matpat/idle0.tim iso/matpat/idle1.tim iso/matpat/idle2.tim iso/matpat/idle3.tim iso/matpat/idle4.tim iso/matpat/left0.tim iso/matpat/left1.tim iso/matpat/left2.tim iso/matpat/left3.tim iso/matpat/left4.tim iso/matpat/left5.tim iso/matpat/down0.tim iso/matpat/down1.tim iso/matpat/up0.tim iso/matpat/up1.tim iso/matpat/right0.tim iso/matpat/right1.tim
 
@@ -131,7 +135,7 @@ iso/storage/back.arc: iso/storage/back0.tim iso/storage/back1.tim
 # Jrs
 iso/jrs/back.arc: iso/jrs/back0.tim iso/jrs/back1.tim
 iso/jrs/green.arc: iso/jrs/green.tim
-iso/jrs/rain.arc: iso/jrs/rain0.tim iso/jrs/rain1.tim
+iso/jrs/rain.arc: iso/jrs/rain0.tim iso/jrs/rain1.tim iso/jrs/rain2.tim
 
 # Deskroom
 iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim

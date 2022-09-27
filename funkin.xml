@@ -191,6 +191,9 @@
 				<!-- BFP assets -->
 				<file name = "bfp.arc" type = "data" source = "iso/bfp/main.arc"/>
 				
+				<!-- Sunny assets -->
+				<file name = "sunny.arc" type = "data" source = "iso/sunny/main.arc"/>
+				
 				<!-- Matpat assets -->
 				<file name = "matpat.arc" type = "data" source = "iso/matpat/main.arc"/>
 				

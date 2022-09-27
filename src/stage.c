@@ -55,6 +55,7 @@ static u32 Sounds[7];
 #include "character/henrytv.h"
 #include "character/henryp.h"
 #include "character/bfp.h"
+#include "character/sunny.h"
 #include "character/matpat.h"
 #include "character/lphone.h"
 #include "character/fatjones.h"
