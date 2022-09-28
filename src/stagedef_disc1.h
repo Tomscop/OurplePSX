@@ -68,7 +68,7 @@
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Sunny_New, FIXED_DEC(-118,1),  FIXED_DEC(101,1)},
+		{Char_Sunny_New, FIXED_DEC(-111,1),  FIXED_DEC(101,1)},
         {NULL},
 		{NULL},
 		{Char_GFO_New,     FIXED_DEC(104,1),  FIXED_DEC(125,1)},
