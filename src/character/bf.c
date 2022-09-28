@@ -388,6 +388,7 @@ void Char_BF_Tick(Character *character)
 	{
 		if (stage.stage_id == StageId_1_3 && stage.song_step <= 270 || stage.stage_id == StageId_1_3 && stage.song_step >= 1680 && stage.song_step <= 2200)
 			Character_Draw(character, &this->tex, &char_bf_frame2[this->frame]);
+		
 		else if (stage.stage_id != StageId_1_3)
 			Character_Draw(character, &this->tex, &char_bf_frame2[this->frame]);
 	}
@@ -453,49 +454,55 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		this->character.focus_y = FIXED_DEC(-70,1);
 		this->character.focus_zoom = FIXED_DEC(261,256);
 	}
-	if (stage.stage_id == StageId_1_2)
+	else if (stage.stage_id == StageId_1_2)
 	{	
 		this->character.focus_x = FIXED_DEC(-87,1);
 		this->character.focus_y = FIXED_DEC(-54,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
-	if (stage.stage_id == StageId_1_3)
+	else if (stage.stage_id == StageId_1_3)
 	{	
 		this->character.focus_x = FIXED_DEC(-73,1);
 		this->character.focus_y = FIXED_DEC(-77,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
-	if (stage.stage_id == StageId_1_4)
+	else if (stage.stage_id == StageId_1_4)
 	{	
 		this->character.focus_x = FIXED_DEC(-99,1);
 		this->character.focus_y = FIXED_DEC(-76,1);
 		this->character.focus_zoom = FIXED_DEC(477,512);
 	}
-	if (stage.stage_id == StageId_2_2)
+	else if (stage.stage_id == StageId_2_2)
 	{	
 		this->character.focus_x = FIXED_DEC(-63,1);
 		this->character.focus_y = FIXED_DEC(-65,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
-	if (stage.stage_id == StageId_2_3)
+	else if (stage.stage_id == StageId_2_3)
 	{	
 		this->character.focus_x = FIXED_DEC(-48,1);
 		this->character.focus_y = FIXED_DEC(-64,1);
 		this->character.focus_zoom = FIXED_DEC(597,512);
 	}
-	if (stage.stage_id == StageId_3_3)
+	else if (stage.stage_id == StageId_3_3)
 	{	
 		this->character.focus_x = FIXED_DEC(-62,1);
 		this->character.focus_y = FIXED_DEC(-112,1);
 		this->character.focus_zoom = FIXED_DEC(1014,1024);
 	}
-	if (stage.stage_id == StageId_4_4)
+	else if (stage.stage_id == StageId_4_4)
 	{	
 		this->character.focus_x = FIXED_DEC(-69,1);
 		this->character.focus_y = FIXED_DEC(-82,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
-	if (stage.stage_id == StageId_5_1)
+	else if (stage.stage_id == StageId_5_1)
+	{	
+		this->character.focus_x = FIXED_DEC(-50,1);
+		this->character.focus_y = FIXED_DEC(-65,1);
+		this->character.focus_zoom = FIXED_DEC(1,1);
+	}
+	else
 	{	
 		this->character.focus_x = FIXED_DEC(-50,1);
 		this->character.focus_y = FIXED_DEC(-65,1);

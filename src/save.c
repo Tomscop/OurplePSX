@@ -12,8 +12,8 @@
 #include "stage.h"
 				  
 	        //HAS to be BASCUS-scusid,somename
-#define savetitle "bu00:BASCUS-00000funkin"
-#define savename  "PSXFunkin"
+#define savetitle "bu00:BASCUS-1987ourple"
+#define savename  "OurplePSX"
 
 static const u8 saveIconPalette[32] = 
 {

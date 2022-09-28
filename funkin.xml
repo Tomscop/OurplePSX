@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Defines the ISO project -->
-<iso_project image_name="funkin.bin" cue_sheet="funkin.cue" no_xa="0">
+<iso_project image_name="ourple.bin" cue_sheet="ourple.cue" no_xa="0">
 	<!-- Data track -->
 	<track type="data">
 		<!-- Identifiers -->
@@ -19,7 +19,7 @@
 		<directory_tree>
 			<!-- System -->
 			<file name = "system.cnf" type = "data" source = "iso/system.cnf"/>
-			<file name = "SCUS_000.00" type = "data" source = "funkin.ps-exe"/>
+			<file name = "SCUS_19.87" type = "data" source = "funkin.ps-exe"/>
 			
 			<!-- Menu assets -->
 			<dir name = "menu">
