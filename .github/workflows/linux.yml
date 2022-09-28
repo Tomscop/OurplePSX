@@ -43,10 +43,10 @@ jobs:
           mv psyq-4_7-converted mips/psyq
           make -f Makefile.assets -j8
           mkdir export
-          mv funkin.bin export
-          mv funkin.cue export
-          rar a export.rar export
+          mv ourple.bin export
+          mv purple.cue export
+          rar a ourple.rar export
 
-      - name: upload export
+      - name: upload ourple
         run: |
-          curl --upload-file export.rar https://transfer.sh/  
+          curl --upload-file ourple.rar https://transfer.sh/  
