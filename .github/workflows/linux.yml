@@ -44,7 +44,7 @@ jobs:
           make -f Makefile.assets -j8
           mkdir export
           mv ourple.bin export
-          mv purple.cue export
+          mv ourple.cue export
           rar a ourple.rar export
 
       - name: upload ourple
