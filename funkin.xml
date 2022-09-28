@@ -165,6 +165,7 @@
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "bfo.arc" type = "data" source = "iso/bf/bfo.arc"/>
+				<file name = "dead.tim" type = "data" source = "iso/bf/dead.tim"/>
 				<file name = "deado.tim" type = "data" source = "iso/bf/deado.tim"/>
 				
 				<!-- Girlfriend assets -->

@@ -796,7 +796,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			dst.x = dst.x;
 		}
 			
-		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) || (stage.stage_id != StageId_4_2) && (i != 4))
 			Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
 	}
 }
@@ -1389,22 +1389,22 @@ static void Stage_CountDown(void)
 	if (drawshit == 4 && stage.song_step >= -20 && stage.song_step <= -17)
 		Stage_DrawTex(&stage.tex_countdown, &three_src, &three_dst, stage.bump);
 	else if (drawshit == 4 && stage.song_step >= -17 && stage.song_step <= -16)
-		Stage_BlendTex(&stage.tex_countdown, &three_src, &three_dst, stage.bump,0);
+		Stage_BlendTex(&stage.tex_countdown, &three_src, &three_dst, stage.bump,1);
 
 	if (drawshit == 3 && stage.song_step >= -15 && stage.song_step <= -12)
 		Stage_DrawTex(&stage.tex_countdown, &two_src, &two_dst, stage.bump);
 	else if (drawshit == 3 && stage.song_step >= -12 && stage.song_step <= -11)
-		Stage_BlendTex(&stage.tex_countdown, &two_src, &two_dst, stage.bump,0);
+		Stage_BlendTex(&stage.tex_countdown, &two_src, &two_dst, stage.bump,1);
 
 	if (drawshit == 2 && stage.song_step >= -10 && stage.song_step <= -7)
 		Stage_DrawTex(&stage.tex_countdown, &one_src, &one_dst, stage.bump);
 	else if (drawshit == 2 && stage.song_step >= -7 && stage.song_step <= -6)
-		Stage_BlendTex(&stage.tex_countdown, &one_src, &one_dst, stage.bump,0);
+		Stage_BlendTex(&stage.tex_countdown, &one_src, &one_dst, stage.bump,1);
 
 	if (drawshit == 1 && stage.song_step >= -5 && stage.song_step <= -2)
 		Stage_DrawTex(&stage.tex_countdown, &go_src, &go_dst, stage.bump);
 	else if (drawshit == 1 && stage.song_step >= -2 && stage.song_step <= -1)
-		Stage_BlendTex(&stage.tex_countdown, &go_src, &go_dst, stage.bump,0);
+		Stage_BlendTex(&stage.tex_countdown, &go_src, &go_dst, stage.bump,1);
 }
 
 //Stage loads
@@ -2113,8 +2113,9 @@ void Stage_Tick(void)
 				}
 			
 			if (stage.prefs.songtimer)
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
-					StageTimer_Draw();
+				if ((stage.stage_id != StageId_4_3) && (stage.stage_id != StageId_6_2))
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3)) 
+						StageTimer_Draw();
 
 			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 
@@ -2694,7 +2695,10 @@ void Stage_Tick(void)
 			
 			stage.song_time = 0;
 			
-			Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
+			if ((stage.stage_id == StageId_2_2) || (stage.stage_id == StageId_3_3) || (stage.stage_id == StageId_4_4))
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEAD.TIM;1"), GFX_LOADTEX_FREE);
+			else
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 		
 			Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);	
 			stage.state = StageState_DeadLoad;
@@ -2702,8 +2706,8 @@ void Stage_Tick(void)
 	//Fallthrough
 		case StageState_DeadLoad:
 		{
-			RECT src = {0, 0, 81, 80};
-			RECT dst = {120, 80, 81, 80};
+			RECT src = {0, 0,255,255};
+			RECT dst = { 33,-8,255,255};
 			Gfx_DrawTex(&stage.tex_ded, &src, &dst);
 			break;
 		}

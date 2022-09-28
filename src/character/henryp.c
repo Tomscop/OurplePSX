@@ -89,7 +89,7 @@ void Char_HenryP_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_HenryP_SetFrame);
-	if (stage.song_step >= 911 && stage.song_step <= 1167 || stage.song_step >= 1423 && stage.song_step <= 1680)
+	if (stage.song_step >= 912 && stage.song_step <= 1167 || stage.song_step >= 1423 && stage.song_step <= 1680)
 		Character_Draw(character, &this->tex, &char_henryp_frame[this->frame]);
 }
 
