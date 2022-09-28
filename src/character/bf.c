@@ -105,14 +105,14 @@ static const CharFrame char_bf_frame2[] =
 	{BF_ArcMain_BF1, {166, 95, 82, 94}, { 53, 92}}, //11 right 1
 	{BF_ArcMain_BF2, {  0,  0, 82, 94}, { 53, 92}}, //12 right 2
 			
-	{BF_ArcMain_BF3, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //13 peace 1
-	{BF_ArcMain_BF3, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //14 peace 2
-	{BF_ArcMain_BF3, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //15 peace 3
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //13 peace 1
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //14 peace 2
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //15 peace 3
 		
-	{BF_ArcMain_BF4, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //16 sweat 1
-	{BF_ArcMain_BF4, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //17 sweat 2
-	{BF_ArcMain_BF4, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //18 sweat 3
-	{BF_ArcMain_BF4, {NULL,NULL,NULL,NULL}, {NULL,NULL}}, //19 sweat 4
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //16 sweat 1
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //17 sweat 2
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //18 sweat 3
+	{BF_ArcMain_BF0, {  0,  0,  0,  0}, {  0,  0}}, //19 sweat 4
 		
 	{BF_ArcMain_BF2, { 83,  0, 82, 94}, { 53, 92}}, //20 left miss 1
 	{BF_ArcMain_BF2, {166,  0, 82, 94}, { 53, 92}}, //21 left miss 2
