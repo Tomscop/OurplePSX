@@ -21,7 +21,7 @@ typedef struct
 	
 	//Textures
 	IO_Data arc_green, arc_green_ptr[1];
-	IO_Data arc_rain, arc_rain_ptr[1];
+	IO_Data arc_rain, arc_rain_ptr[3];
 	
 	Gfx_Tex tex_back0; //jrsbg1
 	Gfx_Tex tex_back1; //jrsbg2

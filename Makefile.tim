@@ -25,6 +25,7 @@ all: \
 	iso/gf/gfos.arc \
 	iso/gf/speaker.tim \
 	iso/ourple/main.arc \
+	iso/ourple/dead.tim \
 	iso/prange/main.arc \
 	iso/henry/main.arc \
 	iso/henrytv/main.arc \
@@ -37,6 +38,7 @@ all: \
 	iso/gphone/main.arc \
 	iso/goldenf/main.arc \
 	iso/mark/main.arc \
+	iso/mark/dead.tim \
 	iso/freddy/main.arc \
 	iso/salvage/main.arc \
 	iso/plush/main.arc \
@@ -52,6 +54,7 @@ all: \
 	iso/week1/back.arc \
 	iso/officeg/back.arc \
 	iso/officeb/back.arc \
+	iso/officeb/js.arc \
 	iso/fnaf3/back.arc \
 
 iso/%.tim: iso/%.png
@@ -150,7 +153,8 @@ iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
 iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim iso/officeg/back2.tim
 
 # OfficeB
-iso/officeb/back.arc: iso/officeb/back0.tim iso/officeb/back1.tim iso/officeb/back2.tim
+iso/officeb/back.arc: iso/officeb/back0.tim iso/officeb/back1.tim
+iso/officeb/js.arc: iso/officeb/jsb.tim iso/officeb/jsf0.tim iso/officeb/jsf1.tim iso/officeb/jsf2.tim iso/officeb/jsf3.tim iso/officeb/jsf4.tim iso/officeb/jsf5.tim iso/officeb/jsf6.tim iso/officeb/jsf7.tim iso/officeb/jsf8.tim iso/officeb/jsf9.tim iso/officeb/jsf10.tim iso/officeb/jsf11.tim iso/officeb/jsf12.tim iso/officeb/jsf13.tim iso/officeb/jsf14.tim
 
 # FNAF 3
 iso/fnaf3/back.arc: iso/fnaf3/back0.tim

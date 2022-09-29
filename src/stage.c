@@ -759,7 +759,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			dst.x = dst.x;
 		}
 		
-		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 			Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
 	}
 	else
@@ -796,7 +796,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			dst.x = dst.x;
 		}
 			
-		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) || (stage.stage_id != StageId_4_2) && (i != 4))
+		if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 			Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
 	}
 }
@@ -824,7 +824,7 @@ static void Stage_DrawHealthBar(s16 x, s32 color)
 	if (stage.prefs.downscroll)
 		dst.y = -dst.y - dst.h;
 	
-	if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+	if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 		Stage_DrawTexCol(&stage.tex_hud1, &src, &dst, stage.bump, red >> 1, blue >> 1, green >> 1);
 }
 
@@ -1215,7 +1215,7 @@ static void Stage_DrawNotes(void)
 						}
 						
 						//draw for opponent
-						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 						{
 							if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 								Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1247,7 +1247,7 @@ static void Stage_DrawNotes(void)
 							note_dst.y = -note_dst.y - note_dst.h;
 
 						//draw for opponent
-						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+						if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 						{
 							if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 								Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1278,7 +1278,7 @@ static void Stage_DrawNotes(void)
 					note_dst.y = -note_dst.y - note_dst.h;
 
 				//draw for opponent
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 				{
 					if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 						Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -2114,7 +2114,7 @@ void Stage_Tick(void)
 			
 			if (stage.prefs.songtimer)
 				if ((stage.stage_id != StageId_4_3) && (stage.stage_id != StageId_6_2))
-					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3)) 
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 						StageTimer_Draw();
 
 			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
@@ -2137,7 +2137,7 @@ void Stage_Tick(void)
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
 				
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 					if (!stage.prefs.debug)
 						Stage_DrawTex(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump);
 			}
@@ -2339,7 +2339,7 @@ void Stage_Tick(void)
 					this->refresh_score = false;
 				}
 				
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->score_text,
@@ -2364,7 +2364,7 @@ void Stage_Tick(void)
 					this->refresh_miss = false;
 				}
 
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->miss_text,
@@ -2401,7 +2401,7 @@ void Stage_Tick(void)
 					this->refresh_accuracy = false;
 				}
 				//sorry for this shit lmao
-				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+				if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 				{
 					stage.font_cdr.draw(&stage.font_cdr,
 						this->accuracy_text,
@@ -2514,7 +2514,7 @@ void Stage_Tick(void)
 					
 					Stage_DrawStrum(i, &note_src, &note_dst);
 
-					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 						Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					
 					//Opponent
@@ -2525,7 +2525,7 @@ void Stage_Tick(void)
 						note_dst.y = -note_dst.y - note_dst.h;
 					Stage_DrawStrum(i | 4, &note_src, &note_dst);
 
-					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3))
+					if ((stage.stage_id == StageId_1_3 && stage.song_step <= 2193) || (stage.stage_id != StageId_1_3) && (stage.stage_id != StageId_3_2) || (stage.stage_id == StageId_3_2) && (stage.song_step <= 1032) || (stage.stage_id == StageId_3_2) && (stage.song_step >= 1056))
 					{
 						if ((stage.stage_id != StageId_4_3)|| (stage.stage_id != StageId_6_2))
 						{
@@ -2697,6 +2697,10 @@ void Stage_Tick(void)
 			
 			if ((stage.stage_id == StageId_2_2) || (stage.stage_id == StageId_3_3) || (stage.stage_id == StageId_4_4))
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEAD.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_2_1)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADOU.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_3_2)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
 			else
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 		

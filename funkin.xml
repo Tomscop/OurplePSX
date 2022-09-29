@@ -152,6 +152,7 @@
 			<dir name = "officeb">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/officeb/back.arc"/>
+				<file name = "js.arc" type = "data" source = "iso/officeb/js.arc"/>
 			</dir>
 			
 				<!-- FNAF 3 assets -->
@@ -176,6 +177,7 @@
 				
 				<!-- Ourple assets -->
 				<file name = "ourple.arc" type = "data" source = "iso/ourple/main.arc"/>
+				<file name = "deadou.tim" type = "data" source = "iso/ourple/dead.tim"/>
 				
 				<!-- Prange assets -->
 				<file name = "prange.arc" type = "data" source = "iso/prange/main.arc"/>
@@ -212,6 +214,7 @@
 				
 				<!-- Mark assets -->
 				<file name = "mark.arc" type = "data" source = "iso/mark/main.arc"/>
+				<file name = "deadm.tim" type = "data" source = "iso/mark/dead.tim"/>
 				
 				<!-- Freddy assets -->
 				<file name = "freddy.arc" type = "data" source = "iso/freddy/main.arc"/>
