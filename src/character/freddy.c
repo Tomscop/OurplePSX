@@ -101,7 +101,10 @@ void Char_Freddy_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Freddy_SetFrame);
-	Character_Draw(character, &this->tex, &char_freddy_frame[this->frame]);
+	if (stage.song_step >= 129 && stage.song_step <= 146)
+		Character_Blend(character, &this->tex, &char_freddy_frame[this->frame]);
+	else if (stage.song_step >= 147)
+		Character_Draw(character, &this->tex, &char_freddy_frame[this->frame]);
 }
 
 void Char_Freddy_SetAnim(Character *character, u8 anim)

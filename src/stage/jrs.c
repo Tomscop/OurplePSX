@@ -135,7 +135,7 @@ void Back_Jrs_DrawFG(StageBack *back)
 		
 	Animatable_Animate(&this->rain_animatable, (void*)this, Jrs_Rain_SetFrame);
 	
-	Jrs_Rain_Draw(this, FIXED_DEC(-123 + 71,1) - fx, FIXED_DEC(-115 + 98,1) - fy);
+	Jrs_Rain_Draw(this, FIXED_DEC(-152 + 71,1) - fx, FIXED_DEC(-71 + 98,1) - fy);
 }
 
 void Back_Jrs_DrawBG(StageBack *back)
@@ -153,7 +153,7 @@ void Back_Jrs_DrawBG(StageBack *back)
 		
 	Animatable_Animate(&this->green_animatable, (void*)this, Jrs_Green_SetFrame);
 	
-	Jrs_Green_Draw(this, FIXED_DEC(191 + 71,1) - fx, FIXED_DEC(5 + 98,1) - fy);
+	Jrs_Green_Draw(this, FIXED_DEC(192 + 71,1) - fx, FIXED_DEC(7 + 98,1) - fy);
 	
 	//Draw jrsbg
 	fx = stage.camera.x;
