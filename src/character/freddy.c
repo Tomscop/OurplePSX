@@ -95,6 +95,23 @@ void Char_Freddy_Tick(Character *character)
 {
 	Char_Freddy *this = (Char_Freddy*)character;
 	
+	//Camera stuff
+	if (stage.stage_id == StageId_3_2)
+	{
+		if (stage.song_step == 496)
+		{
+			this->character.focus_x = FIXED_DEC(73,1);
+			this->character.focus_y = FIXED_DEC(-111,1);
+			this->character.health_bar = 0xFFD2B924;
+		}
+		if (stage.song_step == 1442)
+		{
+			this->character.focus_x = FIXED_DEC(65,1);
+			this->character.focus_y = FIXED_DEC(-102,1);
+			this->character.health_bar = 0xFF663810;
+		}
+	}
+	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
@@ -103,7 +120,7 @@ void Char_Freddy_Tick(Character *character)
 	Animatable_Animate(&character->animatable, (void*)this, Char_Freddy_SetFrame);
 	if (stage.song_step >= 129 && stage.song_step <= 146)
 		Character_Blend(character, &this->tex, &char_freddy_frame[this->frame]);
-	else if (stage.song_step >= 147)
+	else if ((stage.song_step >= 147 && stage.song_step <=498) || (stage.song_step >= 1442))
 		Character_Draw(character, &this->tex, &char_freddy_frame[this->frame]);
 }
 
@@ -149,9 +166,9 @@ Character *Char_Freddy_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFF663810;
 	
-	this->character.focus_x = FIXED_DEC(47,1);
-	this->character.focus_y = FIXED_DEC(-104,1);
-	this->character.focus_zoom = FIXED_DEC(1205,512);
+	this->character.focus_x = FIXED_DEC(65,1);
+	this->character.focus_y = FIXED_DEC(-102,1);
+	this->character.focus_zoom = FIXED_DEC(1113,512);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\FREDDY.ARC;1");

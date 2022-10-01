@@ -189,7 +189,7 @@ void OfficeB_Bonnie_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
 	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
 	
 	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
-	RECT_FIXED dst = { ox, oy, 74 << FIXED_SHIFT , 121 << FIXED_SHIFT };
+	RECT_FIXED dst = { ox, oy, src.w << FIXED_SHIFT , src.h << FIXED_SHIFT };
 	Debug_StageMoveDebug(&dst, 5, stage.camera.x, stage.camera.y);
 	Stage_DrawTex(&this->tex_bonnie, &src, &dst, stage.camera.bzoom);
 }
@@ -218,7 +218,7 @@ void OfficeB_Chica_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
 	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
 	
 	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
-	RECT_FIXED dst = { ox, oy, 77 << FIXED_SHIFT , 114 << FIXED_SHIFT };
+	RECT_FIXED dst = { ox, oy, src.w << FIXED_SHIFT , src.h << FIXED_SHIFT };
 	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
 	Stage_DrawTex(&this->tex_chica, &src, &dst, stage.camera.bzoom);
 }
@@ -290,7 +290,8 @@ void Back_OfficeB_DrawBG(StageBack *back)
 		
 	Animatable_Animate(&this->bonnie_animatable, (void*)this, OfficeB_Bonnie_SetFrame);
 	
-	OfficeB_Bonnie_Draw(this, FIXED_DEC(-111 - -71,1) - fx, FIXED_DEC(-6 - -98,1) - fy);
+	if (stage.song_step >= 498)
+		OfficeB_Bonnie_Draw(this, FIXED_DEC(-112 - -71,1) - fx, FIXED_DEC(-12 - -98,1) - fy);
 	
 	//Animate and draw chica
 	fx = stage.camera.x;
@@ -301,7 +302,8 @@ void Back_OfficeB_DrawBG(StageBack *back)
 		
 	Animatable_Animate(&this->chica_animatable, (void*)this, OfficeB_Chica_SetFrame);
 	
-	OfficeB_Chica_Draw(this, FIXED_DEC(12 - -71,1) - fx, FIXED_DEC(0 - -98,1) - fy);
+	if (stage.song_step >= 1037)
+	OfficeB_Chica_Draw(this, FIXED_DEC(24 - -71,1) - fx, FIXED_DEC(-5 - -98,1) - fy);
 
 	//Draw officeb
 	fx = stage.camera.x;
@@ -310,17 +312,17 @@ void Back_OfficeB_DrawBG(StageBack *back)
 	RECT officeb1_src = {0, 0, 249, 255};
 	RECT_FIXED officeb1_dst = {
 		FIXED_DEC(-165 - screen.SCREEN_WIDEOADD2,1) - fx,
-		FIXED_DEC(-33,1) - fy,
-		FIXED_DEC(151 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(155,1)
+		FIXED_DEC(-38,1) - fy,
+		FIXED_DEC(159 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(163,1)
 	};
 	
 	RECT officeb2_src = {0, 0, 249, 255};
 	RECT_FIXED officeb2_dst = {
-		FIXED_DEC(-14 - screen.SCREEN_WIDEOADD2,1) - fx,
-		FIXED_DEC(-33,1) - fy,
-		FIXED_DEC(151 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(155,1)
+		FIXED_DEC(-6 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(-38,1) - fy,
+		FIXED_DEC(159 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(163,1)
 	};
 	
 	Debug_StageMoveDebug(&officeb1_dst, 8, fx, fy);

@@ -118,6 +118,21 @@ void Char_Mark_SetFrame(void *user, u8 frame)
 void Char_Mark_Tick(Character *character)
 {
 	Char_Mark *this = (Char_Mark*)character;
+	
+	//Camera stuff
+	if (stage.stage_id == StageId_3_2)
+	{
+		if (stage.song_step == 120)
+		{
+			this->character.focus_x = FIXED_DEC(-87,1);
+			this->character.focus_y = FIXED_DEC(-64,1);
+		}
+		if (stage.song_step == 166)
+		{
+			this->character.focus_x = FIXED_DEC(-51,1);
+			this->character.focus_y = FIXED_DEC(-64,1);
+		}
+	}
 
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
@@ -201,8 +216,8 @@ Character *Char_Mark_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFEE0A5E;
 
-	this->character.focus_x = FIXED_DEC(-47,1);
-	this->character.focus_y = FIXED_DEC(-65,1);
+	this->character.focus_x = FIXED_DEC(-51,1);
+	this->character.focus_y = FIXED_DEC(-64,1);
 	this->character.focus_zoom = FIXED_DEC(897,512);
 	
 	//Load art

@@ -170,13 +170,13 @@
 	},
 	{ //StageId_3_2 (Bite)
 		//Characters
-		{Char_Mark_New,    FIXED_DEC(17,1),  FIXED_DEC(102,1)},
+		{Char_Mark_New,    FIXED_DEC(31,1),  FIXED_DEC(102,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Freddy_New, FIXED_DEC(-139,1),  FIXED_DEC(147,1)},
-		{NULL},
+		{Char_Freddy_New, FIXED_DEC(-139,1),  FIXED_DEC(146,1)},
+		{Char_GFreddy_New, FIXED_DEC(-138,1),  FIXED_DEC(144,1)},
         {NULL},
 		{NULL},
 		

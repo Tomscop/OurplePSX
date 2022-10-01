@@ -63,6 +63,7 @@ static u32 Sounds[7];
 #include "character/goldenf.h"
 #include "character/mark.h"
 #include "character/freddy.h"
+#include "character/gfreddy.h"
 #include "character/salvage.h"
 #include "character/plush.h"
 #include "character/abdul.h"
@@ -736,7 +737,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			46,
 		};
 		RECT_FIXED dst = {
-			hx + ox * FIXED_DEC(16,1) - FIXED_DEC(21,1),
+			hx + ox * FIXED_DEC(15,1) - FIXED_DEC(21,1),
 			FIXED_DEC(screen.SCREEN_HEIGHT2 - 32 + 4 - 23, 1),
 			src.w << FIXED_SHIFT,
 			src.h << FIXED_SHIFT
@@ -2647,6 +2648,17 @@ void Stage_Tick(void)
 					stage.player2sing = "single";
 				if (stage.song_step == 2175)
 					stage.player2sing = "none";
+			}
+			if (stage.stage_id == StageId_3_2)
+			{
+				if (stage.song_step == 496)
+					stage.oppo2sing = "single";
+				if (stage.song_step == 1037)
+					stage.oppo2sing = "none";
+				if (stage.song_step == 1038)
+					stage.oppo3sing = "none"; //change to single when foxy done
+				if (stage.song_step == 1472)
+					stage.oppo3sing = "none";
 			}
 
 			break;
