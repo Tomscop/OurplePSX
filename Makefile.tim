@@ -40,6 +40,7 @@ all: \
 	iso/mark/dead.tim \
 	iso/freddy/main.arc \
 	iso/gfreddy/main.arc \
+	iso/foxy/main.arc \
 	iso/salvage/main.arc \
 	iso/plush/main.arc \
 	iso/abdul/main.arc \
@@ -121,6 +122,9 @@ iso/freddy/main.arc: iso/freddy/idle0.tim iso/freddy/idle1.tim iso/freddy/left0.
 
 # GFreddy
 iso/gfreddy/main.arc: iso/gfreddy/idle.tim iso/gfreddy/left0.tim iso/gfreddy/left1.tim iso/gfreddy/down0.tim iso/gfreddy/down1.tim iso/gfreddy/up0.tim iso/gfreddy/up1.tim iso/gfreddy/right0.tim iso/gfreddy/right1.tim
+
+# Foxy
+iso/foxy/main.arc: iso/foxy/idle0.tim iso/foxy/idle1.tim iso/foxy/idle2.tim iso/foxy/left0.tim iso/foxy/left1.tim iso/foxy/left2.tim iso/foxy/down0.tim iso/foxy/down1.tim iso/foxy/down2.tim iso/foxy/up0.tim iso/foxy/up1.tim iso/foxy/up2.tim iso/foxy/right0.tim iso/foxy/right1.tim iso/foxy/right2.tim
 
 # Salvage
 iso/salvage/main.arc: iso/salvage/idle0.tim iso/salvage/idle1.tim iso/salvage/idle2.tim iso/salvage/left0.tim iso/salvage/left1.tim iso/salvage/left2.tim iso/salvage/down0.tim iso/salvage/down1.tim iso/salvage/down2.tim iso/salvage/up0.tim iso/salvage/up1.tim iso/salvage/up2.tim iso/salvage/right0.tim iso/salvage/right1.tim iso/salvage/right2.tim

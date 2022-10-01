@@ -223,6 +223,9 @@
 				<!-- GFreddy assets -->
 				<file name = "gfreddy.arc" type = "data" source = "iso/gfreddy/main.arc"/>
 				
+				<!-- Foxy assets -->
+				<file name = "foxy.arc" type = "data" source = "iso/foxy/main.arc"/>
+				
 				<!-- Salvage assets -->
 				<file name = "salvage.arc" type = "data" source = "iso/salvage/main.arc"/>
 				
