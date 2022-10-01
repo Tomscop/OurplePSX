@@ -189,11 +189,11 @@
 				<!-- Henry TV assets -->
 				<file name = "henrytv.arc" type = "data" source = "iso/henrytv/main.arc"/>
 				
-				<!-- HenryP assets -->
-				<file name = "henryp.arc" type = "data" source = "iso/henryp/main.arc"/>
-				
 				<!-- BFP assets -->
 				<file name = "bfp.arc" type = "data" source = "iso/bfp/main.arc"/>
+				
+				<!-- HenryP assets -->
+				<file name = "henryp.arc" type = "data" source = "iso/henryp/main.arc"/>
 				
 				<!-- Sunny assets -->
 				<file name = "sunny.arc" type = "data" source = "iso/sunny/main.arc"/>
@@ -212,6 +212,9 @@
 				
 				<!-- GoldenF assets -->
 				<file name = "goldenf.arc" type = "data" source = "iso/goldenf/main.arc"/>
+				
+				<!-- SpringB assets -->
+				<file name = "springb.arc" type = "data" source = "iso/springb/main.arc"/>
 				
 				<!-- Mark assets -->
 				<file name = "mark.arc" type = "data" source = "iso/mark/main.arc"/>

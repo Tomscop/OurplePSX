@@ -152,6 +152,8 @@ void OfficeB_Js_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
 	{
 		RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
 		RECT_FIXED dst = {ox, oy,336 << FIXED_SHIFT,266 << FIXED_SHIFT};
+		dst.x += RandomRange(FIXED_DEC(-3,1), FIXED_DEC(3,1));
+		dst.y += RandomRange(FIXED_DEC(-3,1), FIXED_DEC(3,1));
 		Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
 		Stage_DrawTex(&this->tex_js, &src, &dst, FIXED_DEC(1,1));
 	}

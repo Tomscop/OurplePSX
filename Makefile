@@ -36,14 +36,15 @@ SRCS = src/main.c \
 	   src/character/prange.c \
 	   src/character/henry.c \
 	   src/character/henrytv.c \
-	   src/character/henryp.c \
 	   src/character/bfp.c \
+	   src/character/henryp.c \
 	   src/character/sunny.c \
 	   src/character/matpat.c \
 	   src/character/lphone.c \
        src/character/fatjones.c \
 	   src/character/gphone.c \
 	   src/character/goldenf.c \
+	   src/character/springb.c \
 	   src/character/mark.c \
 	   src/character/freddy.c \
 	   src/character/gfreddy.c \
