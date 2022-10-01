@@ -29,9 +29,8 @@
 			
 			<!-- Fonts -->
 			<dir name = "font">
-				<file name = "boldfont.tim" type = "data" source = "iso/font/boldfont.tim"/>
+				<file name = "font.tim" type = "data" source = "iso/font/font.tim"/>
 				<file name = "arial.tim" type = "data" source = "iso/font/arial.tim"/>
-				<file name = "cdr.tim" type = "data" source = "iso/font/cdr.tim"/>
 			</dir>
 			
 			<!-- Stage assets -->
@@ -153,6 +152,8 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/officeb/back.arc"/>
 				<file name = "js.arc" type = "data" source = "iso/officeb/js.arc"/>
+				<file name = "bonnie.arc" type = "data" source = "iso/officeb/bonnie.arc"/>
+				<file name = "chica.arc" type = "data" source = "iso/officeb/chica.arc"/>
 			</dir>
 			
 				<!-- FNAF 3 assets -->

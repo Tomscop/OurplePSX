@@ -773,7 +773,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 			46,
 		};
 		RECT_FIXED dst = {
-			hx + ox * FIXED_DEC(16,1) - FIXED_DEC(21,1),
+			hx + ox * FIXED_DEC(15,1) - FIXED_DEC(21,1),
 			FIXED_DEC(screen.SCREEN_HEIGHT2 - 32 + 4 - 23, 1),
 			src.w << FIXED_SHIFT,
 			src.h << FIXED_SHIFT

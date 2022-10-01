@@ -21,6 +21,8 @@ typedef struct
 	
 	//Textures
 	IO_Data arc_js, arc_js_ptr[35];
+	IO_Data arc_bonnie, arc_bonnie_ptr[2];
+	IO_Data arc_chica, arc_chica_ptr[1];
 	
 	Gfx_Tex tex_back0; //officeb1
 	Gfx_Tex tex_back1; //officeb2
@@ -30,6 +32,18 @@ typedef struct
 	u8 js_frame, js_tex_id;
 
 	Animatable js_animatable;
+	
+	//Bonnie state
+	Gfx_Tex tex_bonnie;
+	u8 bonnie_frame, bonnie_tex_id;
+
+	Animatable bonnie_animatable;
+	
+	//Chica state
+	Gfx_Tex tex_chica;
+	u8 chica_frame, chica_tex_id;
+
+	Animatable chica_animatable;
 } Back_OfficeB;
 
 //Js animation and rects
@@ -83,6 +97,28 @@ static const Animation js_anim[] = {
 	{1, (const u8[]){17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, ASCR_BACK, 1}}, //5 Foxy Run
 };
 
+//Bonnie animation and rects
+static const CharFrame bonnie_frame[] = {
+	{0, {  0,  0, 86,141}, { 71, 98}}, //0 idle 1
+	{0, { 87,  0, 86,141}, { 71, 98}}, //1 idle 2
+	{1, {  0,  0, 86,141}, { 71, 98}}, //2 idle 3
+};
+
+static const Animation bonnie_anim[] = {
+	{2, (const u8[]){0, 1, 2, ASCR_BACK, 1}}, //Idle
+};
+
+//Chica animation and rects
+static const CharFrame chica_frame[] = {
+	{0, {  0,  0, 82,125}, { 71, 98}}, //0 idle 1
+	{0, { 83,  0, 82,125}, { 71, 98}}, //1 idle 2
+	{0, {166,  0, 82,125}, { 71, 98}}, //2 idle 3
+};
+
+static const Animation chica_anim[] = {
+	{2, (const u8[]){0, 1, 2, ASCR_BACK, 1}}, //Idle
+};
+
 //Js functions
 void OfficeB_Js_SetFrame(void *user, u8 frame)
 {
@@ -113,13 +149,78 @@ void OfficeB_Js_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
 		Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
 		Stage_DrawTex(&this->tex_js, &src, &dst, FIXED_DEC(1,1));
 	}
+	else if (stage.song_step >= 496 && stage.song_step <= 767)
+	{
+		RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+		RECT_FIXED dst = {ox, oy,336 << FIXED_SHIFT,266 << FIXED_SHIFT};
+		Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
+		Stage_DrawTex(&this->tex_js, &src, &dst, FIXED_DEC(1,1));
+	}
 	else
 	{
 		RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
 		RECT_FIXED dst = {ox, oy,323 << FIXED_SHIFT,256 << FIXED_SHIFT};
-		Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
+		Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
 		Stage_DrawTex(&this->tex_js, &src, &dst, FIXED_DEC(1,1));
 	}
+}
+
+//Bonnie functions
+void OfficeB_Bonnie_SetFrame(void *user, u8 frame)
+{
+	Back_OfficeB *this = (Back_OfficeB*)user;
+	
+	//Check if this is a new frame
+	if (frame != this->bonnie_frame)
+	{
+		//Check if new art shall be loaded
+		const CharFrame *cframe = &bonnie_frame[this->bonnie_frame = frame];
+		if (cframe->tex != this->bonnie_tex_id)
+			Gfx_LoadTex(&this->tex_bonnie, this->arc_bonnie_ptr[this->bonnie_tex_id = cframe->tex], 0);
+	}
+}
+
+void OfficeB_Bonnie_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
+{
+	//Draw character
+	const CharFrame *cframe = &bonnie_frame[this->bonnie_frame];
+    
+    fixed_t ox = x - ((fixed_t)cframe->off[0] << FIXED_SHIFT);
+	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = { ox, oy, 74 << FIXED_SHIFT , 121 << FIXED_SHIFT };
+	Debug_StageMoveDebug(&dst, 5, stage.camera.x, stage.camera.y);
+	Stage_DrawTex(&this->tex_bonnie, &src, &dst, stage.camera.bzoom);
+}
+
+//Chica functions
+void OfficeB_Chica_SetFrame(void *user, u8 frame)
+{
+	Back_OfficeB *this = (Back_OfficeB*)user;
+	
+	//Check if this is a new frame
+	if (frame != this->chica_frame)
+	{
+		//Check if new art shall be loaded
+		const CharFrame *cframe = &chica_frame[this->chica_frame = frame];
+		if (cframe->tex != this->chica_tex_id)
+			Gfx_LoadTex(&this->tex_chica, this->arc_chica_ptr[this->chica_tex_id = cframe->tex], 0);
+	}
+}
+
+void OfficeB_Chica_Draw(Back_OfficeB *this, fixed_t x, fixed_t y)
+{
+	//Draw character
+	const CharFrame *cframe = &chica_frame[this->chica_frame];
+    
+    fixed_t ox = x - ((fixed_t)cframe->off[0] << FIXED_SHIFT);
+	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = { ox, oy, 77 << FIXED_SHIFT , 114 << FIXED_SHIFT };
+	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
+	Stage_DrawTex(&this->tex_chica, &src, &dst, stage.camera.bzoom);
 }
 
 void Back_OfficeB_DrawFG(StageBack *back)
@@ -168,6 +269,8 @@ void Back_OfficeB_DrawFG(StageBack *back)
 	if ((stage.song_step >= 312 && stage.song_step <= 319) || (stage.song_step >= 448 && stage.song_step <= 456) || (stage.song_step >= 488 && stage.song_step <= 512) || (stage.song_step >= 760 && stage.song_step <= 767) || (stage.song_step >= 1024 && stage.song_step <= 1055) || (stage.song_step >= 1440 && stage.song_step <= 1471) || (stage.song_step >= 1532 && stage.song_step <= 1554) || (stage.song_step >= 2040 && stage.song_step <= 2047) || (stage.song_step >= 2240))
 		if (stage.song_step >= 1035 && stage.song_step <= 1050)
 			OfficeB_Js_Draw(this, FIXED_DEC(-225 - -30,1), FIXED_DEC(-198 + -37,1));
+		else if (stage.song_step >= 496 && stage.song_step <= 767)
+			OfficeB_Js_Draw(this, FIXED_DEC(-201 - -30,1), FIXED_DEC(-96 + -37,1));
 		else
 			OfficeB_Js_Draw(this, FIXED_DEC(-190 - -30,1), FIXED_DEC(-84 + -37,1));
 }
@@ -178,6 +281,28 @@ void Back_OfficeB_DrawBG(StageBack *back)
 
 	fixed_t fx, fy;
 	
+	//Animate and draw bonnie
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x7 )== 0)
+		Animatable_SetAnim(&this->bonnie_animatable, 0);
+		
+	Animatable_Animate(&this->bonnie_animatable, (void*)this, OfficeB_Bonnie_SetFrame);
+	
+	OfficeB_Bonnie_Draw(this, FIXED_DEC(-111 - -71,1) - fx, FIXED_DEC(-6 - -98,1) - fy);
+	
+	//Animate and draw chica
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x7 )== 0)
+		Animatable_SetAnim(&this->chica_animatable, 0);
+		
+	Animatable_Animate(&this->chica_animatable, (void*)this, OfficeB_Chica_SetFrame);
+	
+	OfficeB_Chica_Draw(this, FIXED_DEC(12 - -71,1) - fx, FIXED_DEC(0 - -98,1) - fy);
+
 	//Draw officeb
 	fx = stage.camera.x;
 	fy = stage.camera.y;
@@ -210,6 +335,12 @@ void Back_OfficeB_Free(StageBack *back)
 	
 	//Free js archive
 	Mem_Free(this->arc_js);
+	
+	//Free bonnie archive
+	Mem_Free(this->arc_bonnie);
+	
+	//Free chica archive
+	Mem_Free(this->arc_chica);
 
 	//Free structure
 	Mem_Free(this);
@@ -227,7 +358,6 @@ StageBack *Back_OfficeB_New(void)
 	this->back.draw_md = NULL;
 	this->back.draw_bg = Back_OfficeB_DrawBG;
 	this->back.free = Back_OfficeB_Free;
-	
 	
 	//Load background textures
 	IO_Data arc_back = IO_Read("\\OFFICEB\\BACK.ARC;1");
@@ -273,10 +403,29 @@ StageBack *Back_OfficeB_New(void)
 	this->arc_js_ptr[33] = Archive_Find(this->arc_js, "jsfx16.tim");
 	this->arc_js_ptr[34] = Archive_Find(this->arc_js, "jsfx17.tim");
 	
+	//Load bonnie textures
+	this->arc_bonnie = IO_Read("\\OFFICEB\\BONNIE.ARC;1");
+	this->arc_bonnie_ptr[0] = Archive_Find(this->arc_bonnie, "bonnie0.tim");
+	this->arc_bonnie_ptr[1] = Archive_Find(this->arc_bonnie, "bonnie1.tim");
+	
+	//Load chica textures
+	this->arc_chica = IO_Read("\\OFFICEB\\CHICA.ARC;1");
+	this->arc_chica_ptr[0] = Archive_Find(this->arc_chica, "chica.tim");
+	
 	//Initialize js state
 	Animatable_Init(&this->js_animatable, js_anim);
 	Animatable_SetAnim(&this->js_animatable, 0);
 	this->js_frame = this->js_tex_id = 0xFF; //Force art load
+	
+	//Initialize bonnie state
+	Animatable_Init(&this->bonnie_animatable, bonnie_anim);
+	Animatable_SetAnim(&this->bonnie_animatable, 0);
+	this->bonnie_frame = this->bonnie_tex_id = 0xFF; //Force art load
+	
+	//Initialize chica state
+	Animatable_Init(&this->chica_animatable, chica_anim);
+	Animatable_SetAnim(&this->chica_animatable, 0);
+	this->chica_frame = this->chica_tex_id = 0xFF; //Force art load
 	
 	return (StageBack*)this;
 }
