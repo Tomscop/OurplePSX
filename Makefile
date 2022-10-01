@@ -47,6 +47,7 @@ SRCS = src/main.c \
 	   src/character/mark.c \
 	   src/character/freddy.c \
 	   src/character/gfreddy.c \
+	   src/character/foxy.c \
 	   src/character/salvage.c \
 	   src/character/plush.c \
 	   src/character/abdul.c \

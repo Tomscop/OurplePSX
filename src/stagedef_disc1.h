@@ -177,7 +177,7 @@
 		{NULL},
 		{Char_Freddy_New, FIXED_DEC(-139,1),  FIXED_DEC(146,1)},
 		{Char_GFreddy_New, FIXED_DEC(-138,1),  FIXED_DEC(144,1)},
-        {NULL},
+		{Char_Foxy_New, FIXED_DEC(-117,1),  FIXED_DEC(152,1)},
 		{NULL},
 		
 		//Stage background

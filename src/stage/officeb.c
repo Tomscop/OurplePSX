@@ -48,7 +48,7 @@ typedef struct
 
 //Js animation and rects
 static const CharFrame js_frame[] = {
-	{0, {  0,  0,255,255}, {  0,  0}}, //0 black
+	{0, {  0,  0, 64, 64}, {  0,  0}}, //0 black
 	
 	{1, {  0,  0,255,254}, {  0,  0}}, //1 freddy 1
 	{2, {  0,  0,255,254}, {  0,  0}}, //2 freddy 2
@@ -68,24 +68,23 @@ static const CharFrame js_frame[] = {
 	
 	{16, {  0,  0,255,254}, {  0,  0}}, //16 golden freddy
 	
-	{17, {  0,  0,255,220}, {  0,  0}}, //17 foxy 1
-	{18, {  0,  0,255,220}, {  0,  0}}, //18 foxy 2
-	{19, {  0,  0,255,220}, {  0,  0}}, //19 foxy 3
-	{20, {  0,  0,255,220}, {  0,  0}}, //20 foxy 4
-	{21, {  0,  0,255,220}, {  0,  0}}, //21 foxy 5
-	{22, {  0,  0,255,220}, {  0,  0}}, //22 foxy 6
-	{23, {  0,  0,255,220}, {  0,  0}}, //23 foxy 7
-	{24, {  0,  0,255,220}, {  0,  0}}, //24 foxy 8
-	{25, {  0,  0,255,220}, {  0,  0}}, //25 foxy 9
-	{26, {  0,  0,255,220}, {  0,  0}}, //26 foxy 10
-	{27, {  0,  0,255,220}, {  0,  0}}, //27 foxy 11
-	{28, {  0,  0,255,220}, {  0,  0}}, //28 foxy 12
-	{29, {  0,  0,255,220}, {  0,  0}}, //29 foxy 13
-	{30, {  0,  0,255,220}, {  0,  0}}, //30 foxy 14
-	{31, {  0,  0,255,220}, {  0,  0}}, //31 foxy 15
-	{32, {  0,  0,255,220}, {  0,  0}}, //32 foxy 16
-	{33, {  0,  0,255,220}, {  0,  0}}, //33 foxy 17
-	{34, {  0,  0,255,220}, {  0,  0}}, //34 foxy 18
+	{17, {  0,  0,139,120}, {  0,  0}}, //17 foxy 1
+	{18, {  0,  0,139,120}, {  0,  0}}, //18 foxy 2
+	{19, {  0,  0,139,120}, {  0,  0}}, //19 foxy 3
+	{20, {  0,  0,139,120}, {  0,  0}}, //20 foxy 4
+	{21, {  0,  0,139,120}, {  0,  0}}, //21 foxy 5
+	{22, {  0,  0,139,120}, {  0,  0}}, //22 foxy 6
+	{23, {  0,  0,139,120}, {  0,  0}}, //23 foxy 7
+	{24, {  0,  0,139,120}, {  0,  0}}, //24 foxy 8
+	{25, {  0,  0,139,120}, {  0,  0}}, //25 foxy 9
+	{26, {  0,  0,139,120}, {  0,  0}}, //26 foxy 10
+	{27, {  0,  0,139,120}, {  0,  0}}, //27 foxy 11
+	{28, {  0,  0,139,120}, {  0,  0}}, //28 foxy 12
+	{29, {  0,  0,139,120}, {  0,  0}}, //29 foxy 13
+	{30, {  0,  0,139,120}, {  0,  0}}, //30 foxy 14
+	{31, {  0,  0,139,120}, {  0,  0}}, //31 foxy 15
+	{32, {  0,  0,139,120}, {  0,  0}}, //32 foxy 16
+	{33, {  0,  0,139,120}, {  0,  0}}, //33 foxy 17
 };
 
 static const Animation js_anim[] = {
@@ -94,7 +93,7 @@ static const Animation js_anim[] = {
 	{1, (const u8[]){1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ASCR_BACK, 1}}, //2 Freddy Jumpscare 2
 	{1, (const u8[]){1, 2, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ASCR_BACK, 1}}, //3 Freddy Jumpscare 3
 	{1, (const u8[]){16, ASCR_BACK, 1}}, //4 Golden Freddy
-	{1, (const u8[]){17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, ASCR_BACK, 1}}, //5 Foxy Run
+	{1, (const u8[]){17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, ASCR_BACK, 1}}, //5 Foxy Run
 };
 
 //Bonnie animation and rects
@@ -303,13 +302,13 @@ void Back_OfficeB_DrawBG(StageBack *back)
 	Animatable_Animate(&this->chica_animatable, (void*)this, OfficeB_Chica_SetFrame);
 	
 	if (stage.song_step >= 1037)
-	OfficeB_Chica_Draw(this, FIXED_DEC(24 - -71,1) - fx, FIXED_DEC(-5 - -98,1) - fy);
+		OfficeB_Chica_Draw(this, FIXED_DEC(24 - -71,1) - fx, FIXED_DEC(-5 - -98,1) - fy);
 
 	//Draw officeb
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT officeb1_src = {0, 0, 249, 255};
+	RECT officeb1_src = {0, 0, 156, 159};
 	RECT_FIXED officeb1_dst = {
 		FIXED_DEC(-165 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-38,1) - fy,
@@ -317,7 +316,7 @@ void Back_OfficeB_DrawBG(StageBack *back)
 		FIXED_DEC(163,1)
 	};
 	
-	RECT officeb2_src = {0, 0, 249, 255};
+	RECT officeb2_src = {0, 0, 156, 159};
 	RECT_FIXED officeb2_dst = {
 		FIXED_DEC(-6 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-38,1) - fy,
@@ -403,7 +402,6 @@ StageBack *Back_OfficeB_New(void)
 	this->arc_js_ptr[31] = Archive_Find(this->arc_js, "jsfx14.tim");
 	this->arc_js_ptr[32] = Archive_Find(this->arc_js, "jsfx15.tim");
 	this->arc_js_ptr[33] = Archive_Find(this->arc_js, "jsfx16.tim");
-	this->arc_js_ptr[34] = Archive_Find(this->arc_js, "jsfx17.tim");
 	
 	//Load bonnie textures
 	this->arc_bonnie = IO_Read("\\OFFICEB\\BONNIE.ARC;1");

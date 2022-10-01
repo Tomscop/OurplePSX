@@ -64,6 +64,7 @@ static u32 Sounds[7];
 #include "character/mark.h"
 #include "character/freddy.h"
 #include "character/gfreddy.h"
+#include "character/foxy.h"
 #include "character/salvage.h"
 #include "character/plush.h"
 #include "character/abdul.h"
@@ -2656,11 +2657,10 @@ void Stage_Tick(void)
 				if (stage.song_step == 1037)
 					stage.oppo2sing = "none";
 				if (stage.song_step == 1038)
-					stage.oppo3sing = "none"; //change to single when foxy done
+					stage.oppo3sing = "single";
 				if (stage.song_step == 1472)
 					stage.oppo3sing = "none";
 			}
-
 			break;
 		}
 	    case StageState_Dead: //Start BREAK animation and reading extra data from CD

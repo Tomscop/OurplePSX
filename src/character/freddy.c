@@ -104,7 +104,13 @@ void Char_Freddy_Tick(Character *character)
 			this->character.focus_y = FIXED_DEC(-111,1);
 			this->character.health_bar = 0xFFD2B924;
 		}
-		if (stage.song_step == 1442)
+		if (stage.song_step == 1038)
+		{
+			this->character.focus_x = FIXED_DEC(61,1);
+			this->character.focus_y = FIXED_DEC(-115,1);
+			this->character.health_bar = 0xFFE73927;
+		}
+		if (stage.song_step == 1472)
 		{
 			this->character.focus_x = FIXED_DEC(65,1);
 			this->character.focus_y = FIXED_DEC(-102,1);
