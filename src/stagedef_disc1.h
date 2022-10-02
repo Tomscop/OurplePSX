@@ -149,18 +149,18 @@
 	
 	{ //StageId_3_1 (Performance)
 		//Characters
-		{Char_FBear_New,    FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_FBear_New,    FIXED_DEC(-27,1),  FIXED_DEC(125,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_SpringB_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_SpringB_New, FIXED_DEC(64,1),  FIXED_DEC(211,1)},
 		{NULL},
         {NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_Stage01_New,
 		
 		//Song info
 		3, 1,
@@ -260,7 +260,7 @@
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_FatJones_New, FIXED_DEC(-300,1),  FIXED_DEC(300,1)},
+		{Char_FBear_New, FIXED_DEC(-300,1),  FIXED_DEC(300,1)},
 		{NULL},
         {NULL},
 		{NULL},

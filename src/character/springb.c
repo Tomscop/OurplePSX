@@ -93,6 +93,10 @@ void Char_SpringB_Tick(Character *character)
 {
 	Char_SpringB *this = (Char_SpringB*)character;
 	
+	//Icon change
+	if (stage.song_step == 656)
+		this->character.health_i = 4;
+	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
@@ -139,14 +143,14 @@ Character *Char_SpringB_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 2;
+	this->character.health_i = 3;
 
 	//health bar color
-	this->character.health_bar = 0xFFAD63D6;
+	this->character.health_bar = 0xFFC39B06;
 	
-	this->character.focus_x = FIXED_DEC(65,1);
-	this->character.focus_y = FIXED_DEC(-115,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(55,1);
+	this->character.focus_y = FIXED_DEC(-121,1);
+	this->character.focus_zoom = FIXED_DEC(311,256);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\SPRINGB.ARC;1");

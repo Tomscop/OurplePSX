@@ -80,6 +80,7 @@ static u32 Sounds[7];
 #include "stage/black.h"
 #include "stage/week1.h"
 #include "stage/officeg.h"
+#include "stage/stage01.h"
 #include "stage/officeb.h"
 #include "stage/fnaf3.h"
 
@@ -2713,6 +2714,8 @@ void Stage_Tick(void)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEAD.TIM;1"), GFX_LOADTEX_FREE);
 			else if (stage.stage_id == StageId_2_1)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADOU.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_3_1)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADF.TIM;1"), GFX_LOADTEX_FREE);
 			else if (stage.stage_id == StageId_3_2)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
 			else
@@ -2724,9 +2727,18 @@ void Stage_Tick(void)
 	//Fallthrough
 		case StageState_DeadLoad:
 		{
-			RECT src = {0, 0,255,255};
-			RECT dst = { 33,-8,255,255};
-			Gfx_DrawTex(&stage.tex_ded, &src, &dst);
+			if (stage.stage_id == StageId_3_1)
+			{
+				RECT src = {0, 0,255,255};
+				RECT dst = { 0, 0, 380, 255};
+				Gfx_DrawTex(&stage.tex_ded, &src, &dst);
+			}
+			else
+			{
+				RECT src = {0, 0,255,255};
+				RECT dst = { 33,-8,255,255};
+				Gfx_DrawTex(&stage.tex_ded, &src, &dst);
+			}
 			break;
 		}
 		default:

@@ -190,14 +190,14 @@ Character *Char_FBear_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
 	
-	this->character.health_i = 3;
+	this->character.health_i = 2;
 
 	//health bar color
-	this->character.health_bar = 0xFFEE0A5E;
+	this->character.health_bar = 0xFFC39B06;
 
-	this->character.focus_x = FIXED_DEC(-51,1);
-	this->character.focus_y = FIXED_DEC(-64,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(-16,1);
+	this->character.focus_y = FIXED_DEC(-47,1);
+	this->character.focus_zoom = FIXED_DEC(311,256);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\FBEAR.ARC;1");

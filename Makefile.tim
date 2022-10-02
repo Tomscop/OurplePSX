@@ -37,6 +37,7 @@ all: \
 	iso/gphone/main.arc \
 	iso/goldenf/main.arc \
 	iso/fbear/main.arc \
+	iso/fbear/dead.tim \
 	iso/springb/main.arc \
 	iso/mark/main.arc \
 	iso/mark/dead.tim \
@@ -56,6 +57,7 @@ all: \
 	iso/black/back.arc \
 	iso/week1/back.arc \
 	iso/officeg/back.arc \
+	iso/stage01/back.arc \
 	iso/officeb/back.arc \
 	iso/officeb/js.arc \
 	iso/officeb/bonnie.arc \
@@ -168,6 +170,9 @@ iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
 
 # OfficeG
 iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim iso/officeg/back2.tim
+
+# Stage01
+iso/stage01/back.arc: iso/stage01/0.tim iso/stage01/1.tim iso/stage01/2.tim iso/stage01/black.tim
 
 # OfficeB
 iso/officeb/back.arc: iso/officeb/back0.tim iso/officeb/back1.tim

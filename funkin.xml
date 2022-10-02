@@ -147,6 +147,12 @@
 				<file name = "back.arc" type = "data" source = "iso/officeg/back.arc"/>
 			</dir>
 			
+			<!-- Stage01 assets -->
+			<dir name = "stage01">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/stage01/back.arc"/>
+			</dir>
+			
 				<!-- OfficeB assets -->
 			<dir name = "officeb">
 				<!-- Background art -->
@@ -215,6 +221,7 @@
 				
 				<!-- FBear assets -->
 				<file name = "fbear.arc" type = "data" source = "iso/fbear/main.arc"/>
+				<file name = "deadf.tim" type = "data" source = "iso/fbear/dead.tim"/>
 				
 				<!-- SpringB assets -->
 				<file name = "springb.arc" type = "data" source = "iso/springb/main.arc"/>
