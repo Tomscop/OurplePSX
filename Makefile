@@ -27,6 +27,7 @@ SRCS = src/main.c \
 	   src/stage/stage01.c \
 	   src/stage/officeb.c \
 	   src/stage/fnaf3.c \
+	   src/stage/flipside.c \
 	   src/stage/dummy.c \
        src/animation.c \
        src/character.c \
@@ -52,6 +53,7 @@ SRCS = src/main.c \
 	   src/character/gfreddy.c \
 	   src/character/foxy.c \
 	   src/character/salvage.c \
+	   src/character/cassidy.c \
 	   src/character/omc.c \
 	   src/character/plush.c \
 	   src/character/abdul.c \

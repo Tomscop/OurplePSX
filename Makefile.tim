@@ -45,6 +45,8 @@ all: \
 	iso/gfreddy/main.arc \
 	iso/foxy/main.arc \
 	iso/salvage/main.arc \
+	iso/cassidy/main.arc \
+	iso/cassidy/dead.tim \
 	iso/omc/main.arc \
 	iso/plush/main.arc \
 	iso/abdul/main.arc \
@@ -64,6 +66,7 @@ all: \
 	iso/officeb/bonnie.arc \
 	iso/officeb/chica.arc \
 	iso/fnaf3/back.arc \
+	iso/flipside/back.arc \
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -140,6 +143,9 @@ iso/foxy/main.arc: iso/foxy/idle0.tim iso/foxy/idle1.tim iso/foxy/idle2.tim iso/
 # Salvage
 iso/salvage/main.arc: iso/salvage/idle0.tim iso/salvage/idle1.tim iso/salvage/idle2.tim iso/salvage/left0.tim iso/salvage/left1.tim iso/salvage/left2.tim iso/salvage/down0.tim iso/salvage/down1.tim iso/salvage/down2.tim iso/salvage/up0.tim iso/salvage/up1.tim iso/salvage/up2.tim iso/salvage/right0.tim iso/salvage/right1.tim iso/salvage/right2.tim
 
+# Cassidy
+iso/cassidy/main.arc: iso/cassidy/cassidy0.tim iso/cassidy/cassidy1.tim
+
 # OMC
 iso/omc/main.arc: iso/omc/idle0.tim iso/omc/idle1.tim iso/omc/left.tim iso/omc/down.tim iso/omc/up.tim iso/omc/right.tim
 
@@ -186,3 +192,6 @@ iso/officeb/chica.arc: iso/officeb/chica.tim
 
 # FNAF 3
 iso/fnaf3/back.arc: iso/fnaf3/back0.tim
+
+# Flipside
+iso/flipside/back.arc: iso/flipside/back0.tim

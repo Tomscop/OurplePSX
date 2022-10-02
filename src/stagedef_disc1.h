@@ -213,18 +213,18 @@
 	
 	{ //StageId_4_1 (Go Fish)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Cassidy_New,    FIXED_DEC(178,1),  FIXED_DEC(11,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OMC_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_OMC_New, FIXED_DEC(-65,1),  FIXED_DEC(154,1)},
 		{NULL},
         {NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Black_New,
+		Back_Flipside_New,
 		
 		//Song info
 		4, 1,

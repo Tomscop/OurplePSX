@@ -167,6 +167,12 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/fnaf3/back.arc"/>
 			</dir>
+			
+			<!-- Flipside assets -->
+			<dir name = "flipside">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/flipside/back.arc"/>
+			</dir>
 		
 			<!-- Character assets -->
 			<dir name = "char">
@@ -244,6 +250,10 @@
 			</dir>
 			
 			<dir name = "char2">
+				<!-- Cassidy assets -->
+				<file name = "cassidy.arc" type = "data" source = "iso/cassidy/main.arc"/>
+				<file name = "deadc.tim" type = "data" source = "iso/cassidy/dead.tim"/>
+				
 				<!-- OMC assets -->
 				<file name = "omc.arc" type = "data" source = "iso/omc/main.arc"/>
 				

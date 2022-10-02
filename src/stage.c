@@ -68,6 +68,7 @@ static u32 Sounds[7];
 #include "character/gfreddy.h"
 #include "character/foxy.h"
 #include "character/salvage.h"
+#include "character/cassidy.h"
 #include "character/omc.h"
 #include "character/plush.h"
 #include "character/abdul.h"
@@ -84,6 +85,7 @@ static u32 Sounds[7];
 #include "stage/stage01.h"
 #include "stage/officeb.h"
 #include "stage/fnaf3.h"
+#include "stage/flipside.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"
@@ -2753,6 +2755,8 @@ void Stage_Tick(void)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADF.TIM;1"), GFX_LOADTEX_FREE);
 			else if (stage.stage_id == StageId_3_2)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_4_1)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADC.TIM;1"), GFX_LOADTEX_FREE);
 			else
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 		
