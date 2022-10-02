@@ -36,6 +36,7 @@ all: \
 	iso/fatjones/main.arc \
 	iso/gphone/main.arc \
 	iso/goldenf/main.arc \
+	iso/fbear/main.arc \
 	iso/springb/main.arc \
 	iso/mark/main.arc \
 	iso/mark/dead.tim \
@@ -114,6 +115,9 @@ iso/gphone/main.arc: iso/gphone/gphone0.tim iso/gphone/gphone1.tim iso/gphone/gp
 
 # GoldenF
 iso/goldenf/main.arc: iso/goldenf/goldenf0.tim iso/goldenf/goldenf1.tim
+
+# FBear
+iso/fbear/main.arc: iso/fbear/idle0.tim iso/fbear/idle1.tim iso/fbear/left.tim iso/fbear/down.tim iso/fbear/up.tim iso/fbear/right.tim iso/fbear/leftm.tim iso/fbear/downm.tim iso/fbear/upm.tim iso/fbear/rightm.tim
 
 # SpringB
 iso/springb/main.arc: iso/springb/idle0.tim iso/springb/idle1.tim iso/springb/idle2.tim iso/springb/idle3.tim iso/springb/left.tim iso/springb/down.tim iso/springb/up.tim iso/springb/right.tim

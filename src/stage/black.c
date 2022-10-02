@@ -27,7 +27,7 @@ typedef struct
 
 void Back_Black_DrawFG(StageBack *back)
 {
-	if ((stage.song_step >= 124 && stage.song_step <= 128) || (stage.song_step >= 380 && stage.song_step <= 384) || (stage.song_step >= 828 && stage.song_step <= 832) || (stage.song_step >= 1020))
+	if ((stage.stage_id == StageId_1_4) && (stage.song_step >= 124 && stage.song_step <= 128) || (stage.song_step >= 380 && stage.song_step <= 384) || (stage.song_step >= 828 && stage.song_step <= 832) || (stage.song_step >= 1020))
 	{
 		Back_Black *this = (Back_Black*)back;
 		

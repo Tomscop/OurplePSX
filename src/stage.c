@@ -61,6 +61,7 @@ static u32 Sounds[7];
 #include "character/fatjones.h"
 #include "character/gphone.h"
 #include "character/goldenf.h"
+#include "character/fbear.h"
 #include "character/springb.h"
 #include "character/mark.h"
 #include "character/freddy.h"

@@ -213,6 +213,9 @@
 				<!-- GoldenF assets -->
 				<file name = "goldenf.arc" type = "data" source = "iso/goldenf/main.arc"/>
 				
+				<!-- FBear assets -->
+				<file name = "fbear.arc" type = "data" source = "iso/fbear/main.arc"/>
+				
 				<!-- SpringB assets -->
 				<file name = "springb.arc" type = "data" source = "iso/springb/main.arc"/>
 				
@@ -231,7 +234,9 @@
 				
 				<!-- Salvage assets -->
 				<file name = "salvage.arc" type = "data" source = "iso/salvage/main.arc"/>
-				
+			</dir>
+			
+			<dir name = "char2">
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>
 				

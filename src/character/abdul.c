@@ -159,7 +159,7 @@ Character *Char_Abdul_New(fixed_t x, fixed_t y)
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
-	this->arc_main = IO_Read("\\CHAR\\ABDUL.ARC;1");
+	this->arc_main = IO_Read("\\CHAR2\\ABDUL.ARC;1");
 	
 	const char **pathp = (const char *[]){
 		"idle0.tim", //Abdul_ArcMain_Idle0

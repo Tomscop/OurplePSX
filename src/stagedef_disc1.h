@@ -149,7 +149,7 @@
 	
 	{ //StageId_3_1 (Performance)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_FBear_New,    FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},

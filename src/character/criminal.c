@@ -147,7 +147,7 @@ Character *Char_Criminal_New(fixed_t x, fixed_t y)
 	this->character.focus_zoom = FIXED_DEC(62,100);
 	
 	//Load art
-	this->arc_main = IO_Read("\\CHAR\\CRIMINAL.ARC;1");
+	this->arc_main = IO_Read("\\CHAR2\\CRIMINAL.ARC;1");
 	
 	const char **pathp = (const char *[]){
 		"intro.tim", //Criminal_ArcMain_Intro
