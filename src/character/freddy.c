@@ -39,7 +39,21 @@ typedef struct
 	
 	Gfx_Tex tex;
 	u8 frame, tex_id;
+
+	u8 opacity;
 } Char_Freddy;
+
+static void Character_DrawBlend(Character *this, Gfx_Tex *tex, const CharFrame *cframe, u8 opacity)
+{
+	//Draw character
+	fixed_t x = this->x - stage.camera.x - FIXED_DEC(cframe->off[0],1);
+	fixed_t y = this->y - stage.camera.y - FIXED_DEC(cframe->off[1],1);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, src.w << FIXED_SHIFT, src.h << FIXED_SHIFT};
+	Stage_BlendTexV2(tex, &src, &dst, stage.camera.bzoom, 0, opacity);
+}
+
 
 //Freddy character definitions
 static const CharFrame char_freddy_frame[] = {
@@ -124,8 +138,15 @@ void Char_Freddy_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Freddy_SetFrame);
-	if (stage.song_step >= 129 && stage.song_step <= 146)
-		Character_Blend(character, &this->tex, &char_freddy_frame[this->frame]);
+
+	if (stage.song_step >= 129 && this->opacity < 99)
+	{
+		this->opacity++;
+		Character_DrawBlend(character, &this->tex, &char_freddy_frame[this->frame], this->opacity);
+
+		//FntPrint("opacity is %d", this->opacity);
+	}
+
 	else if ((stage.song_step >= 147 && stage.song_step <=498) || (stage.song_step >= 1442))
 		Character_Draw(character, &this->tex, &char_freddy_frame[this->frame]);
 }
@@ -175,6 +196,8 @@ Character *Char_Freddy_New(fixed_t x, fixed_t y)
 	this->character.focus_x = FIXED_DEC(65,1);
 	this->character.focus_y = FIXED_DEC(-102,1);
 	this->character.focus_zoom = FIXED_DEC(1113,512);
+
+	this->opacity = 0;
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\FREDDY.ARC;1");
