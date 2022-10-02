@@ -148,7 +148,7 @@ Character *Char_SpringB_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFC39B06;
 	
-	this->character.focus_x = FIXED_DEC(55,1);
+	this->character.focus_x = FIXED_DEC(47,1);
 	this->character.focus_y = FIXED_DEC(-121,1);
 	this->character.focus_zoom = FIXED_DEC(311,256);
 	

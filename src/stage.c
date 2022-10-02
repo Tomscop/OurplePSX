@@ -68,6 +68,7 @@ static u32 Sounds[7];
 #include "character/gfreddy.h"
 #include "character/foxy.h"
 #include "character/salvage.h"
+#include "character/omc.h"
 #include "character/plush.h"
 #include "character/abdul.h"
 #include "character/criminal.h"

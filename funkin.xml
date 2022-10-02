@@ -244,6 +244,9 @@
 			</dir>
 			
 			<dir name = "char2">
+				<!-- OMC assets -->
+				<file name = "omc.arc" type = "data" source = "iso/omc/main.arc"/>
+				
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>
 				

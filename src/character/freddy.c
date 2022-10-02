@@ -139,7 +139,7 @@ void Char_Freddy_Tick(Character *character)
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Freddy_SetFrame);
 
-	if (stage.song_step >= 129 && this->opacity < 99)
+	if (stage.song_step >= 128 && this->opacity < 99)
 	{
 		this->opacity++;
 		Character_DrawBlend(character, &this->tex, &char_freddy_frame[this->frame], this->opacity);

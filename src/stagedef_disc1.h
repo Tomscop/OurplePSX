@@ -218,7 +218,7 @@
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_OMC_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
         {NULL},
 		{NULL},
