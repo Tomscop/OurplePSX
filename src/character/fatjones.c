@@ -61,13 +61,13 @@ static const CharFrame char_fatjones_frame[] = {
 
 static const Animation char_fatjones_anim[CharAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2,  3, 4, 5, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 6, ASCR_BACK, 1}},         //CharAnim_Left
+	{2, (const u8[]){ 6, 6, 5, ASCR_BACK, 1}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 7, ASCR_BACK, 1}},         //CharAnim_Down
+	{2, (const u8[]){ 7, 7, 5, ASCR_BACK, 1}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 8, ASCR_BACK, 1}},         //CharAnim_Up
+	{2, (const u8[]){ 8, 8, 5, ASCR_BACK, 1}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){9, ASCR_BACK, 1}},         //CharAnim_Right
+	{2, (const u8[]){9, 9, 5, ASCR_BACK, 1}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 

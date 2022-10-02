@@ -231,35 +231,35 @@ void Back_OfficeB_DrawFG(StageBack *back)
 	//Animate and draw js
 	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 312))
 	{
-				Animatable_SetAnim(&this->js_animatable, 1);
+		Animatable_SetAnim(&this->js_animatable, 1);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 448))
 	{
-				Animatable_SetAnim(&this->js_animatable, 2);
+		Animatable_SetAnim(&this->js_animatable, 2);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 1051))
 	{
-				Animatable_SetAnim(&this->js_animatable, 2);
+		Animatable_SetAnim(&this->js_animatable, 2);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 1532))
 	{
-				Animatable_SetAnim(&this->js_animatable, 3);
+		Animatable_SetAnim(&this->js_animatable, 3);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 2040))
 	{
-				Animatable_SetAnim(&this->js_animatable, 1);
+		Animatable_SetAnim(&this->js_animatable, 1);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 496))
 	{
-				Animatable_SetAnim(&this->js_animatable, 4);
+		Animatable_SetAnim(&this->js_animatable, 4);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 760))
 	{
-				Animatable_SetAnim(&this->js_animatable, 4);
+		Animatable_SetAnim(&this->js_animatable, 4);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 1035))
 	{
-				Animatable_SetAnim(&this->js_animatable, 5);
+		Animatable_SetAnim(&this->js_animatable, 5);
 	}
 	else if (stage.flag & STAGE_FLAG_JUST_STEP && ((stage.song_step >= 488 && stage.song_step <= 495) || (stage.song_step >= 1024 && stage.song_step <= 1032) || (stage.song_step >= 1440 && stage.song_step <= 1471) || (stage.song_step >= 2240)))
 	{	

@@ -28,6 +28,7 @@ SRCS = src/main.c \
 	   src/stage/officeb.c \
 	   src/stage/fnaf3.c \
 	   src/stage/flipside.c \
+	   src/stage/black2.c \
 	   src/stage/dummy.c \
        src/animation.c \
        src/character.c \

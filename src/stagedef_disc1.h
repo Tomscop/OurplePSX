@@ -351,7 +351,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Black_New,
+		Back_Black2_New,
 		
 		//Song info
 		5, 3,

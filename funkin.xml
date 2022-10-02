@@ -173,6 +173,12 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/flipside/back.arc"/>
 			</dir>
+			
+			<!-- Black2 assets -->
+			<dir name = "black2">
+				<!-- Background art -->
+				<file name = "eye.arc" type = "data" source = "iso/black2/eye.arc"/>
+			</dir>
 		
 			<!-- Character assets -->
 			<dir name = "char">
