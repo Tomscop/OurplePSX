@@ -64,9 +64,12 @@ static void initSaveFile(SaveFile *file, const char *name)
 
 void defaultSettings()
 {
+	stage.prefs.ghost = 1;
 	stage.prefs.sfxmiss = 1;
 	stage.prefs.botplay = 1;	
 	stage.prefs.songtimer = 1;
+	stage.prefs.eyes = 1;
+	stage.prefs.scanline = 1;
 
 	for (int i = 0; i < StageId_Max; i++)
 	{

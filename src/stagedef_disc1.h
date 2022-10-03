@@ -345,7 +345,7 @@
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Gino_New, FIXED_DEC(-120,1),  FIXED_DEC(102,1)},
 		{NULL},
         {NULL},
 		{NULL},

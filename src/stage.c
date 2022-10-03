@@ -72,6 +72,7 @@ static u32 Sounds[7];
 #include "character/omc.h"
 #include "character/plush.h"
 #include "character/abdul.h"
+#include "character/gino.h"
 #include "character/criminal.h"
 #include "character/dad.h"
 

@@ -130,7 +130,7 @@ void Back_Black2_DrawBG(StageBack *back)
 	Animatable_Animate(&this->eye_animatable, (void*)this, Black2_Eye_SetFrame);
 	
 	if (stage.prefs.eyes == true)	
-		Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-138 - -15,1));
+		Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Draw blackbg
 	fx = stage.camera.x;
