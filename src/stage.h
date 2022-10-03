@@ -192,7 +192,7 @@ typedef struct
 	int pal_i, wide_i;
 	struct
 	{
-		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay;
+		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay, eyes, scanline;
 		int savescore[StageId_Max][3];
 	} prefs;
 	boolean paused;

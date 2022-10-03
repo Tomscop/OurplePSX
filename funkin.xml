@@ -269,6 +269,9 @@
 				<!-- Abdul assets -->
 				<file name = "abdul.arc" type = "data" source = "iso/abdul/main.arc"/>
 				
+				<!-- Gino assets -->
+				<file name = "gino.arc" type = "data" source = "iso/gino/main.arc"/>
+				
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
 				

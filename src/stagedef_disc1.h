@@ -340,7 +340,7 @@
 	},
 	{ //StageId_5_3 (Followed)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(300,1),  FIXED_DEC(300,1)},
+		{Char_BFP_New,    FIXED_DEC(300,1),  FIXED_DEC(300,1)},
 		{NULL},
 		{NULL},
 		{NULL},

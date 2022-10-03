@@ -2142,17 +2142,20 @@ void Stage_Tick(void)
 				}
 				
 				//Draw scanline
-				if ((stage.stage_id == StageId_1_4) || (stage.stage_id == StageId_4_1) || (stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
+				if (stage.prefs.scanline == true)
 				{
-					RECT scanline_src = {0, 0, 256, 256};
-					RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
-					Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
-				}
-				else if ((stage.stage_id == StageId_1_3 && stage.song_step >= 911 && stage.song_step <= 1167) || (stage.stage_id == StageId_1_3 && stage.song_step >= 1423 && stage.song_step <= 1680))
-				{
-					RECT scanline_src = {0, 0, 256, 256};
-					RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
-					Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
+					if ((stage.stage_id == StageId_1_4) || (stage.stage_id == StageId_4_1) || (stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
+					{
+						RECT scanline_src = {0, 0, 256, 256};
+						RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
+						Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
+					}
+					else if ((stage.stage_id == StageId_1_3 && stage.song_step >= 911 && stage.song_step <= 1167) || (stage.stage_id == StageId_1_3 && stage.song_step >= 1423 && stage.song_step <= 1680))
+					{
+						RECT scanline_src = {0, 0, 256, 256};
+						RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
+						Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
+					}
 				}
 			
 			if (stage.prefs.songtimer)
