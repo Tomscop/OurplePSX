@@ -487,7 +487,7 @@ Character *Char_Ourple_New(fixed_t x, fixed_t y)
 	
 	if (stage.stage_id == StageId_1_1)
 	{
-		this->character.focus_x = FIXED_DEC(31,1);
+		this->character.focus_x = FIXED_DEC(39,1);
 		this->character.focus_y = FIXED_DEC(-15,1);
 		this->character.focus_zoom = FIXED_DEC(261,256);
 	}

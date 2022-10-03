@@ -21,6 +21,7 @@ typedef struct
 	
 	//Textures
 	IO_Data arc_eye, arc_eye_ptr[23];
+	IO_Data arc_memorys, arc_memorys_ptr[3];
 	
 	Gfx_Tex tex_back0; //Blackbg
 	
@@ -30,6 +31,11 @@ typedef struct
 
 	Animatable eye_animatable;
 
+	//Memorys state
+	Gfx_Tex tex_memorys;
+	u8 memorys_frame, memorys_tex_id;
+
+	Animatable memorys_animatable;
 } Back_Black2;
 
 //Eye animation and rects
@@ -116,6 +122,58 @@ void Black2_Eye_Draw(Back_Black2 *this, fixed_t x, fixed_t y)
 	Stage_DrawTex(&this->tex_eye, &src, &dst, FIXED_DEC (1,1));
 }
 
+//Memorys animation and rects
+static const CharFrame memorys_frame[] = {
+	{0, {  0,  0, 82, 62}, {  0,  0}}, //0 memorys 1
+	{0, {  0, 63, 82, 61}, {  0,  0}}, //1 memorys 2
+	{1, {  0,  0, 82, 62}, {  0,  0}}, //2 memorys 3
+	{1, {  0, 63, 82, 62}, {  0,  0}}, //3 memorys 4
+	{2, {  0,  0, 82, 62}, {  0,  0}}, //4 memorys 5
+	{2, {  0, 63, 82, 61}, {  0,  0}}, //5 memorys 6
+	{3, {  0,  0, 82, 62}, {  0,  0}}, //6 memorys 7
+	{3, {  0, 63, 82, 61}, {  0,  0}}, //7 memorys 8
+};
+
+static const Animation memorys_anim[] = {
+	{2, (const u8[]){0, ASCR_BACK, 1}}, //0 memorys 1
+	{2, (const u8[]){1, ASCR_BACK, 1}}, //1 memorys 2
+	{2, (const u8[]){2, ASCR_BACK, 1}}, //2 memorys 3
+	{2, (const u8[]){3, ASCR_BACK, 1}}, //3 memorys 4
+	{2, (const u8[]){4, ASCR_BACK, 1}}, //4 memorys 5
+	{2, (const u8[]){5, ASCR_BACK, 1}}, //5 memorys 6
+	{2, (const u8[]){6, ASCR_BACK, 1}}, //6 memorys 7
+	{2, (const u8[]){7, ASCR_BACK, 1}}, //7 memorys 8
+};
+
+//Memorys functions
+void Black2_Memorys_SetFrame(void *user, u8 frame)
+{
+	Back_Black2 *this = (Back_Black2*)user;
+	
+	//Check if this is a new frame
+	if (frame != this->memorys_frame)
+	{
+		//Check if new art shall be loaded
+		const CharFrame *cframe = &memorys_frame[this->memorys_frame = frame];
+		if (cframe->tex != this->memorys_tex_id)
+			Gfx_LoadTex(&this->tex_memorys, this->arc_memorys_ptr[this->memorys_tex_id = cframe->tex], 0);
+	}
+}
+
+void Black2_Memorys_Draw(Back_Black2 *this, fixed_t x, fixed_t y)
+{
+	//Draw character
+	const CharFrame *cframe = &memorys_frame[this->memorys_frame];
+    
+    fixed_t ox = x - ((fixed_t)cframe->off[0] << FIXED_SHIFT);
+	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {ox, oy,410 << FIXED_SHIFT,242 << FIXED_SHIFT};
+	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
+	Stage_DrawTex(&this->tex_memorys, &src, &dst, FIXED_DEC (1,1));
+}
+
 void Back_Black2_DrawBG(StageBack *back)
 {
 	Back_Black2 *this = (Back_Black2*)back;
@@ -130,7 +188,18 @@ void Back_Black2_DrawBG(StageBack *back)
 	Animatable_Animate(&this->eye_animatable, (void*)this, Black2_Eye_SetFrame);
 	
 	if (stage.prefs.eyes == true)	
-		Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
+		if (stage.song_step >= 544 && stage.song_step <= 1064)
+			Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
+
+	//Animate and draw memorys
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 0))
+	{
+		Animatable_SetAnim(&this->memorys_animatable, 0);
+	}
+	Animatable_Animate(&this->memorys_animatable, (void*)this, Black2_Memorys_SetFrame);
+
+	if (stage.song_step >= 2474 && stage.song_step <= 2746)
+		Black2_Memorys_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Draw blackbg
 	fx = stage.camera.x;
@@ -138,10 +207,10 @@ void Back_Black2_DrawBG(StageBack *back)
 	
 	RECT blackbg_src = {0, 0, 256, 256};
 	RECT_FIXED blackbg_dst = {
-		FIXED_DEC(-265 - screen.SCREEN_WIDEOADD2,1) - fx,
-		FIXED_DEC(-145,1) - fy,
-		FIXED_DEC(400 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(400,1)
+		FIXED_DEC(-180 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(-132,1) - fy,
+		FIXED_DEC(256 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(256,1)
 	};
 	
 	Debug_StageMoveDebug(&blackbg_dst, 8, fx, fy);
@@ -154,6 +223,9 @@ void Back_Black2_Free(StageBack *back)
 	
 	//Free eye archive
 	Mem_Free(this->arc_eye);
+	
+	//Free memorys archive
+	Mem_Free(this->arc_memorys);
 
 	//Free structure
 	Mem_Free(this);
@@ -202,11 +274,23 @@ StageBack *Back_Black2_New(void)
 		this->arc_eye_ptr[21] = Archive_Find(this->arc_eye, "eye21.tim");
 		this->arc_eye_ptr[22] = Archive_Find(this->arc_eye, "eye22.tim");
 		this->arc_eye_ptr[23] = Archive_Find(this->arc_eye, "eye23.tim");
+
+		//Load memorys textures
+		this->arc_memorys = IO_Read("\\BLACK2\\MEMORYS.ARC;1");
+		this->arc_memorys_ptr[0] = Archive_Find(this->arc_memorys, "memorys0.tim");
+		this->arc_memorys_ptr[1] = Archive_Find(this->arc_memorys, "memorys1.tim");
+		this->arc_memorys_ptr[2] = Archive_Find(this->arc_memorys, "memorys2.tim");
+		this->arc_memorys_ptr[3] = Archive_Find(this->arc_memorys, "memorys3.tim");
 	
 	//Initialize eye state
 	Animatable_Init(&this->eye_animatable, eye_anim);
 	Animatable_SetAnim(&this->eye_animatable, 0);
 	this->eye_frame = this->eye_tex_id = 0xFF; //Force art load
+	
+	//Initialize memorys state
+	Animatable_Init(&this->memorys_animatable, memorys_anim);
+	Animatable_SetAnim(&this->memorys_animatable, 0);
+	this->memorys_frame = this->memorys_tex_id = 0xFF; //Force art load
 	
 	return (StageBack*)this;
 }

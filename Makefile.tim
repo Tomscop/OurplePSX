@@ -69,6 +69,7 @@ all: \
 	iso/fnaf3/back.arc \
 	iso/flipside/back.arc \
 	iso/black2/eye.arc \
+	iso/black2/memorys.arc \
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -203,3 +204,4 @@ iso/flipside/back.arc: iso/flipside/back0.tim
 
 # Black2
 iso/black2/eye.arc: iso/black2/eye0.tim iso/black2/eye1.tim iso/black2/eye2.tim iso/black2/eye3.tim iso/black2/eye4.tim iso/black2/eye5.tim iso/black2/eye6.tim iso/black2/eye7.tim iso/black2/eye8.tim iso/black2/eye9.tim iso/black2/eye10.tim iso/black2/eye11.tim iso/black2/eye12.tim iso/black2/eye13.tim iso/black2/eye14.tim iso/black2/eye15.tim iso/black2/eye16.tim iso/black2/eye17.tim iso/black2/eye18.tim iso/black2/eye19.tim iso/black2/eye20.tim iso/black2/eye21.tim iso/black2/eye22.tim iso/black2/eye23.tim
+iso/black2/memorys.arc: iso/black2/memorys0.tim iso/black2/memorys1.tim iso/black2/memorys2.tim iso/black2/memorys3.tim

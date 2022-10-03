@@ -178,6 +178,7 @@
 			<dir name = "black2">
 				<!-- Background art -->
 				<file name = "eye.arc" type = "data" source = "iso/black2/eye.arc"/>
+				<file name = "memorys.arc" type = "data" source = "iso/black2/memorys.arc"/>
 			</dir>
 		
 			<!-- Character assets -->
