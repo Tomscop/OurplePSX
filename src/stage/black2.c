@@ -20,8 +20,8 @@ typedef struct
 	StageBack back;
 	
 	//Textures
-	IO_Data arc_eye, arc_eye_ptr[23];
-	IO_Data arc_memorys, arc_memorys_ptr[3];
+	IO_Data arc_eye, arc_eye_ptr[24];
+	IO_Data arc_memorys, arc_memorys_ptr[4];
 	
 	Gfx_Tex tex_back0; //Blackbg
 	
@@ -247,6 +247,7 @@ StageBack *Back_Black2_New(void)
 		//Load background textures
 		IO_Data arc_back = IO_Read("\\BLACK\\BACK.ARC;1");
 		Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
+		Mem_Free(arc_back);
 		
 		//Load eye textures
 		this->arc_eye = IO_Read("\\BLACK2\\EYE.ARC;1");

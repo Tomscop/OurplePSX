@@ -40,7 +40,7 @@ void ErrorLock(void)
 }
 
 //Memory heap
-//define MEM_STAT //This will enable the Mem_GetStat function which returns information about available memory in the heap (add hashtag and remove slash to turn on)
+#define MEM_STAT //This will enable the Mem_GetStat function which returns information about available memory in the heap (add hashtag and remove slash to turn on)
 
 #define MEM_IMPLEMENTATION
 #include "mem.h"
