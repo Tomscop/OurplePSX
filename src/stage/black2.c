@@ -170,7 +170,7 @@ void Black2_Memorys_Draw(Back_Black2 *this, fixed_t x, fixed_t y)
 	
 	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
 	RECT_FIXED dst = {ox, oy,410 << FIXED_SHIFT,242 << FIXED_SHIFT};
-	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
+	Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
 	Stage_DrawTex(&this->tex_memorys, &src, &dst, FIXED_DEC (1,1));
 }
 
@@ -192,7 +192,7 @@ void Back_Black2_DrawBG(StageBack *back)
 			Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Animate and draw memorys
-	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 0))
+	if ((stage.song_beat % 3) == 2 && stage.flag & STAGE_FLAG_JUST_STEP)
 	{
 		Animatable_SetAnim(&this->memorys_animatable, 0);
 	}
