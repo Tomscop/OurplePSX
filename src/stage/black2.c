@@ -20,8 +20,8 @@ typedef struct
 	StageBack back;
 	
 	//Textures
-	IO_Data arc_eye, arc_eye_ptr[23];
-	IO_Data arc_memorys, arc_memorys_ptr[3];
+	IO_Data arc_eye, arc_eye_ptr[24];
+	IO_Data arc_memorys, arc_memorys_ptr[4];
 	
 	Gfx_Tex tex_back0; //Blackbg
 	
@@ -170,7 +170,7 @@ void Black2_Memorys_Draw(Back_Black2 *this, fixed_t x, fixed_t y)
 	
 	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
 	RECT_FIXED dst = {ox, oy,410 << FIXED_SHIFT,242 << FIXED_SHIFT};
-	Debug_StageMoveDebug(&dst, 6, stage.camera.x, stage.camera.y);
+	Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
 	Stage_DrawTex(&this->tex_memorys, &src, &dst, FIXED_DEC (1,1));
 }
 
@@ -192,10 +192,9 @@ void Back_Black2_DrawBG(StageBack *back)
 			Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Animate and draw memorys
-	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 0))
-	{
-		Animatable_SetAnim(&this->memorys_animatable, 0);
-	}
+	if ((stage.song_beat % 3) == 2)
+		Animatable_SetAnim(&this->memorys_animatable, RandomRange(0,7));
+	
 	Animatable_Animate(&this->memorys_animatable, (void*)this, Black2_Memorys_SetFrame);
 
 	if (stage.song_step >= 2474 && stage.song_step <= 2746)
