@@ -137,6 +137,7 @@ StageBack *Back_Black_New(void)
 		IO_Data arc_back = IO_Read("\\BLACK\\BACK.ARC;1");
 		Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
 		Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back0.tim"), 0);
+		Mem_Free(arc_back);
 	}
 	
 	return (StageBack*)this;
