@@ -278,7 +278,7 @@ Character *Char_Gino_New(fixed_t x, fixed_t y)
 	this->character.health_i = 6;
 
 	//health bar color
-	this->character.health_bar = 0xFFAD63D6;
+	this->character.health_bar = 0xFF1A0027;
 	
 	this->character.focus_x = FIXED_DEC(53,1);
 	this->character.focus_y = FIXED_DEC(-127,1);

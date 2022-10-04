@@ -70,6 +70,7 @@ all: \
 	iso/flipside/back.arc \
 	iso/black2/eye.arc \
 	iso/black2/memorys.arc \
+	iso/black2/alert.tim
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<

@@ -179,6 +179,7 @@
 				<!-- Background art -->
 				<file name = "eye.arc" type = "data" source = "iso/black2/eye.arc"/>
 				<file name = "memorys.arc" type = "data" source = "iso/black2/memorys.arc"/>
+				<file name = "alert.tim" type = "data" source = "iso/black2/alert.tim"/>
 			</dir>
 		
 			<!-- Character assets -->

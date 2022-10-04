@@ -1820,6 +1820,8 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 		Gfx_LoadTex(&stage.tex_flashb, IO_Read("\\STAGE\\FLASHB.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_1_3 || id == StageId_1_4 || id == StageId_4_1 || id == StageId_4_3 || id == StageId_5_3)
 		Gfx_LoadTex(&stage.tex_scanline, IO_Read("\\STAGE\\SCANLINE.TIM;1"), GFX_LOADTEX_FREE);
+	if (id == StageId_5_3)
+		Gfx_LoadTex(&stage.tex_alert, IO_Read("\\BLACK2\\ALERT.TIM;1"), GFX_LOADTEX_FREE);
 
 	//Load stage background
 	Stage_LoadStage();
@@ -2167,6 +2169,15 @@ void Stage_Tick(void)
 						RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
 						Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
 					}
+				}
+				
+				//Draw alert
+				if (stage.stage_id == StageId_5_3)
+				{
+					RECT alert_src = {0, 0, 72, 36};
+					RECT alert_dst = {0, 0, (screen.SCREEN_WIDTH), (screen.SCREEN_HEIGHT)};
+					if ((stage.song_step >= 1316) && (stage.song_step <= 1824) && ((stage.song_beat % 2) == 1) || (stage.song_step >= 2476) && (stage.song_step <= 2735) && ((stage.song_beat % 2) == 1))
+						Gfx_BlendTex(&stage.tex_alert, &alert_src, &alert_dst, 1);
 				}
 			
 			if (stage.prefs.songtimer)

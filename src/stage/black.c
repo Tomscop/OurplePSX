@@ -71,7 +71,7 @@ void Back_Black_DrawBG(StageBack *back)
 		FIXED_DEC(37,1)
 	};
 	
-	RECT blackbg_src = {0, 0, 256, 256};
+	RECT blackbg_src = {0, 0, 116, 116};
 	RECT_FIXED blackbg_dst = {
 		FIXED_DEC(-265 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-145,1) - fy,

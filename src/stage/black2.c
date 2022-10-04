@@ -192,9 +192,9 @@ void Back_Black2_DrawBG(StageBack *back)
 			Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Animate and draw memorys
-	if ((stage.song_beat % 3) == 2 && stage.flag & STAGE_FLAG_JUST_STEP)
+	if ((stage.song_step % 8) == 5 && stage.flag & STAGE_FLAG_JUST_STEP)
 	{
-		Animatable_SetAnim(&this->memorys_animatable, 0);
+		Animatable_SetAnim(&this->memorys_animatable, RandomRange (0,7));
 	}
 	Animatable_Animate(&this->memorys_animatable, (void*)this, Black2_Memorys_SetFrame);
 
@@ -205,7 +205,7 @@ void Back_Black2_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT blackbg_src = {0, 0, 256, 256};
+	RECT blackbg_src = {0, 0, 116, 116};
 	RECT_FIXED blackbg_dst = {
 		FIXED_DEC(-180 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-132,1) - fy,
