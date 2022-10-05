@@ -2121,6 +2121,8 @@ void Stage_Tick(void)
 		{ 
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
+
+				FntPrint("step is %d", stage.song_step);
 			
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))

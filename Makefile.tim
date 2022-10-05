@@ -180,7 +180,7 @@ iso/jrs/rain.arc: iso/jrs/rain0.tim iso/jrs/rain1.tim iso/jrs/rain2.tim
 iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim
 
 # Black
-iso/black/back.arc: iso/black/back0.tim iso/black/back1.tim
+iso/black/back.arc: iso/black/back0.tim
 
 # Week 1
 iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim

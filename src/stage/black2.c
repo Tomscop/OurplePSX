@@ -35,6 +35,9 @@ typedef struct
 	Gfx_Tex tex_memorys;
 	u8 memorys_frame, memorys_tex_id;
 
+	//fade stuff
+	fixed_t fade, fadespd;
+
 	Animatable memorys_animatable;
 } Back_Black2;
 
@@ -179,6 +182,31 @@ void Back_Black2_DrawBG(StageBack *back)
 	Back_Black2 *this = (Back_Black2*)back;
 
 	fixed_t fx, fy;
+
+	//start fade
+	if (stage.stage_id == StageId_5_3 && stage.song_step == 1057)
+	{
+		this->fade = FIXED_DEC(1,1);
+		this->fadespd = FIXED_DEC(400,1);
+	}
+
+	else if (stage.stage_id == StageId_5_3 && stage.song_step == 2737)
+	{
+		this->fade = FIXED_DEC(1,1);
+		this->fadespd = FIXED_DEC(400,1);
+	}
+
+	//end fade
+	if ((stage.stage_id == StageId_5_3 && stage.song_step == 1064) || (stage.stage_id == StageId_5_3 && stage.song_step == 2776))
+		this->fade = 0;
+
+	if (this->fade > 0)
+	{
+		RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+		u8 flash_col = this->fade >> FIXED_SHIFT;
+		Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+		this->fade += FIXED_MUL(this->fadespd, timer_dt);
+	}
 	
 	//Animate and draw eye
 	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 0))
@@ -205,16 +233,8 @@ void Back_Black2_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT blackbg_src = {0, 0, 116, 116};
-	RECT_FIXED blackbg_dst = {
-		FIXED_DEC(-180 - screen.SCREEN_WIDEOADD2,1) - fx,
-		FIXED_DEC(-132,1) - fy,
-		FIXED_DEC(256 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(256,1)
-	};
-	
-	Debug_StageMoveDebug(&blackbg_dst, 8, fx, fy);
-	Stage_DrawTex(&this->tex_back0, &blackbg_src, &blackbg_dst, stage.camera.bzoom);
+	RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+	Gfx_DrawRect(&screen_src, 0, 0, 0);
 }
 
 void Back_Black2_Free(StageBack *back)
@@ -243,11 +263,6 @@ StageBack *Back_Black2_New(void)
 		this->back.draw_md = NULL;
 		this->back.draw_bg = Back_Black2_DrawBG;
 		this->back.free = Back_Black2_Free;
-		
-		//Load background textures
-		IO_Data arc_back = IO_Read("\\BLACK\\BACK.ARC;1");
-		Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
-		Mem_Free(arc_back);
 		
 		//Load eye textures
 		this->arc_eye = IO_Read("\\BLACK2\\EYE.ARC;1");
@@ -292,6 +307,9 @@ StageBack *Back_Black2_New(void)
 	Animatable_Init(&this->memorys_animatable, memorys_anim);
 	Animatable_SetAnim(&this->memorys_animatable, 0);
 	this->memorys_frame = this->memorys_tex_id = 0xFF; //Force art load
+
+	//Initialize Fade
+	this->fade = this->fadespd = 0;
 	
 	return (StageBack*)this;
 }
