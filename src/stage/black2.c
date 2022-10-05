@@ -187,17 +187,17 @@ void Back_Black2_DrawBG(StageBack *back)
 	if (stage.stage_id == StageId_5_3 && stage.song_step == 1057)
 	{
 		this->fade = FIXED_DEC(1,1);
-		this->fadespd = FIXED_DEC(400,1);
+		this->fadespd = FIXED_DEC(425,1);
 	}
 
 	else if (stage.stage_id == StageId_5_3 && stage.song_step == 2737)
 	{
 		this->fade = FIXED_DEC(1,1);
-		this->fadespd = FIXED_DEC(400,1);
+		this->fadespd = FIXED_DEC(300,1);
 	}
 
 	//end fade
-	if ((stage.stage_id == StageId_5_3 && stage.song_step == 1064) || (stage.stage_id == StageId_5_3 && stage.song_step == 2776))
+	if ((stage.stage_id == StageId_5_3 && stage.song_step == 1095) || (stage.stage_id == StageId_5_3 && stage.song_step == 2777))
 		this->fade = 0;
 
 	if (this->fade > 0)
@@ -216,7 +216,7 @@ void Back_Black2_DrawBG(StageBack *back)
 	Animatable_Animate(&this->eye_animatable, (void*)this, Black2_Eye_SetFrame);
 	
 	if (stage.prefs.eyes == true)	
-		if (stage.song_step >= 544 && stage.song_step <= 1064)
+		if (stage.song_step >= 544 && stage.song_step <= 1065)
 			Black2_Eye_Draw(this, FIXED_DEC(-254 - -55,1), FIXED_DEC(-137 - -15,1));
 
 	//Animate and draw memorys
