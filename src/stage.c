@@ -309,8 +309,6 @@ static void Stage_MissNote(PlayerState *this)
 	if (this->combo)
 	{
 		//Kill combo
-		if (stage.gf != NULL && this->combo > 5)
-			stage.gf->set_anim(stage.gf, CharAnim_DownAlt); //Cry if we lost a large combo
 		this->combo = 0;
 		
 		//Create combo object telling of our lost combo
@@ -426,7 +424,7 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 
 static void CheckNewScore()
 {
-	if (stage.mode == StageMode_Normal && !stage.prefs.botplay && timer.timermin == 0 && timer.timer <= 5)
+	if (stage.mode == StageMode_Normal && !stage.prefs.botplay && !stage.prefs.practice && timer.timermin == 0 && timer.timer <= 5)
 	{
 		if (stage.player_state[0].score >= stage.prefs.savescore[stage.stage_id][stage.stage_diff])
 			stage.prefs.savescore[stage.stage_id][stage.stage_diff] = stage.player_state[0].score;			
@@ -2037,34 +2035,58 @@ static boolean Stage_NextLoad(void)
 	}
 }
 
+static int deadtimer;
+static boolean inctimer;
+
 void Stage_Tick(void)
 {
 	SeamLoad:;
 	
 	//Tick transition
 	//Return to menu when start is pressed
-	if (pad_state.press & PAD_START && stage.state == StageState_Play)
+	if (stage.paused == false && pad_state.press & PAD_START && stage.state == StageState_Play)
 	{
-		stage.paused = !stage.paused;
-
-		if (stage.paused)
-		{
-			Audio_PauseXA();
-			PausedState();
-		}
-		else
-		{
-			Audio_ResumeXA();
-		}
+		stage.pause_scroll = -1;
+		pad_state.press = false;
+		Audio_PauseXA();
+		stage.paused = true;
 	}
+
+	if (stage.paused)
+	{
+		switch (stage.pause_state)
+		{
+			case 0:
+				PausedState();
+				break;
+			case 1:
+				OptionsState(&note_x);
+				break;
+		}
+		
+	}
+	
 	if (pad_state.press & (PAD_START | PAD_CROSS) && stage.state != StageState_Play)
 	{
-		stage.trans = StageTrans_Reload;
-		Trans_Start();
+		if (deadtimer == 0)
+		{
+			inctimer = true;
+			Audio_StopXA();
+			Audio_PlaySound(Sounds[1], 0x3fff);
+		}
 	}
 	else if (pad_state.press & PAD_CIRCLE && stage.state != StageState_Play)
 	{
 		stage.trans = StageTrans_Menu;
+		Trans_Start();
+	}
+
+	if (inctimer)
+		deadtimer ++;
+
+	if (deadtimer == 200 && stage.state != StageState_Play)
+	{
+		stage.trans = StageTrans_Reload;
 		Trans_Start();
 	}
 
@@ -2551,9 +2573,9 @@ void Stage_Tick(void)
 					Stage_DrawHealth(stage.player_state[0].health, stage.player_state[0].character->health_i,    1);
 					Stage_DrawHealth(stage.player_state[0].health, stage.player_state[1].character->health_i, -1);
 					
-					//Draw health bar
-					if (stage.mode == StageMode_Swap)
-					{
+                    //Draw health bar
+                    if (stage.mode == StageMode_Swap)
+                    {
 						Stage_DrawHealthBar(255 - (255 * stage.player_state[0].health / 20000), stage.player->health_bar);
 						Stage_DrawHealthBar(255, stage.opponent->health_bar);
 					}
@@ -2735,6 +2757,8 @@ void Stage_Tick(void)
 		{
 			//Stop music immediately
 			Audio_StopXA();
+			deadtimer = 0;
+			inctimer = false;
 			
 			//Unload stage data
 			Mem_Free(stage.chart_data);
