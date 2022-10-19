@@ -40,11 +40,11 @@ void Back_Storage_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT storagebg1_src = {0, 0, 234,182};
+	RECT storagebg1_src = {0, 0, 235,182};
 	RECT_FIXED storagebg1_dst = {
 		FIXED_DEC(-151 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-31,1) - fy,
-		FIXED_DEC(404 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(405 + screen.SCREEN_WIDEOADD,1),
 		FIXED_DEC(314,1)
 	};
 	

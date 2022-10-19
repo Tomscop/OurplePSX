@@ -106,7 +106,6 @@ void OptionsState(int *note_x[8])
 		"MIDDLESCROLL",
 		"SHOW SONG TIME",
 		"MISS SOUNDS",
-		"BOTPLAY"
 		"DEBUG MODE"
 	};
 
@@ -166,10 +165,7 @@ void OptionsState(int *note_x[8])
 			case 6: //Miss sounds
 				stage.prefs.sfxmiss = !stage.prefs.sfxmiss;
 				break;
-			case 7: //Botplay
-				stage.prefs.botplay = !stage.prefs.botplay;
-				break;
-			case 8: //Debug mode
+			case 7: //Debug mode
 				stage.prefs.debug = !stage.prefs.debug;
 				break;
 		}

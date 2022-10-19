@@ -62,11 +62,11 @@ void Back_OfficeG_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT officeg1_src = {0, 0, 226, 255};
+	RECT officeg1_src = {0, 0, 227, 255};
 	RECT_FIXED officeg1_dst = {
 		FIXED_DEC(-165 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-140,1) - fy,
-		FIXED_DEC(233 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(234 + screen.SCREEN_WIDEOADD,1),
 		FIXED_DEC(263,1)
 	};
 	

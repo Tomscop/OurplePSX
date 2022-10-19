@@ -159,11 +159,11 @@ void Back_Jrs_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	RECT jrsbg1_src = {0, 0,212,178};
+	RECT jrsbg1_src = {0, 0,213,178};
 	RECT_FIXED jrsbg1_dst = {
 		FIXED_DEC(-151 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-31,1) - fy,
-		FIXED_DEC(322 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(323 + screen.SCREEN_WIDEOADD,1),
 		FIXED_DEC(270,1)
 	};
 	
