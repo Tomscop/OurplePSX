@@ -191,7 +191,7 @@
 	},
 	{ //StageId_3_3 (Trapped)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(137,1),  FIXED_DEC(64,1)},
+		{Char_BF_New,    FIXED_DEC(90,1),  FIXED_DEC(60,1)},
 		{NULL},
 		{NULL},
 		{NULL},

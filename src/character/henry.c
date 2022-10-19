@@ -215,6 +215,8 @@ Character *Char_Henry_New(fixed_t x, fixed_t y)
 	this->character.focus_y = FIXED_DEC(-145,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
+	this->character.size = FIXED_DEC(1,1);
+	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\HENRY.ARC;1");
 	

@@ -196,7 +196,9 @@ Character *Char_Freddy_New(fixed_t x, fixed_t y)
 	this->character.focus_x = FIXED_DEC(65,1);
 	this->character.focus_y = FIXED_DEC(-102,1);
 	this->character.focus_zoom = FIXED_DEC(1113,512);
-
+	
+	this->character.size = FIXED_DEC(1,1);
+	
 	this->opacity = 0;
 	
 	//Load art

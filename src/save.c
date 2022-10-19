@@ -66,7 +66,6 @@ void defaultSettings()
 {
 	stage.prefs.ghost = 1;
 	stage.prefs.sfxmiss = 1;
-	stage.prefs.botplay = 1;	
 	stage.prefs.songtimer = 1;
 	stage.prefs.eyes = 1;
 	stage.prefs.scanline = 1;

@@ -37,10 +37,10 @@ void Back_FNAF3_DrawBG(StageBack *back)
 	
 	RECT fnaf3bg_src = {0, 0, 255, 255};
 	RECT_FIXED fnaf3bg_dst = {
-		FIXED_DEC(-235 - screen.SCREEN_WIDEOADD2,1) - fx,
-		FIXED_DEC(-205,1) - fy,
-		FIXED_DEC(640 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(300,1)
+		FIXED_DEC(-212 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(-164,1) - fy,
+		FIXED_DEC(525 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(246,1)
 	};
 
 	Debug_StageMoveDebug(&fnaf3bg_dst, 8, fx, fy);

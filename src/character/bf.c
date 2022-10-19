@@ -486,9 +486,9 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	}
 	else if (stage.stage_id == StageId_3_3)
 	{	
-		this->character.focus_x = FIXED_DEC(-62,1);
-		this->character.focus_y = FIXED_DEC(-112,1);
-		this->character.focus_zoom = FIXED_DEC(1014,1024);
+		this->character.focus_x = FIXED_DEC(-44,1);
+		this->character.focus_y = FIXED_DEC(-97,1);
+		this->character.focus_zoom = FIXED_DEC(597,512);
 	}
 	else if (stage.stage_id == StageId_4_4)
 	{	
@@ -508,6 +508,8 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		this->character.focus_y = FIXED_DEC(-65,1);
 		this->character.focus_zoom = FIXED_DEC(1,1);
 	}
+	
+	this->character.size = FIXED_DEC(1,1);
 	
 	//Load art
 	if (stage.stage_id == StageId_2_2 || stage.stage_id == StageId_3_3 || stage.stage_id == StageId_4_4)

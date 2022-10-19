@@ -199,6 +199,8 @@ Character *Char_FBear_New(fixed_t x, fixed_t y)
 	this->character.focus_y = FIXED_DEC(-47,1);
 	this->character.focus_zoom = FIXED_DEC(311,256);
 	
+	this->character.size = FIXED_DEC(1,1);
+	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\FBEAR.ARC;1");
 	

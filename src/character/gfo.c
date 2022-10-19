@@ -174,6 +174,8 @@ Character *Char_GFO_New(fixed_t x, fixed_t y)
 	this->character.focus_y = FIXED_DEC(-50,1);
 	this->character.focus_zoom = FIXED_DEC(13,10);
 	
+	this->character.size = FIXED_DEC(1,1);
+	
 	//Load art
 	if (stage.stage_id == StageId_1_2 || stage.stage_id == StageId_1_4 || stage.stage_id == StageId_5_1)
 	{
