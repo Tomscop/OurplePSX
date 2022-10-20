@@ -271,6 +271,9 @@
 				<!-- Abdul assets -->
 				<file name = "abdul.arc" type = "data" source = "iso/abdul/main.arc"/>
 				
+				<!-- Cakebear assets -->
+				<file name = "cakebear.arc" type = "data" source = "iso/cakebear/main.arc"/>
+				
 				<!-- Gino assets -->
 				<file name = "gino.arc" type = "data" source = "iso/gino/main.arc"/>
 				

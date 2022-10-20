@@ -58,6 +58,7 @@ SRCS = src/main.c \
 	   src/character/omc.c \
 	   src/character/plush.c \
 	   src/character/abdul.c \
+	   src/character/cakebear.c \
 	   src/character/gino.c \
 	   src/character/criminal.c \
 	   src/character/dad.c \

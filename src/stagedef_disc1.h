@@ -303,7 +303,7 @@
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Cakebear_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
         {NULL},
 		{Char_GFO_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
