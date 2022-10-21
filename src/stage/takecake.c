@@ -86,10 +86,9 @@ void Back_TakeCake_DrawBG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	if (stage.flag & STAGE_FLAG_JUST_STEP && ((stage.song_beat % 2) == 0))
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x7)== 0)
 		Animatable_SetAnim(&this->kid_animatable, 0);
-	
-	if (stage.flag & STAGE_FLAG_JUST_STEP && ((stage.song_beat % 2) == 1))
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x7)== 4)
 		Animatable_SetAnim(&this->kid_animatable, 1);
 	
 	Animatable_Animate(&this->kid_animatable, (void*)this, TakeCake_Kid_SetFrame);
