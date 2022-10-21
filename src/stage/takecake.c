@@ -93,10 +93,10 @@ void Back_TakeCake_DrawBG(StageBack *back)
 	
 	Animatable_Animate(&this->kid_animatable, (void*)this, TakeCake_Kid_SetFrame);
 	
-	TakeCake_Kid_Draw(this, FIXED_DEC(163 + 71,1) - fx, FIXED_DEC(32 + 98,1) - fy);
-	TakeCake_Kid_Draw(this, FIXED_DEC(0 + 71,1) - fx, FIXED_DEC(0 + 98,1) - fy);
-	TakeCake_Kid_Draw(this, FIXED_DEC(0 + 71,1) - fx, FIXED_DEC(0 + 98,1) - fy);
-	TakeCake_Kid_Draw(this, FIXED_DEC(0 + 71,1) - fx, FIXED_DEC(0 + 98,1) - fy);
+	TakeCake_Kid_Draw(this, FIXED_DEC(161 + 71,1) - fx, FIXED_DEC(31 + 98,1) - fy);
+	TakeCake_Kid_Draw(this, FIXED_DEC(207 + 71,1) - fx, FIXED_DEC(71 + 98,1) - fy);
+	TakeCake_Kid_Draw(this, FIXED_DEC(-126 + 71,1) - fx, FIXED_DEC(31 + 98,1) - fy);
+	TakeCake_Kid_Draw(this, FIXED_DEC(-168 + 71,1) - fx, FIXED_DEC(71 + 98,1) - fy);
 	
 	//Draw takecakebg
 	fx = stage.camera.x;
@@ -106,12 +106,16 @@ void Back_TakeCake_DrawBG(StageBack *back)
 	RECT_FIXED takecakebg_dst = {
 		FIXED_DEC(-212 - screen.SCREEN_WIDEOADD2,1) - fx,
 		FIXED_DEC(-164,1) - fy,
-		FIXED_DEC(668 + screen.SCREEN_WIDEOADD,1),
-		FIXED_DEC(387,1)
+		FIXED_DEC(559 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(324,1)
 	};
 
 	Debug_StageMoveDebug(&takecakebg_dst, 6, fx, fy);
 	Stage_DrawTex(&this->tex_back0, &takecakebg_src, &takecakebg_dst, stage.camera.bzoom);
+	
+	//Draw blackf
+	RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+	Gfx_DrawRect(&screen_src, 0, 0, 0);
 }
 
 void Back_TakeCake_Free(StageBack *back)

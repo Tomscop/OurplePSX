@@ -298,15 +298,15 @@
 	
 	{ //StageId_5_1 (Showtime)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(155,1),  FIXED_DEC(165,1)},
+		{Char_BF_New,    FIXED_DEC(160,1),  FIXED_DEC(121,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Cakebear_New, FIXED_DEC(-11,1),  FIXED_DEC(241,1)},
+		{Char_Cakebear_New, FIXED_DEC(-48,1),  FIXED_DEC(203,1)},
 		{NULL},
         {NULL},
-		{Char_GFO_New,     FIXED_DEC(122,1),  FIXED_DEC(113,1)},
+		{Char_GFO_New,     FIXED_DEC(86,1),  FIXED_DEC(70,1)},
 		
 		//Stage background
 		Back_TakeCake_New,
