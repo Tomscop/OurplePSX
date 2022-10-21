@@ -88,6 +88,7 @@ static u32 Sounds[7];
 #include "stage/officeb.h"
 #include "stage/fnaf3.h"
 #include "stage/flipside.h"
+#include "stage/takecake.h"
 #include "stage/black2.h"
 
 static const StageDef stage_defs[StageId_Max] = {
@@ -2144,8 +2145,6 @@ void Stage_Tick(void)
 		{ 
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
-
-				FntPrint("step is %d", stage.song_step);
 			
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))

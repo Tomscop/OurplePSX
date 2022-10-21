@@ -181,6 +181,13 @@
 				<file name = "memorys.arc" type = "data" source = "iso/black2/memorys.arc"/>
 				<file name = "alert.tim" type = "data" source = "iso/black2/alert.tim"/>
 			</dir>
+			
+			<!-- Take Cake assets -->
+			<dir name = "takecake">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/takecake/back.arc"/>
+				<file name = "kid.arc" type = "data" source = "iso/takecake/kid.arc"/>
+			</dir>
 		
 			<!-- Character assets -->
 			<dir name = "char">

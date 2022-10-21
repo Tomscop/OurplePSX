@@ -8,40 +8,40 @@ typedef struct
 
 static const XA_TrackDef xa_tracks[] = {
 	//MENU.XA
-	{XA_Menu, XA_LENGTH(10300)}, //XA_MainMenu
-	{XA_Menu, XA_LENGTH(6600)},  //XA_GameOver
+	{XA_Menu, XA_LENGTH(10341)}, //XA_MainMenu
+	{XA_Menu, XA_LENGTH(6687)},  //XA_GameOver
 	//WEEK1A.XA
-	{XA_Week1A, XA_LENGTH(9700)}, //XA_Guy
-	{XA_Week1A, XA_LENGTH(12800)}, //XA_Midnight
+	{XA_Week1A, XA_LENGTH(9726)}, //XA_Guy
+	{XA_Week1A, XA_LENGTH(12872)}, //XA_Midnight
 	//WEEK1B.XA
-	{XA_Week1B, XA_LENGTH(21900)}, //XA_Terminated
+	{XA_Week1B, XA_LENGTH(21931)}, //XA_Terminated
 	{XA_Week1B, XA_LENGTH(14400)}, //XA_Lurking
 	//WEEK2A.XA
 	{XA_Week2A, XA_LENGTH(17600)}, //XA_Lore
-	{XA_Week2A, XA_LENGTH(8000)}, //XA_Blubber
+	{XA_Week2A, XA_LENGTH(8065)}, //XA_Blubber
 	//WEEK2B.XA
-	{XA_Week2B, XA_LENGTH(20300)}, //XA_Golden
+	{XA_Week2B, XA_LENGTH(20367)}, //XA_Golden
 	//WEEK3A.XA
-	{XA_Week3A, XA_LENGTH(9800)},  //XA_Performance
-	{XA_Week3A, XA_LENGTH(18300)}, //XA_Bite
+	{XA_Week3A, XA_LENGTH(9750)},  //XA_Performance
+	{XA_Week3A, XA_LENGTH(18285)}, //XA_Bite
 	//WEEK3B.XA
-	{XA_Week3B, XA_LENGTH(18600)}, //XA_Trapped
+	{XA_Week3B, XA_LENGTH(18666)}, //XA_Trapped
 	//WEEK4A.XA
-	{XA_Week4A, XA_LENGTH(10000)},  //XA_GoFish
-	{XA_Week4A, XA_LENGTH(19100)}, //XA_Watchful
+	{XA_Week4A, XA_LENGTH(10011)},  //XA_GoFish
+	{XA_Week4A, XA_LENGTH(19141)}, //XA_Watchful
 	//WEEK4B.XA
-	{XA_Week4B, XA_LENGTH(12100)}, //XA_Restless
-	{XA_Week4B, XA_LENGTH(1650)}, //XA_Beatbox
+	{XA_Week4B, XA_LENGTH(12105)}, //XA_Restless
+	{XA_Week4B, XA_LENGTH(1600)}, //XA_Beatbox
 	//WEEK5A.XA
 	{XA_Week5A, XA_LENGTH(11100)}, //XA_Showtime
-	{XA_Week5A, XA_LENGTH(11900)},  //XA_Man
+	{XA_Week5A, XA_LENGTH(11927)},  //XA_Man
 	//WEEK5B.XA
-	{XA_Week5B, XA_LENGTH(21700)}, //XA_Followed
+	{XA_Week5B, XA_LENGTH(21720)}, //XA_Followed
 	//WEEK6A.XA
-	{XA_Week6A, XA_LENGTH(17100)}, //XA_FazfuckNews
-	{XA_Week6A, XA_LENGTH(14500)}, //XA_Criminal
+	{XA_Week6A, XA_LENGTH(17142)}, //XA_FazfuckNews
+	{XA_Week6A, XA_LENGTH(14526)}, //XA_Criminal
 	//WEEK6B.XA
-	{XA_Week6B, XA_LENGTH(33300)}, //XA_MILLER
+	{XA_Week6B, XA_LENGTH(33359)}, //XA_MILLER
 };
 
 static const char *xa_paths[] = {
