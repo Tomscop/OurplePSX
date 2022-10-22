@@ -39,7 +39,6 @@ static const u8 note_anims[4][3] = {
 	{CharAnim_Right, CharAnim_RightAlt, PlayerAnim_RightMiss},
 };
 
-
 //Stage definitions
 boolean noteshake;
 fixed_t fade;
@@ -2145,7 +2144,7 @@ void Stage_Tick(void)
 		{ 
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
-			
+				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
 				{

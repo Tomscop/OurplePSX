@@ -139,8 +139,8 @@ Character *Char_Cakebear_New(fixed_t x, fixed_t y)
 	this->character.health_bar = 0xFFF77601;
 	
 	this->character.focus_x = FIXED_DEC(47,1);
-	this->character.focus_y = FIXED_DEC(-121,1);
-	this->character.focus_zoom = FIXED_DEC(241,256);
+	this->character.focus_y = FIXED_DEC(-126,1);
+	this->character.focus_zoom = FIXED_DEC(1004,1024);
 	
 	this->character.size = FIXED_DEC(1,1);
 	
