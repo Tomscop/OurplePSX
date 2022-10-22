@@ -51,6 +51,7 @@ all: \
 	iso/plush/main.arc \
 	iso/abdul/main.arc \
 	iso/cakebear/main.arc \
+	iso/ngt/main.arc \
 	iso/gino/main.arc \
 	iso/criminal/main.arc \
 	iso/dad/main.arc \
@@ -165,6 +166,9 @@ iso/abdul/main.arc: iso/abdul/idle0.tim iso/abdul/idle1.tim iso/abdul/idle2.tim 
 
 # Cakebear
 iso/cakebear/main.arc: iso/cakebear/cake0.tim iso/cakebear/cake1.tim iso/cakebear/cake2.tim iso/cakebear/cake3.tim
+
+# NGT
+iso/ngt/main.arc: iso/ngt/idle0.tim iso/ngt/idle1.tim iso/ngt/idle2.tim iso/ngt/left0.tim iso/ngt/left1.tim iso/ngt/down0.tim iso/ngt/down1.tim iso/ngt/up0.tim iso/ngt/up1.tim iso/ngt/right0.tim iso/ngt/right1.tim iso/ngt/turn0.tim iso/ngt/turn1.tim iso/ngt/turn2.tim iso/ngt/turn3.tim iso/ngt/turn4.tim iso/ngt/alt0.tim iso/ngt/alt1.tim
 
 # Gino
 iso/gino/main.arc: iso/gino/idle0.tim iso/gino/idle1.tim iso/gino/idle2.tim iso/gino/idle3.tim iso/gino/idle4.tim iso/gino/idle5.tim iso/gino/left0.tim iso/gino/left1.tim iso/gino/left2.tim iso/gino/left3.tim iso/gino/left4.tim iso/gino/left5.tim iso/gino/left6.tim iso/gino/left7.tim iso/gino/left8.tim iso/gino/left9.tim iso/gino/left10.tim iso/gino/left11.tim iso/gino/down0.tim iso/gino/down1.tim iso/gino/down2.tim iso/gino/down3.tim iso/gino/down4.tim iso/gino/down5.tim iso/gino/down6.tim iso/gino/down7.tim iso/gino/down8.tim iso/gino/down9.tim iso/gino/down10.tim iso/gino/down11.tim iso/gino/down12.tim iso/gino/down13.tim iso/gino/down14.tim iso/gino/up0.tim iso/gino/up1.tim iso/gino/up2.tim iso/gino/up3.tim iso/gino/up4.tim iso/gino/up5.tim iso/gino/up6.tim iso/gino/up7.tim iso/gino/up8.tim iso/gino/up9.tim iso/gino/up10.tim iso/gino/up11.tim iso/gino/up12.tim iso/gino/up13.tim iso/gino/right0.tim iso/gino/right1.tim iso/gino/right2.tim iso/gino/right3.tim iso/gino/right4.tim iso/gino/right5.tim iso/gino/right6.tim iso/gino/right7.tim iso/gino/right8.tim iso/gino/bite0.tim iso/gino/bite1.tim iso/gino/bite2.tim iso/gino/bite3.tim iso/gino/bite4.tim iso/gino/bite5.tim iso/gino/bite6.tim iso/gino/bite7.tim iso/gino/bite8.tim iso/gino/bite9.tim iso/gino/bite10.tim iso/gino/bite11.tim iso/gino/bite12.tim iso/gino/bite13.tim iso/gino/bite14.tim iso/gino/bite15.tim iso/gino/bite16.tim iso/gino/bite17.tim iso/gino/bite18.tim iso/gino/bite19.tim iso/gino/bite20.tim iso/gino/bite21.tim iso/gino/bite22.tim

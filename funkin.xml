@@ -282,6 +282,9 @@
 				<!-- Cakebear assets -->
 				<file name = "cakebear.arc" type = "data" source = "iso/cakebear/main.arc"/>
 				
+				<!-- NGT assets -->
+				<file name = "ngt.arc" type = "data" source = "iso/ngt/main.arc"/>
+				
 				<!-- Gino assets -->
 				<file name = "gino.arc" type = "data" source = "iso/gino/main.arc"/>
 				
