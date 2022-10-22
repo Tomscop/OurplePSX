@@ -87,10 +87,6 @@ void Char_Cakebear_Tick(Character *character)
 {
 	Char_Cakebear *this = (Char_Cakebear*)character;
 	
-	//Icon change
-	if (stage.song_step == 656)
-		this->character.health_i = 4;
-	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
@@ -143,7 +139,7 @@ Character *Char_Cakebear_New(fixed_t x, fixed_t y)
 	this->character.health_bar = 0xFFF77601;
 	
 	this->character.focus_x = FIXED_DEC(47,1);
-	this->character.focus_y = FIXED_DEC(-139,1);
+	this->character.focus_y = FIXED_DEC(-121,1);
 	this->character.focus_zoom = FIXED_DEC(241,256);
 	
 	this->character.size = FIXED_DEC(1,1);

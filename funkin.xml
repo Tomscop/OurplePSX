@@ -187,6 +187,7 @@
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/takecake/back.arc"/>
 				<file name = "kid.arc" type = "data" source = "iso/takecake/kid.arc"/>
+				<file name = "charlie.arc" type = "data" source = "iso/takecake/char.arc"/>
 			</dir>
 		
 			<!-- Character assets -->
