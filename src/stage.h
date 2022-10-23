@@ -205,6 +205,7 @@ typedef struct
 	//HUD textures
 	Gfx_Tex tex_hud0, tex_hud1, tex_countdown;
 	Gfx_Tex tex_scanline;
+	Gfx_Tex tex_border;
 	Gfx_Tex tex_flashb;
 	Gfx_Tex tex_ded;
 	Gfx_Tex tex_alert;

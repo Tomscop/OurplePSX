@@ -78,14 +78,38 @@ static const CharFrame char_ngt_frame[] = {
 };
 
 static const Animation char_ngt_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, 4, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 5, 6, ASCR_BACK, 1}},         //CharAnim_Left
+	{2, (const u8[]){ 0, 1, 2, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ 3, 4, ASCR_BACK, 1}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 7, 8, ASCR_BACK, 1}},         //CharAnim_Down
+	{2, (const u8[]){ 5, 6, ASCR_BACK, 1}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},         //CharAnim_Up
+	{2, (const u8[]){ 7, 8, ASCR_BACK, 1}},         //CharAnim_Up
+	{4, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},         //CharAnim_Right
+	{4, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+};
+
+static const Animation char_ngt_anim2[CharAnim_Max] = {
+	{4, (const u8[]){11, 12, 13, 14, 15, 15, 15, 15, 15, 15, 15, 15, ASCR_CHGANI, CharAnim_LeftAlt}}, //CharAnim_Idle
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Left
+	{0, (const u8[]){ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, ASCR_CHGANI, CharAnim_LeftAlt}},   //CharAnim_LeftAlt
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Down
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){ 11, 12, ASCR_BACK, 1}},         //CharAnim_Right
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Right
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+};
+
+static const Animation char_ngt_anim3[CharAnim_Max] = {
+	{2, (const u8[]){ 15, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ 16, 17, ASCR_BACK, 1}},         //CharAnim_Left
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{2, (const u8[]){ 16, 17, ASCR_BACK, 1}},         //CharAnim_Down
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{2, (const u8[]){ 16, 17, ASCR_BACK, 1}},         //CharAnim_Up
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+	{2, (const u8[]){ 16, 17, ASCR_BACK, 1}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
@@ -110,7 +134,12 @@ void Char_NGT_Tick(Character *character)
 	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
-		Character_PerformIdle(character);
+			Character_PerformIdle(character);
+	
+	if (stage.song_step >= 1024)
+		Animatable_Init(&this->character.animatable, char_ngt_anim2);	
+	if (stage.song_step >= 1032)
+		Animatable_Init(&this->character.animatable, char_ngt_anim3);
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_NGT_SetFrame);
@@ -154,10 +183,10 @@ Character *Char_NGT_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 2;
+	this->character.health_i = 4;
 
 	//health bar color
-	this->character.health_bar = 0xFFF77601;
+	this->character.health_bar = 0xFFFDF22E;
 	
 	this->character.focus_x = FIXED_DEC(47,1);
 	this->character.focus_y = FIXED_DEC(-126,1);
@@ -166,13 +195,27 @@ Character *Char_NGT_New(fixed_t x, fixed_t y)
 	this->character.size = FIXED_DEC(1,1);
 	
 	//Load art
-	this->arc_main = IO_Read("\\CHAR2\\CAKEBEAR.ARC;1");
+	this->arc_main = IO_Read("\\CHAR2\\NGT.ARC;1");
 	
 	const char **pathp = (const char *[]){
-		"cake0.tim", //NGT_ArcMain_Cake0
-		"cake1.tim", //NGT_ArcMain_Cake1
-		"cake2.tim", //NGT_ArcMain_Cake2
-		"cake3.tim", //NGT_ArcMain_Cake3
+		"idle0.tim", //NGT_ArcMain_Idle0
+		"idle1.tim", //NGT_ArcMain_Idle1
+		"idle2.tim", //NGT_ArcMain_Idle2
+		"left0.tim", //NGT_ArcMain_Left0
+		"left1.tim", //NGT_ArcMain_Left1
+		"down0.tim", //NGT_ArcMain_Down0
+		"down1.tim", //NGT_ArcMain_Down1
+		"up0.tim", //NGT_ArcMain_Up0
+		"up1.tim", //NGT_ArcMain_Up1
+		"right0.tim", //NGT_ArcMain_Right0
+		"right1.tim", //NGT_ArcMain_Right1
+		"turn0.tim", //NGT_ArcMain_Turn0
+		"turn1.tim", //NGT_ArcMain_Turn1
+		"turn2.tim", //NGT_ArcMain_Turn2
+		"turn3.tim", //NGT_ArcMain_Turn3
+		"turn4.tim", //NGT_ArcMain_Turn4
+		"alt0.tim", //NGT_ArcMain_Alt0
+		"alt1.tim", //NGT_ArcMain_Alt1
 		NULL
 	};
 	IO_Data *arc_ptr = this->arc_ptr;

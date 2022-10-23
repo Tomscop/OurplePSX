@@ -72,6 +72,7 @@ static u32 Sounds[7];
 #include "character/plush.h"
 #include "character/abdul.h"
 #include "character/cakebear.h"
+#include "character/ngt.h"
 #include "character/gino.h"
 #include "character/criminal.h"
 #include "character/dad.h"
@@ -1819,6 +1820,8 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 		Gfx_LoadTex(&stage.tex_flashb, IO_Read("\\STAGE\\FLASHB.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_1_3 || id == StageId_1_4 || id == StageId_4_1 || id == StageId_4_3 || id == StageId_5_3)
 		Gfx_LoadTex(&stage.tex_scanline, IO_Read("\\STAGE\\SCANLINE.TIM;1"), GFX_LOADTEX_FREE);
+	if (id == StageId_5_2 || id == StageId_6_1 || id == StageId_6_3)
+		Gfx_LoadTex(&stage.tex_border, IO_Read("\\STAGE\\BORDER.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_5_3)
 		Gfx_LoadTex(&stage.tex_alert, IO_Read("\\BLACK2\\ALERT.TIM;1"), GFX_LOADTEX_FREE);
 
@@ -2627,6 +2630,14 @@ void Stage_Tick(void)
 						}
 					}
 				}
+			}
+			
+			//Draw border
+			if ((stage.stage_id == StageId_5_2) || (stage.stage_id == StageId_6_1) || (stage.stage_id == StageId_6_3))
+			{
+				RECT border_src = {0, 0, 100, 240};
+				RECT border_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT)};
+				Gfx_DrawTex(&stage.tex_border, &border_src, &border_dst);
 			}
 			
 			//Draw stage foreground

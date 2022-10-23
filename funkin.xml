@@ -46,6 +46,7 @@
 				<file name = "scanline.tim" type = "data" source = "iso/stage/scanline.tim"/>
 				<file name = "flashb.tim" type = "data" source = "iso/stage/flashb.tim"/>
 				<file name = "count.tim" type = "data" source = "iso/stage/count.tim"/>
+				<file name = "border.tim" type = "data" source = "iso/stage/border.tim"/>
 			</dir>
 			
 			<!-- Week 1 assets -->
