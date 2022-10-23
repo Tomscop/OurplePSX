@@ -72,6 +72,7 @@ static u32 Sounds[7];
 #include "character/plush.h"
 #include "character/abdul.h"
 #include "character/cakebear.h"
+#include "character/jackass.h"
 #include "character/ngt.h"
 #include "character/gino.h"
 #include "character/criminal.h"
@@ -2819,6 +2820,8 @@ void Stage_Tick(void)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
 			else if (stage.stage_id == StageId_4_1)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADC.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_5_2)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADJ.TIM;1"), GFX_LOADTEX_FREE);
 			else
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 		

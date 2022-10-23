@@ -52,6 +52,8 @@ all: \
 	iso/plush/main.arc \
 	iso/abdul/main.arc \
 	iso/cakebear/main.arc \
+	iso/jackass/main.arc \
+	iso/jackass/dead.tim \
 	iso/ngt/main.arc \
 	iso/gino/main.arc \
 	iso/criminal/main.arc \
@@ -167,6 +169,9 @@ iso/abdul/main.arc: iso/abdul/idle0.tim iso/abdul/idle1.tim iso/abdul/idle2.tim 
 
 # Cakebear
 iso/cakebear/main.arc: iso/cakebear/cake0.tim iso/cakebear/cake1.tim iso/cakebear/cake2.tim iso/cakebear/cake3.tim
+
+# Jackass
+iso/jackass/main.arc: iso/jackass/jka0.tim iso/jackass/jka1.tim iso/jackass/jka2.tim iso/jackass/jka3.tim
 
 # NGT
 iso/ngt/main.arc: iso/ngt/idle0.tim iso/ngt/idle1.tim iso/ngt/idle2.tim iso/ngt/left0.tim iso/ngt/left1.tim iso/ngt/down0.tim iso/ngt/down1.tim iso/ngt/up0.tim iso/ngt/up1.tim iso/ngt/right0.tim iso/ngt/right1.tim iso/ngt/turn0.tim iso/ngt/turn1.tim iso/ngt/turn2.tim iso/ngt/turn3.tim iso/ngt/turn4.tim iso/ngt/alt0.tim iso/ngt/alt1.tim

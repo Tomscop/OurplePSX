@@ -319,12 +319,12 @@
 	},
 	{ //StageId_5_2 (Man)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Jackass_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_NGT_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_NGT_New, FIXED_DEC(-157,1),  FIXED_DEC(153,1)},
 		{NULL},
         {NULL},
 		{NULL},

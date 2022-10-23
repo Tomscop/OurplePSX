@@ -60,6 +60,7 @@ SRCS = src/main.c \
 	   src/character/plush.c \
 	   src/character/abdul.c \
 	   src/character/cakebear.c \
+	   src/character/jackass.c \
 	   src/character/ngt.c \
 	   src/character/gino.c \
 	   src/character/criminal.c \

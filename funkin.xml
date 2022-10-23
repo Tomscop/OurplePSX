@@ -283,6 +283,10 @@
 				<!-- Cakebear assets -->
 				<file name = "cakebear.arc" type = "data" source = "iso/cakebear/main.arc"/>
 				
+				<!-- Jackass assets -->
+				<file name = "jackass.arc" type = "data" source = "iso/jackass/main.arc"/>
+				<file name = "deadj.tim" type = "data" source = "iso/jackass/dead.tim"/>
+				
 				<!-- NGT assets -->
 				<file name = "ngt.arc" type = "data" source = "iso/ngt/main.arc"/>
 				
