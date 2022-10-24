@@ -50,6 +50,8 @@ all: \
 	iso/cassidy/dead.tim \
 	iso/omc/main.arc \
 	iso/plush/main.arc \
+	iso/cc/main.arc \
+	iso/cc/dead.tim \
 	iso/abdul/main.arc \
 	iso/cakebear/main.arc \
 	iso/jackass/main.arc \
@@ -164,6 +166,9 @@ iso/omc/main.arc: iso/omc/idle0.tim iso/omc/idle1.tim iso/omc/left.tim iso/omc/d
 
 # Plush
 iso/plush/main.arc: iso/plush/plush.tim
+
+# CC
+iso/cc/main.arc: iso/cc/cc0.tim iso/cc/cc1.tim iso/cc/cc2.tim iso/cc/cc3.tim iso/cc/cc4.tim
 
 # Abdul
 iso/abdul/main.arc: iso/abdul/idle0.tim iso/abdul/idle1.tim iso/abdul/idle2.tim iso/abdul/left0.tim iso/abdul/left1.tim iso/abdul/left2.tim iso/abdul/down0.tim iso/abdul/down1.tim iso/abdul/down2.tim iso/abdul/up0.tim iso/abdul/up1.tim iso/abdul/up2.tim iso/abdul/right0.tim iso/abdul/right1.tim iso/abdul/right2.tim iso/abdul/alt.tim

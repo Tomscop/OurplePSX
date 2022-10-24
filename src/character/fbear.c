@@ -190,14 +190,28 @@ Character *Char_FBear_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
 	
-	this->character.health_i = 2;
+	if (stage.stage_id == StageId_3_1)
+		this->character.health_i = 2;
+	else
+		this->character.health_i = 9;
 
 	//health bar color
-	this->character.health_bar = 0xFFC39B06;
-
-	this->character.focus_x = FIXED_DEC(-16,1);
-	this->character.focus_y = FIXED_DEC(-47,1);
-	this->character.focus_zoom = FIXED_DEC(311,256);
+	if (stage.stage_id == StageId_3_1)
+	{
+		this->character.health_bar = 0xFFC39B06;
+		
+		this->character.focus_x = FIXED_DEC(-16,1);
+		this->character.focus_y = FIXED_DEC(-47,1);
+		this->character.focus_zoom = FIXED_DEC(311,256);
+	}
+	else
+	{
+		this->character.health_bar = 0xFF000000;
+		
+		this->character.focus_x = FIXED_DEC(354,1);
+		this->character.focus_y = FIXED_DEC(-245,1);
+		this->character.focus_zoom = FIXED_DEC(1064,1024);
+	}
 	
 	this->character.size = FIXED_DEC(1,1);
 	

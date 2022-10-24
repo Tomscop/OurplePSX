@@ -283,6 +283,10 @@
 				<!-- Plush assets -->
 				<file name = "plush.arc" type = "data" source = "iso/plush/main.arc"/>
 				
+				<!-- CC assets -->
+				<file name = "cc.arc" type = "data" source = "iso/cc/main.arc"/>
+				<file name = "deadcc.tim" type = "data" source = "iso/cc/dead.tim"/>
+				
 				<!-- Abdul assets -->
 				<file name = "abdul.arc" type = "data" source = "iso/abdul/main.arc"/>
 				
@@ -317,7 +321,9 @@
 				<file name = "intro1.vag" type = "data" source = "iso/sounds/stage/intro1.VAG"/>
 				<file name = "intro2.vag" type = "data" source = "iso/sounds/stage/intro2.VAG"/>
 				<file name = "intro3.vag" type = "data" source = "iso/sounds/stage/intro3.VAG"/>
-				<file name = "criminal.vag" type = "data" source = "iso/sounds/stage/criminal.VAG"/>
+				<file name = "criminal.vag" type = "data" source = "iso/sounds/stage/criminal.ogg.vag"/>
+				<file name = "bite.vag" type = "data" source = "iso/sounds/stage/bite.ogg.vag"/>
+				<file name = "glitch.vag" type = "data" source = "iso/sounds/stage/glitch.ogg.vag"/>
 
 				<!-- Miss Sounds -->
 				<file name = "miss1.vag" type = "data" source = "iso/sounds/stage/miss1.VAG"/>

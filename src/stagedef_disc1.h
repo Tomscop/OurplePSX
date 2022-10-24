@@ -255,7 +255,7 @@
 	},
 	{ //StageId_4_3 (Restless)
 		//Characters
-		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_CC_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
