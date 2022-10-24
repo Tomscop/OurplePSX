@@ -90,6 +90,7 @@ static u32 Sounds[7];
 #include "stage/fnaf3.h"
 #include "stage/flipside.h"
 #include "stage/takecake.h"
+#include "stage/ngroom.h"
 #include "stage/black2.h"
 
 static const StageDef stage_defs[StageId_Max] = {

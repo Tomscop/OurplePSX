@@ -60,7 +60,7 @@ static const CharFrame char_jackass_frame[] =
 	{Jackass_ArcMain_JKA3, {  0,  0,103,109}, { 53, 92}}, //12 miss
 };
 static const Animation char_jackass_anim[PlayerAnim_Max] = {
-	{4, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},             //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},             //CharAnim_Down
@@ -179,9 +179,9 @@ Character *Char_Jackass_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFF075BFF;
 
-	this->character.focus_x = FIXED_DEC(-126,1);
-	this->character.focus_y = FIXED_DEC(-46,1);
-	this->character.focus_zoom = FIXED_DEC(465,512);
+	this->character.focus_x = FIXED_DEC(-30,1);
+	this->character.focus_y = FIXED_DEC(-59,1);
+	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	this->character.size = FIXED_DEC(1,1);
 	

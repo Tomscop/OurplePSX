@@ -188,9 +188,9 @@ Character *Char_NGT_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFFDF22E;
 	
-	this->character.focus_x = FIXED_DEC(47,1);
-	this->character.focus_y = FIXED_DEC(-126,1);
-	this->character.focus_zoom = FIXED_DEC(1004,1024);
+	this->character.focus_x = FIXED_DEC(90,1);
+	this->character.focus_y = FIXED_DEC(-124,1);
+	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	this->character.size = FIXED_DEC(1,1);
 	

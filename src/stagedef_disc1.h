@@ -319,18 +319,18 @@
 	},
 	{ //StageId_5_2 (Man)
 		//Characters
-		{Char_Jackass_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Jackass_New,    FIXED_DEC(129,1),  FIXED_DEC(152,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_NGT_New, FIXED_DEC(-157,1),  FIXED_DEC(153,1)},
+		{Char_NGT_New, FIXED_DEC(-72,1),  FIXED_DEC(203,1)},
 		{NULL},
         {NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_NGRoom_New,
 		
 		//Song info
 		5, 2,

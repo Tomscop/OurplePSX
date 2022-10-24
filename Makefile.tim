@@ -76,6 +76,7 @@ all: \
 	iso/takecake/back.arc \
 	iso/takecake/kid.arc \
 	iso/takecake/char.arc \
+	iso/ngroom/back.arc \
 	iso/black2/eye.arc \
 	iso/black2/memorys.arc \
 	iso/black2/alert.tim
@@ -224,6 +225,9 @@ iso/flipside/back.arc: iso/flipside/back0.tim
 iso/takecake/back.arc: iso/takecake/back0.tim
 iso/takecake/kid.arc: iso/takecake/kid.tim
 iso/takecake/char.arc: iso/takecake/char0.tim iso/takecake/char3.tim iso/takecake/char4.tim iso/takecake/char5.tim iso/takecake/char6.tim iso/takecake/char7.tim iso/takecake/char8.tim iso/takecake/char9.tim iso/takecake/char10.tim iso/takecake/char11.tim iso/takecake/char12.tim iso/takecake/char13.tim iso/takecake/char14.tim iso/takecake/char15.tim iso/takecake/char16.tim iso/takecake/char17.tim
+
+# NGRoom
+iso/ngroom/back.arc: iso/ngroom/back0.tim iso/ngroom/back1.tim iso/ngroom/nfg.tim
 
 # Black2
 iso/black2/eye.arc: iso/black2/eye0.tim iso/black2/eye1.tim iso/black2/eye2.tim iso/black2/eye3.tim iso/black2/eye4.tim iso/black2/eye5.tim iso/black2/eye6.tim iso/black2/eye7.tim iso/black2/eye8.tim iso/black2/eye9.tim iso/black2/eye10.tim iso/black2/eye11.tim iso/black2/eye12.tim iso/black2/eye13.tim iso/black2/eye14.tim iso/black2/eye15.tim iso/black2/eye16.tim iso/black2/eye17.tim iso/black2/eye18.tim iso/black2/eye19.tim iso/black2/eye20.tim iso/black2/eye21.tim iso/black2/eye22.tim iso/black2/eye23.tim
