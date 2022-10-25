@@ -20,7 +20,7 @@ iso/music/%.xa:
 	tools/xainterleave/xainterleave $@
 
 # XA interleaves
-iso/music/menu.xa: iso/music/mainmenu.xa iso/music/gameover.xa
+iso/music/menu.xa: iso/music/mainmenu.xa iso/music/gameover.xa iso/music/title.xa iso/music/freeplay.xa
 iso/music/week1a.xa: iso/music/guy/Inst.xa iso/music/guy/Vocals.xa iso/music/midnight/Inst.xa iso/music/midnight/Vocals.xa
 iso/music/week1b.xa: iso/music/terminated/Inst.xa iso/music/terminated/Vocals.xa iso/music/lurking/Inst.xa iso/music/lurking/Vocals.xa
 iso/music/week2a.xa: iso/music/lore/Inst.xa iso/music/lore/Vocals.xa iso/music/blubber/Inst.xa iso/music/blubber/Vocals.xa

@@ -10,6 +10,8 @@ static const XA_TrackDef xa_tracks[] = {
 	//MENU.XA
 	{XA_Menu, XA_LENGTH(10341)}, //XA_MainMenu
 	{XA_Menu, XA_LENGTH(6687)},  //XA_GameOver
+	{XA_Menu, XA_LENGTH(2742)}, //XA_Title
+	{XA_Menu, XA_LENGTH(8602)},  //XA_Freeplay
 	//WEEK1A.XA
 	{XA_Week1A, XA_LENGTH(9726)}, //XA_Guy
 	{XA_Week1A, XA_LENGTH(12872)}, //XA_Midnight
@@ -71,6 +73,8 @@ static const XA_Mp3 xa_mp3s[] = {
 	//MENU.XA
 	{"mainmenu", false},   //XA_MainMenu
 	{"gameover", false}, //XA_GameOver
+	{"title", false},   //XA_Title
+	{"freeplay", false}, //XA_Freeplay
 	//WEEK1A.XA
 	{"guy", true}, //XA_Guy
 	{"midnight", true},   //XA_Midnight

@@ -29,46 +29,6 @@
 
 static u32 Sounds[3];
 static char scoredisp[30];
-//Menu messages
-static const char *funny_messages[][2] = {
-	{"PSX PORT BY CUCKYDEV", "YOU KNOW IT"},
-	{"PORTED BY CUCKYDEV", "WHAT YOU GONNA DO"},
-	{"FUNKIN", "FOREVER"},
-	{"WHAT THE HELL", "RITZ PSX"},
-	{"LIKE PARAPPA", "BUT COOLER"},
-	{"THE JAPI", "EL JAPI"},
-	{"PICO FUNNY", "PICO FUNNY"},
-	{"OPENGL BACKEND", "BY CLOWNACY"},
-	{"CUCKYFNF", "SETTING STANDARDS"},
-	{"lool", "inverted colours"},
-	{"NEVER LOOK AT", "THE ISSUE TRACKER"},
-	{"PSXDEV", "HOMEBREW"},
-	{"ZERO POINT ZERO TWO TWO EIGHT", "ONE FIVE NINE ONE ZERO FIVE"},
-	{"DOPE ASS GAME", "PLAYSTATION MAGAZINE"},
-	{"NEWGROUNDS", "FOREVER"},
-	{"NO FPU", "NO PROBLEM"},
-	{"OK OKAY", "WATCH THIS"},
-	{"ITS MORE MALICIOUS", "THAN ANYTHING"},
-	{"USE A CONTROLLER", "LOL"},
-	{"SNIPING THE KICKSTARTER", "HAHA"},
-	{"SHITS UNOFFICIAL", "NOT A PROBLEM"},
-	{"SYSCLK", "RANDOM SEED"},
-	{"THEY DIDNT HIT THE GOAL", "STOP"},
-	{"FCEFUWEFUETWHCFUEZDSLVNSP", "PQRYQWENQWKBVZLZSLDNSVPBM"},
-	{"THE FLOORS ARE", "THREE DIMENSIONAL"},
-	{"PSXFUNKIN BY CUCKYDEV", "SUCK IT DOWN"},
-	{"PLAYING ON EPSXE HUH", "YOURE THE PROBLEM"},
-	{"NEXT IN LINE", "ATARI"},
-	{"HAXEFLIXEL", "COME ON"},
-	{"HAHAHA", "I DONT CARE"},
-	{"GET ME TO STOP", "TRY"},
-	{"FNF MUKBANG GIF", "THATS UNRULY"},
-	{"OPEN SOURCE", "FOREVER"},
-	{"ITS A PORT", "ITS WORSE"},
-	{"WOW GATO", "WOW GATO"},
-	{"BALLS FISH", "BALLS FISH"},
-};
-
 
 //Menu state
 static struct
@@ -84,10 +44,6 @@ static struct
 	//Page specific state
 	union
 	{
-		struct
-		{
-			u8 funny_message;
-		} opening;
 		struct
 		{
 			fixed_t logo_bump;
@@ -113,8 +69,12 @@ static struct
 	} page_param;
 	
 	//Menu assets
-	Gfx_Tex tex_back, tex_ng, tex_story, tex_title;
+	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple;
 	FontData font_bold, font_arial;
+	
+	boolean music1;
+	boolean music2;
+	boolean music3;
 	
 	Character *gf; //Title Girlfriend
 } menu;
@@ -239,18 +199,13 @@ void Menu_Load(MenuPage page)
 	//Load menu assets
 	IO_Data menu_arc = IO_Read("\\MENU\\MENU.ARC;1");
 	Gfx_LoadTex(&menu.tex_back,  Archive_Find(menu_arc, "back.tim"),  0);
-	Gfx_LoadTex(&menu.tex_ng,    Archive_Find(menu_arc, "ng.tim"),    0);
 	Gfx_LoadTex(&menu.tex_story, Archive_Find(menu_arc, "story.tim"), 0);
 	Gfx_LoadTex(&menu.tex_title, Archive_Find(menu_arc, "title.tim"), 0);
+	Gfx_LoadTex(&menu.tex_ourple, Archive_Find(menu_arc, "ourple.tim"), 0);
 	Mem_Free(menu_arc);
 	
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
-	
-	menu.gf = Char_GF_New(FIXED_DEC(62,1), FIXED_DEC(-12,1));
-	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
-	stage.camera.bzoom = FIXED_UNIT;
-	stage.gf_speed = 4;
 	
 	//Initialize menu state
 	menu.select = menu.next_select = 0;
@@ -258,9 +213,9 @@ void Menu_Load(MenuPage page)
 	switch (menu.page = menu.next_page = page)
 	{
 		case MenuPage_Opening:
-			//Get funny message to use
 			//Do this here so timing is less reliant on VSync
-			menu.page_state.opening.funny_message = ((*((volatile u32*)0xBF801120)) >> 3) % COUNT_OF(funny_messages); //sysclk seeding
+			menu.music2 = false;
+			menu.music3 = false;
 			break;
 		default:
 			break;
@@ -290,7 +245,12 @@ void Menu_Load(MenuPage page)
     Mem_Free(data);
 
 	//Play menu music
-	Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+	if(menu.music1)
+		Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
+	else if(menu.music2)
+		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+	else if(menu.music3)
+		Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
 	Audio_WaitPlayXA();
 	
 	//Set background colour
@@ -341,72 +301,20 @@ void Menu_Tick(void)
 	{
 		case MenuPage_Opening:
 		{
-			u16 beat = stage.song_step >> 2;
-			
-			//Start title screen if opening ended
-			if (beat >= 16)
-			{
-				menu.page = menu.next_page = MenuPage_Title;
-				menu.page_swap = true;
-				//Fallthrough
-			}
-			else
-			{
-				//Start title screen if start pressed
-				if (pad_state.held & PAD_START)
-					menu.page = menu.next_page = MenuPage_Title;
-				
-				//Draw different text depending on beat
-				RECT src_ng = {0, 0, 128, 128};
-				const char **funny_message = funny_messages[menu.page_state.opening.funny_message];
-				
-				switch (beat)
-				{
-					case 3:
-						menu.font_bold.draw(&menu.font_bold, "PRESENT", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 32, FontAlign_Center);
-				//Fallthrough
-					case 2:
-					case 1:
-						menu.font_bold.draw(&menu.font_bold, "NINJAMUFFIN",   screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 32, FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "PHANTOMARCADE", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 16, FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "KAWAISPRITE",   screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2,      FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "EVILSKER",      screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 16, FontAlign_Center);
-						break;
-					
-					case 7:
-						menu.font_bold.draw(&menu.font_bold, "NEWGROUNDS",    screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 32, FontAlign_Center);
-						Gfx_BlitTex(&menu.tex_ng, &src_ng, (screen.SCREEN_WIDTH - 128) >> 1, screen.SCREEN_HEIGHT2 - 16);
-				//Fallthrough
-					case 6:
-					case 5:
-						menu.font_bold.draw(&menu.font_bold, "IN ASSOCIATION", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 64, FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "WITH",           screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 48, FontAlign_Center);
-						break;
-					
-					case 11:
-						menu.font_bold.draw(&menu.font_bold, funny_message[1], screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2, FontAlign_Center);
-				//Fallthrough
-					case 10:
-					case 9:
-						menu.font_bold.draw(&menu.font_bold, funny_message[0], screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 16, FontAlign_Center);
-						break;
-					
-					case 15:
-						menu.font_bold.draw(&menu.font_bold, "FUNKIN", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 8, FontAlign_Center);
-				//Fallthrough
-					case 14:
-						menu.font_bold.draw(&menu.font_bold, "NIGHT", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 8, FontAlign_Center);
-				//Fallthrough
-					case 13:
-						menu.font_bold.draw(&menu.font_bold, "FRIDAY", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 24, FontAlign_Center);
-						break;
-				}
-				break;
-			}
+			menu.page = menu.next_page = MenuPage_Title;
+			menu.page_swap = true;
 		}
 	//Fallthrough
 		case MenuPage_Title:
 		{
+			if(!menu.music1)
+			{
+				menu.music1 = true;
+				Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
+				menu.music2 = false;
+				menu.music3 = false;
+			}
+			
 			//Initialize page
 			if (menu.page_swap)
 			{
@@ -456,7 +364,7 @@ void Menu_Tick(void)
 			u32 x_rad = (logo_scale * (176 >> 1)) >> FIXED_SHIFT;
 			u32 y_rad = (logo_scale * (112 >> 1)) >> FIXED_SHIFT;
 			
-			RECT logo_src = {0, 0, 176, 112};
+			RECT logo_src = {0, 0, 176, 137};
 			RECT logo_dst = {
 				100 - x_rad + (screen.SCREEN_WIDEADD2 >> 1),
 				68 - y_rad,
@@ -472,24 +380,26 @@ void Menu_Tick(void)
 			//Draw "Press Start to Begin"
 			if (menu.next_page == menu.page)
 			{
-				//Blinking blue
-				s16 press_lerp = (MUtil_Cos(animf_count << 3) + 0x100) >> 1;
-				u8 press_r = 51 >> 1;
-				u8 press_g = (58  + ((press_lerp * (255 - 58))  >> 8)) >> 1;
-				u8 press_b = (206 + ((press_lerp * (255 - 206)) >> 8)) >> 1;
-				
-				RECT press_src = {0, 112, 256, 32};
-				Gfx_BlitTexCol(&menu.tex_title, &press_src, (screen.SCREEN_WIDTH - 256) / 2, screen.SCREEN_HEIGHT - 48, press_r, press_g, press_b);
+				RECT press_src = {0, 152, 256, 32};
+				Gfx_BlitTex(&menu.tex_title, &press_src, (screen.SCREEN_WIDTH - 256) / 2, screen.SCREEN_HEIGHT - 48);
 			}
 			else
 			{
 				//Flash white
-				RECT press_src = {0, (animf_count & 1) ? 144 : 112, 256, 32};
+				RECT press_src = {0, (animf_count & 1) ? 184 : 152, 256, 32};
 				Gfx_BlitTex(&menu.tex_title, &press_src, (screen.SCREEN_WIDTH - 256) / 2, screen.SCREEN_HEIGHT - 48);
 			}
 			
-			//Draw Girlfriend
-			menu.gf->tick(menu.gf);
+			//Draw Ourple
+			RECT ourple_src = {0, 0, 91, 255};
+			RECT_FIXED ourple_dst = {
+				0,
+				0,
+				FIXED_DEC(91,1),
+				FIXED_DEC(255,1)
+			};
+			Gfx_DrawTex(&menu.tex_ourple, &ourple_src, &ourple_dst);
+			
 			break;
 		}
 		case MenuPage_Main:
@@ -500,6 +410,14 @@ void Menu_Tick(void)
 				"CREDITS",
 				"OPTIONS",
 			};
+			
+			if (!menu.music2)
+			{
+				menu.music2 = true;
+				Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+				menu.music1 = false;
+				menu.music3 = false;
+			}
 			
 			//Initialize page
 			if (menu.page_swap)
@@ -757,6 +675,14 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Freeplay:
 		{
+			if (!menu.music3)
+			{
+				menu.music3 = true;
+				Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
+				menu.music1 = false;
+				menu.music2 = false;
+			}
+			
 			static const struct
 			{
 				StageId stage;

@@ -1,4 +1,4 @@
 1 xa mainmenu.xa 1 0
 1 xa gameover.xa 1 1
-1 null
-1 null
+1 xa title.xa 1 2
+1 xa freeplay.xa 1 3
