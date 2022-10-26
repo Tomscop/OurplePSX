@@ -362,12 +362,12 @@
 	
 	{ //StageId_6_1 (Fazfuck News)
 		//Characters
-		{Char_STrap_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_STrap_New,    FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Mangle_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
         {NULL},
 		{NULL},

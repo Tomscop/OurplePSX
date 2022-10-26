@@ -59,6 +59,7 @@ all: \
 	iso/ngt/main.arc \
 	iso/gino/main.arc \
 	iso/strap/main.arc \
+	iso/mangle/main.arc \
 	iso/criminal/main.arc \
 	iso/dad/main.arc \
 	iso/storage/back.arc \
@@ -188,6 +189,9 @@ iso/gino/main.arc: iso/gino/idle0.tim iso/gino/idle1.tim iso/gino/idle2.tim iso/
 
 # Springtrap
 iso/strap/main.arc: iso/strap/idle.tim iso/strap/left.tim iso/strap/down.tim iso/strap/up.tim iso/strap/right.tim
+
+# Mangle
+iso/mangle/main.arc: iso/mangle/idle.tim iso/mangle/left.tim iso/mangle/down.tim iso/mangle/up.tim iso/mangle/right.tim
 
 # Criminal
 iso/criminal/main.arc: iso/criminal/intro.tim iso/criminal/idle.tim iso/criminal/left0.tim iso/criminal/left1.tim iso/criminal/down0.tim iso/criminal/down1.tim iso/criminal/up0.tim iso/criminal/up1.tim iso/criminal/right0.tim iso/criminal/right1.tim

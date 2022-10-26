@@ -306,6 +306,9 @@
 				<!-- Springtrap assets -->
 				<file name = "strap.arc" type = "data" source = "iso/strap/main.arc"/>
 				
+				<!-- Mangle assets -->
+				<file name = "mangle.arc" type = "data" source = "iso/mangle/main.arc"/>
+				
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
 				

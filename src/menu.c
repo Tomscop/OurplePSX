@@ -72,8 +72,6 @@ static struct
 	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple;
 	FontData font_bold, font_arial;
 	
-	boolean music;
-	
 	Character *gf; //Title Girlfriend
 } menu;
 
@@ -183,7 +181,6 @@ void Menu_Load(MenuPage page)
 	{
 		case MenuPage_Opening:
 			//Do this here so timing is less reliant on VSync
-			menu.music = 0;
 			break;
 		default:
 			break;
@@ -211,15 +208,6 @@ void Menu_Load(MenuPage page)
     data = IO_ReadFile(&file);
     Sounds[2] = Audio_LoadVAGData(data, file.size);
     Mem_Free(data);
-
-	//Play menu music
-	if (menu.music == 0)
-		Audio_PlayXA_Track(XA_Title, 0x40, 2, true);
-	if (menu.music == 1)
-		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, true);
-	if (menu.music == 2)
-		Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, true);
-	Audio_WaitPlayXA();
 	
 	//Set background colour
 	Gfx_SetClear(0, 0, 0);
@@ -263,6 +251,15 @@ void Menu_Tick(void)
 		menu.select = menu.next_select;
 	}
 	
+	//Menu music
+	//if (menu.page == MenuPage_Title)
+	//	Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
+	//else if ((menu.page == MenuPage_Main) || (menu.page == MenuPage_Credits) || (menu.page == MenuPage_Options))
+		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+	//else if (menu.page == MenuPage_Freeplay)
+	//	Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
+	//Audio_WaitPlayXA();
+	
 	//Tick menu page
 	MenuPage exec_page;
 	switch (exec_page = menu.page)
@@ -275,10 +272,6 @@ void Menu_Tick(void)
 	//Fallthrough
 		case MenuPage_Title:
 		{
-			if (menu.music != 0)
-				Audio_PlayXA_Track(XA_Title, 0x40, 2, true);
-				menu.music = 0;
-			
 			//Initialize page
 			if (menu.page_swap)
 			{
@@ -360,10 +353,6 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Main:
 		{
-			if (menu.music != 1)
-				Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, true);
-				menu.music = 1;
-			
 			static const char *menu_options[] = {
 				"STORY MODE",
 				"FREEPLAY",
@@ -493,10 +482,6 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Freeplay:
 		{
-			if (menu.music != 2)
-				Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, true);
-				menu.music = 2;
-			
 			static const struct
 			{
 				StageId stage;

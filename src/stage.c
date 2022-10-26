@@ -77,6 +77,7 @@ static u32 Sounds[7];
 #include "character/ngt.h"
 #include "character/gino.h"
 #include "character/strap.h"
+#include "character/mangle.h"
 #include "character/criminal.h"
 #include "character/dad.h"
 
