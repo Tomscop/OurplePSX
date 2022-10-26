@@ -303,6 +303,9 @@
 				<!-- Gino assets -->
 				<file name = "gino.arc" type = "data" source = "iso/gino/main.arc"/>
 				
+				<!-- Springtrap assets -->
+				<file name = "strap.arc" type = "data" source = "iso/strap/main.arc"/>
+				
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
 				

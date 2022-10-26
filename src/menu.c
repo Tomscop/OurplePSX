@@ -72,9 +72,7 @@ static struct
 	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple;
 	FontData font_bold, font_arial;
 	
-	boolean music1;
-	boolean music2;
-	boolean music3;
+	boolean music;
 	
 	Character *gf; //Title Girlfriend
 } menu;
@@ -163,35 +161,6 @@ static void Menu_DifficultySelector(s32 x, s32 y)
 	Gfx_BlitTex(&menu.tex_story, diff_src, x - (diff_src->w >> 1), y - 9 + ((pad_state.press & (PAD_LEFT | PAD_RIGHT)) != 0));
 }
 
-static void Menu_DrawWeek(const char *week, s32 x, s32 y)
-{
-	//Draw label
-	if (week == NULL)
-	{
-		//Tutorial
-		RECT label_src = {0, 0, 112, 32};
-		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
-	}
-	else
-	{
-		//Week
-		RECT label_src = {0, 32, 80, 32};
-		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
-		
-		//Number
-		x += 80;
-		for (; *week != '\0'; week++)
-		{
-			//Draw number
-			u8 i = *week - '0';
-			
-			RECT num_src = {128 + ((i & 3) << 5), ((i >> 2) << 5), 32, 32};
-			Gfx_BlitTex(&menu.tex_story, &num_src, x, y);
-			x += 32;
-		}
-	}
-}
-
 //Menu functions
 void Menu_Load(MenuPage page)
 {
@@ -214,8 +183,7 @@ void Menu_Load(MenuPage page)
 	{
 		case MenuPage_Opening:
 			//Do this here so timing is less reliant on VSync
-			menu.music2 = false;
-			menu.music3 = false;
+			menu.music = 0;
 			break;
 		default:
 			break;
@@ -245,12 +213,12 @@ void Menu_Load(MenuPage page)
     Mem_Free(data);
 
 	//Play menu music
-	if(menu.music1)
-		Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
-	else if(menu.music2)
-		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
-	else if(menu.music3)
-		Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
+	if (menu.music == 0)
+		Audio_PlayXA_Track(XA_Title, 0x40, 2, true);
+	if (menu.music == 1)
+		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, true);
+	if (menu.music == 2)
+		Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, true);
 	Audio_WaitPlayXA();
 	
 	//Set background colour
@@ -307,13 +275,9 @@ void Menu_Tick(void)
 	//Fallthrough
 		case MenuPage_Title:
 		{
-			if(!menu.music1)
-			{
-				menu.music1 = true;
-				Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
-				menu.music2 = false;
-				menu.music3 = false;
-			}
+			if (menu.music != 0)
+				Audio_PlayXA_Track(XA_Title, 0x40, 2, true);
+				menu.music = 0;
 			
 			//Initialize page
 			if (menu.page_swap)
@@ -362,7 +326,7 @@ void Menu_Tick(void)
 			};
 			fixed_t logo_scale = logo_scales[(menu.page_state.title.logo_bump * 24) >> FIXED_SHIFT];
 			u32 x_rad = (logo_scale * (176 >> 1)) >> FIXED_SHIFT;
-			u32 y_rad = (logo_scale * (112 >> 1)) >> FIXED_SHIFT;
+			u32 y_rad = (logo_scale * (137 >> 1)) >> FIXED_SHIFT;
 			
 			RECT logo_src = {0, 0, 176, 137};
 			RECT logo_dst = {
@@ -390,34 +354,22 @@ void Menu_Tick(void)
 				Gfx_BlitTex(&menu.tex_title, &press_src, (screen.SCREEN_WIDTH - 256) / 2, screen.SCREEN_HEIGHT - 48);
 			}
 			
-			//Draw Ourple
-			RECT ourple_src = {0, 0, 91, 255};
-			RECT_FIXED ourple_dst = {
-				0,
-				0,
-				FIXED_DEC(91,1),
-				FIXED_DEC(255,1)
-			};
-			Gfx_DrawTex(&menu.tex_ourple, &ourple_src, &ourple_dst);
-			
+			//Draw Girlfriend
+			//menu.gf->tick(menu.gf);
 			break;
 		}
 		case MenuPage_Main:
 		{
+			if (menu.music != 1)
+				Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, true);
+				menu.music = 1;
+			
 			static const char *menu_options[] = {
 				"STORY MODE",
 				"FREEPLAY",
 				"CREDITS",
 				"OPTIONS",
 			};
-			
-			if (!menu.music2)
-			{
-				menu.music2 = true;
-				Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
-				menu.music1 = false;
-				menu.music3 = false;
-			}
 			
 			//Initialize page
 			if (menu.page_swap)
@@ -506,7 +458,7 @@ void Menu_Tick(void)
 						Menu_LowerIf(menu_options[i], menu.select != i),
 						screen.SCREEN_WIDTH2,
 						screen.SCREEN_HEIGHT2 + (i << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
-						FontAlign_Center
+						FontAlign_Right
 					);
 				}
 			}
@@ -517,7 +469,7 @@ void Menu_Tick(void)
 					menu_options[menu.select],
 					screen.SCREEN_WIDTH2,
 					screen.SCREEN_HEIGHT2 + (menu.select << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
-					FontAlign_Center
+					FontAlign_Right
 				);
 			}
 			
@@ -532,156 +484,18 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Story:
 		{
-			static const struct
-			{
-				const char *week;
-				StageId stage;
-				const char *name;
-				const char *tracks[3];
-				int length;
-			} menu_options[] = {
-				{"1", StageId_1_1, "WHY HE OURPLE", {"GUY", "MIDNIGHT", "TERMINATED"}, 3},
-			};
-	
-			//Draw week name and tracks
-			menu.font_arial.draw(&menu.font_arial,
-				scoredisp,
-				0,
-				7,
-				FontAlign_Left
-			);
-
-			sprintf(scoredisp, "PERSONAL BEST: %d", increase_Story(menu_options[menu.select].length, menu_options[menu.select].stage));
-			
-			//Initialize page
-			if (menu.page_swap)
-			{
-				menu.scroll = 0;
-				menu.page_param.stage.diff = StageDiff_Normal;
-				menu.page_state.title.fade = FIXED_DEC(0,1);
-				menu.page_state.title.fadespd = FIXED_DEC(0,1);
-			}
-			
-			//Draw white fade
-			if (menu.page_state.title.fade > 0)
-			{
-				RECT flash2 = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
-				u8 flash_col = menu.page_state.title.fade >> FIXED_SHIFT;
-				Gfx_BlendRect(&flash2, flash_col, flash_col, flash_col, 1);
-				menu.page_state.title.fade -= FIXED_MUL(menu.page_state.title.fadespd, timer_dt);
-			}
-			
-			//Draw difficulty selector
-			Menu_DifficultySelector(screen.SCREEN_WIDTH - 75, 80);
-			
-			//Handle option and selection
-			if (menu.trans_time > 0 && (menu.trans_time -= timer_dt) <= 0)
-				Trans_Start();
-			
-			if (menu.next_page == menu.page && Trans_Idle())
-			{
-				//Change option
-				if (pad_state.press & PAD_UP)
-				{
-					//play scroll sound
-                    Audio_PlaySound(Sounds[0], 0x3fff);
-					if (menu.select > 0)
-						menu.select--;
-					else
-						menu.select = COUNT_OF(menu_options) - 1;
-				}
-				if (pad_state.press & PAD_DOWN)
-				{
-					//play scroll sound
-                    Audio_PlaySound(Sounds[0], 0x3fff);
-					if (menu.select < COUNT_OF(menu_options) - 1)
-						menu.select++;
-					else
-						menu.select = 0;
-				}
-				
-				//Select option if cross is pressed
-				if (pad_state.press & (PAD_START | PAD_CROSS))
-				{
-					//play confirm sound
-					Audio_PlaySound(Sounds[1], 0x3fff);
-					menu.next_page = MenuPage_Stage;
-					menu.page_param.stage.id = menu_options[menu.select].stage;
-					menu.page_param.stage.story = true;
-					menu.trans_time = FIXED_UNIT;
-					menu.page_state.title.fade = FIXED_DEC(255,1);
-					menu.page_state.title.fadespd = FIXED_DEC(510,1);
-				}
-				
-				//Return to main menu if circle is pressed
-				if (pad_state.press & PAD_CIRCLE)
-				{
-					//play cancel sound
-					Audio_PlaySound(Sounds[2], 0x3fff);
-					menu.next_page = MenuPage_Main;
-					menu.next_select = 0; //Story Mode
-					Trans_Start();
-				}
-			}
-			
-			//Draw week name and tracks
-			menu.font_bold.draw(&menu.font_bold,
-				menu_options[menu.select].name,
-				screen.SCREEN_WIDTH - 16,
-				24,
-				FontAlign_Right
-			);
-			
-			const char * const *trackp = menu_options[menu.select].tracks;
-			for (size_t i = 0; i < COUNT_OF(menu_options[menu.select].tracks); i++, trackp++)
-			{
-				if (*trackp != NULL)
-					menu.font_bold.draw(&menu.font_bold,
-						*trackp,
-						screen.SCREEN_WIDTH - 16,
-						screen.SCREEN_HEIGHT - (4 * 24) + (i * 24),
-						FontAlign_Right
-					);
-			}
-			
-			//Draw upper strip
-			RECT name_bar = {0, 16, screen.SCREEN_WIDTH, 32};
-			Gfx_DrawRect(&name_bar, 249, 207, 81);
-			
-			//Draw options
-			s32 next_scroll = menu.select * FIXED_DEC(48,1);
-			menu.scroll += (next_scroll - menu.scroll) >> 3;
-			
-			if (menu.next_page == menu.page || menu.next_page == MenuPage_Main)
-			{
-				//Draw all options
-				for (u8 i = 0; i < COUNT_OF(menu_options); i++)
-				{
-					s32 y = 64 + (i * 48) - (menu.scroll >> FIXED_SHIFT);
-					if (y <= 16)
-						continue;
-					if (y >= screen.SCREEN_HEIGHT)
-						break;
-					Menu_DrawWeek(menu_options[i].week, 48, y);
-				}
-			}
-			else if (animf_count & 2)
-			{
-				//Draw selected option
-				Menu_DrawWeek(menu_options[menu.select].week, 48, 64 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
-			}
-			
+			menu.next_page = MenuPage_Stage;
+			menu.page_param.stage.id = StageId_1_1;
+			menu.page_param.stage.story = true;
+			menu.page_param.stage.diff = StageDiff_Normal;
+			Trans_Start();
 			break;
 		}
 		case MenuPage_Freeplay:
 		{
-			if (!menu.music3)
-			{
-				menu.music3 = true;
-				Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
-				menu.music1 = false;
-				menu.music2 = false;
-			}
+			if (menu.music != 2)
+				Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, true);
+				menu.music = 2;
 			
 			static const struct
 			{

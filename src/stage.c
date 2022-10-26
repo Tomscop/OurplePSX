@@ -76,6 +76,7 @@ static u32 Sounds[7];
 #include "character/jackass.h"
 #include "character/ngt.h"
 #include "character/gino.h"
+#include "character/strap.h"
 #include "character/criminal.h"
 #include "character/dad.h"
 
@@ -2112,7 +2113,7 @@ void Stage_Tick(void)
 					if (stage.stage_id <= StageId_LastVanilla)
 					{
 						if (stage.story)
-							Menu_Load(MenuPage_Story);
+							Menu_Load(MenuPage_Main);
 						else
 							Menu_Load(MenuPage_Freeplay);
 					}
