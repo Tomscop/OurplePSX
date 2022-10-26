@@ -447,7 +447,7 @@ void Menu_Tick(void)
 						Menu_LowerIf(menu_options[i], menu.select != i),
 						screen.SCREEN_WIDTH2,
 						screen.SCREEN_HEIGHT2 + (i << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
-						FontAlign_Right
+						FontAlign_Left
 					);
 				}
 			}
@@ -458,7 +458,7 @@ void Menu_Tick(void)
 					menu_options[menu.select],
 					screen.SCREEN_WIDTH2,
 					screen.SCREEN_HEIGHT2 + (menu.select << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
-					FontAlign_Right
+					FontAlign_Left
 				);
 			}
 			

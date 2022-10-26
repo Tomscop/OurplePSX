@@ -362,18 +362,18 @@
 	
 	{ //StageId_6_1 (Fazfuck News)
 		//Characters
-		{Char_STrap_New,    FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_STrap_New,    FIXED_DEC(-100,1),  FIXED_DEC(217,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_Mangle_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Mangle_New, FIXED_DEC(68,1),  FIXED_DEC(227,1)},
 		{NULL},
         {NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_SAMRoom_New,
 		
 		//Song info
 		6, 1,

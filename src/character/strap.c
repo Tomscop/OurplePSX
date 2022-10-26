@@ -131,9 +131,9 @@ Character *Char_STrap_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFF6C7C48;
 	
-	this->character.focus_x = FIXED_DEC(62,1);
-	this->character.focus_y = FIXED_DEC(-141,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(102,1);
+	this->character.focus_y = FIXED_DEC(-103,1);
+	this->character.focus_zoom = FIXED_DEC(717,512);
 	
 	this->character.size = FIXED_DEC(1,1);
 	

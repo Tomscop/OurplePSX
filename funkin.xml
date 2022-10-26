@@ -196,6 +196,12 @@
 				<file name = "memorys.arc" type = "data" source = "iso/black2/memorys.arc"/>
 				<file name = "alert.tim" type = "data" source = "iso/black2/alert.tim"/>
 			</dir>
+			
+			<!-- SAM Room assets -->
+			<dir name = "samroom">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/samroom/back.arc"/>
+			</dir>
 		
 			<!-- Character assets -->
 			<dir name = "char">

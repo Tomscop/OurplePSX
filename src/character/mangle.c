@@ -131,9 +131,9 @@ Character *Char_Mangle_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFEA8FB6;
 	
-	this->character.focus_x = FIXED_DEC(62,1);
-	this->character.focus_y = FIXED_DEC(-141,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(14,1);
+	this->character.focus_y = FIXED_DEC(-108,1);
+	this->character.focus_zoom = FIXED_DEC(716,512);
 	
 	this->character.size = FIXED_DEC(1,1);
 	
