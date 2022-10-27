@@ -39,7 +39,20 @@ typedef struct
 	
 	Gfx_Tex tex;
 	u8 frame, tex_id;
+	
+	u8 opacity;
 } Char_Criminal;
+
+static void Character_DrawBlend(Character *this, Gfx_Tex *tex, const CharFrame *cframe, u8 opacity)
+{
+	//Draw character
+	fixed_t x = this->x - stage.camera.x - FIXED_DEC(cframe->off[0],1);
+	fixed_t y = this->y - stage.camera.y - FIXED_DEC(cframe->off[1],1);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, src.w << FIXED_SHIFT, src.h << FIXED_SHIFT};
+	Stage_BlendTexV2(tex, &src, &dst, stage.camera.bzoom, 0, opacity);
+}
 
 //Criminal character definitions
 static const CharFrame char_criminal_frame[] = {
@@ -69,7 +82,19 @@ static const Animation char_criminal_anim[CharAnim_Max] = {
 	{3, (const u8[]){ 6,  7, ASCR_BACK, 1}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{3, (const u8[]){ 8, 9, ASCR_BACK, 1}},          //CharAnim_Right
-	{0, (const u8[]){0, ASCR_CHGANI, CharAnim_RightAlt}},   //CharAnim_RightAlt
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+};
+
+static const Animation char_criminal_anim2[CharAnim_Max] = {
+	{3, (const u8[]){ 0, ASCR_BACK, 1}},             //CharAnim_Idle
+	{3, (const u8[]){ 2,  3, ASCR_BACK, 1}},         //CharAnim_Left
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{3, (const u8[]){ 4,  5, ASCR_BACK, 1}},         //CharAnim_Down
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{3, (const u8[]){ 6,  7, ASCR_BACK, 1}},         //CharAnim_Up
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+	{3, (const u8[]){ 8, 9, ASCR_BACK, 1}},          //CharAnim_Right
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
 //Criminal character functions
@@ -94,10 +119,23 @@ void Char_Criminal_Tick(Character *character)
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
-	
+		
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Criminal_SetFrame);
-	Character_Draw(character, &this->tex, &char_criminal_frame[this->frame]);
+	
+	if (stage.song_step >= -24)
+		Animatable_Init(&this->character.animatable, char_criminal_anim);
+	
+	if (stage.song_step >= -122 && this->opacity < 99)
+	{
+		this->opacity++;
+		Character_DrawBlend(character, &this->tex, &char_criminal_frame[this->frame], this->opacity);
+
+		//FntPrint("opacity is %d", this->opacity);
+	}
+
+	else if (stage.song_step >= -24)
+		Character_Draw(character, &this->tex, &char_criminal_frame[this->frame]);
 }
 
 void Char_Criminal_SetAnim(Character *character, u8 anim)
@@ -131,7 +169,7 @@ Character *Char_Criminal_New(fixed_t x, fixed_t y)
 	this->character.set_anim = Char_Criminal_SetAnim;
 	this->character.free = Char_Criminal_Free;
 	
-	Animatable_Init(&this->character.animatable, char_criminal_anim);
+	Animatable_Init(&this->character.animatable, char_criminal_anim2);
 	Character_Init((Character*)this, x, y);
 	
 	//Set character information
@@ -147,6 +185,8 @@ Character *Char_Criminal_New(fixed_t x, fixed_t y)
 	this->character.focus_zoom = FIXED_DEC(62,100);
 	
 	this->character.size = FIXED_DEC(1,1);
+	
+	this->opacity = 0;
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR2\\CRIMINAL.ARC;1");

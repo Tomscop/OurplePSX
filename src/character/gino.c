@@ -207,7 +207,7 @@ static const Animation char_gino_anim[CharAnim_Max] = {
 	{2, (const u8[]){ 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, ASCR_BACK, 1}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){47, 48, 49, 50, 51, 52, 53, 54, 55, ASCR_BACK, 1}},         //CharAnim_Right
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+	{2, (const u8[]){ 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
 //Gino character functions
@@ -232,6 +232,17 @@ void Char_Gino_Tick(Character *character)
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
+	
+	//Stage specific animations
+		switch (stage.stage_id)
+		{
+			case StageId_5_3: //Bite
+				if (stage.song_step == -71)
+					character->set_anim(character, CharAnim_RightAlt);
+				break;
+			default:
+				break;
+		}
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Gino_SetFrame);

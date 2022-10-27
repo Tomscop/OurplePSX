@@ -81,7 +81,7 @@ static const Animation char_cc_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},             //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},             //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
+	{2, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
@@ -113,7 +113,17 @@ void Char_CC_SetFrame(void *user, u8 frame)
 void Char_CC_Tick(Character *character)
 {
 	Char_CC *this = (Char_CC*)character;
-
+	
+	//Camera stuff
+	if (stage.song_step == -37)
+	{
+		this->character.focus_zoom = FIXED_DEC(2227,512);
+	}
+	if (stage.song_step == -36)
+	{
+		this->character.focus_zoom = FIXED_DEC(1064,1024);
+	}
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
@@ -129,22 +139,33 @@ void Char_CC_Tick(Character *character)
 	if (stage.flag & STAGE_FLAG_JUST_STEP)
 	{
 		//Perform idle dance
-		if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != CharAnim_LeftAlt &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 0)
-			character->set_anim(character, CharAnim_Idle);
+			if (Animatable_Ended(&character->animatable) &&
+				(character->animatable.anim != CharAnim_Left &&
+				character->animatable.anim != CharAnim_LeftAlt &&
+				character->animatable.anim != PlayerAnim_LeftMiss &&
+				character->animatable.anim != CharAnim_Down &&
+				character->animatable.anim != CharAnim_DownAlt &&
+				character->animatable.anim != PlayerAnim_DownMiss &&
+				character->animatable.anim != CharAnim_Up &&
+				character->animatable.anim != CharAnim_UpAlt &&
+				character->animatable.anim != PlayerAnim_UpMiss &&
+				character->animatable.anim != CharAnim_Right &&
+				character->animatable.anim != CharAnim_RightAlt &&
+				character->animatable.anim != PlayerAnim_RightMiss) &&
+				(stage.song_step & 0x7) == 0)
+				character->set_anim(character, CharAnim_Idle);
 	}
+	
+	//Stage specific animations
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //Death
+				if (stage.song_step == -48)
+					character->set_anim(character, CharAnim_DownAlt);
+				break;
+			default:
+				break;
+		}
 	
 	//Animate and draw character
 	Animatable_Animate(&character->animatable, (void*)this, Char_CC_SetFrame);

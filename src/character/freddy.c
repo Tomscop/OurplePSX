@@ -54,7 +54,6 @@ static void Character_DrawBlend(Character *this, Gfx_Tex *tex, const CharFrame *
 	Stage_BlendTexV2(tex, &src, &dst, stage.camera.bzoom, 0, opacity);
 }
 
-
 //Freddy character definitions
 static const CharFrame char_freddy_frame[] = {
 	{Freddy_ArcMain_Idle0, {  0,  0,122,174}, { 42,183+4}}, //0 idle 1

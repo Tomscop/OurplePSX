@@ -69,7 +69,7 @@ static struct
 	} page_param;
 	
 	//Menu assets
-	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple, tex_checkers, tex_menustuff;
+	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple, tex_checkers, tex_menustuff, tex_freeplay;
 	FontData font_bold, font_arial;
 	
 	Character *gf; //Title Girlfriend
@@ -171,6 +171,7 @@ void Menu_Load(MenuPage page)
 	Gfx_LoadTex(&menu.tex_ourple, Archive_Find(menu_arc, "ourple.tim"), 0);
 	Gfx_LoadTex(&menu.tex_checkers, Archive_Find(menu_arc, "checkers.tim"), 0);
 	Gfx_LoadTex(&menu.tex_menustuff, Archive_Find(menu_arc, "menustuf.tim"), 0);
+	Gfx_LoadTex(&menu.tex_freeplay, Archive_Find(menu_arc, "freeplay.tim"), 0);
 	Mem_Free(menu_arc);
 	
 	FontData_Load(&menu.font_bold, Font_Bold);
@@ -210,6 +211,10 @@ void Menu_Load(MenuPage page)
     data = IO_ReadFile(&file);
     Sounds[2] = Audio_LoadVAGData(data, file.size);
     Mem_Free(data);
+	
+	//Menu Music
+	Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+	Audio_WaitPlayXA();
 	
 	//Set background colour
 	Gfx_SetClear(0, 0, 0);
@@ -252,15 +257,6 @@ void Menu_Tick(void)
 		menu.page = menu.next_page;
 		menu.select = menu.next_select;
 	}
-	
-	//Menu music
-	//if (menu.page == MenuPage_Title)
-	//	Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
-	//else if ((menu.page == MenuPage_Main) || (menu.page == MenuPage_Credits) || (menu.page == MenuPage_Options))
-		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
-	//else if (menu.page == MenuPage_Freeplay)
-	//	Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
-	Audio_WaitPlayXA();
 	
 	//Tick menu page
 	MenuPage exec_page;
@@ -495,8 +491,8 @@ void Menu_Tick(void)
 			Menu_DrawBack(
 				menu.next_page == menu.page || menu.next_page == MenuPage_Title,
 				menu.scroll >> (FIXED_SHIFT + 3),
-				253 >> 1, 231 >> 1, 113 >> 1,
-				253 >> 1, 113 >> 1, 155 >> 1
+				114 >> 1, 63 >> 1, 144 >> 1,
+				184 >> 1, 72 >> 1, 119 >> 1
 			);
 			break;
 		}
@@ -636,23 +632,15 @@ void Menu_Tick(void)
 				);
 			}
 			
-			//Draw background
-			fixed_t tgt_r = (fixed_t)((menu_options[menu.select].col >> 16) & 0xFF) << FIXED_SHIFT;
-			fixed_t tgt_g = (fixed_t)((menu_options[menu.select].col >>  8) & 0xFF) << FIXED_SHIFT;
-			fixed_t tgt_b = (fixed_t)((menu_options[menu.select].col >>  0) & 0xFF) << FIXED_SHIFT;
-			
-			menu.page_state.freeplay.back_r += (tgt_r - menu.page_state.freeplay.back_r) >> 4;
-			menu.page_state.freeplay.back_g += (tgt_g - menu.page_state.freeplay.back_g) >> 4;
-			menu.page_state.freeplay.back_b += (tgt_b - menu.page_state.freeplay.back_b) >> 4;
-			
-			Menu_DrawBack(
-				true,
-				8,
-				menu.page_state.freeplay.back_r >> (FIXED_SHIFT + 1),
-				menu.page_state.freeplay.back_g >> (FIXED_SHIFT + 1),
-				menu.page_state.freeplay.back_b >> (FIXED_SHIFT + 1),
-				0, 0, 0
-			);
+			//Draw Back
+			RECT freeplay_src = {  0,  0,252,240};
+			RECT freeplay_dst = {
+				0,
+				0,
+				screen.SCREEN_WIDTH,
+				screen.SCREEN_HEIGHT
+			};
+			Gfx_DrawTex(&menu.tex_freeplay, &freeplay_src, &freeplay_dst);
 			break;
 		}
 		case MenuPage_Credits:
@@ -795,7 +783,7 @@ void Menu_Tick(void)
 			Menu_DrawBack(
 				true,
 				8,
-				197 >> 1, 240 >> 1, 95 >> 1,
+				145 >> 1, 68 >> 1, 187 >> 1,
 				0, 0, 0
 			);
 			break;
@@ -950,7 +938,7 @@ void Menu_Tick(void)
 			Menu_DrawBack(
 				true,
 				8,
-				253 >> 1, 113 >> 1, 155 >> 1,
+				170 >> 1, 69 >> 1, 190 >> 1,
 				0, 0, 0
 			);
 			break;
