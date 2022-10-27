@@ -69,7 +69,7 @@ static struct
 	} page_param;
 	
 	//Menu assets
-	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple;
+	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple, tex_checkers, tex_menustuff;
 	FontData font_bold, font_arial;
 	
 	Character *gf; //Title Girlfriend
@@ -169,6 +169,8 @@ void Menu_Load(MenuPage page)
 	Gfx_LoadTex(&menu.tex_story, Archive_Find(menu_arc, "story.tim"), 0);
 	Gfx_LoadTex(&menu.tex_title, Archive_Find(menu_arc, "title.tim"), 0);
 	Gfx_LoadTex(&menu.tex_ourple, Archive_Find(menu_arc, "ourple.tim"), 0);
+	Gfx_LoadTex(&menu.tex_checkers, Archive_Find(menu_arc, "checkers.tim"), 0);
+	Gfx_LoadTex(&menu.tex_menustuff, Archive_Find(menu_arc, "menustuf.tim"), 0);
 	Mem_Free(menu_arc);
 	
 	FontData_Load(&menu.font_bold, Font_Bold);
@@ -347,8 +349,15 @@ void Menu_Tick(void)
 				Gfx_BlitTex(&menu.tex_title, &press_src, (screen.SCREEN_WIDTH - 256) / 2, screen.SCREEN_HEIGHT - 48);
 			}
 			
-			//Draw Girlfriend
-			//menu.gf->tick(menu.gf);
+			//Draw Ourple
+			RECT ourple_src = {  0,  0, 91,255};
+			RECT ourple_dst = {
+				234,
+				0,
+				86,
+				240
+			};
+			Gfx_DrawTex(&menu.tex_ourple, &ourple_src, &ourple_dst);
 			break;
 		}
 		case MenuPage_Main:
@@ -368,9 +377,9 @@ void Menu_Tick(void)
 			//Draw version identification
 			menu.font_bold.draw(&menu.font_bold,
 				"PSXFUNKIN BY CUCKYDEV",
-				16,
+				screen.SCREEN_WIDTH2,
 				screen.SCREEN_HEIGHT - 32,
-				FontAlign_Left
+				FontAlign_Center
 			);
 			
 			//Handle option and selection
@@ -445,7 +454,7 @@ void Menu_Tick(void)
 				{
 					menu.font_bold.draw(&menu.font_bold,
 						Menu_LowerIf(menu_options[i], menu.select != i),
-						screen.SCREEN_WIDTH2,
+						12,
 						screen.SCREEN_HEIGHT2 + (i << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
 						FontAlign_Left
 					);
@@ -456,11 +465,31 @@ void Menu_Tick(void)
 				//Draw selected option
 				menu.font_bold.draw(&menu.font_bold,
 					menu_options[menu.select],
-					screen.SCREEN_WIDTH2,
+					12,
 					screen.SCREEN_HEIGHT2 + (menu.select << 5) - 48 - (menu.scroll >> FIXED_SHIFT),
 					FontAlign_Left
 				);
 			}
+			
+			//Draw Menu Stuff
+			RECT menustuff_src = {  0,  0,252,240};
+			RECT menustuff_dst = {
+				0,
+				0,
+				screen.SCREEN_WIDTH,
+				screen.SCREEN_HEIGHT
+			};
+			Gfx_DrawTex(&menu.tex_menustuff, &menustuff_src, &menustuff_dst);
+			
+			//Draw Checkers
+			RECT checkers_src = {  0,  0,252,240};
+			RECT checkers_dst = {
+				0,
+				0,
+				screen.SCREEN_WIDTH,
+				screen.SCREEN_HEIGHT
+			};
+			Gfx_BlendTex(&menu.tex_checkers, &checkers_src, &checkers_dst, 1);
 			
 			//Draw background
 			Menu_DrawBack(
