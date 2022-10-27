@@ -260,7 +260,7 @@ void Menu_Tick(void)
 		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
 	//else if (menu.page == MenuPage_Freeplay)
 	//	Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
-	//Audio_WaitPlayXA();
+	Audio_WaitPlayXA();
 	
 	//Tick menu page
 	MenuPage exec_page;

@@ -1661,7 +1661,17 @@ static void Stage_LoadMusic(void)
 	Audio_SeekXA_Track(stage.stage_def->music_track);
 	
 	//Initialize music state
-	stage.note_scroll = FIXED_DEC(-5 * 6 * 12,1);
+	if (stage.stage_id == StageId_1_3)
+	{
+		//added more steps and disable intro
+		stage.intro = false;
+		stage.note_scroll = FIXED_DEC(-8 * 6 * 12,1);
+  }
+	else
+	{
+		stage.intro = true;
+		stage.note_scroll = FIXED_DEC(-5 * 6 * 12,1);
+	}
 	stage.song_time = FIXED_DIV(stage.note_scroll, stage.step_crochet);
 	stage.interp_time = 0;
 	stage.interp_ms = 0;
@@ -2054,27 +2064,6 @@ void Stage_Tick(void)
 	
 	//Tick transition
 	//Return to menu when start is pressed
-	if (stage.paused == false && pad_state.press & PAD_START && stage.state == StageState_Play)
-	{
-		stage.pause_scroll = -1;
-		pad_state.press = false;
-		Audio_PauseXA();
-		stage.paused = true;
-	}
-
-	if (stage.paused)
-	{
-		switch (stage.pause_state)
-		{
-			case 0:
-				PausedState();
-				break;
-			case 1:
-				OptionsState(&note_x);
-				break;
-		}
-		
-	}
 	
 	if (pad_state.press & (PAD_START | PAD_CROSS) && stage.state != StageState_Play)
 	{
@@ -2143,6 +2132,7 @@ void Stage_Tick(void)
 				LoadScr_Start();
 				Stage_Load(stage.stage_id, stage.stage_diff, stage.story);
 				LoadScr_End();
+				stage.paused = false;
 				break;
 		}
 	}
@@ -2218,8 +2208,8 @@ void Stage_Tick(void)
 						StageTimer_Draw();
 
 			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
-
-			Stage_CountDown();
+			if (stage.intro)
+				Stage_CountDown();
 
 			Stage_Player2();
 			Stage_Player3();
@@ -2358,12 +2348,13 @@ void Stage_Tick(void)
 						if (Stage_NextLoad())
 							goto SeamLoad;
 					}
-					else
+					else if (stage.paused == false)
 					{
 						stage.trans = StageTrans_Menu;
 						Trans_Start();
 					}
 				}	
+
 				RecalcScroll:;
 				//Update song scroll and step
 				if (next_scroll > stage.note_scroll)
@@ -2398,6 +2389,28 @@ void Stage_Tick(void)
 					}
 				}
 			}
+
+
+			if (stage.paused == false && pad_state.press & PAD_START)
+				{
+					stage.pause_scroll = -1;
+					Audio_PauseXA();
+					stage.paused = true;
+					pad_state.press = 0;
+				}
+
+			if (stage.paused)
+				{
+					switch (stage.pause_state)
+					{
+						case 0:
+							PausedState();
+							break;
+						case 1:
+							OptionsState(&note_x);
+							break;
+					}
+				}
 
 			//Handle bump
 			if ((stage.bump = FIXED_UNIT + FIXED_MUL(stage.bump - FIXED_UNIT, FIXED_DEC(95,100))) <= FIXED_DEC(1003,1000))
