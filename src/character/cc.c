@@ -59,33 +59,33 @@ static const CharFrame char_cc_frame[] =
 	{CC_ArcMain_CC1, {166,114, 82,113}, { 53, 92}}, //11 right 2
 	
 	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //12 left miss 1
-	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //13 left miss 2
+	{CC_ArcMain_CC2, { 83,  0, 82,113}, { 53, 92}}, //13 left miss 2
 	
-	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //14 down miss 1
-	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //15 down miss 2
+	{CC_ArcMain_CC2, {166,  0, 82,113}, { 53, 92}}, //14 down miss 1
+	{CC_ArcMain_CC2, {  0,114, 82,113}, { 53, 92}}, //15 down miss 2
 	
-	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //16 up miss 1
-	{CC_ArcMain_CC2, {  0,  0, 82,113}, { 53, 92}}, //17 up miss 2
+	{CC_ArcMain_CC2, { 83,114, 82,113}, { 53, 92}}, //16 up miss 1
+	{CC_ArcMain_CC2, {166,114, 82,113}, { 53, 92}}, //17 up miss 2
 	
 	{CC_ArcMain_CC3, {  0,  0, 82,113}, { 53, 92}}, //18 right miss 1
-	{CC_ArcMain_CC3, {  0,  0, 82,113}, { 53, 92}}, //19 right miss 2
+	{CC_ArcMain_CC3, { 83,  0, 82,113}, { 53, 92}}, //19 right miss 2
 	
-	{CC_ArcMain_CC3, {  0,  0, 82,113}, { 53, 92}}, //20 intro 1
+	{CC_ArcMain_CC3, {166,  0, 82,113}, { 53, 92}}, //20 intro 1
 	{CC_ArcMain_CC4, {  0,  0, 82,113}, { 53, 92}}, //21 intro 2
-	{CC_ArcMain_CC4, {  0,  0, 82,113}, { 53, 92}}, //22 intro 3
-	{CC_ArcMain_CC4, {  0,  0, 82,113}, { 53, 92}}, //23 intro 4
-	{CC_ArcMain_CC4, {  0,  0, 82,113}, { 53, 92}}, //24 intro 5
+	{CC_ArcMain_CC4, { 83,  0, 82,113}, { 53, 92}}, //22 intro 3
+	{CC_ArcMain_CC4, {166,  0, 82,113}, { 53, 92}}, //23 intro 4
+	{CC_ArcMain_CC4, {  0,114, 82,113}, { 53, 92}}, //24 intro 5
 };
 static const Animation char_cc_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},             //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},             //CharAnim_Down
-	{2, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_DownAlt
+	{3, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
-	{2, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
+	{3, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){ 4, 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
 	{1, (const u8[]){ 6, 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
@@ -114,27 +114,18 @@ void Char_CC_Tick(Character *character)
 {
 	Char_CC *this = (Char_CC*)character;
 	
-	//Camera stuff
-	if (stage.song_step == -37)
-	{
-		this->character.focus_zoom = FIXED_DEC(2227,512);
-	}
-	if (stage.song_step == -36)
-	{
-		this->character.focus_zoom = FIXED_DEC(1064,1024);
-	}
-	
 	//Handle animation updates
-	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
-	    (character->animatable.anim != CharAnim_Left &&
-	     character->animatable.anim != CharAnim_LeftAlt &&
-	     character->animatable.anim != CharAnim_Down &&
-	     character->animatable.anim != CharAnim_DownAlt &&
-	     character->animatable.anim != CharAnim_Up &&
-	     character->animatable.anim != CharAnim_UpAlt &&
-	     character->animatable.anim != CharAnim_Right &&
-	     character->animatable.anim != CharAnim_RightAlt))
-		Character_CheckEndSing(character);
+	if(character->animatable.anim  != CharAnim_DownAlt)
+	{
+	    if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
+	        (character->animatable.anim != CharAnim_Left &&
+	         character->animatable.anim != CharAnim_LeftAlt &&
+	         character->animatable.anim != CharAnim_Down &&
+	         character->animatable.anim != CharAnim_Up &&
+	         character->animatable.anim != CharAnim_UpAlt &&
+	         character->animatable.anim != CharAnim_Right &&
+	         character->animatable.anim != CharAnim_RightAlt))
+		       Character_CheckEndSing(character);
 	
 	if (stage.flag & STAGE_FLAG_JUST_STEP)
 	{
@@ -144,7 +135,6 @@ void Char_CC_Tick(Character *character)
 				character->animatable.anim != CharAnim_LeftAlt &&
 				character->animatable.anim != PlayerAnim_LeftMiss &&
 				character->animatable.anim != CharAnim_Down &&
-				character->animatable.anim != CharAnim_DownAlt &&
 				character->animatable.anim != PlayerAnim_DownMiss &&
 				character->animatable.anim != CharAnim_Up &&
 				character->animatable.anim != CharAnim_UpAlt &&
@@ -155,6 +145,7 @@ void Char_CC_Tick(Character *character)
 				(stage.song_step & 0x7) == 0)
 				character->set_anim(character, CharAnim_Idle);
 	}
+}
 	
 	//Stage specific animations
 		switch (stage.stage_id)
@@ -217,6 +208,7 @@ Character *Char_CC_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFB1B1B1;
 
+	//Camera stuff is in fbear.c btw
 	this->character.focus_x = FIXED_DEC(-30,1);
 	this->character.focus_y = FIXED_DEC(-59,1);
 	this->character.focus_zoom = FIXED_DEC(1064,1024);

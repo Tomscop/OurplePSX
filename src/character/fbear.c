@@ -112,7 +112,20 @@ void Char_FBear_SetFrame(void *user, u8 frame)
 void Char_FBear_Tick(Character *character)
 {
 	Char_FBear *this = (Char_FBear*)character;
-
+	
+	//Camera stuff
+	if (stage.stage_id == StageId_4_3)
+	{
+		if (stage.song_step == -37)
+		{
+			this->character.focus_zoom = FIXED_DEC(3500,512);
+		}
+		if (stage.song_step == -36)
+		{
+			this->character.focus_zoom = FIXED_DEC(1064,1024);
+		}
+	}
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&

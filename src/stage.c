@@ -1641,7 +1641,29 @@ static void Stage_LoadSFX(void)
 	if ((stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
 	{
 		char text[0x80];
-		sprintf(text, "\\SOUNDS\\BITE.VAG;1", 9);
+		sprintf(text, "\\SOUNDS\\BITE.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[9] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
+	//glitch sound
+	if (stage.stage_id == StageId_5_3)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\GLITCH.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[8] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
+	//criminal sound
+	if (stage.stage_id == StageId_6_2)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\CRIMINAL.VAG;1");
 		IO_FindFile(&file, text);
 		u32 *data = IO_ReadFile(&file);
 		Sounds[9] = Audio_LoadVAGData(data, file.size);
@@ -2232,7 +2254,16 @@ void Stage_Tick(void)
 					if (show)
 						StageTimer_Draw();
 					
-			if ((stage.stage_id == StageId_4_3) && (stage.song_step == -37))
+			if ((stage.stage_id == StageId_4_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
+				Audio_PlaySound(Sounds[9], 0x3fff);
+			
+			//if ((stage.stage_id == StageId_5_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
+			//	Audio_PlaySound(Sounds[8], 0x3fff);
+			
+			//if ((stage.stage_id == StageId_5_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
+			//	Audio_PlaySound(Sounds[9], 0x3fff);
+			
+			if ((stage.stage_id == StageId_6_2) && (stage.song_step == -122) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
 			
 			if (stage.stage_id == StageId_1_3)
