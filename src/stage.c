@@ -2257,11 +2257,11 @@ void Stage_Tick(void)
 			if ((stage.stage_id == StageId_4_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
 			
-			//if ((stage.stage_id == StageId_5_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
-			//	Audio_PlaySound(Sounds[8], 0x3fff);
+			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -50) && stage.flag & STAGE_FLAG_JUST_STEP)
+				Audio_PlaySound(Sounds[8], 0x3fff);
 			
-			//if ((stage.stage_id == StageId_5_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
-			//	Audio_PlaySound(Sounds[9], 0x3fff);
+			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -9) && stage.flag & STAGE_FLAG_JUST_STEP)
+				Audio_PlaySound(Sounds[9], 0x3fff);
 			
 			if ((stage.stage_id == StageId_6_2) && (stage.song_step == -122) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
