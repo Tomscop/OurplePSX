@@ -187,7 +187,7 @@ void Back_Black2_DrawBG(StageBack *back)
 	if (stage.stage_id == StageId_5_3 && stage.song_step == 1057)
 	{
 		this->fade = FIXED_DEC(1,1);
-		this->fadespd = FIXED_DEC(425,1);
+		this->fadespd = FIXED_DEC(424,1);
 	}
 
 	else if (stage.stage_id == StageId_5_3 && stage.song_step == 2737)

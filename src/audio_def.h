@@ -74,7 +74,7 @@ static const XA_Mp3 xa_mp3s[] = {
 	{"mainmenu", false},   //XA_MainMenu
 	{"gameover", false}, //XA_GameOver
 	{"title", false},   //XA_Title
-	{"freeplay", false}, //XA_Freeplay
+	{"freeplay", false},   //XA_Freeplay
 	//WEEK1A.XA
 	{"guy", true}, //XA_Guy
 	{"midnight", true},   //XA_Midnight

@@ -72,6 +72,8 @@ static struct
 	Gfx_Tex tex_back, tex_story, tex_title, tex_ourple, tex_checkers, tex_menustuff, tex_freeplay;
 	FontData font_bold, font_arial;
 	
+	boolean music;
+	
 	Character *gf; //Title Girlfriend
 } menu;
 
@@ -212,10 +214,6 @@ void Menu_Load(MenuPage page)
     Sounds[2] = Audio_LoadVAGData(data, file.size);
     Mem_Free(data);
 	
-	//Menu Music
-	Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
-	Audio_WaitPlayXA();
-	
 	//Set background colour
 	Gfx_SetClear(0, 0, 0);
 }
@@ -258,6 +256,23 @@ void Menu_Tick(void)
 		menu.select = menu.next_select;
 	}
 	
+	//Menu music 
+	if (menu.music == 0)
+	{
+		Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
+		Audio_WaitPlayXA();
+	}
+	if (menu.music == 1)
+	{
+		Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+		Audio_WaitPlayXA();
+	}
+	if (menu.music == 2)
+	{
+		Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
+		Audio_WaitPlayXA();
+	}
+	
 	//Tick menu page
 	MenuPage exec_page;
 	switch (exec_page = menu.page)
@@ -266,10 +281,20 @@ void Menu_Tick(void)
 		{
 			menu.page = menu.next_page = MenuPage_Title;
 			menu.page_swap = true;
+			if (menu.music != 3)
+				menu.music = 3;
 		}
 	//Fallthrough
 		case MenuPage_Title:
 		{
+			if (menu.music != 0)
+			{
+				Audio_StopXA();
+				menu.music = 0;
+				Audio_PlayXA_Track(XA_Title, 0x40, 2, 1);
+				Audio_WaitPlayXA();
+			}
+		
 			//Initialize page
 			if (menu.page_swap)
 			{
@@ -358,6 +383,14 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Main:
 		{
+			if (menu.music != 1)
+			{
+				Audio_StopXA();
+				menu.music = 1;
+				Audio_PlayXA_Track(XA_MainMenu, 0x40, 0, 1);
+				Audio_WaitPlayXA();
+			}
+			
 			static const char *menu_options[] = {
 				"STORY MODE",
 				"FREEPLAY",
@@ -507,6 +540,14 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Freeplay:
 		{
+			if (menu.music != 2)
+			{
+				Audio_StopXA();
+				menu.music = 2;
+				Audio_PlayXA_Track(XA_Freeplay, 0x40, 3, 1);
+				Audio_WaitPlayXA();
+			}
+			
 			static const struct
 			{
 				StageId stage;

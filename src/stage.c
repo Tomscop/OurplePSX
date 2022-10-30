@@ -44,7 +44,7 @@ boolean noteshake;
 boolean show;
 fixed_t fade;
 fixed_t fade, fadespd;
-static u32 Sounds[10];
+static u32 Sounds[11];
 
 #include "character/bf.h"
 #include "character/gf.h"
@@ -1658,18 +1658,6 @@ static void Stage_LoadSFX(void)
 		Sounds[8] = Audio_LoadVAGData(data, file.size);
 		Mem_Free(data);
 	}
-	
-	//criminal sound
-	if (stage.stage_id == StageId_6_2)
-	{
-		char text[0x80];
-		sprintf(text, "\\SOUNDS\\CRIMINAL.VAG;1");
-		IO_FindFile(&file, text);
-		u32 *data = IO_ReadFile(&file);
-		Sounds[9] = Audio_LoadVAGData(data, file.size);
-		Mem_Free(data);
-	}
-
 }
 
 static void Stage_LoadMusic(void)
@@ -1705,7 +1693,7 @@ static void Stage_LoadMusic(void)
 	else if (stage.stage_id == StageId_5_3)
 	{
 		stage.intro = false;
-		stage.note_scroll = FIXED_DEC(-71 * 1 * 12,1);
+		stage.note_scroll = FIXED_DEC(-92 * 1 * 12,1);
 	}
 	else if (stage.stage_id == StageId_6_2)
 	{
@@ -2189,7 +2177,7 @@ void Stage_Tick(void)
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
 				
-				FntPrint("step is %d", stage.song_step);
+				//FntPrint("step is %d", stage.song_step);
 				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
@@ -2228,14 +2216,14 @@ void Stage_Tick(void)
 				{
 					if ((stage.stage_id == StageId_1_4) || (stage.stage_id == StageId_4_1) || (stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
 					{
-						RECT scanline_src = {0, 0, 256, 256};
-						RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
+						RECT scanline_src = {  0,  0, 12,240};
+						RECT scanline_dst = {  0,  0, (screen.SCREEN_WIDTH) + 50, (screen.SCREEN_HEIGHT)};
 						Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
 					}
 					else if ((stage.stage_id == StageId_1_3 && stage.song_step >= 911 && stage.song_step <= 1167) || (stage.stage_id == StageId_1_3 && stage.song_step >= 1423 && stage.song_step <= 1680))
 					{
-						RECT scanline_src = {0, 0, 256, 256};
-						RECT scanline_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
+						RECT scanline_src = {  0,  0, 12,240};
+						RECT scanline_dst = {  0,  0, (screen.SCREEN_WIDTH) + 50, (screen.SCREEN_HEIGHT)};
 						Gfx_DrawTex(&stage.tex_scanline, &scanline_src, &scanline_dst);
 					}
 				}
@@ -2257,14 +2245,14 @@ void Stage_Tick(void)
 			if ((stage.stage_id == StageId_4_3) && (stage.song_step == -37) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
 			
-			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -50) && stage.flag & STAGE_FLAG_JUST_STEP)
+			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -66) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[8], 0x3fff);
 			
-			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -9) && stage.flag & STAGE_FLAG_JUST_STEP)
+			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -8) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
 			
 			if ((stage.stage_id == StageId_6_2) && (stage.song_step == -122) && stage.flag & STAGE_FLAG_JUST_STEP)
-				Audio_PlaySound(Sounds[9], 0x3fff);
+				Audio_PlaySound(Sounds[10], 0x3fff);
 			
 			if (stage.stage_id == StageId_1_3)
 			{
@@ -2299,7 +2287,6 @@ void Stage_Tick(void)
 				show = true;
 			}
 			
-			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 			if (stage.intro)
 				Stage_CountDown();
 

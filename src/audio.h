@@ -35,7 +35,7 @@ typedef enum
 	XA_MainMenu, //Main Menu
 	XA_GameOver, //Game Over
 	XA_Title, //Title
-	XA_Freeplay, //Freeplay
+	XA_Freeplay, //Title
 	//WEEK1A.XA
 	XA_Guy, //Guy
 	XA_Midnight,   //Midnight

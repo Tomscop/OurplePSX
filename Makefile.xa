@@ -11,7 +11,7 @@ all: \
   iso/music/week5a.xa \
   iso/music/week5b.xa \
   iso/music/week6a.xa \
-  iso/music/week6b.xa 
+  iso/music/week6b.xa \
 
 # XA converts
 iso/music/%.xa: iso/music/%.ogg
