@@ -106,6 +106,26 @@ static const StageDef stage_defs[StageId_Max] = {
 Stage stage;
 Debug debug;
 
+static void Stage_CheckAnimations(PlayerState *this, u8 type)
+{
+	this->character->set_anim(this->character, type);
+	if (this->character2 != NULL)
+		this->character2->set_anim(this->character2, type);
+	if (this->character3 != NULL)
+		this->character3->set_anim(this->character3, type);
+	if (this->character4 != NULL)
+		this->character4->set_anim(this->character4, type);
+	if (this->character5 != NULL)
+		this->character5->set_anim(this->character5, type);
+}
+
+Character* Stage_ChangeChars(Character* newcharacter)
+{
+		newcharacter->pad_held = 0;
+
+		return newcharacter;
+}
+
 //Stage music functions
 static void Stage_StartVocal(void)
 {
@@ -351,7 +371,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
 
-		   this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			Stage_CheckAnimations(this, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
 
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 			this->arrow_hitan[type & 0x3] = stage.step_time;
@@ -422,7 +442,7 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 		//Hit the note
 		note->type |= NOTE_FLAG_HIT;
 		
-		this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+		Stage_CheckAnimations(this, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
 		
 		Stage_StartVocal();
 		this->health += 230;
@@ -446,7 +466,7 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 	if (stage.prefs.botplay == 0) {
 		if (playing)
 		{
-			u8 i = ((this->character == stage.opponent) || (this->character == stage.opponent2)) ? NOTE_FLAG_OPPONENT : 0;
+			u8 i = ((this->character == stage.opponent) || (this->character == stage.opponent2) || (this->character == stage.opponent3)) ? NOTE_FLAG_OPPONENT : 0;
 			
 			this->pad_held = this->character->pad_held = pad->held;
 			this->pad_press = pad->press;
@@ -480,7 +500,7 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 		//Do perfect note checks
 		if (playing)
 		{
-			u8 i = ((this->character == stage.opponent) || (this->character == stage.opponent2)) ? NOTE_FLAG_OPPONENT : 0;
+			u8 i = ((this->character == stage.opponent) || (this->character == stage.opponent2) || (this->character == stage.opponent3)) ? NOTE_FLAG_OPPONENT : 0;
 			
 			u8 hit[4] = {0, 0, 0, 0};
 			for (Note *note = stage.cur_note;; note++)
@@ -877,240 +897,6 @@ static void Stage_DrawHealthBar(s16 x, s32 color)
 	
 	if (show)
 		Stage_DrawTexCol(&stage.tex_hud1, &src, &dst, stage.bump, red >> 1, blue >> 1, green >> 1);
-}
-
-static void Stage_Player2(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only player2 sing)
-	if (strcmp(stage.player2sing, "single") == 0 && checkoption != stage.player2sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.player2;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.player2;
-		}
-	}
-
-	//change mode to none (player2 don't sing)
-    else if (strcmp(stage.player2sing, "none") == 0 && checkoption != stage.player2sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.player;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.player;
-		}
-	}
-
-	if (checkoption != stage.player2sing)
-		checkoption = stage.player2sing;
-}
-
-static void Stage_Player3(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only player3 sing)
-	if (strcmp(stage.player3sing, "single") == 0 && checkoption != stage.player3sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.player3;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.player3;
-		}
-	}
-
-	//change mode to none (player3 don't sing)
-    else if (strcmp(stage.player3sing, "none") == 0 && checkoption != stage.player3sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.player;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.player;
-		}
-	}
-
-	if (checkoption != stage.player3sing)
-		checkoption = stage.player3sing;
-}
-
-static void Stage_Player4(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only player4 sing)
-	if (strcmp(stage.player4sing, "single") == 0 && checkoption != stage.player4sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.player4;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.player4;
-		}
-	}
-
-	//change mode to none (player4 don't sing)
-    else if (strcmp(stage.player4sing, "none") == 0 && checkoption != stage.player4sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.player;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.player;
-		}
-	}
-
-	if (checkoption != stage.player4sing)
-		checkoption = stage.player4sing;
-}
-
-static void Stage_Player5(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only player5 sing)
-	if (strcmp(stage.player5sing, "single") == 0 && checkoption != stage.player5sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.player5;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.player5;
-		}
-	}
-
-	//change mode to none (player5 don't sing)
-    else if (strcmp(stage.player5sing, "none") == 0 && checkoption != stage.player5sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.player;
-		}
-		else
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.player;
-		}
-	}
-
-	if (checkoption != stage.player5sing)
-		checkoption = stage.player5sing;
-}
-
-static void Stage_Opponent2(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only opponent2 sing)
-	if (strcmp(stage.oppo2sing, "single") == 0 && checkoption != stage.oppo2sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.opponent2;
-		}
-		else
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.opponent2;
-		}
-	}
-
-	//change mode to none (opponent2 don't sing)
-    else if (strcmp(stage.oppo2sing, "none") == 0 && checkoption != stage.oppo2sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.opponent;
-		}
-		else
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.opponent;
-		}
-	}
-
-	if (checkoption != stage.oppo2sing)
-		checkoption = stage.oppo2sing;
-}
-
-static void Stage_Opponent3(void)
-{
-	//check which mode you choose
-	static char* checkoption;
-
-	//change mode to single(only opponent3 sing)
-	if (strcmp(stage.oppo3sing, "single") == 0 && checkoption != stage.oppo3sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[0].character->pad_held = 0;
-			stage.player_state[0].character = stage.opponent3;
-		}
-		else
-		{
-			stage.player_state[1].character->pad_held = 0;
-			stage.player_state[1].character = stage.opponent3;
-		}
-	}
-
-	//change mode to none (opponent3 don't sing)
-    else if (strcmp(stage.oppo3sing, "none") == 0 && checkoption != stage.oppo3sing)
-	{
-		if (stage.mode == StageMode_Swap)
-		{
-			stage.player_state[0].character->pad_held = 0;
-		 	stage.player_state[0].character = stage.opponent;
-		}
-		else
-		{
-			stage.player_state[1].character->pad_held = 0;
-		 	stage.player_state[1].character = stage.opponent;
-		}
-	}
-
-	if (checkoption != stage.oppo3sing)
-		checkoption = stage.oppo3sing;
 }
 
 static void Stage_DrawStrum(u8 i, RECT *note_src, RECT_FIXED *note_dst)
@@ -1760,18 +1546,20 @@ static void Stage_LoadState(void)
 		stage.player_state[1].character = stage.opponent;
 	}
 
+	for (u8 i = 0; i < 2; i++)
+	{
+	stage.player_state[i].character2 = NULL;
+	stage.player_state[i].character3 = NULL;
+	stage.player_state[i].character4 = NULL;
+	stage.player_state[i].character5 = NULL;
+	}
+
 	for (int i = 0; i < 2; i++)
 	{
 		memset(stage.player_state[i].arrow_hitan, 0, sizeof(stage.player_state[i].arrow_hitan));
 		
 		stage.player_state[i].health = 10000;
 		stage.player_state[i].combo = 0;
-		stage.oppo2sing = "none";
-		stage.oppo3sing = "none";
-		stage.player2sing = "none";
-		stage.player3sing = "none";
-		stage.player4sing = "none";
-		stage.player5sing = "none";
 		soundcooldown = 0;
 		drawshit = 0;
 		if (!stage.prefs.debug)
@@ -2301,13 +2089,6 @@ void Stage_Tick(void)
 			if (stage.intro)
 				Stage_CountDown();
 
-			Stage_Player2();
-			Stage_Player3();
-			Stage_Player4();
-			Stage_Player5();
-			Stage_Opponent2();
-			Stage_Opponent3();
-
 			if (stage.prefs.botplay)
 			{
 				//Draw botplay
@@ -2647,9 +2428,9 @@ void Stage_Tick(void)
 					}
 					
 					if (opponent_anote != CharAnim_Idle)
-						stage.player_state[1].character->set_anim(stage.player_state[1].character, opponent_anote);
+					  Stage_CheckAnimations(&stage.player_state[1], opponent_anote);
 					else if (opponent_snote != CharAnim_Idle)
-						stage.player_state[1].character->set_anim(stage.player_state[1].character, opponent_snote);
+						Stage_CheckAnimations(&stage.player_state[1], opponent_snote);
 					break;
 					break;
 				}
@@ -2767,7 +2548,7 @@ void Stage_Tick(void)
 				stage.player->tick(stage.player);
 				stage.opponent->tick(stage.opponent);
 			}
-            if (stage.player2 != NULL)
+      if (stage.player2 != NULL)
 				stage.player2->tick(stage.player2);
 			if (stage.player3 != NULL)
 				stage.player3->tick(stage.player3);
@@ -2805,70 +2586,79 @@ void Stage_Tick(void)
 			else
 				StageTimer_Calculate();
 
+			if (stage.stage_id == StageId_6_3)
+			{
+				if (stage.song_step == 20)
+				{
+					stage.player_state[0].character =  Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character2 = Stage_ChangeChars(stage.player4);
+					stage.player_state[0].character3 = NULL;
+				}
+			}
 
 			if (stage.stage_id == StageId_1_3)
 			{
 				if (stage.song_step == 270)
-					stage.oppo2sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
 				if (stage.song_step == 271)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 911)
-					stage.oppo2sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 912)
-					stage.oppo3sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
 				if (stage.song_step == 1167)
-					stage.oppo3sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 1168)
-					stage.oppo2sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
 				if (stage.song_step == 1423)
-					stage.oppo2sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 1424)
-					stage.oppo3sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
 				if (stage.song_step == 1680)
-					stage.oppo3sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 1681)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 			}
 			if (stage.stage_id == StageId_2_1)
 			{
 				if (stage.song_step == 1784)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 1924)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 				if (stage.song_step == 2046)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 2181)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 				if (stage.song_step == 2372)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 2431)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 			}
 			if (stage.stage_id == StageId_2_3)
 			{
 				if (stage.song_step == 824)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 895)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 				if (stage.song_step == 1343)
-					stage.oppo2sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
 				if (stage.song_step == 1407)
-					stage.oppo2sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 2104)
-					stage.player2sing = "single";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
 				if (stage.song_step == 2175)
-					stage.player2sing = "none";
+					stage.player_state[0].character = Stage_ChangeChars(stage.player);
 			}
 			if (stage.stage_id == StageId_3_2)
 			{
 				if (stage.song_step == 496)
-					stage.oppo2sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
 				if (stage.song_step == 1037)
-					stage.oppo2sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 				if (stage.song_step == 1038)
-					stage.oppo3sing = "single";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
 				if (stage.song_step == 1472)
-					stage.oppo3sing = "none";
+					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
 			}
 			break;
 		}

@@ -158,6 +158,10 @@ typedef struct
 typedef struct
 {
 	Character *character;
+	Character *character2;
+	Character *character3;
+	Character *character4;
+	Character *character5;
 	
 	fixed_t arrow_hitan[4]; //Arrow hit animation for presses
 
@@ -251,7 +255,7 @@ typedef struct
 	Character *player4;
 	Character *player5;
 	Character *opponent;
-    Character *opponent2;
+  Character *opponent2;
 	Character *opponent3;
 	Character *gf;
 	
@@ -271,13 +275,6 @@ typedef struct
 
 	s32 song_step;
 	s16 song_beat;
-
-	char* player2sing;
-	char* player3sing;
-	char* player4sing;
-	char* player5sing;
-	char* oppo2sing;
-	char* oppo3sing;
 
 	boolean freecam;
 	
