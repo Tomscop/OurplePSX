@@ -44,7 +44,7 @@ boolean noteshake;
 boolean show;
 fixed_t fade;
 fixed_t fade, fadespd;
-static u32 Sounds[11];
+static u32 Sounds[10];
 
 #include "character/bf.h"
 #include "character/gf.h"
@@ -1658,6 +1658,17 @@ static void Stage_LoadSFX(void)
 		Sounds[8] = Audio_LoadVAGData(data, file.size);
 		Mem_Free(data);
 	}
+	
+	//criminal sound
+	if (stage.stage_id == StageId_6_2)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\CRIMINAL.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[9] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
 }
 
 static void Stage_LoadMusic(void)
@@ -1698,7 +1709,7 @@ static void Stage_LoadMusic(void)
 	else if (stage.stage_id == StageId_6_2)
 	{
 		stage.intro = false;
-		stage.note_scroll = FIXED_DEC(-61 * 2 * 12,1);
+		stage.note_scroll = FIXED_DEC(-107 * 1 * 12,1);
 	}
 	else
 	{
@@ -2177,7 +2188,7 @@ void Stage_Tick(void)
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
 				
-				//FntPrint("step is %d", stage.song_step);
+				FntPrint("step is %d", stage.song_step);
 				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
@@ -2251,8 +2262,8 @@ void Stage_Tick(void)
 			if ((stage.stage_id == StageId_5_3) && (stage.song_step == -8) && stage.flag & STAGE_FLAG_JUST_STEP)
 				Audio_PlaySound(Sounds[9], 0x3fff);
 			
-			if ((stage.stage_id == StageId_6_2) && (stage.song_step == -122) && stage.flag & STAGE_FLAG_JUST_STEP)
-				Audio_PlaySound(Sounds[10], 0x3fff);
+			if ((stage.stage_id == StageId_6_2) && (stage.song_step == -106) && stage.flag & STAGE_FLAG_JUST_STEP)
+				Audio_PlaySound(Sounds[9], 0x3fff);
 			
 			if (stage.stage_id == StageId_1_3)
 			{
