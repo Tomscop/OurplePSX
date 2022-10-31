@@ -40,7 +40,7 @@ typedef struct
 	Gfx_Tex tex;
 	u8 frame, tex_id;
 	
-	u8 opacity;
+	u16 opacity;
 } Char_Criminal;
 
 static void Character_DrawBlend(Character *this, Gfx_Tex *tex, const CharFrame *cframe, u8 opacity)
@@ -126,10 +126,10 @@ void Char_Criminal_Tick(Character *character)
 	if (stage.song_step >= -24)
 		Animatable_Init(&this->character.animatable, char_criminal_anim);
 	
-	if (stage.song_step >= -122 && this->opacity < 99)
+	if (stage.song_step >= -122 && this->opacity / 4 < 99)
 	{
 		this->opacity++;
-		Character_DrawBlend(character, &this->tex, &char_criminal_frame[this->frame], this->opacity);
+		Character_DrawBlend(character, &this->tex, &char_criminal_frame[this->frame], this->opacity / 4);
 
 		//FntPrint("opacity is %d", this->opacity);
 	}
