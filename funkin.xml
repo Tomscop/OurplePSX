@@ -318,6 +318,9 @@
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
 				
+				<!-- HenryM assets -->
+				<file name = "henrym.arc" type = "data" source = "iso/henrym/main.arc"/>
+				
 				<!-- Dad assets -->
 				<file name = "dad.arc" type = "data" source = "iso/dad/main.arc"/>
 			</dir>
