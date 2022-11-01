@@ -119,9 +119,9 @@ static void Stage_CheckAnimations(PlayerState *this, u8 type)
 		this->character5->set_anim(this->character5, type);
 }
 
-Character* Stage_ChangeChars(Character* newcharacter)
+Character* Stage_ChangeChars(Character* oldcharacter, Character* newcharacter)
 {
-		newcharacter->pad_held = 0;
+		oldcharacter->pad_held = 0;
 
 		return newcharacter;
 }
@@ -2219,7 +2219,7 @@ void Stage_Tick(void)
 						if (Stage_NextLoad())
 							goto SeamLoad;
 					}
-					else if (stage.paused == false)
+					else
 					{
 						stage.trans = StageTrans_Menu;
 						Trans_Start();
@@ -2590,8 +2590,8 @@ void Stage_Tick(void)
 			{
 				if (stage.song_step == 20)
 				{
-					stage.player_state[0].character =  Stage_ChangeChars(stage.player2);
-					stage.player_state[0].character2 = Stage_ChangeChars(stage.player4);
+					stage.player_state[0].character =  Stage_ChangeChars(stage.player_state[0].character, stage.player2);
+					stage.player_state[0].character2 = Stage_ChangeChars(stage.player_state[0].character, stage.player4);
 					stage.player_state[0].character3 = NULL;
 				}
 			}
@@ -2599,66 +2599,66 @@ void Stage_Tick(void)
 			if (stage.stage_id == StageId_1_3)
 			{
 				if (stage.song_step == 270)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character, stage.opponent2);
 				if (stage.song_step == 271)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[1].character, stage.player2);
 				if (stage.song_step == 911)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 912)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent3);
 				if (stage.song_step == 1167)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 1168)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent2);
 				if (stage.song_step == 1423)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 1424)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent3);
 				if (stage.song_step == 1680)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 1681)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 			}
 			if (stage.stage_id == StageId_2_1)
 			{
 				if (stage.song_step == 1784)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
 				if (stage.song_step == 1924)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 				if (stage.song_step == 2046)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
 				if (stage.song_step == 2181)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 				if (stage.song_step == 2372)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
 				if (stage.song_step == 2431)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 			}
 			if (stage.stage_id == StageId_2_3)
 			{
 				if (stage.song_step == 824)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
 				if (stage.song_step == 895)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 				if (stage.song_step == 1343)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent2);
 				if (stage.song_step == 1407)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 2104)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player2);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
 				if (stage.song_step == 2175)
-					stage.player_state[0].character = Stage_ChangeChars(stage.player);
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
 			}
 			if (stage.stage_id == StageId_3_2)
 			{
 				if (stage.song_step == 496)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent2);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent2);
 				if (stage.song_step == 1037)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 				if (stage.song_step == 1038)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent3);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent3);
 				if (stage.song_step == 1472)
-					stage.player_state[1].character = Stage_ChangeChars(stage.opponent);
+					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 			}
 			break;
 		}
