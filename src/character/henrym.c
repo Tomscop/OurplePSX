@@ -44,31 +44,31 @@ static const CharFrame char_henrym_frame[] = {
 	{HenryM_ArcMain_Henry0, {170,110, 77,111}, { -1,  2}}, //2 idle 3
 	{HenryM_ArcMain_Henry0, {  0,110, 77,112}, { -1,  3}}, //3 idle 4
 	
-	{HenryM_ArcMain_Henry0, {161,  0, 92,100}, {  0,  0}}, //4 left 1
-	{HenryM_ArcMain_Henry0, { 78,110, 91,100}, {  0,  0}}, //5 left 2
+	{HenryM_ArcMain_Henry0, {161,  0, 92,100}, { 15,-13}}, //4 left 1
+	{HenryM_ArcMain_Henry0, { 78,110, 91,100}, { 15,-13}}, //5 left 2
 	
-	{HenryM_ArcMain_Henry1, {  0,  0, 84, 68}, {  0,  0}}, //6 down 1
-	{HenryM_ArcMain_Henry1, { 85,  0, 83, 70}, {  0,  0}}, //7 down 2
+	{HenryM_ArcMain_Henry1, {  0,  0, 84, 68}, {  5,-42}}, //6 down 1
+	{HenryM_ArcMain_Henry1, { 85,  0, 83, 70}, {  5,-40}}, //7 down 2
 	
-	{HenryM_ArcMain_Henry1, {169,  0, 69,119}, {  0,  0}}, //8 up 1
-	{HenryM_ArcMain_Henry1, {  0, 69, 70,116}, {  0,  0}}, //9 up 2
+	{HenryM_ArcMain_Henry1, {169,  0, 69,119}, { -4, 10}}, //8 up 1
+	{HenryM_ArcMain_Henry1, {  0, 69, 70,116}, { -4,  7}}, //9 up 2
 	
-	{HenryM_ArcMain_Henry1, { 71,120,101,102}, {  0,  0}}, //10 right 1
-	{HenryM_ArcMain_Henry2, {  0,  0, 99,102}, {  0,  0}}, //11 right 2
+	{HenryM_ArcMain_Henry1, { 71,120,101,102}, { 10, -8}}, //10 right 1
+	{HenryM_ArcMain_Henry2, {  0,  0, 99,102}, { 10, -8}}, //11 right 2
 	
-	{HenryM_ArcMain_Henry2, {100,  0, 86, 92}, {  0,  0}}, //12 talk 1
-	{HenryM_ArcMain_Henry2, {  0,103, 85, 92}, {  0,  0}}, //13 talk 2
-	{HenryM_ArcMain_Henry2, { 86,103, 85, 92}, {  0,  0}}, //14 talk 3
-	{HenryM_ArcMain_Henry5, { 86,  0, 85, 92}, {  0,  0}}, //15 talk 4
-	{HenryM_ArcMain_Henry3, {  0,  0, 86, 92}, {  0,  0}}, //16 talk 5
-	{HenryM_ArcMain_Henry3, { 87,  0, 85, 92}, {  0,  0}}, //17 talk 6
-	{HenryM_ArcMain_Henry3, {  0, 93, 86, 92}, {  0,  0}}, //18 talk 7
-	{HenryM_ArcMain_Henry3, { 87, 93, 85, 92}, {  0,  0}}, //19 talk 8
-	{HenryM_ArcMain_Henry4, {  0,  0, 85, 92}, {  0,  0}}, //20 talk 9
-	{HenryM_ArcMain_Henry4, {  0, 86, 85, 92}, {  0,  0}}, //21 talk 10
-	{HenryM_ArcMain_Henry4, {  0, 93, 86, 92}, {  0,  0}}, //22 talk 11
-	{HenryM_ArcMain_Henry4, { 87, 93, 85, 92}, {  0,  0}}, //23 talk 12
-	{HenryM_ArcMain_Henry5, {  0,  0, 85, 92}, {  0,  0}}, //24 talk 13
+	{HenryM_ArcMain_Henry2, {100,  0, 86, 92}, {  0,-17}}, //12 talk 1
+	{HenryM_ArcMain_Henry2, {  0,103, 85, 92}, { -1,-17}}, //13 talk 2
+	{HenryM_ArcMain_Henry2, { 86,103, 85, 92}, { -1,-17}}, //14 talk 3
+	{HenryM_ArcMain_Henry5, { 86,  0, 85, 92}, {  0,-17}}, //15 talk 4
+	{HenryM_ArcMain_Henry3, {  0,  0, 86, 92}, {  0,-17}}, //16 talk 5
+	{HenryM_ArcMain_Henry3, { 87,  0, 85, 92}, { -1,-17}}, //17 talk 6
+	{HenryM_ArcMain_Henry3, {  0, 93, 86, 92}, {  0,-17}}, //18 talk 7
+	{HenryM_ArcMain_Henry3, { 87, 93, 85, 92}, { -1,-17}}, //19 talk 8
+	{HenryM_ArcMain_Henry4, {  0,  0, 85, 92}, {  0,-17}}, //20 talk 9
+	{HenryM_ArcMain_Henry4, {  0, 86, 85, 92}, {  0,-17}}, //21 talk 10
+	{HenryM_ArcMain_Henry4, {  0, 93, 86, 92}, {  0,-17}}, //22 talk 11
+	{HenryM_ArcMain_Henry4, { 87, 93, 85, 92}, { -1,-17}}, //23 talk 12
+	{HenryM_ArcMain_Henry5, {  0,  0, 85, 92}, {  0,-17}}, //24 talk 13
 };
 
 static const Animation char_henrym_anim[CharAnim_Max] = {
