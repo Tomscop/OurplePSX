@@ -80,6 +80,7 @@ static u32 Sounds[10];
 #include "character/strap.h"
 #include "character/mangle.h"
 #include "character/criminal.h"
+#include "character/henrym.h"
 #include "character/dad.h"
 
 #include "stage/dummy.h"

@@ -409,7 +409,7 @@
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(140,1)},
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(160,1)},
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(180,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_HenryM_New, FIXED_DEC(-142,1),  FIXED_DEC(1,1)},
         {NULL},
 		{NULL},
 		{NULL},
