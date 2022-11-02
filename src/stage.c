@@ -80,6 +80,7 @@ static u32 Sounds[10];
 #include "character/strap.h"
 #include "character/mangle.h"
 #include "character/criminal.h"
+#include "character/jack.h"
 #include "character/henrym.h"
 #include "character/dad.h"
 
@@ -2586,16 +2587,6 @@ void Stage_Tick(void)
 			}
 			else
 				StageTimer_Calculate();
-
-			if (stage.stage_id == StageId_6_3)
-			{
-				if (stage.song_step == 20)
-				{
-					stage.player_state[0].character =  Stage_ChangeChars(stage.player_state[0].character, stage.player2);
-					stage.player_state[0].character2 = Stage_ChangeChars(stage.player_state[0].character, stage.player4);
-					stage.player_state[0].character3 = NULL;
-				}
-			}
 
 			if (stage.stage_id == StageId_1_3)
 			{

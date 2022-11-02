@@ -56,20 +56,19 @@ static const CharFrame char_henrym_frame[] = {
 	{HenryM_ArcMain_Henry1, { 71,120,101,102}, {  0,  0}}, //10 right 1
 	{HenryM_ArcMain_Henry2, {  0,  0, 99,102}, {  0,  0}}, //11 right 2
 	
-	//unfinished talk stuff
-	{HenryM_ArcMain_Henry2, {  0,  0, 79,109}, {  0,  0}}, //12 talk 1
-	{HenryM_ArcMain_Henry2, { 80,  0, 80,107}, {  0,  0}}, //13 talk 2
-	{HenryM_ArcMain_Henry2, {170,110, 77,111}, {  0,  0}}, //14 talk 3
-	{HenryM_ArcMain_Henry5, {170,110, 77,111}, {  0,  0}}, //15 talk 4
-	{HenryM_ArcMain_Henry3, {  0,110, 77,112}, {  0,  0}}, //16 talk 5
-	{HenryM_ArcMain_Henry3, {  0,  0, 79,109}, {  0,  0}}, //17 talk 6
-	{HenryM_ArcMain_Henry3, { 80,  0, 80,107}, {  0,  0}}, //18 talk 7
-	{HenryM_ArcMain_Henry3, {170,110, 77,111}, {  0,  0}}, //19 talk 8
-	{HenryM_ArcMain_Henry4, {  0,110, 77,112}, {  0,  0}}, //20 talk 9
-	{HenryM_ArcMain_Henry4, {  0,  0, 79,109}, {  0,  0}}, //21 talk 10
-	{HenryM_ArcMain_Henry4, { 80,  0, 80,107}, {  0,  0}}, //22 talk 11
-	{HenryM_ArcMain_Henry4, {170,110, 77,111}, {  0,  0}}, //23 talk 12
-	{HenryM_ArcMain_Henry5, {  0,110, 77,112}, {  0,  0}}, //24 talk 13
+	{HenryM_ArcMain_Henry2, {100,  0, 86, 92}, {  0,  0}}, //12 talk 1
+	{HenryM_ArcMain_Henry2, {  0,103, 85, 92}, {  0,  0}}, //13 talk 2
+	{HenryM_ArcMain_Henry2, { 86,103, 85, 92}, {  0,  0}}, //14 talk 3
+	{HenryM_ArcMain_Henry5, { 86,  0, 85, 92}, {  0,  0}}, //15 talk 4
+	{HenryM_ArcMain_Henry3, {  0,  0, 86, 92}, {  0,  0}}, //16 talk 5
+	{HenryM_ArcMain_Henry3, { 87,  0, 85, 92}, {  0,  0}}, //17 talk 6
+	{HenryM_ArcMain_Henry3, {  0, 93, 86, 92}, {  0,  0}}, //18 talk 7
+	{HenryM_ArcMain_Henry3, { 87, 93, 85, 92}, {  0,  0}}, //19 talk 8
+	{HenryM_ArcMain_Henry4, {  0,  0, 85, 92}, {  0,  0}}, //20 talk 9
+	{HenryM_ArcMain_Henry4, {  0, 86, 85, 92}, {  0,  0}}, //21 talk 10
+	{HenryM_ArcMain_Henry4, {  0, 93, 86, 92}, {  0,  0}}, //22 talk 11
+	{HenryM_ArcMain_Henry4, { 87, 93, 85, 92}, {  0,  0}}, //23 talk 12
+	{HenryM_ArcMain_Henry5, {  0,  0, 85, 92}, {  0,  0}}, //24 talk 13
 };
 
 static const Animation char_henrym_anim[CharAnim_Max] = {
@@ -154,8 +153,8 @@ Character *Char_HenryM_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFF62515B;
 	
-	this->character.focus_x = FIXED_DEC(50,1);
-	this->character.focus_y = FIXED_DEC(-65,1);
+	this->character.focus_x = FIXED_DEC(111,1);
+	this->character.focus_y = FIXED_DEC(47,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	this->character.size = FIXED_DEC(1,1);
