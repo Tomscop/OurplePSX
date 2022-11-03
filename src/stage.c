@@ -1905,7 +1905,6 @@ void Stage_Tick(void)
 		{
 			inctimer = true;
 			Audio_StopXA();
-			Audio_PlaySound(Sounds[1], 0x3fff);
 		}
 	}
 	else if (pad_state.press & PAD_CIRCLE && stage.state != StageState_Play)
@@ -2714,6 +2713,10 @@ void Stage_Tick(void)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCC.TIM;1"), GFX_LOADTEX_FREE);
 			else if (stage.stage_id == StageId_5_2)
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADJ.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_6_2)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCRIM.TIM;1"), GFX_LOADTEX_FREE);
+			else if (stage.stage_id == StageId_6_3)
+				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADMIL.TIM;1"), GFX_LOADTEX_FREE);
 			else
 				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 		
@@ -2727,6 +2730,18 @@ void Stage_Tick(void)
 			{
 				RECT src = {0, 0,255,255};
 				RECT dst = { 0, 0, 380, 255};
+				Gfx_DrawTex(&stage.tex_ded, &src, &dst);
+			}
+			else if (stage.stage_id == StageId_6_2)
+			{
+				RECT src = {0, 0,255,240};
+				RECT dst = {0,0,340,255};
+				Gfx_DrawTex(&stage.tex_ded, &src, &dst);
+			}
+			else if (stage.stage_id == StageId_6_3)
+			{
+				RECT src = {0, 0,255,255};
+				RECT dst = { 96, 56, 128, 128};
 				Gfx_DrawTex(&stage.tex_ded, &src, &dst);
 			}
 			else

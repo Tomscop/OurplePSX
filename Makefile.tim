@@ -61,7 +61,9 @@ all: \
 	iso/strap/main.arc \
 	iso/mangle/main.arc \
 	iso/criminal/main.arc \
+	iso/criminal/dead.tim \
 	iso/jack/main.arc \
+	iso/jack/dead.tim \
 	iso/henrym/main.arc \
 	iso/dad/main.arc \
 	iso/storage/back.arc \

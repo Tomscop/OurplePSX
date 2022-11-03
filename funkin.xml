@@ -317,9 +317,11 @@
 				
 				<!-- Criminal assets -->
 				<file name = "criminal.arc" type = "data" source = "iso/criminal/main.arc"/>
+				<file name = "deadcrim.tim" type = "data" source = "iso/criminal/dead.tim"/>
 				
 				<!-- Jack assets -->
 				<file name = "jack.arc" type = "data" source = "iso/jack/main.arc"/>
+				<file name = "deadmil.tim" type = "data" source = "iso/jack/dead.tim"/>
 				
 				<!-- HenryM assets -->
 				<file name = "henrym.arc" type = "data" source = "iso/henrym/main.arc"/>
@@ -342,6 +344,7 @@
 				<file name = "criminal.vag" type = "data" source = "iso/sounds/stage/criminal.ogg.vag"/>
 				<file name = "bite.vag" type = "data" source = "iso/sounds/stage/bite.ogg.vag"/>
 				<file name = "glitch.vag" type = "data" source = "iso/sounds/stage/glitch.ogg.vag"/>
+				<file name = "restart.vag" type = "data" source = "iso/sounds/stage/restart.ogg.vag"/>
 
 				<!-- Miss Sounds -->
 				<file name = "miss1.vag" type = "data" source = "iso/sounds/stage/miss1.VAG"/>
