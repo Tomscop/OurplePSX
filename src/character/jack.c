@@ -40,33 +40,33 @@ typedef struct
 static const CharFrame char_jack_frame[] = 
 {
 	{Jack_ArcMain_Jack0, {  0,  0, 74,104}, {  0,  0}}, //0 idle 1
-	{Jack_ArcMain_Jack0, { 75,  0, 75,103}, {  0,  0}}, //1 idle 2
-	{Jack_ArcMain_Jack0, {151,  0, 73,105}, {  0,  0}}, //2 idle 3
-	{Jack_ArcMain_Jack0, {  0,106, 73,106}, {  0,  0}}, //3 idle 3
+	{Jack_ArcMain_Jack0, { 75,  0, 75,103}, {  1, -1}}, //1 idle 2
+	{Jack_ArcMain_Jack0, {151,  0, 73,105}, { -1,  1}}, //2 idle 3
+	{Jack_ArcMain_Jack0, {  0,106, 73,106}, {  0,  2}}, //3 idle 4
 	
-	{Jack_ArcMain_Jack0, { 74,106, 90,102}, {  0,  0}}, //4 left 1
-	{Jack_ArcMain_Jack0, {165,106, 88,102}, {  0,  0}}, //5 left 2
+	{Jack_ArcMain_Jack0, { 74,106, 90,102}, { 30, -4}}, //4 left 1
+	{Jack_ArcMain_Jack0, {165,106, 88,102}, { 28, -4}}, //5 left 2
 	
-	{Jack_ArcMain_Jack1, {  0,  0, 65, 87}, {  0,  0}}, //6 down 1
-	{Jack_ArcMain_Jack1, { 66,  0, 64, 88}, {  0,  0}}, //7 down 2
+	{Jack_ArcMain_Jack1, {  0,  0, 65, 87}, { -5,-15}}, //6 down 1
+	{Jack_ArcMain_Jack1, { 66,  0, 64, 88}, { -6,-14}}, //7 down 2
 	
-	{Jack_ArcMain_Jack1, {131,  0, 35,123}, {  0,  0}}, //8 up 1
-	{Jack_ArcMain_Jack1, {167,  0, 36,119}, {  0,  0}}, //9 up 2
+	{Jack_ArcMain_Jack1, {131,  0, 35,123}, {-24, 18}}, //8 up 1
+	{Jack_ArcMain_Jack1, {167,  0, 36,119}, {-24, 14}}, //9 up 2
 	
-	{Jack_ArcMain_Jack1, {  0, 89, 64, 97}, {  0,  0}}, //10 right 1
-	{Jack_ArcMain_Jack1, { 65, 89, 63, 98}, {  0,  0}}, //11 right 2
+	{Jack_ArcMain_Jack1, {  0, 89, 64, 97}, {-13, -7}}, //10 right 1
+	{Jack_ArcMain_Jack1, { 65, 89, 63, 98}, {-12, -6}}, //11 right 2
 	
-	{Jack_ArcMain_Jack1, {129,124, 91,103}, {  0,  0}}, //12 left miss 1
-	{Jack_ArcMain_Jack2, {  0,  0, 88,103}, {  0,  0}}, //13 left miss 2
+	{Jack_ArcMain_Jack1, {129,124, 91,103}, { 31, -3}}, //12 left miss 1
+	{Jack_ArcMain_Jack2, {  0,  0, 88,103}, { 28, -3}}, //13 left miss 2
 	
-	{Jack_ArcMain_Jack2, { 89,  0, 65, 87}, {  0,  0}}, //14 down miss 1
-	{Jack_ArcMain_Jack2, {155,  0, 64, 88}, {  0,  0}}, //15 down miss 2
+	{Jack_ArcMain_Jack2, { 89,  0, 65, 87}, { -5,-15}}, //14 down miss 1
+	{Jack_ArcMain_Jack2, {155,  0, 64, 88}, { -6,-14}}, //15 down miss 2
 	
-	{Jack_ArcMain_Jack2, {128, 89, 35,123}, {  0,  0}}, //16 up miss 1
-	{Jack_ArcMain_Jack2, {164, 89, 35,120}, {  0,  0}}, //17 up miss 2
+	{Jack_ArcMain_Jack2, {128, 89, 35,123}, {-24, 18}}, //16 up miss 1
+	{Jack_ArcMain_Jack2, {164, 89, 35,120}, {-24, 15}}, //17 up miss 2
 	
-	{Jack_ArcMain_Jack2, {  0,104, 63, 98}, {  0,  0}}, //18 right miss 1
-	{Jack_ArcMain_Jack2, { 64,104, 63, 98}, {  0,  0}}, //19 right miss 2
+	{Jack_ArcMain_Jack2, {  0,104, 63, 98}, {-13, -6}}, //18 right miss 1
+	{Jack_ArcMain_Jack2, { 64,104, 63, 98}, {-12, -6}}, //19 right miss 2
 };
 static const Animation char_jack_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
