@@ -330,12 +330,17 @@ static u8 Stage_HitNote(PlayerState *this, u8 type, fixed_t offset)
 	return hit_type;
 }
 
-static void Stage_MissNote(PlayerState *this)
+static void Stage_MissNote(PlayerState *this, u8 type)
 {
 	this->max_accuracy += 150;
 	this->refresh_accuracy = true;
 	this->miss += 1;
 	this->refresh_miss = true;
+	
+	if (this->character->spec & CHAR_SPEC_MISSANIM)
+		this->character->set_anim(this->character, note_anims[type & 0x3][2]);
+	else
+		this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 
 	if (this->combo)
 	{
@@ -419,7 +424,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 
 		else
 			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
-		Stage_MissNote(this);
+		Stage_MissNote(this, type);
 		
 		this->health -= 400;
 		this->score -= 1;
@@ -998,7 +1003,7 @@ static void Stage_DrawNotes(void)
 				{
 					//Missed note
 					Stage_CutVocal();
-					Stage_MissNote(this);
+					Stage_MissNote(this, note->type);
 					this->health -= 475;
 					
 				}
@@ -1977,7 +1982,8 @@ void Stage_Tick(void)
 			  if (stage.prefs.debug)
 					Debug_StageDebug();
 				
-				FntPrint("step is %d", stage.song_step);
+				//FntPrint("step is %d", stage.song_step);
+				//^ makes step show on screen
 				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
@@ -2001,7 +2007,7 @@ void Stage_Tick(void)
 				if (stage.stage_id == StageId_5_3 && stage.song_step == 2472)
 				{
 					fade = FIXED_DEC(255,1);
-					fadespd = FIXED_DEC(60,1);
+					fadespd = FIXED_DEC(83,1); //omg 83, like the bite of 83!?!?!?!11!1?
 				}
 				if (fade > 0)
 				{
@@ -2263,13 +2269,16 @@ void Stage_Tick(void)
 			}
 
 
-			if (stage.paused == false && pad_state.press & PAD_START)
-				{
-					stage.pause_scroll = -1;
-					Audio_PauseXA();
-					stage.paused = true;
-					pad_state.press = 0;
-				}
+			if (stage.song_step >= 0)
+			{
+				if (stage.paused == false && pad_state.press & PAD_START)
+					{
+						stage.pause_scroll = -1;
+						Audio_PauseXA();
+						stage.paused = true;
+						pad_state.press = 0;
+					}
+			}
 
 			if (stage.paused)
 				{
@@ -2288,12 +2297,20 @@ void Stage_Tick(void)
 			if ((stage.bump = FIXED_UNIT + FIXED_MUL(stage.bump - FIXED_UNIT, FIXED_DEC(95,100))) <= FIXED_DEC(1003,1000))
 				stage.bump = FIXED_UNIT;
 			stage.sbump = FIXED_UNIT + FIXED_MUL(stage.sbump - FIXED_UNIT, FIXED_DEC(60,100));
-			
+				
 			if (playing && (stage.flag & STAGE_FLAG_JUST_STEP))
 			{
 				//Check if screen should bump
-				boolean is_bump_step = (stage.song_step & 0xF) == 0;
-				
+				boolean is_bump_step;
+				if ((stage.stage_id == StageId_2_3) && (stage.song_step >= 576) && (stage.song_step <= 703) || (stage.stage_id == StageId_2_3) && (stage.song_step >= 1920))
+					is_bump_step = (stage.song_step & 0x3) == 0;
+				else if ((stage.stage_id == StageId_6_1) && (stage.song_step >= 188) && (stage.song_step <= 2240))
+					is_bump_step = (stage.song_step & 0x7) == 2;
+				else if (((stage.stage_id == StageId_1_4) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_2) && (stage.song_step <= 215)) || ((stage.stage_id == StageId_3_3) && (stage.song_step <= 73)) || ((stage.stage_id == StageId_4_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_4_2) && (stage.song_step <= 143)) || ((stage.stage_id == StageId_6_1) && (stage.song_step <= 63)) || ((stage.stage_id == StageId_6_2) && (stage.song_step <= 203)))
+					is_bump_step = (stage.song_step) == 99999;
+				else if ((stage.stage_id != StageId_1_4) || (stage.stage_id != StageId_3_1) || (stage.stage_id != StageId_3_2) || (stage.stage_id != StageId_3_3) || (stage.stage_id != StageId_4_1) || (stage.stage_id != StageId_4_2) || (stage.stage_id != StageId_6_1) || (stage.stage_id != StageId_6_2))
+					is_bump_step = (stage.song_step & 0xF) == 0;
+			
 				//Bump screen
 				if (is_bump_step)
 					stage.bump = FIXED_DEC(103,100);
