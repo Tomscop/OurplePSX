@@ -323,6 +323,9 @@
 				<file name = "jack.arc" type = "data" source = "iso/jack/main.arc"/>
 				<file name = "deadmil.tim" type = "data" source = "iso/jack/dead.tim"/>
 				
+				<!-- Dave assets -->
+				<file name = "dave.arc" type = "data" source = "iso/dave/main.arc"/>
+				
 				<!-- HenryM assets -->
 				<file name = "henrym.arc" type = "data" source = "iso/henrym/main.arc"/>
 				
