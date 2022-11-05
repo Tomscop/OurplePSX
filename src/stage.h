@@ -19,6 +19,7 @@
 #include "debug.h"
 
 #include "network.h"
+#include "events.h"
 
 //Stage constants
 #define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE | PAD_L2)
@@ -226,6 +227,7 @@ typedef struct
 	Section *sections;
 	Note *notes;
 	size_t num_notes;
+	Event* events;
 	
 	fixed_t speed;
 	fixed_t step_crochet, step_time;
@@ -261,6 +263,7 @@ typedef struct
 	
 	Section *cur_section; //Current section
 	Note *cur_note; //First visible and hittable note, used for drawing and hit detection
+	Event* cur_event; //Current event
 	
 	fixed_t note_scroll, song_time, interp_time, interp_ms, interp_speed;
 	

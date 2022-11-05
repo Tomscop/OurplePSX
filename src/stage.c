@@ -25,6 +25,8 @@
 #include "object/combo.h"
 #include "object/splash.h"
 
+#include "events.h"
+
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
 
@@ -1365,8 +1367,11 @@ static void Stage_LoadChart(void)
 	u8 *chart_byte = (u8*)stage.chart_data;
 
 		//Directly use section and notes pointers
-		stage.sections = (Section*)(chart_byte + 6);
+		stage.sections = (Section*)(chart_byte + 8);
 		stage.notes = (Note*)(chart_byte + ((u16*)stage.chart_data)[2]);
+
+		//sorry about that lol,but hey it get the correct address
+		stage.events = (Event*)(chart_byte + ((u16*)stage.chart_data)[2] +  ((u16*)stage.chart_data)[3]);
 		
 		for (Note *note = stage.notes; note->pos != 0xFFFF; note++)
 			stage.num_notes++;
@@ -1390,6 +1395,7 @@ static void Stage_LoadChart(void)
 	
 	stage.cur_section = stage.sections;
 	stage.cur_note = stage.notes;
+	stage.cur_event = stage.events;
 	
 	stage.speed = *((fixed_t*)stage.chart_data);
 	
@@ -1398,6 +1404,9 @@ static void Stage_LoadChart(void)
 	stage.step_base = 0;
 	stage.section_base = stage.cur_section;
 	Stage_ChangeBPM(stage.cur_section->flag & SECTION_FLAG_BPM_MASK, 0);
+
+	//Initialize events
+	Events_Load();
 }
 
 static void Stage_LoadSFX(void)
@@ -2413,6 +2422,8 @@ void Stage_Tick(void)
 					);
 				}
 			}
+
+			Events_StartEvents();
 			
 			switch (stage.mode)
 			{
