@@ -1929,6 +1929,7 @@ void Stage_Tick(void)
 
 	if (Trans_Tick())
 	{
+		stage.paused = false;
 		switch (stage.trans)
 		{
 			case StageTrans_Menu:
@@ -1970,7 +1971,6 @@ void Stage_Tick(void)
 				LoadScr_Start();
 				Stage_Load(stage.stage_id, stage.stage_diff, stage.story);
 				LoadScr_End();
-				stage.paused = false;
 				break;
 		}
 	}
