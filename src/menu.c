@@ -262,8 +262,27 @@ void Menu_Tick(void)
 	{
 		case MenuPage_Opening:
 		{
-			menu.page = menu.next_page = MenuPage_Title;
-			menu.page_swap = true;
+			if ((pad_state.press & PAD_START) && menu.next_page == menu.page && Trans_Idle())
+				{   
+					Audio_PlaySound(Sounds[1], 0x3fff);
+					menu.next_page = MenuPage_Title;
+					menu.page_swap = true;
+					Trans_Start();
+				}
+
+				menu.font_bold.draw(&menu.font_bold, "WARNING", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 96, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "THIS PORT CONTAINS", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 74, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "FLASHING LIGHTS LOUD", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 58, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "NOISES AND LOTS", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 42, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "OF JUMPSCARES", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 26, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "SO BE CAREFUL IF", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 - 10, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "YOU HAVE EPILEPSY", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 6, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "YOU ALSO CAN TURN OFF THE", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 22, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "EYES IN FOLLOWED", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 38, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "IN THE OPTIONS MENU", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 54, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "ENJOY THE PORT", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 70, FontAlign_Center);
+				menu.font_bold.draw(&menu.font_bold, "press start to proceed", screen.SCREEN_WIDTH2, screen.SCREEN_HEIGHT2 + 94, FontAlign_Center);
+				break;
 		}
 	//Fallthrough
 		case MenuPage_Title:
