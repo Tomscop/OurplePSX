@@ -38,6 +38,7 @@ iso/*/*.arc
 iso/*/*.xa
 iso/*/*/*.xa
 iso/*/*.cht
+iso/*/*.ogg.vag
 
 # Big Chungus
 .DS_Store
