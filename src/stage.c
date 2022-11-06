@@ -1443,8 +1443,19 @@ static void Stage_LoadSFX(void)
 		}
     }
 	
+	//restart sound
+	if (stage.stage_id != StageId_5_3)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\RESTART.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[8] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
 	//bite sound
-	if ((stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3))
+	if ((stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_5_3) || (stage.stage_id == StageId_2_1) || (stage.stage_id == StageId_3_1) || (stage.stage_id == StageId_4_1) || (stage.stage_id == StageId_5_2))
 	{
 		char text[0x80];
 		sprintf(text, "\\SOUNDS\\BITE.VAG;1");
@@ -1470,6 +1481,28 @@ static void Stage_LoadSFX(void)
 	{
 		char text[0x80];
 		sprintf(text, "\\SOUNDS\\CRIMINAL.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[9] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
+	//loss sound
+	if ((stage.stage_id != StageId_5_3) && (stage.stage_id != StageId_2_1) && (stage.stage_id != StageId_3_1) && (stage.stage_id != StageId_3_2) && (stage.stage_id != StageId_4_1) && (stage.stage_id != StageId_4_3) && (stage.stage_id != StageId_5_2) && (stage.stage_id != StageId_6_1) && (stage.stage_id != StageId_6_2) && (stage.stage_id != StageId_6_3))
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\LOSS.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[9] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
+	//horn sound
+	if (stage.stage_id == StageId_6_3)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\HORN.VAG;1");
 		IO_FindFile(&file, text);
 		u32 *data = IO_ReadFile(&file);
 		Sounds[9] = Audio_LoadVAGData(data, file.size);
@@ -1945,6 +1978,7 @@ void Stage_Tick(void)
 		{
 			inctimer = true;
 			Audio_StopXA();
+			Audio_PlaySound(Sounds[8], 0x3fff);
 		}
 	}
 	else if (pad_state.press & PAD_CIRCLE && stage.state != StageState_Play)
@@ -2753,7 +2787,45 @@ void Stage_Tick(void)
 			
 			stage.song_time = 0;
 			
-			Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);	
+			//sound stuff
+			if (stage.stage_id == StageId_5_3)
+			{
+				CdlFILE file;
+				
+				char text[0x80];
+				sprintf(text, "\\SOUNDS\\RESTART.VAG;1");
+				IO_FindFile(&file, text);
+				u32 *data = IO_ReadFile(&file);
+				Sounds[8] = Audio_LoadVAGData(data, file.size);
+				Mem_Free(data);
+			}
+			if (stage.stage_id == StageId_5_3)
+			{
+				CdlFILE file;
+				
+				char text[0x80];
+				sprintf(text, "\\SOUNDS\\LOSS.VAG;1");
+				IO_FindFile(&file, text);
+				u32 *data = IO_ReadFile(&file);
+				Sounds[9] = Audio_LoadVAGData(data, file.size);
+				Mem_Free(data);
+			}
+			if (stage.stage_id == StageId_6_2)
+			{
+				CdlFILE file;
+				
+				char text[0x80];
+				sprintf(text, "\\SOUNDS\\SCREAM.VAG;1");
+				IO_FindFile(&file, text);
+				u32 *data = IO_ReadFile(&file);
+				Sounds[9] = Audio_LoadVAGData(data, file.size);
+				Mem_Free(data);
+			}
+	
+			if ((stage.stage_id != StageId_3_2) && (stage.stage_id != StageId_4_3) && (stage.stage_id != StageId_6_1))
+				Audio_PlaySound(Sounds[9], 0x3fff);
+			if ((stage.stage_id != StageId_3_1) && (stage.stage_id != StageId_6_2) && (stage.stage_id != StageId_6_3))
+				Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);	
 			stage.state = StageState_DeadLoad;
 		}
 	//Fallthrough
