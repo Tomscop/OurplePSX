@@ -41,35 +41,35 @@ typedef struct
 static const CharFrame char_dave_frame[] = 
 {
 	{Dave_ArcMain_Dave0, {  0,  0, 88,106}, {  0,  0}}, //0 idle 1
-	{Dave_ArcMain_Dave0, { 89,  0, 89,104}, {  0,  0}}, //1 idle 2
-	{Dave_ArcMain_Dave0, {  0,107, 85,111}, {  0,  0}}, //2 idle 3
-	{Dave_ArcMain_Dave0, { 86,107, 85,111}, {  0,  0}}, //3 idle 4
+	{Dave_ArcMain_Dave0, { 89,  0, 89,104}, {  0, -2}}, //1 idle 2
+	{Dave_ArcMain_Dave0, {  0,107, 85,111}, { -2,  5}}, //2 idle 3
+	{Dave_ArcMain_Dave0, { 86,107, 85,111}, { -2,  5}}, //3 idle 4
 	
-	{Dave_ArcMain_Dave0, {178,  0, 77,110}, {  0,  0}}, //4 left 1
-	{Dave_ArcMain_Dave0, {172,111, 76,110}, {  0,  0}}, //5 left 2
+	{Dave_ArcMain_Dave0, {178,  0, 77,110}, { 14,  2}}, //4 left 1
+	{Dave_ArcMain_Dave0, {172,111, 76,110}, { 14,  2}}, //5 left 2
 	
-	{Dave_ArcMain_Dave1, {  0,  0, 78, 78}, {  0,  0}}, //6 down 1
-	{Dave_ArcMain_Dave1, { 79,  0, 78, 79}, {  0,  0}}, //7 down 2
+	{Dave_ArcMain_Dave1, {  0,  0, 78, 78}, {-10,-30}}, //6 down 1
+	{Dave_ArcMain_Dave1, { 79,  0, 78, 79}, {-10,-29}}, //7 down 2
 	
-	{Dave_ArcMain_Dave1, {158,  0, 51,125}, {  0,  0}}, //8 up 1
-	{Dave_ArcMain_Dave1, {  0, 80, 53,122}, {  0,  0}}, //9 up 2
+	{Dave_ArcMain_Dave1, {158,  0, 51,125}, {-21, 17}}, //8 up 1
+	{Dave_ArcMain_Dave1, {  0, 80, 53,122}, {-20, 14}}, //9 up 2
 	
-	{Dave_ArcMain_Dave1, { 54, 80, 81,100}, {  0,  0}}, //10 right 1
-	{Dave_ArcMain_Dave1, {136,126, 82,100}, {  0,  0}}, //11 right 2
+	{Dave_ArcMain_Dave1, { 54, 80, 81,100}, { -1,-11}}, //10 right 1
+	{Dave_ArcMain_Dave1, {136,126, 82,100}, {  0,-11}}, //11 right 2
 	
-	{Dave_ArcMain_Dave2, {  0,  0, 76,111}, {  0,  0}}, //12 left miss 1
-	{Dave_ArcMain_Dave2, { 77,  0, 76,111}, {  0,  0}}, //13 left miss 2
+	{Dave_ArcMain_Dave2, {  0,  0, 76,111}, { 14,  3}}, //12 left miss 1
+	{Dave_ArcMain_Dave2, { 77,  0, 76,111}, { 14,  3}}, //13 left miss 2
 	
-	{Dave_ArcMain_Dave2, { 54,112, 78, 81}, {  0,  0}}, //14 down miss 1
-	{Dave_ArcMain_Dave2, {133,123, 77, 81}, {  0,  0}}, //15 down miss 2
+	{Dave_ArcMain_Dave2, { 54,112, 78, 81}, {-10,-27}}, //14 down miss 1
+	{Dave_ArcMain_Dave2, {133,123, 77, 81}, {-11,-27}}, //15 down miss 2
 
-	{Dave_ArcMain_Dave2, {154,  0, 53,122}, {  0,  0}}, //16 up miss 1
-	{Dave_ArcMain_Dave2, {  0,112, 53,122}, {  0,  0}}, //17 up miss 2
+	{Dave_ArcMain_Dave2, {154,  0, 53,122}, {-20, 14}}, //16 up miss 1
+	{Dave_ArcMain_Dave2, {  0,112, 53,122}, {-20, 14}}, //17 up miss 2
 	
-	{Dave_ArcMain_Dave3, {  0,  0, 82,100}, {  0,  0}}, //18 right miss 1
-	{Dave_ArcMain_Dave3, { 83,  0, 81,100}, {  0,  0}}, //19 right miss 2
+	{Dave_ArcMain_Dave3, {  0,  0, 82,100}, {  0,-11}}, //18 right miss 1
+	{Dave_ArcMain_Dave3, { 83,  0, 81,100}, {  0,-11}}, //19 right miss 2
 	
-	{Dave_ArcMain_Dave1, {  0,203,114, 48}, {  0,  0}}, //20 dead
+	{Dave_ArcMain_Dave1, {  0,203,114, 48}, {  8,-71}}, //20 dead
 };
 static const Animation char_dave_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle

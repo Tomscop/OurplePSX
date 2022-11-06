@@ -19,7 +19,7 @@
 		<directory_tree>
 			<!-- System -->
 			<file name = "system.cnf" type = "data" source = "iso/system.cnf"/>
-			<file name = "SCUS_19.87" type = "data" source = "funkin.ps-exe"/>
+			<file name = "SCUS_019.87" type = "data" source = "funkin.ps-exe"/>
 			
 			<!-- Menu assets -->
 			<dir name = "menu">
