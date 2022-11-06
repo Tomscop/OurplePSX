@@ -348,6 +348,8 @@
 				<file name = "bite.vag" type = "data" source = "iso/sounds/stage/bite.ogg.vag"/>
 				<file name = "glitch.vag" type = "data" source = "iso/sounds/stage/glitch.ogg.vag"/>
 				<file name = "restart.vag" type = "data" source = "iso/sounds/stage/restart.ogg.vag"/>
+				<file name = "horn.vag" type = "data" source = "iso/sounds/stage/horn.ogg.vag"/>
+				<file name = "scream.vag" type = "data" source = "iso/sounds/stage/scream.ogg.vag"/>
 
 				<!-- Miss Sounds -->
 				<file name = "miss1.vag" type = "data" source = "iso/sounds/stage/miss1.VAG"/>

@@ -83,6 +83,7 @@ static u32 Sounds[10];
 #include "character/mangle.h"
 #include "character/criminal.h"
 #include "character/jack.h"
+#include "character/dave.h"
 #include "character/henrym.h"
 #include "character/dad.h"
 
@@ -1415,14 +1416,17 @@ static void Stage_LoadSFX(void)
 	CdlFILE file;
 
 	//intro sound
-	for (u8 i = 0; i < 4;i++)
+	if ((stage.stage_id != StageId_5_3) && (stage.stage_id != StageId_6_2))
 	{
-		char text[0x80];
-		sprintf(text, "\\SOUNDS\\INTRO%d.VAG;1", i);
-	  	IO_FindFile(&file, text);
-	    u32 *data = IO_ReadFile(&file);
-	    Sounds[i] = Audio_LoadVAGData(data, file.size);
-	    Mem_Free(data);
+		for (u8 i = 0; i < 4;i++)
+		{
+			char text[0x80];
+			sprintf(text, "\\SOUNDS\\INTRO%d.VAG;1", i);
+			IO_FindFile(&file, text);
+			u32 *data = IO_ReadFile(&file);
+			Sounds[i] = Audio_LoadVAGData(data, file.size);
+			Mem_Free(data);
+		}
 	}
 
 	//miss sound
@@ -1688,6 +1692,28 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 		Gfx_LoadTex(&stage.tex_border, IO_Read("\\STAGE\\BORDER.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_5_3)
 		Gfx_LoadTex(&stage.tex_alert, IO_Read("\\BLACK2\\ALERT.TIM;1"), GFX_LOADTEX_FREE);
+	
+	//Load death screen textures
+	if ((stage.stage_id == StageId_2_2) || (stage.stage_id == StageId_3_3) || (stage.stage_id == StageId_4_4))
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEAD.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_2_1)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADOU.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_3_1)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADF.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_3_2)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_4_1)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADC.TIM;1"), GFX_LOADTEX_FREE);
+	else if ((stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_6_1))
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCC.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_5_2)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADJ.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_6_2)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCRIM.TIM;1"), GFX_LOADTEX_FREE);
+	else if (stage.stage_id == StageId_6_3)
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADMIL.TIM;1"), GFX_LOADTEX_FREE);
+	else
+		Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
 
 	//Load stage background
 	Stage_LoadStage();
@@ -2727,27 +2753,6 @@ void Stage_Tick(void)
 			
 			stage.song_time = 0;
 			
-			if ((stage.stage_id == StageId_2_2) || (stage.stage_id == StageId_3_3) || (stage.stage_id == StageId_4_4))
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEAD.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_2_1)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADOU.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_3_1)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADF.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_3_2)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADM.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_4_1)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADC.TIM;1"), GFX_LOADTEX_FREE);
-			else if ((stage.stage_id == StageId_4_3) || (stage.stage_id == StageId_6_1))
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCC.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_5_2)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADJ.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_6_2)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADCRIM.TIM;1"), GFX_LOADTEX_FREE);
-			else if (stage.stage_id == StageId_6_3)
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR2\\DEADMIL.TIM;1"), GFX_LOADTEX_FREE);
-			else
-				Gfx_LoadTex(&stage.tex_ded, IO_Read("\\CHAR\\DEADO.TIM;1"), GFX_LOADTEX_FREE);
-		
 			Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);	
 			stage.state = StageState_DeadLoad;
 		}

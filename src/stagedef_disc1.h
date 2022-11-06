@@ -404,8 +404,8 @@
 	},
 	{ //StageId_6_3 (MILLER)
 		//Characters
-		{Char_Jack_New,    FIXED_DEC(60,1),  FIXED_DEC(4,1)},
-		{NULL},
+		{Char_Dave_New,    FIXED_DEC(73,1),  FIXED_DEC(9,1)},
+		{Char_Jack_New,    FIXED_DEC(60,1),  FIXED_DEC(-8,1)},
 		{NULL},
 		{NULL},
 		{NULL},

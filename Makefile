@@ -71,6 +71,7 @@ SRCS = src/main.c \
 	   src/character/mangle.c \
 	   src/character/criminal.c \
 	   src/character/jack.c \
+	   src/character/dave.c \
 	   src/character/henrym.c \
 	   src/character/dad.c \
        src/character/speaker.c \
