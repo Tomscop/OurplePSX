@@ -87,10 +87,10 @@ static const Animation char_cc_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
 	{3, (const u8[]){ 20, 20, 20, 20, 20, 20, 20, 21, 22, 23, 24, ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 4, 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 6, 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 7, 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 10, 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //CC player functions

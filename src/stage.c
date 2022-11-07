@@ -2739,6 +2739,83 @@ void Stage_Tick(void)
 				if (stage.song_step == 1472)
 					stage.player_state[1].character = Stage_ChangeChars(stage.player_state[1].character,stage.opponent);
 			}
+			if (stage.stage_id == StageId_6_3)
+			{
+				if (stage.song_step == 7)
+				{
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+					stage.player_state[0].character2 = NULL;
+					stage.player_state[0].character3 = NULL;
+					stage.player_state[0].character4 = NULL;
+					stage.player_state[0].character5 = NULL;
+				}
+				if (stage.song_step == 607)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+				if (stage.song_step == 671)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
+				if (stage.song_step == 736)
+					stage.player_state[0].character2 = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 799)
+				{
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+					stage.player_state[0].character2 = NULL;
+				}
+				if (stage.song_step == 863)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player3);
+				if (stage.song_step == 935)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 1151)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 1184)
+					stage.player_state[0].character2 = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 1311)
+				{
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+					stage.player_state[0].character2 = NULL;
+				}
+				if (stage.song_step == 1406)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
+				if (stage.song_step == 1472)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 1599)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 1632)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+				if (stage.song_step == 1727)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 1759)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+				if (stage.song_step == 2045)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 2175)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player3);
+				if (stage.song_step == 2719)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 3102)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 3232)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 3610)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 4160)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+				if (stage.song_step == 4224)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player3);
+				if (stage.song_step == 4239)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+				if (stage.song_step == 4256)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
+				if (stage.song_step == 4271)
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+				if (stage.song_step == 4287)
+				{
+					stage.player_state[0].character = Stage_ChangeChars(stage.player_state[0].character,stage.player5);
+					stage.player_state[0].character2 = Stage_ChangeChars(stage.player_state[0].character,stage.player4);
+					stage.player_state[0].character3 = Stage_ChangeChars(stage.player_state[0].character,stage.player3);
+					stage.player_state[0].character4 = Stage_ChangeChars(stage.player_state[0].character,stage.player2);
+					stage.player_state[0].character5 = Stage_ChangeChars(stage.player_state[0].character,stage.player);
+				}
+			}
 			break;
 		}
 	    case StageState_Dead: //Start BREAK animation and reading extra data from CD

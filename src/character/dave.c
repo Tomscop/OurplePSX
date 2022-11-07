@@ -82,10 +82,26 @@ static const Animation char_dave_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 4, 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 6, 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 8, 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 10, 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+};
+static const Animation char_dave_anim2[PlayerAnim_Max] = {
+	{2, (const u8[]){ 20, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},             //CharAnim_Left
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},             //CharAnim_Down
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},             //CharAnim_Up
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},             //CharAnim_Right
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
+	
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{2, (const u8[]){ 20, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //Dave player functions
@@ -143,7 +159,12 @@ void Char_Dave_Tick(Character *character)
 	
 	//Animate and draw character
 	Animatable_Animate(&character->animatable, (void*)this, Char_Dave_SetFrame);
-
+	
+	if (stage.song_step == 3774)
+		Animatable_Init(&this->character.animatable, char_dave_anim2);
+	if (stage.song_step == 4032)
+		Animatable_Init(&this->character.animatable, char_dave_anim);
+	
 	Character_Draw(character, &this->tex, &char_dave_frame[this->frame]);
 }
 

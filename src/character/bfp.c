@@ -76,10 +76,10 @@ static const Animation char_bfp_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){14, 15, ASCR_CHGANI, CharAnim_Right}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 	
-	{2, (const u8[]){ 2, 4, 5, ASCR_CHGANI, PlayerAnim_LeftMiss}},     //PlayerAnim_LeftMiss
-	{2, (const u8[]){ 6, 8, 9, ASCR_CHGANI, PlayerAnim_DownMiss}},     //PlayerAnim_DownMiss
-	{2, (const u8[]){ 10, 12, 13, ASCR_CHGANI, PlayerAnim_UpMiss}},     //PlayerAnim_UpMiss
-	{2, (const u8[]){ 14, 16, 17, ASCR_CHGANI, PlayerAnim_RightMiss}},     //PlayerAnim_RightMiss
+	{2, (const u8[]){ 4, 5, ASCR_CHGANI, PlayerAnim_LeftMiss}},     //PlayerAnim_LeftMiss
+	{2, (const u8[]){ 8, 9, ASCR_CHGANI, PlayerAnim_DownMiss}},     //PlayerAnim_DownMiss
+	{2, (const u8[]){ 12, 13, ASCR_CHGANI, PlayerAnim_UpMiss}},     //PlayerAnim_UpMiss
+	{2, (const u8[]){ 16, 17, ASCR_CHGANI, PlayerAnim_RightMiss}},     //PlayerAnim_RightMiss
 };
 
 //BFP player functions

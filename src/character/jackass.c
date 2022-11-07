@@ -70,10 +70,10 @@ static const Animation char_jackass_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 3, 12, 12, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 3, 12, 12, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 3, 12, 12, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 3, 12, 12, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 12, 12, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 12, 12, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 12, 12, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 12, 12, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //Jackass player functions

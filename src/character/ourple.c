@@ -172,10 +172,10 @@ static const Animation char_ourple_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Right
 	{2, (const u8[]){12,13, ASCR_BACK, 1}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){26,28,28,29, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){14,16,16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){20,22,22,23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 8,10,10,11, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){28,29, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){22,23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){10,11, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 static const Animation char_ourple_anim2[PlayerAnim_Max] = {
@@ -189,10 +189,10 @@ static const Animation char_ourple_anim2[PlayerAnim_Max] = {
 	{2, (const u8[]){26,27, ASCR_BACK, 1}},             //CharAnim_Right
 	{2, (const u8[]){30,31, ASCR_BACK, 1}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 8,10,10,11, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){14,16,16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){20,22,22,23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){26,28,28,29, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 10,11, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 22,23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 28,29, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //Ourple Guy player functions

@@ -404,11 +404,11 @@
 	},
 	{ //StageId_6_3 (MILLER)
 		//Characters
+		{Char_Plush_New,    FIXED_DEC(73,1),  FIXED_DEC(184,1)},
+		{Char_Plush_New,    FIXED_DEC(77,1),  FIXED_DEC(204,1)},
+		{Char_Plush_New,    FIXED_DEC(81,1),  FIXED_DEC(224,1)},
 		{Char_Dave_New,    FIXED_DEC(73,1),  FIXED_DEC(9,1)},
 		{Char_Jack_New,    FIXED_DEC(60,1),  FIXED_DEC(-8,1)},
-		{NULL},
-		{NULL},
-		{NULL},
 		{Char_HenryM_New, FIXED_DEC(-142,1),  FIXED_DEC(1,1)},
         {NULL},
 		{NULL},

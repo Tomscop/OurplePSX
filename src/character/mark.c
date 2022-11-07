@@ -92,10 +92,10 @@ static const Animation char_mark_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){12, 13, 14, ASCR_BACK, 1}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 3, 15, 16, 17, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 6, 18, 19, 20, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 9, 21, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 12, 24, 25, 26, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 15, 16, 17, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 18, 19, 20, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 21, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 24, 25, 26, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //Mark player functions

@@ -74,7 +74,7 @@ static const CharFrame char_henrym_frame[] = {
 static const Animation char_henrym_anim[CharAnim_Max] = {
 	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},         //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{1, (const u8[]){ 21, 21, 21, 12, 13, 13, 19, 19, 16, 19, 19, 20, 20, 23, 23, 12, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},         //CharAnim_Up
@@ -105,6 +105,62 @@ void Char_HenryM_Tick(Character *character)
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
+	
+	//Stage specific animations
+		switch (stage.stage_id)
+		{
+			case StageId_6_3: //Meaningless
+				if (stage.song_step == 1527)
+					character->set_anim(character, CharAnim_LeftAlt);
+				break;
+			default:
+				break;
+		}
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //Orphan (change to 6_3 later)
+				if (stage.song_step == 1768)
+					character->set_anim(character, CharAnim_DownAlt);
+				break;
+			default:
+				break;
+		}
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //False Savior (change to 6_3 later)
+				if (stage.song_step == 2450)
+					character->set_anim(character, CharAnim_UpAlt);
+				break;
+			default:
+				break;
+		}
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //God Damn Coward (change to 6_3 later)
+				if (stage.song_step == 2952)
+					character->set_anim(character, CharAnim_RightAlt);
+				break;
+			default:
+				break;
+		}
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //You are just as bad as me (change to 6_3 later)
+				if (stage.song_step == 3744)
+					character->set_anim(character, PlayerAnim_LeftMiss);
+				break;
+			default:
+				break;
+		}
+		switch (stage.stage_id)
+		{
+			case StageId_4_3: //You are a cancer (change to 6_3 later)
+				if (stage.song_step == 4016)
+					character->set_anim(character, PlayerAnim_DownMiss);
+				break;
+			default:
+				break;
+		}
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_HenryM_SetFrame);

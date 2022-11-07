@@ -79,10 +79,10 @@ static const Animation char_jack_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 4, 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 6, 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 8, 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ 10, 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 16, 17, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 18, 19, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 };
 
 //Jack player functions
@@ -106,6 +106,18 @@ void Char_Jack_Tick(Character *character)
 {
 	Char_Jack *this = (Char_Jack*)character;
 
+	if (stage.stage_id == StageId_6_3)
+	{
+		if (stage.song_step == 3776)
+		{
+			this->character.health_i = 6;
+		}
+		if (stage.song_step == 4032)
+		{
+			this->character.health_i = 4;
+		}
+	}
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
