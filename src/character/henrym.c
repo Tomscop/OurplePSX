@@ -81,11 +81,18 @@ static const Animation char_henrym_anim[CharAnim_Max] = {
 	{1, (const u8[]){ 22, 22, 22, 22, 16, 18, 18, 23, 23, 24, 19, 19, 20, 20, 20, 19, 19, 16, 17, 22, 22, 13, 13, 16, 16, 18, 18, 18, 18, 14, 14, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},         //CharAnim_Right
 	{1, (const u8[]){ 20, 20, 20, 20, 16, 17, 17, 19, 19, 20, 20, 20, 20, 19, 19, 13, 12, 12, 21, 21, 21, 19, 19, 20, 20, 19, 19, 17, 17, 14, 14, 16, 16, 18, 18, 18, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
-	
-	{1, (const u8[]){ 12, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 19, 19, 16, 16, 17, 17, 19, 19, 20, 20, 20, 20, 20, 16, 16, 17, 17, 19, 19, 20, 20, 21, 16, 16, 17, 17, 17, 19, 20, 20, 16, 16, 17, 19, 20, 20, 21, 21, 21, 13, 13, 12, 12, 12, 12, 12, 12, 12, ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 14, 15, ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_RightMiss
+};
+
+static const Animation char_henrym_anim2[CharAnim_Max] = {
+	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},         //CharAnim_Left
+	{1, (const u8[]){ 12, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 19, 19, 16, 16, 17, 17, 19, 19, 20, 20, 20, 20, 20, 16, 16, 17, 17, 19, 19, 20, 20, 21, 16, 16, 17, 17, 17, 19, 20, 20, 16, 16, 17, 19, 20, 20, 21, 21, 21, 13, 13, 12, 12, 12, 12, 12, 12, 12, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},         //CharAnim_Down
+	{1, (const u8[]){ 12, 12, 13, 13, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 18, 17, 17, 19, 19, 16, 17, 17, 19, 19, 20, 20, 20, 19, 19, 18, 18, 18, 15, 15, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},         //CharAnim_Up
+	{1, (const u8[]){ 22, 22, 22, 22, 16, 18, 18, 23, 23, 24, 19, 19, 20, 20, 20, 19, 19, 16, 17, 22, 22, 13, 13, 16, 16, 18, 18, 18, 18, 14, 14, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},         //CharAnim_Right
+	{1, (const u8[]){ 20, 20, 20, 20, 16, 17, 17, 19, 19, 20, 20, 20, 20, 19, 19, 13, 12, 12, 21, 21, 21, 19, 19, 20, 20, 19, 19, 17, 17, 14, 14, 16, 16, 18, 18, 18, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
 //HenryM character functions
@@ -107,40 +114,15 @@ void Char_HenryM_Tick(Character *character)
 {
 	Char_HenryM *this = (Char_HenryM*)character;
 	
-	if((character->animatable.anim  != CharAnim_LeftAlt) && (character->animatable.anim  != CharAnim_DownAlt) && (character->animatable.anim  != CharAnim_UpAlt) && (character->animatable.anim  != CharAnim_RightAlt) && (character->animatable.anim  != PlayerAnim_LeftMiss) && (character->animatable.anim  != PlayerAnim_DownMiss))
+	if((character->animatable.anim  != CharAnim_LeftAlt) && (character->animatable.anim  != CharAnim_DownAlt) && (character->animatable.anim  != CharAnim_UpAlt) && (character->animatable.anim  != CharAnim_RightAlt))
 	{
-	//Handle animation updates
-	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
-	    (character->animatable.anim != CharAnim_Left &&
-	     character->animatable.anim != CharAnim_LeftAlt &&
-	     character->animatable.anim != CharAnim_Down &&
-	     character->animatable.anim != CharAnim_DownAlt &&
-	     character->animatable.anim != CharAnim_Up &&
-	     character->animatable.anim != CharAnim_UpAlt &&
-	     character->animatable.anim != CharAnim_Right &&
-	     character->animatable.anim != CharAnim_RightAlt))
-		Character_CheckEndSing(character);
-	
-	if (stage.flag & STAGE_FLAG_JUST_STEP)
-	{
-		//Perform idle dance
-		if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != CharAnim_LeftAlt &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 0)
-			character->set_anim(character, CharAnim_Idle);
+	   //Perform idle dance
+	   if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
+			Character_PerformIdle(character);
 	}
-	}
+    
+    if (stage.song_step == 3743)
+		Animatable_Init(&this->character.animatable, char_henrym_anim2);	
 	
 	//Stage specific animations
 		switch (stage.stage_id)
@@ -183,16 +165,16 @@ void Char_HenryM_Tick(Character *character)
 		{
 			case StageId_6_3: //You are just as bad as me
 				if (stage.song_step == 3744)
-					character->set_anim(character, PlayerAnim_LeftMiss);
+					character->set_anim(character, PlayerAnim_LeftAlt);
 				break;
 			default:
 				break;
 		}
 		switch (stage.stage_id)
 		{
-			case StageId_4_3: //You are a cancer (change to 6_3 later)
+			case StageId_6_3: //You are a cancer
 				if (stage.song_step == 4016)
-					character->set_anim(character, PlayerAnim_DownMiss);
+					character->set_anim(character, PlayerAnim_DownAlt);
 				break;
 			default:
 				break;
@@ -238,7 +220,7 @@ Character *Char_HenryM_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character information
-	this->character.spec = CHAR_SPEC_MISSANIM;
+	this->character.spec = 0;
 	
 	this->character.health_i = 7;
 
