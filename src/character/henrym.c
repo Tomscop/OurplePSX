@@ -165,7 +165,7 @@ void Char_HenryM_Tick(Character *character)
 		{
 			case StageId_6_3: //You are just as bad as me
 				if (stage.song_step == 3744)
-					character->set_anim(character, PlayerAnim_LeftAlt);
+					character->set_anim(character, CharAnim_LeftAlt);
 				break;
 			default:
 				break;
@@ -174,7 +174,7 @@ void Char_HenryM_Tick(Character *character)
 		{
 			case StageId_6_3: //You are a cancer
 				if (stage.song_step == 4016)
-					character->set_anim(character, PlayerAnim_DownAlt);
+					character->set_anim(character, CharAnim_DownAlt);
 				break;
 			default:
 				break;
