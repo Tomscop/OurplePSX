@@ -2669,13 +2669,8 @@ void Stage_Tick(void)
 				stage.back->draw_bg(stage.back);
 			
 			if (stage.song_step > 0)
-			{
-				stage.song_beat = stage.song_step / 4;
-				
-				StageTimer_Tick();
-			}
-			else
-				StageTimer_Calculate();
+                stage.song_beat = stage.song_step / 4;
+            StageTimer_Tick();
 
 			if (stage.stage_id == StageId_1_3)
 			{
