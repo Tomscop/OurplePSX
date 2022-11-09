@@ -65,7 +65,7 @@ static const CharFrame char_henrym_frame[] = {
 	{HenryM_ArcMain_Henry3, {  0, 93, 86, 92}, {  0,-17}}, //18 talk 7
 	{HenryM_ArcMain_Henry3, { 87, 93, 85, 92}, { -1,-17}}, //19 talk 8
 	{HenryM_ArcMain_Henry4, {  0,  0, 85, 92}, {  0,-17}}, //20 talk 9
-	{HenryM_ArcMain_Henry4, {  0, 86, 85, 92}, {  0,-17}}, //21 talk 10
+	{HenryM_ArcMain_Henry4, { 86,  0, 85, 92}, {  0,-17}}, //21 talk 10
 	{HenryM_ArcMain_Henry4, {  0, 93, 86, 92}, {  0,-17}}, //22 talk 11
 	{HenryM_ArcMain_Henry4, { 87, 93, 85, 92}, { -1,-17}}, //23 talk 12
 	{HenryM_ArcMain_Henry5, {  0,  0, 85, 92}, {  0,-17}}, //24 talk 13
@@ -76,11 +76,16 @@ static const Animation char_henrym_anim[CharAnim_Max] = {
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},         //CharAnim_Left
 	{1, (const u8[]){ 21, 21, 21, 12, 13, 13, 19, 19, 16, 19, 19, 20, 20, 23, 23, 12, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},         //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{1, (const u8[]){ 14, 14, 15, 18, 18, 22, 22, 16, 17, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},         //CharAnim_Up
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+	{1, (const u8[]){ 22, 22, 22, 22, 16, 18, 18, 23, 23, 24, 19, 19, 20, 20, 20, 19, 19, 16, 17, 22, 22, 13, 13, 16, 16, 18, 18, 18, 18, 14, 14, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},         //CharAnim_Right
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+	{1, (const u8[]){ 20, 20, 20, 20, 16, 17, 17, 19, 19, 20, 20, 20, 20, 19, 19, 13, 12, 12, 21, 21, 21, 19, 19, 20, 20, 19, 19, 17, 17, 14, 14, 16, 16, 18, 18, 18, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+	
+	{1, (const u8[]){ 12, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 19, 19, 16, 16, 17, 17, 19, 19, 20, 20, 20, 20, 20, 16, 16, 17, 17, 19, 19, 20, 20, 21, 16, 16, 17, 17, 17, 19, 20, 20, 16, 16, 17, 19, 20, 20, 21, 21, 21, 13, 13, 12, 12, 12, 12, 12, 12, 12, ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 14, 15, ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},     //PlayerAnim_RightMiss
 };
 
 //HenryM character functions
@@ -102,9 +107,40 @@ void Char_HenryM_Tick(Character *character)
 {
 	Char_HenryM *this = (Char_HenryM*)character;
 	
-	//Perform idle dance
-	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
-		Character_PerformIdle(character);
+	if((character->animatable.anim  != CharAnim_LeftAlt) && (character->animatable.anim  != CharAnim_DownAlt) && (character->animatable.anim  != CharAnim_UpAlt) && (character->animatable.anim  != CharAnim_RightAlt) && (character->animatable.anim  != PlayerAnim_LeftMiss) && (character->animatable.anim  != PlayerAnim_DownMiss))
+	{
+	//Handle animation updates
+	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
+	    (character->animatable.anim != CharAnim_Left &&
+	     character->animatable.anim != CharAnim_LeftAlt &&
+	     character->animatable.anim != CharAnim_Down &&
+	     character->animatable.anim != CharAnim_DownAlt &&
+	     character->animatable.anim != CharAnim_Up &&
+	     character->animatable.anim != CharAnim_UpAlt &&
+	     character->animatable.anim != CharAnim_Right &&
+	     character->animatable.anim != CharAnim_RightAlt))
+		Character_CheckEndSing(character);
+	
+	if (stage.flag & STAGE_FLAG_JUST_STEP)
+	{
+		//Perform idle dance
+		if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != CharAnim_LeftAlt &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 0)
+			character->set_anim(character, CharAnim_Idle);
+	}
+	}
 	
 	//Stage specific animations
 		switch (stage.stage_id)
@@ -118,7 +154,7 @@ void Char_HenryM_Tick(Character *character)
 		}
 		switch (stage.stage_id)
 		{
-			case StageId_4_3: //Orphan (change to 6_3 later)
+			case StageId_6_3: //Orphan
 				if (stage.song_step == 1768)
 					character->set_anim(character, CharAnim_DownAlt);
 				break;
@@ -127,7 +163,7 @@ void Char_HenryM_Tick(Character *character)
 		}
 		switch (stage.stage_id)
 		{
-			case StageId_4_3: //False Savior (change to 6_3 later)
+			case StageId_6_3: //False Savior
 				if (stage.song_step == 2450)
 					character->set_anim(character, CharAnim_UpAlt);
 				break;
@@ -136,7 +172,7 @@ void Char_HenryM_Tick(Character *character)
 		}
 		switch (stage.stage_id)
 		{
-			case StageId_4_3: //God Damn Coward (change to 6_3 later)
+			case StageId_6_3: //God Damn Coward
 				if (stage.song_step == 2952)
 					character->set_anim(character, CharAnim_RightAlt);
 				break;
@@ -145,7 +181,7 @@ void Char_HenryM_Tick(Character *character)
 		}
 		switch (stage.stage_id)
 		{
-			case StageId_4_3: //You are just as bad as me (change to 6_3 later)
+			case StageId_6_3: //You are just as bad as me
 				if (stage.song_step == 3744)
 					character->set_anim(character, PlayerAnim_LeftMiss);
 				break;
@@ -202,7 +238,7 @@ Character *Char_HenryM_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character information
-	this->character.spec = 0;
+	this->character.spec = CHAR_SPEC_MISSANIM;
 	
 	this->character.health_i = 7;
 
