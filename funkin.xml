@@ -326,6 +326,15 @@
 				<!-- Dave assets -->
 				<file name = "dave.arc" type = "data" source = "iso/dave/main.arc"/>
 				
+				<!-- Dee assets -->
+				<file name = "dee.arc" type = "data" source = "iso/dee/main.arc"/>
+				
+				<!-- Steven assets -->
+				<file name = "steven.arc" type = "data" source = "iso/steven/main.arc"/>
+				
+				<!-- Peter assets -->
+				<file name = "peter.arc" type = "data" source = "iso/peter/main.arc"/>
+				
 				<!-- HenryM assets -->
 				<file name = "henrym.arc" type = "data" source = "iso/henrym/main.arc"/>
 				
