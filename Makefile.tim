@@ -212,7 +212,7 @@ iso/jack/main.arc: iso/jack/jack0.tim iso/jack/jack1.tim iso/jack/jack2.tim
 iso/dave/main.arc: iso/dave/dave0.tim iso/dave/dave1.tim iso/dave/dave2.tim iso/dave/dave3.tim
 
 # Dee
-iso/dee/main.arc: iso/dee/dee0.tim iso/dee/dee1.tim iso/dee/dee2.tim iso/dee/dee3.tim
+iso/dee/main.arc: iso/dee/dee0.tim iso/dee/dee1.tim iso/dee/dee2.tim iso/dee/dee3.tim iso/dee/dee4.tim
 
 # Steven
 iso/steven/main.arc: iso/steven/steven0.tim iso/steven/steven1.tim iso/steven/steven2.tim iso/steven/steven3.tim
