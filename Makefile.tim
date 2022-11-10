@@ -218,7 +218,7 @@ iso/dee/main.arc: iso/dee/dee0.tim iso/dee/dee1.tim iso/dee/dee2.tim iso/dee/dee
 iso/steven/main.arc: iso/steven/steven0.tim iso/steven/steven1.tim iso/steven/steven2.tim iso/steven/steven3.tim
 
 # Peter
-iso/peter/main.arc: iso/peter/peter0.tim iso/peter/peter1.tim iso/peter/peter2.tim iso/peter/peter3.tim
+iso/peter/main.arc: iso/peter/peter0.tim iso/peter/peter1.tim iso/peter/peter2.tim
 
 # HenryM
 iso/henrym/main.arc: iso/henrym/henry0.tim iso/henrym/henry1.tim iso/henrym/henry2.tim iso/henrym/henry3.tim iso/henrym/henry4.tim iso/henrym/henry5.tim
