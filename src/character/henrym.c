@@ -72,26 +72,26 @@ static const CharFrame char_henrym_frame[] = {
 };
 
 static const Animation char_henrym_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},         //CharAnim_Left
+	{3, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{3, (const u8[]){ 4, 5, 5, 5, ASCR_BACK, 1}},         //CharAnim_Left
 	{1, (const u8[]){ 21, 21, 21, 12, 13, 13, 19, 19, 16, 19, 19, 20, 20, 23, 23, 12, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},         //CharAnim_Down
+	{3, (const u8[]){ 6, 7, 7, 7, ASCR_BACK, 1}},         //CharAnim_Down
 	{1, (const u8[]){ 14, 14, 15, 18, 18, 22, 22, 16, 17, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},         //CharAnim_Up
+	{3, (const u8[]){ 8, 9, 9, 9, ASCR_BACK, 1}},         //CharAnim_Up
 	{1, (const u8[]){ 22, 22, 22, 22, 16, 18, 18, 23, 23, 24, 19, 19, 20, 20, 20, 19, 19, 16, 17, 22, 22, 13, 13, 16, 16, 18, 18, 18, 18, 14, 14, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},         //CharAnim_Right
+	{3, (const u8[]){ 10, 11, 11, 11, ASCR_BACK, 1}},         //CharAnim_Right
 	{1, (const u8[]){ 20, 20, 20, 20, 16, 17, 17, 19, 19, 20, 20, 20, 20, 19, 19, 13, 12, 12, 21, 21, 21, 19, 19, 20, 20, 19, 19, 17, 17, 14, 14, 16, 16, 18, 18, 18, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
 static const Animation char_henrym_anim2[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},         //CharAnim_Left
+	{3, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{3, (const u8[]){ 4, 5, 5, 5, ASCR_BACK, 1}},         //CharAnim_Left
 	{1, (const u8[]){ 12, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 19, 19, 16, 16, 17, 17, 19, 19, 20, 20, 20, 20, 20, 16, 16, 17, 17, 19, 19, 20, 20, 21, 16, 16, 17, 17, 17, 19, 20, 20, 16, 16, 17, 19, 20, 20, 21, 21, 21, 13, 13, 12, 12, 12, 12, 12, 12, 12, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},         //CharAnim_Down
+	{3, (const u8[]){ 6, 7, 7, 7, ASCR_BACK, 1}},         //CharAnim_Down
 	{1, (const u8[]){ 12, 12, 13, 13, 14, 15, 15, 15, 15, 16, 17, 17, 18, 18, 18, 17, 17, 19, 19, 16, 17, 17, 19, 19, 20, 20, 20, 19, 19, 18, 18, 18, 15, 15, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},         //CharAnim_Up
+	{3, (const u8[]){ 8, 9, 9, 9, ASCR_BACK, 1}},         //CharAnim_Up
 	{1, (const u8[]){ 22, 22, 22, 22, 16, 18, 18, 23, 23, 24, 19, 19, 20, 20, 20, 19, 19, 16, 17, 22, 22, 13, 13, 16, 16, 18, 18, 18, 18, 14, 14, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},         //CharAnim_Right
+	{3, (const u8[]){ 10, 11, 11, 11, ASCR_BACK, 1}},         //CharAnim_Right
 	{1, (const u8[]){ 20, 20, 20, 20, 16, 17, 17, 19, 19, 20, 20, 20, 20, 19, 19, 13, 12, 12, 21, 21, 21, 19, 19, 20, 20, 19, 19, 17, 17, 14, 14, 16, 16, 18, 18, 18, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
