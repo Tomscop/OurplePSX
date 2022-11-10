@@ -226,7 +226,7 @@ void Char_Ourple_Tick(Character *character)
 	{
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 0)
 		{
-			this->character.focus_zoom = FIXED_DEC(1577,512);
+			this->character.focus_zoom = FIXED_DEC(1400,512);
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 1)
 		{
@@ -234,7 +234,7 @@ void Char_Ourple_Tick(Character *character)
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 6)
 		{
-			this->character.focus_zoom = FIXED_DEC(1577,512);
+			this->character.focus_zoom = FIXED_DEC(1400,512);
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 7)
 		{
@@ -242,7 +242,7 @@ void Char_Ourple_Tick(Character *character)
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 32)
 		{
-			this->character.focus_zoom = FIXED_DEC(1577,512);
+			this->character.focus_zoom = FIXED_DEC(1400,512);
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 33)
 		{
@@ -250,7 +250,7 @@ void Char_Ourple_Tick(Character *character)
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 38)
 		{
-			this->character.focus_zoom = FIXED_DEC(1577,512);
+			this->character.focus_zoom = FIXED_DEC(1400,512);
 		}
 		if ((stage.flag & STAGE_FLAG_JUST_STEP) && stage.song_step == 39)
 		{
