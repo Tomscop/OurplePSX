@@ -42,38 +42,38 @@ typedef struct
 static const CharFrame char_dee_frame[] = 
 {
 	{Dee_ArcMain_Dee0, {  0,  0, 85,116}, {  0,  0}}, //0 idle 1
-	{Dee_ArcMain_Dee0, { 86,  0, 87,115}, {  0,  0}}, //1 idle 2
-	{Dee_ArcMain_Dee0, {  0,117, 83,118}, {  0,  0}}, //2 idle 3
-	{Dee_ArcMain_Dee0, { 84,117, 84,117}, {  0,  0}}, //3 idle 4
+	{Dee_ArcMain_Dee0, { 86,  0, 87,115}, {  1, -1}}, //1 idle 2
+	{Dee_ArcMain_Dee0, {  0,117, 83,118}, { -1,  2}}, //2 idle 3
+	{Dee_ArcMain_Dee0, { 84,117, 84,117}, {  0,  1}}, //3 idle 4
 	
-	{Dee_ArcMain_Dee1, {  0,  0,104,114}, {  0,  0}}, //4 left 1
-	{Dee_ArcMain_Dee1, {105,  0,103,114}, {  0,  0}}, //5 left 2
+	{Dee_ArcMain_Dee1, {  0,  0,104,114}, { 21,  1}}, //4 left 1
+	{Dee_ArcMain_Dee1, {105,  0,103,114}, { 21,  1}}, //5 left 2
 	
-	{Dee_ArcMain_Dee1, {  0,115, 52, 77}, {  0,  0}}, //6 down 1
-	{Dee_ArcMain_Dee1, { 53,115, 53, 78}, {  0,  0}}, //7 down 2
+	{Dee_ArcMain_Dee1, {  0,115, 52, 77}, {-19,-33}}, //6 down 1
+	{Dee_ArcMain_Dee1, { 53,115, 53, 78}, {-18,-31}}, //7 down 2
 	
-	{Dee_ArcMain_Dee1, {107,115, 62,113}, {  0,  0}}, //8 up 1
-	{Dee_ArcMain_Dee1, {170,115, 61,113}, {  0,  0}}, //9 up 2
+	{Dee_ArcMain_Dee1, {107,115, 62,113}, {-19, 10}}, //8 up 1
+	{Dee_ArcMain_Dee1, {170,115, 61,113}, {-19, 10}}, //9 up 2
 	
-	{Dee_ArcMain_Dee2, {  0,  0, 48,119}, {  0,  0}}, //10 right 1
-	{Dee_ArcMain_Dee2, { 49,  0, 49,118}, {  0,  0}}, //11 right 2
+	{Dee_ArcMain_Dee2, {  0,  0, 48,119}, {-34,  4}}, //10 right 1
+	{Dee_ArcMain_Dee2, { 49,  0, 49,118}, {-33,  3}}, //11 right 2
 	
-	{Dee_ArcMain_Dee3, { 88,  0,104,114}, {  0,  0}}, //12 left miss 1
-	{Dee_ArcMain_Dee3, {  0, 83,103,114}, {  0,  0}}, //13 left miss 2
+	{Dee_ArcMain_Dee3, { 88,  0,104,114}, { 21,  1}}, //12 left miss 1
+	{Dee_ArcMain_Dee3, {  0, 83,103,114}, { 21,  1}}, //13 left miss 2
 	
-	{Dee_ArcMain_Dee3, {104,115, 52, 77}, {  0,  0}}, //14 down miss 1
-	{Dee_ArcMain_Dee3, {157,115, 53, 77}, {  0,  0}}, //15 down miss 2
+	{Dee_ArcMain_Dee3, {104,115, 52, 77}, {-19,-33}}, //14 down miss 1
+	{Dee_ArcMain_Dee3, {157,115, 53, 77}, {-18,-32}}, //15 down miss 2
 
-	{Dee_ArcMain_Dee3, {193,  0, 62,113}, {  0,  0}}, //16 up miss 1
-	{Dee_ArcMain_Dee4, {  0,  0, 61,113}, {  0,  0}}, //17 up miss 2
+	{Dee_ArcMain_Dee3, {193,  0, 62,113}, {-19,  9}}, //16 up miss 1
+	{Dee_ArcMain_Dee4, {  0,  0, 61,113}, {-19, 10}}, //17 up miss 2
 	
-	{Dee_ArcMain_Dee4, { 62,  0, 47,119}, {  0,  0}}, //18 right miss 1
-	{Dee_ArcMain_Dee4, {110,  0, 49,119}, {  0,  0}}, //19 right miss 2
+	{Dee_ArcMain_Dee4, { 62,  0, 47,119}, {-35,  4}}, //18 right miss 1
+	{Dee_ArcMain_Dee4, {110,  0, 49,119}, {-33,  4}}, //19 right miss 2
 	
-	{Dee_ArcMain_Dee2, { 99,  0, 86, 82}, {  0,  0}}, //20 dead 1
-	{Dee_ArcMain_Dee2, {  0,120, 86, 82}, {  0,  0}}, //21 dead 2
-	{Dee_ArcMain_Dee2, { 87,120, 86, 82}, {  0,  0}}, //22 dead 3
-	{Dee_ArcMain_Dee3, {  0,  0, 87, 82}, {  0,  0}}, //23 dead 4
+	{Dee_ArcMain_Dee2, { 99,  0, 86, 82}, {  3,-42}}, //20 dead 1
+	{Dee_ArcMain_Dee2, {  0,120, 86, 82}, {  3,-42}}, //21 dead 2
+	{Dee_ArcMain_Dee2, { 87,120, 86, 82}, {  3,-42}}, //22 dead 3
+	{Dee_ArcMain_Dee3, {  0,  0, 87, 82}, {  4,-42}}, //23 dead 4
 };
 static const Animation char_dee_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
