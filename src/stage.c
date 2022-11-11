@@ -84,6 +84,9 @@ static u32 Sounds[10];
 #include "character/criminal.h"
 #include "character/jack.h"
 #include "character/dave.h"
+#include "character/dee.h"
+#include "character/steven.h"
+#include "character/peter.h"
 #include "character/henrym.h"
 #include "character/dad.h"
 

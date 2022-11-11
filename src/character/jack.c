@@ -108,7 +108,7 @@ void Char_Jack_Tick(Character *character)
 
 	if (stage.stage_id == StageId_6_3)
 	{
-		if (stage.song_step == 3776)
+		if (stage.song_step == 3775)
 		{
 			this->character.health_i = 6;
 		}
