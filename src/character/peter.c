@@ -40,35 +40,35 @@ typedef struct
 static const CharFrame char_peter_frame[] = 
 {
 	{Peter_ArcMain_Peter0, {  0,  0, 53,111}, {  0,  0}}, //0 idle 1
-	{Peter_ArcMain_Peter0, { 54,  0, 55,110}, {  0,  0}}, //1 idle 2
-	{Peter_ArcMain_Peter0, {110,  0, 52,113}, {  0,  0}}, //2 idle 3
-	{Peter_ArcMain_Peter0, {163,  0, 52,113}, {  0,  0}}, //3 idle 4
+	{Peter_ArcMain_Peter0, { 54,  0, 55,110}, {  1, -1}}, //1 idle 2
+	{Peter_ArcMain_Peter0, {110,  0, 52,113}, {  0,  2}}, //2 idle 3
+	{Peter_ArcMain_Peter0, {163,  0, 52,113}, {  0,  2}}, //3 idle 4
 	
-	{Peter_ArcMain_Peter0, {  0,114, 73,109}, {  0,  0}}, //4 left 1
-	{Peter_ArcMain_Peter0, { 74,114, 72,109}, {  0,  0}}, //5 left 2
+	{Peter_ArcMain_Peter0, {  0,114, 73,109}, { 27, -4}}, //4 left 1
+	{Peter_ArcMain_Peter0, { 74,114, 72,109}, { 26, -4}}, //5 left 2
 	
-	{Peter_ArcMain_Peter0, {147,114, 56, 90}, {  0,  0}}, //6 down 1
-	{Peter_ArcMain_Peter1, {  0,  0, 55, 90}, {  0,  0}}, //7 down 2
+	{Peter_ArcMain_Peter0, {147,114, 56, 90}, {  1,-22}}, //6 down 1
+	{Peter_ArcMain_Peter1, {  0,  0, 55, 90}, {  0,-22}}, //7 down 2
 	
-	{Peter_ArcMain_Peter1, { 56,  0, 56,116}, {  0,  0}}, //8 up 1
-	{Peter_ArcMain_Peter1, {113,  0, 56,115}, {  0,  0}}, //9 up 2
+	{Peter_ArcMain_Peter1, { 56,  0, 56,116}, { -2,  3}}, //8 up 1
+	{Peter_ArcMain_Peter1, {113,  0, 56,115}, { -2,  2}}, //9 up 2
 	
-	{Peter_ArcMain_Peter1, {170,  0, 59,104}, {  0,  0}}, //10 right 1
-	{Peter_ArcMain_Peter1, {  0,117, 60,104}, {  0,  0}}, //11 right 2
+	{Peter_ArcMain_Peter1, {170,  0, 59,104}, { -4, -7}}, //10 right 1
+	{Peter_ArcMain_Peter1, {  0,117, 60,104}, { -3, -7}}, //11 right 2
 	
-	{Peter_ArcMain_Peter1, {133,117, 72,108}, {  0,  0}}, //12 left miss 1
-	{Peter_ArcMain_Peter2, {  0,  0, 72,108}, {  0,  0}}, //13 left miss 2
+	{Peter_ArcMain_Peter1, {133,117, 72,108}, { 26, -4}}, //12 left miss 1
+	{Peter_ArcMain_Peter2, {  0,  0, 72,108}, { 26, -4}}, //13 left miss 2
 	
-	{Peter_ArcMain_Peter2, { 73,  0, 55, 92}, {  0,  0}}, //14 down miss 1
-	{Peter_ArcMain_Peter2, {129,  0, 55, 91}, {  0,  0}}, //15 down miss 2
+	{Peter_ArcMain_Peter2, { 73,  0, 55, 92}, {  0,-21}}, //14 down miss 1
+	{Peter_ArcMain_Peter2, {129,  0, 55, 91}, { -1,-21}}, //15 down miss 2
 
-	{Peter_ArcMain_Peter2, {185,  0, 56,114}, {  0,  0}}, //16 up miss 1
-	{Peter_ArcMain_Peter2, {  0,115, 56,114}, {  0,  0}}, //17 up miss 2
+	{Peter_ArcMain_Peter2, {185,  0, 56,114}, { -2,  2}}, //16 up miss 1
+	{Peter_ArcMain_Peter2, {  0,115, 56,114}, { -2,  2}}, //17 up miss 2
 	
-	{Peter_ArcMain_Peter2, { 57,115, 61,103}, {  0,  0}}, //18 right miss 1
-	{Peter_ArcMain_Peter2, {119,115, 59,103}, {  0,  0}}, //19 right miss 2
+	{Peter_ArcMain_Peter2, { 57,115, 61,103}, { -2, -7}}, //18 right miss 1
+	{Peter_ArcMain_Peter2, {119,115, 59,103}, { -3, -8}}, //19 right miss 2
 	
-	{Peter_ArcMain_Peter1, { 61,117, 71, 70}, {  0,  0}}, //20 dead
+	{Peter_ArcMain_Peter1, { 61,117, 71, 70}, { 19,-40}}, //20 dead
 };
 static const Animation char_peter_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
