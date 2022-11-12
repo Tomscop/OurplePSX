@@ -207,6 +207,7 @@
 			<dir name = "miller">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/miller/back.arc"/>
+				<file name = "doggo.arc" type = "data" source = "iso/miller/doggo.arc"/>
 			</dir>
 		
 			<!-- Character assets -->

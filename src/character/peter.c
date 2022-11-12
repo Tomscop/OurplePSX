@@ -214,7 +214,7 @@ Character *Char_Peter_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFEA7B2F;
 
-	this->character.focus_x = FIXED_DEC(-181,1);
+	this->character.focus_x = FIXED_DEC(-179,1);
 	this->character.focus_y = FIXED_DEC(4,1);
 	this->character.focus_zoom = FIXED_DEC(181,256);
 	
