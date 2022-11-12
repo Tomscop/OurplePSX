@@ -167,7 +167,10 @@ void Char_Dee_Tick(Character *character)
 	if (stage.song_step == 2462)
 		Animatable_Init(&this->character.animatable, char_dee_anim2);
 	if (stage.song_step == 4032)
+	{
 		Animatable_Init(&this->character.animatable, char_dee_anim);
+		character->set_anim(character, CharAnim_Idle);
+	}
 	
 	Character_Draw(character, &this->tex, &char_dee_frame[this->frame]);
 }

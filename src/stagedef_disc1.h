@@ -404,18 +404,18 @@
 	},
 	{ //StageId_6_3 (MILLER)
 		//Characters
-		{Char_Peter_New,    FIXED_DEC(156,1),  FIXED_DEC(60,1)},
-		{Char_Steven_New,    FIXED_DEC(123,1),  FIXED_DEC(43,1)},
-		{Char_Dee_New,    FIXED_DEC(98,1),  FIXED_DEC(26,1)},
-		{Char_Dave_New,    FIXED_DEC(73,1),  FIXED_DEC(9,1)},
-		{Char_Jack_New,    FIXED_DEC(60,1),  FIXED_DEC(-8,1)},
-		{Char_HenryM_New, FIXED_DEC(-142,1),  FIXED_DEC(1,1)},
+		{Char_Peter_New,    FIXED_DEC(274,1),  FIXED_DEC(158,1)},
+		{Char_Steven_New,    FIXED_DEC(232,1),  FIXED_DEC(143,1)},
+		{Char_Dee_New,    FIXED_DEC(203,1),  FIXED_DEC(118,1)},
+		{Char_Dave_New,    FIXED_DEC(161,1),  FIXED_DEC(94,1)},
+		{Char_Jack_New,    FIXED_DEC(128,1),  FIXED_DEC(67,1)},
+		{Char_HenryM_New, FIXED_DEC(-142,1),  FIXED_DEC(115,1)},
         {NULL},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_Miller_New,
 		
 		//Song info
 		6, 3,

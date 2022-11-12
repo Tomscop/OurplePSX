@@ -105,6 +105,7 @@ static u32 Sounds[10];
 #include "stage/ngroom.h"
 #include "stage/black2.h"
 #include "stage/samroom.h"
+#include "stage/miller.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"

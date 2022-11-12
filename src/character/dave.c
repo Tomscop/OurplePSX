@@ -163,7 +163,10 @@ void Char_Dave_Tick(Character *character)
 	if (stage.song_step == 3774)
 		Animatable_Init(&this->character.animatable, char_dave_anim2);
 	if (stage.song_step == 4032)
+	{
 		Animatable_Init(&this->character.animatable, char_dave_anim);
+		character->set_anim(character, CharAnim_Idle);
+	}
 	
 	Character_Draw(character, &this->tex, &char_dave_frame[this->frame]);
 }

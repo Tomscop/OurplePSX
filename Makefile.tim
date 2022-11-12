@@ -93,6 +93,7 @@ all: \
 	iso/black2/memorys.arc \
 	iso/black2/alert.tim \
 	iso/samroom/back.arc \
+	iso/miller/back.arc \
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -275,3 +276,6 @@ iso/black2/memorys.arc: iso/black2/memorys0.tim iso/black2/memorys1.tim iso/blac
 
 # SAM Room
 iso/samroom/back.arc: iso/samroom/back0.tim iso/samroom/back1.tim
+
+# Miller
+iso/miller/back.arc: iso/miller/back.tim

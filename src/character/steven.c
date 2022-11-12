@@ -41,35 +41,35 @@ typedef struct
 static const CharFrame char_steven_frame[] = 
 {
 	{Steven_ArcMain_Steven0, {  0,  0, 72,100}, {  0,  0}}, //0 idle 1
-	{Steven_ArcMain_Steven0, { 73,  0, 73,100}, {  0,  0}}, //1 idle 2
-	{Steven_ArcMain_Steven0, {146,  0, 73,102}, {  0,  0}}, //2 idle 3
-	{Steven_ArcMain_Steven0, {  0,103, 72,102}, {  0,  0}}, //3 idle 4
+	{Steven_ArcMain_Steven0, { 73,  0, 73,100}, {  0, -1}}, //1 idle 2
+	{Steven_ArcMain_Steven0, {146,  0, 73,102}, {  0,  1}}, //2 idle 3
+	{Steven_ArcMain_Steven0, {  0,103, 72,102}, {  0,  2}}, //3 idle 4
 	
-	{Steven_ArcMain_Steven0, { 73,103, 81,101}, {  0,  0}}, //4 left 1
-	{Steven_ArcMain_Steven0, {155,103, 80,101}, {  0,  0}}, //5 left 2
+	{Steven_ArcMain_Steven0, { 73,103, 81,101}, {  9,  0}}, //4 left 1
+	{Steven_ArcMain_Steven0, {155,103, 80,101}, {  8,  0}}, //5 left 2
 	
-	{Steven_ArcMain_Steven1, {  0,  0, 63, 83}, {  0,  0}}, //6 down 1
-	{Steven_ArcMain_Steven1, { 64,  0, 62, 83}, {  0,  0}}, //7 down 2
+	{Steven_ArcMain_Steven1, {  0,  0, 63, 83}, {-11,-18}}, //6 down 1
+	{Steven_ArcMain_Steven1, { 64,  0, 62, 83}, {-11,-18}}, //7 down 2
 	
-	{Steven_ArcMain_Steven1, {127,  0, 59,105}, {  0,  0}}, //8 up 1
-	{Steven_ArcMain_Steven1, {187,  0, 60,105}, {  0,  0}}, //9 up 2
+	{Steven_ArcMain_Steven1, {127,  0, 59,105}, {-17,  4}}, //8 up 1
+	{Steven_ArcMain_Steven1, {187,  0, 60,105}, {-16,  4}}, //9 up 2
 	
-	{Steven_ArcMain_Steven1, {  0, 84, 63,101}, {  0,  0}}, //10 right 1
-	{Steven_ArcMain_Steven1, { 64, 84, 63,101}, {  0,  0}}, //11 right 2
+	{Steven_ArcMain_Steven1, {  0, 84, 63,101}, {-17,  1}}, //10 right 1
+	{Steven_ArcMain_Steven1, { 64, 84, 63,101}, {-16,  0}}, //11 right 2
 	
-	{Steven_ArcMain_Steven2, {  0,  0, 80,101}, {  0,  0}}, //12 left miss 1
-	{Steven_ArcMain_Steven2, { 81,  0, 79,101}, {  0,  0}}, //13 left miss 2
+	{Steven_ArcMain_Steven2, {  0,  0, 80,101}, {  8,  0}}, //12 left miss 1
+	{Steven_ArcMain_Steven2, { 81,  0, 79,101}, {  7,  0}}, //13 left miss 2
 	
-	{Steven_ArcMain_Steven2, {161,  0, 62, 82}, {  0,  0}}, //14 down miss 1
-	{Steven_ArcMain_Steven2, {  0,102, 62, 84}, {  0,  0}}, //15 down miss 2
+	{Steven_ArcMain_Steven2, {161,  0, 62, 82}, {-12,-19}}, //14 down miss 1
+	{Steven_ArcMain_Steven2, {  0,102, 62, 84}, {-12,-17}}, //15 down miss 2
 
-	{Steven_ArcMain_Steven2, { 63,102, 59,104}, {  0,  0}}, //16 up miss 1
-	{Steven_ArcMain_Steven2, {161,112, 59,105}, {  0,  0}}, //17 up miss 2
+	{Steven_ArcMain_Steven2, { 63,102, 59,104}, {-17,  3}}, //16 up miss 1
+	{Steven_ArcMain_Steven2, {161,112, 59,105}, {-17,  4}}, //17 up miss 2
 	
-	{Steven_ArcMain_Steven3, {  0,  0, 63,101}, {  0,  0}}, //18 right miss 1
-	{Steven_ArcMain_Steven3, { 64,  0, 63,101}, {  0,  0}}, //19 right miss 2
+	{Steven_ArcMain_Steven3, {  0,  0, 63,101}, {-16,  1}}, //18 right miss 1
+	{Steven_ArcMain_Steven3, { 64,  0, 63,101}, {-16,  1}}, //19 right miss 2
 	
-	{Steven_ArcMain_Steven1, {128,106,120, 63}, {  0,  0}}, //20 dead
+	{Steven_ArcMain_Steven1, {128,106,120, 63}, { 14,-54}}, //20 dead
 };
 static const Animation char_steven_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 0,  1,  2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
@@ -163,7 +163,10 @@ void Char_Steven_Tick(Character *character)
 	if (stage.song_step == 1534)
 		Animatable_Init(&this->character.animatable, char_steven_anim2);
 	if (stage.song_step == 4032)
+	{
 		Animatable_Init(&this->character.animatable, char_steven_anim);
+		character->set_anim(character, CharAnim_Idle);
+	}
 	
 	Character_Draw(character, &this->tex, &char_steven_frame[this->frame]);
 }
