@@ -2079,7 +2079,7 @@ void Stage_Tick(void)
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(83,1); //omg 83, like the bite of 83!?!?!?!11!1?
 				}
-				if ((stage.stage_id == StageId_6_3) && (stage.song_step == 416))
+				if ((stage.stage_id == StageId_6_3) && (stage.song_step == 416) || (stage.stage_id == StageId_6_3) && (stage.song_step == 16))
 				{
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(80,1);
@@ -2632,7 +2632,7 @@ void Stage_Tick(void)
 			}
 			
 			//Draw border
-			if ((stage.stage_id == StageId_5_2) || (stage.stage_id == StageId_6_1) || (stage.stage_id == StageId_6_3))
+			if ((stage.stage_id == StageId_5_2) || (stage.stage_id == StageId_6_1) || (stage.stage_id == StageId_6_3) && (stage.song_step >= 481))
 			{
 				RECT border_src = {0, 0, 100, 240};
 				RECT border_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT)};
