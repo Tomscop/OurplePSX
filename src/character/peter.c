@@ -123,7 +123,60 @@ void Char_Peter_SetFrame(void *user, u8 frame)
 void Char_Peter_Tick(Character *character)
 {
 	Char_Peter *this = (Char_Peter*)character;
-
+	
+	//Camera stuff
+	if (stage.stage_id == StageId_6_3)
+	{
+		if (stage.song_step == 2160)
+		{
+			this->character.focus_zoom = FIXED_DEC(206,128);
+		}
+		if (stage.song_step == 2162)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+		if (stage.song_step == 2164)
+		{
+			this->character.focus_zoom = FIXED_DEC(226,128);
+		}
+		if (stage.song_step == 2166)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+		if (stage.song_step == 2168)
+		{
+			this->character.focus_zoom = FIXED_DEC(226,128);
+		}
+		if (stage.song_step == 2169)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+		if (stage.song_step == 2171)
+		{
+			this->character.focus_zoom = FIXED_DEC(138,64);
+		}
+		if (stage.song_step == 2172)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+		if (stage.song_step == 2173)
+		{
+			this->character.focus_zoom = FIXED_DEC(1234,512);
+		}
+		if (stage.song_step == 2175)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+		if (stage.song_step == 2432)
+		{
+			this->character.focus_zoom = FIXED_DEC(1851,512);
+		}
+		if (stage.song_step == 2433)
+		{
+			this->character.focus_zoom = FIXED_DEC(181,256);
+		}
+	}
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&

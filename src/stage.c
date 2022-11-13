@@ -2064,20 +2064,30 @@ void Stage_Tick(void)
 				}
 				
 				//Draw white fade
-				if ((stage.stage_id == StageId_1_3 && stage.song_step == 911) || (stage.stage_id == StageId_1_3 && stage.song_step == 1166) || (stage.stage_id == StageId_1_3 && stage.song_step == 1423) || (stage.stage_id == StageId_1_3 && stage.song_step == 1679))
+				if (((stage.stage_id == StageId_1_3) && (stage.song_step == 911)) || ((stage.stage_id == StageId_1_3) && (stage.song_step == 1166)) || ((stage.stage_id == StageId_1_3) && (stage.song_step == 1423)) || ((stage.stage_id == StageId_1_3) && (stage.song_step == 1679)))
 				{
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(175,1);
 				}
-				if (stage.stage_id == StageId_5_3 && stage.song_step == 543)
+				if ((stage.stage_id == StageId_5_3) && (stage.song_step == 543))
 				{
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(275,1);
 				}
-				if (stage.stage_id == StageId_5_3 && stage.song_step == 2472)
+				if ((stage.stage_id == StageId_5_3) && (stage.song_step == 2472))
 				{
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(83,1); //omg 83, like the bite of 83!?!?!?!11!1?
+				}
+				if ((stage.stage_id == StageId_6_3) && (stage.song_step == 416))
+				{
+					fade = FIXED_DEC(255,1);
+					fadespd = FIXED_DEC(80,1);
+				}
+				if ((stage.stage_id == StageId_6_3) && (stage.song_step == 480) || (stage.stage_id == StageId_6_3) && (stage.song_step == 4312) || (stage.stage_id == StageId_6_3) && (stage.song_step == 1536) || (stage.stage_id == StageId_6_3) && (stage.song_step == 1776) || (stage.stage_id == StageId_6_3) && (stage.song_step == 2464) || (stage.stage_id == StageId_6_3) && (stage.song_step == 2976) || (stage.stage_id == StageId_6_3) && (stage.song_step == 3776) || (stage.stage_id == StageId_6_3) && (stage.song_step == 4032))
+				{
+					fade = FIXED_DEC(255,1);
+					fadespd = FIXED_DEC(325,1);
 				}
 				if (fade > 0)
 				{
@@ -2154,6 +2164,15 @@ void Stage_Tick(void)
 			else if ((stage.stage_id == StageId_5_3) || (stage.stage_id == StageId_6_2))
 			{
 				if (stage.song_step <= 0)
+					show = false;
+				else
+					show = true;
+			}
+			else if (stage.stage_id == StageId_6_3)
+			{
+				if (stage.song_step <= 460)
+					show = false;
+				else if (stage.song_step >= 4312)
 					show = false;
 				else
 					show = true;
@@ -2372,13 +2391,13 @@ void Stage_Tick(void)
 			{
 				//Check if screen should bump
 				boolean is_bump_step;
-				if ((stage.stage_id == StageId_2_3) && (stage.song_step >= 576) && (stage.song_step <= 703) || (stage.stage_id == StageId_2_3) && (stage.song_step >= 1920))
+				if ((stage.stage_id == StageId_2_3) && (stage.song_step >= 576) && (stage.song_step <= 703) || (stage.stage_id == StageId_2_3) && (stage.song_step >= 1920) || (stage.stage_id == StageId_6_3) && (stage.song_step >= 992) && (stage.song_step <= 1791) || (stage.stage_id == StageId_6_3) && (stage.song_step >= 2159) && (stage.song_step <= 2463) || (stage.stage_id == StageId_6_3) && (stage.song_step >= 2592))
 					is_bump_step = (stage.song_step & 0x3) == 0;
-				else if ((stage.stage_id == StageId_6_1) && (stage.song_step >= 188) && (stage.song_step <= 2240))
+				else if ((stage.stage_id == StageId_6_1) && (stage.song_step >= 188) && (stage.song_step <= 2240) || (stage.stage_id == StageId_6_3) && (stage.song_step >= 1920) && (stage.song_step <= 2158))
 					is_bump_step = (stage.song_step & 0x7) == 2;
-				else if (((stage.stage_id == StageId_1_4) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_2) && (stage.song_step <= 215)) || ((stage.stage_id == StageId_3_3) && (stage.song_step <= 73)) || ((stage.stage_id == StageId_4_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_4_2) && (stage.song_step <= 143)) || ((stage.stage_id == StageId_6_1) && (stage.song_step <= 63)) || ((stage.stage_id == StageId_6_2) && (stage.song_step <= 203)))
+				else if (((stage.stage_id == StageId_1_4) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_3_2) && (stage.song_step <= 215)) || ((stage.stage_id == StageId_3_3) && (stage.song_step <= 73)) || ((stage.stage_id == StageId_4_1) && (stage.song_step <= 127)) || ((stage.stage_id == StageId_4_2) && (stage.song_step <= 143)) || ((stage.stage_id == StageId_6_1) && (stage.song_step <= 63)) || ((stage.stage_id == StageId_6_2) && (stage.song_step <= 203)) || ((stage.stage_id == StageId_6_3) && (stage.song_step >= 1792) && (stage.song_step <= 1919)) || ((stage.stage_id == StageId_6_3) && (stage.song_step >= 2464) && (stage.song_step <= 2591)))
 					is_bump_step = (stage.song_step) == 99999;
-				else if ((stage.stage_id != StageId_1_4) || (stage.stage_id != StageId_3_1) || (stage.stage_id != StageId_3_2) || (stage.stage_id != StageId_3_3) || (stage.stage_id != StageId_4_1) || (stage.stage_id != StageId_4_2) || (stage.stage_id != StageId_6_1) || (stage.stage_id != StageId_6_2))
+				else if ((stage.stage_id != StageId_1_4) || (stage.stage_id != StageId_3_1) || (stage.stage_id != StageId_3_2) || (stage.stage_id != StageId_3_3) || (stage.stage_id != StageId_4_1) || (stage.stage_id != StageId_4_2) || (stage.stage_id != StageId_6_1) || (stage.stage_id != StageId_6_2) || (stage.stage_id != StageId_6_3) && (stage.song_step <= 991))
 					is_bump_step = (stage.song_step & 0xF) == 0;
 			
 				//Bump screen

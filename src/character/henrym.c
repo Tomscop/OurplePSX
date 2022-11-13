@@ -35,7 +35,20 @@ typedef struct
 	
 	Gfx_Tex tex;
 	u8 frame, tex_id;
+	
+	u8 opacity;
 } Char_HenryM;
+
+static void Character_DrawBlend(Character *this, Gfx_Tex *tex, const CharFrame *cframe, u8 opacity)
+{
+	//Draw character
+	fixed_t x = this->x - stage.camera.x - FIXED_DEC(cframe->off[0],1);
+	fixed_t y = this->y - stage.camera.y - FIXED_DEC(cframe->off[1],1);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, src.w << FIXED_SHIFT, src.h << FIXED_SHIFT};
+	Stage_BlendTexV2(tex, &src, &dst, stage.camera.bzoom, 0, opacity);
+}
 
 //HenryM character definitions
 static const CharFrame char_henrym_frame[] = {
@@ -114,6 +127,19 @@ void Char_HenryM_Tick(Character *character)
 {
 	Char_HenryM *this = (Char_HenryM*)character;
 	
+	//Camera stuff
+	if (stage.stage_id == StageId_6_3)
+	{
+		if (stage.song_step == 2432)
+		{
+			this->character.focus_zoom = FIXED_DEC(1851,512);
+		}
+		if (stage.song_step == 2433)
+		{
+			this->character.focus_zoom = FIXED_DEC(1,1);
+		}
+	}
+	
 	if((character->animatable.anim  != CharAnim_LeftAlt) && (character->animatable.anim  != CharAnim_DownAlt) && (character->animatable.anim  != CharAnim_UpAlt) && (character->animatable.anim  != CharAnim_RightAlt))
 	{
 	   //Perform idle dance
@@ -182,7 +208,17 @@ void Char_HenryM_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_HenryM_SetFrame);
-	Character_Draw(character, &this->tex, &char_henrym_frame[this->frame]);
+	
+	if (stage.song_step >= 977 && this->opacity < 99)
+	{
+		this->opacity++;
+		Character_DrawBlend(character, &this->tex, &char_henrym_frame[this->frame], this->opacity);
+
+		//FntPrint("opacity is %d", this->opacity);
+	}
+
+	else if (stage.song_step >= 984)
+		Character_Draw(character, &this->tex, &char_henrym_frame[this->frame]);
 }
 
 void Char_HenryM_SetAnim(Character *character, u8 anim)
@@ -232,6 +268,8 @@ Character *Char_HenryM_New(fixed_t x, fixed_t y)
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	this->character.size = FIXED_DEC(1,1);
+	
+	this->opacity = 0;
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR2\\HENRYM.ARC;1");

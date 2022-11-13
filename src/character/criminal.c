@@ -134,7 +134,7 @@ void Char_Criminal_Tick(Character *character)
 		//FntPrint("opacity is %d", this->opacity);
 	}
 
-	else if (stage.song_step >= -24)
+	else if (stage.song_step >= -28)
 		Character_Draw(character, &this->tex, &char_criminal_frame[this->frame]);
 }
 

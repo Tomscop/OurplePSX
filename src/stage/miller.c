@@ -30,6 +30,9 @@ typedef struct
 
 	Animatable doggo_animatable;
 	
+	//fade stuff
+	fixed_t fade, fadespd;
+	
 } Back_Miller;
 
 //Doggo animation and rects
@@ -86,6 +89,44 @@ void Miller_Doggo_Draw(Back_Miller *this, fixed_t x, fixed_t y)
 	RECT_FIXED dst = { ox, oy, (src.w / 2) << FIXED_SHIFT , (src.h / 2) << FIXED_SHIFT };
 	Debug_StageMoveDebug(&dst, 7, stage.camera.x, stage.camera.y);
 	Stage_DrawTex(&this->tex_doggo, &src, &dst, stage.camera.bzoom);
+}
+
+void Back_Miller_DrawFG(StageBack *back)
+{
+	Back_Miller *this = (Back_Miller*)back;
+	
+	fixed_t fx, fy;
+	
+	//start fade
+	if (stage.song_step == 1824)
+	{
+		this->fade = FIXED_DEC(255,1);
+		this->fadespd = FIXED_DEC(110,1);
+	}
+	else if (stage.song_step == 2531)
+	{
+		this->fade = FIXED_DEC(255,1);
+		this->fadespd = FIXED_DEC(120,1);
+	}
+
+	//end fade
+	if ((stage.song_step == 1919) || (stage.song_step == 2559))
+		this->fade = 0;
+
+	if (this->fade > 0)
+	{
+		RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+		u8 flash_col = this->fade >> FIXED_SHIFT;
+		Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+		this->fade -= FIXED_MUL(this->fadespd, timer_dt);
+	}
+	
+	//Draw blackf
+	RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+	if ((stage.song_step <= 481) || (stage.song_step >= 4312) || (stage.song_step >= 3771) && (stage.song_step <= 3776) || (stage.song_step >= 4029) && (stage.song_step <= 4032))
+		Gfx_DrawRect(&screen_src, 0, 0, 0);
+	if ((stage.song_step >= 1776) && (stage.song_step <= 1824) || (stage.song_step >= 2464) && (stage.song_step <= 2531))
+		Gfx_DrawRect(&screen_src, 0, 0, 0);
 }
 
 void Back_Miller_DrawBG(StageBack *back)
@@ -152,7 +193,7 @@ StageBack *Back_Miller_New(void)
 		return NULL;
 	
 	//Set background functions
-	this->back.draw_fg = NULL;
+	this->back.draw_fg = Back_Miller_DrawFG;
 	this->back.draw_md = NULL;
 	this->back.draw_bg = Back_Miller_DrawBG;
 	this->back.free = Back_Miller_Free;
@@ -170,6 +211,9 @@ StageBack *Back_Miller_New(void)
 	Animatable_Init(&this->doggo_animatable, doggo_anim);
 	Animatable_SetAnim(&this->doggo_animatable, 0);
 	this->doggo_frame = this->doggo_tex_id = 0xFF; //Force art load
+	
+	//Initialize Fade
+	this->fade = this->fadespd = 0;
 	
 	return (StageBack*)this;
 }
