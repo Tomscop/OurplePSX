@@ -199,7 +199,7 @@ typedef struct
 	fixed_t pause_scroll;
 	struct
 	{
-		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay, eyes, scanline;
+		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay, eyes, scanline, drain;
 		int savescore[StageId_Max][3];
 	} prefs;
 	boolean paused;
@@ -208,7 +208,7 @@ typedef struct
 	u32 offset;
 	
 	//HUD textures
-	Gfx_Tex tex_hud0, tex_hud1, tex_countdown;
+	Gfx_Tex tex_hud0, tex_hud1, tex_countdown, tex_spite;
 	Gfx_Tex tex_scanline;
 	Gfx_Tex tex_border;
 	Gfx_Tex tex_flashb;

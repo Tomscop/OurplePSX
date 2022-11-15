@@ -218,7 +218,10 @@ void Char_HenryM_Tick(Character *character)
 	}
 
 	else if (stage.song_step >= 984)
+	{
 		Character_Draw(character, &this->tex, &char_henrym_frame[this->frame]);
+		this->character.health_i = 7;
+	}
 }
 
 void Char_HenryM_SetAnim(Character *character, u8 anim)
@@ -258,7 +261,7 @@ Character *Char_HenryM_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 7;
+	this->character.health_i = 9;
 
 	//health bar color
 	this->character.health_bar = 0xFF62515B;

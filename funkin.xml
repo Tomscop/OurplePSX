@@ -47,6 +47,7 @@
 				<file name = "flashb.tim" type = "data" source = "iso/stage/flashb.tim"/>
 				<file name = "count.tim" type = "data" source = "iso/stage/count.tim"/>
 				<file name = "border.tim" type = "data" source = "iso/stage/border.tim"/>
+				<file name = "spite.tim" type = "data" source = "iso/miller/spite.tim"/>
 			</dir>
 			
 			<!-- Week 1 assets -->

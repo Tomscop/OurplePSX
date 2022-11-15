@@ -69,6 +69,7 @@ void defaultSettings()
 	stage.prefs.songtimer = 1;
 	stage.prefs.eyes = 1;
 	stage.prefs.scanline = 1;
+	stage.prefs.drain = 1;
 
 	for (int i = 0; i < StageId_Max; i++)
 	{

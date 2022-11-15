@@ -699,7 +699,6 @@ void Menu_Tick(void)
 				{StageId_1_1, "    NINTENDOBRO", false},
 				{StageId_1_1, "    MAXDEV", false},
 				{StageId_1_1, "    SPARK", false},
-				{StageId_1_1, "    FOXY SHARK", false},
 				{StageId_1_1, "OTHER COOL PEOPLE", false},
 				{StageId_1_1, "    LUCKY", false},
 				{StageId_1_1, "    GEYT", false},
@@ -854,6 +853,7 @@ void Menu_Tick(void)
 				{OptType_Boolean, "MIDDLESCROLL", &stage.prefs.middlescroll, {.spec_boolean = {0}}},
 				{OptType_Boolean, "FOLLOWED EYES", &stage.prefs.eyes, {.spec_boolean = {0}}},
 				{OptType_Boolean, "CRT SCANLINE", &stage.prefs.scanline, {.spec_boolean = {0}}},
+				{OptType_Boolean, "HEALTH DRAIN", &stage.prefs.drain, {.spec_boolean = {0}}},
 				{OptType_Boolean, "SHOW SONG TIME", &stage.prefs.songtimer, {.spec_boolean = {0}}},
 				{OptType_Boolean, "MISS SOUNDS", &stage.prefs.sfxmiss, {.spec_boolean = {0}}},
 				{OptType_Boolean, "PAL REFRESH RATE", &stage.prefs.palmode, {.spec_boolean = {0}}},
@@ -862,7 +862,7 @@ void Menu_Tick(void)
 				{OptType_Boolean, "DEBUG MODE", &stage.prefs.debug, {.spec_boolean = {0}}},
 				//{OptType_Enum,    "GAMEMODE", &stage.mode, {.spec_enum = {COUNT_OF(gamemode_strs), gamemode_strs}}},
 			};
-			if (menu.select == 7 && pad_state.press & (PAD_CROSS | PAD_LEFT | PAD_RIGHT))
+			if (menu.select == 8 && pad_state.press & (PAD_CROSS | PAD_LEFT | PAD_RIGHT))
 				stage.pal_i = 1;
 
 			if (stage.mode == StageMode_2P)

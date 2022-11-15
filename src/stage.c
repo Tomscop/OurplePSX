@@ -46,6 +46,7 @@ boolean noteshake;
 boolean show;
 fixed_t fade;
 fixed_t fade, fadespd;
+fixed_t spite;
 static u32 Sounds[10];
 
 #include "character/bf.h"
@@ -401,13 +402,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
 	
-			this->health -= 2000;
-
-			if (this->character->spec & CHAR_SPEC_MISSANIM)
-				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
-			else
-				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
-			this->arrow_hitan[type & 0x3] = -1;
+			spite += 1;
 			
 			return;
 		}
@@ -1110,28 +1105,41 @@ static void Stage_DrawNotes(void)
 					continue;
 				
 				//Draw note body
-				note_src.x = 192 + ((note->type & 0x1) << 5);
+				note_src.x = 0 + ((note->type & 0x1) << 5);
 				note_src.y = (note->type & 0x2) << 4;
 				note_src.w = 32;
 				note_src.h = 32;
 				
-				note_dst.x = stage.noteshakex + note_x[(note->type & 0x7)] - FIXED_DEC(16,1);
-				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
+				note_dst.x = note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.y = y - FIXED_DEC(16,1);
 				note_dst.w = note_src.w << FIXED_SHIFT;
 				note_dst.h = note_src.h << FIXED_SHIFT;
 				
 				if (stage.prefs.downscroll)
 					note_dst.y = -note_dst.y - note_dst.h;
+				Stage_DrawTex(&stage.tex_spite, &note_src, &note_dst, stage.bump);
 
-				//draw for opponent
-				if (show)
-				{
-					if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-						Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
-					else
-						Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				}
-
+			}
+			else if (note->type & NOTE_FLAG_MINE)
+			{
+				//Don't draw if already hit
+				if (note->type & NOTE_FLAG_HIT)
+					continue;
+				
+				//Draw note body
+				note_src.x = 0 + ((note->type & 0x1) << 5);
+				note_src.y = (note->type & 0x2) << 4;
+				note_src.w = 32;
+				note_src.h = 32;
+				
+				note_dst.x = note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.y = y - FIXED_DEC(16,1);
+				note_dst.w = note_src.w << FIXED_SHIFT;
+				note_dst.h = note_src.h << FIXED_SHIFT;
+				
+				if (stage.prefs.downscroll)
+					note_dst.y = -note_dst.y - note_dst.h;
+				Stage_DrawTex(&stage.tex_spite, &note_src, &note_dst, stage.bump);
 			}
 			else
 			{
@@ -1715,6 +1723,10 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	else
 		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
 	
+	//Load Special Notes
+	if (stage.stage_id == StageId_6_3)
+		Gfx_LoadTex(&stage.tex_spite, IO_Read("\\STAGE\\SPITE.TIM;1"), GFX_LOADTEX_FREE);
+	
 	sprintf(iconpath, "\\STAGE\\HUD1-%d.TIM;1", stage.stage_def->week);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read(iconpath), GFX_LOADTEX_FREE);
 	Gfx_LoadTex(&stage.tex_countdown, IO_Read("\\STAGE\\COUNT.TIM;1"), GFX_LOADTEX_FREE);
@@ -2054,6 +2066,7 @@ void Stage_Tick(void)
 				
 				//FntPrint("step is %d", stage.song_step);
 				//^ makes step show on screen
+				FntPrint("spite is %d", spite);
 				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
@@ -2181,6 +2194,9 @@ void Stage_Tick(void)
 			{
 				show = true;
 			}
+			
+			if (stage.song_step <= 0)
+				spite = 0;
 			
 			if (stage.intro)
 				Stage_CountDown();
@@ -2528,11 +2544,19 @@ void Stage_Tick(void)
 							//Opponent hits note
 							stage.player_state[1].arrow_hitan[note->type & 0x3] = stage.step_time;
 							Stage_StartVocal();
+							
 							if (note->type & NOTE_FLAG_SUSTAIN)
 								opponent_snote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
 							else
 								opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
 							note->type |= NOTE_FLAG_HIT;
+							
+							//Health Drain
+							if ((stage.stage_id == StageId_6_3) && (stage.prefs.drain == 1))
+							{
+								if (stage.player_state[0].health >= 2000)
+									stage.player_state[0].health -= 700;
+							}
 						}
 					}
 					

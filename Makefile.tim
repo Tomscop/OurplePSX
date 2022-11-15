@@ -16,6 +16,7 @@ all: \
 	iso/stage/flashb.tim \
 	iso/stage/count.tim \
 	iso/stage/border.tim \
+	iso/miller/spite.tim \
 	iso/bf/main.arc \
 	iso/bf/bfo.arc \
 	iso/bf/dead.tim \
