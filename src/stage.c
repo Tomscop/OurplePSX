@@ -576,7 +576,7 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
 	fixed_t hz = dst->h;
 	
 	//Don't draw if HUD and is disabled
-	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
+	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1 || tex == &stage.tex_spite)
 	{
 		#ifdef STAGE_NOHUD
 			return;
@@ -695,7 +695,7 @@ void Stage_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_
 	fixed_t hz = dst->h;
 	
 	//Don't draw if HUD and is disabled
-	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
+	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1 || tex == &stage.tex_spite)
 	{
 		#ifdef STAGE_NOHUD
 			return;
@@ -729,7 +729,7 @@ void Stage_BlendTexV2(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
 	fixed_t hz = dst->h;
 	
 	//Don't draw if HUD and is disabled
-	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
+	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1 || tex == &stage.tex_spite)
 	{
 		#ifdef STAGE_NOHUD
 			return;
@@ -759,7 +759,7 @@ void Stage_DrawTexArb(Gfx_Tex *tex, const RECT *src, const POINT_FIXED *p0, cons
 {
 	//Don't draw if HUD and HUD is disabled
 	#ifdef STAGE_NOHUD
-		if (tex == &stage.tex_hud0 || tex == &stage.tex_hud)
+		if (tex == &stage.tex_hud0 || tex == &stage.tex_hud || tex == &stage.tex_spite)
 			return;
 	#endif
 	
@@ -776,7 +776,7 @@ void Stage_BlendTexArb(Gfx_Tex *tex, const RECT *src, const POINT_FIXED *p0, con
 {
 	//Don't draw if HUD and HUD is disabled
 	#ifdef STAGE_NOHUD
-		if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
+		if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1 || tex == &stage.tex_spite)
 			return;
 	#endif
 	
@@ -1722,7 +1722,8 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	
 	sprintf(iconpath, "\\STAGE\\HUD1-%d.TIM;1", stage.stage_def->week);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read(iconpath), GFX_LOADTEX_FREE);
-	Gfx_LoadTex(&stage.tex_countdown, IO_Read("\\STAGE\\COUNT.TIM;1"), GFX_LOADTEX_FREE);
+    if ((stage.stage_id != StageId_5_3) && (stage.stage_id != StageId_6_2))
+	   Gfx_LoadTex(&stage.tex_countdown, IO_Read("\\STAGE\\COUNT.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_1_3)
 		Gfx_LoadTex(&stage.tex_flashb, IO_Read("\\STAGE\\FLASHB.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_1_3 || id == StageId_1_4 || id == StageId_4_1 || id == StageId_4_3 || id == StageId_5_3)
