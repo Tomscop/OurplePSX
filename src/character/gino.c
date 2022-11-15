@@ -112,56 +112,56 @@ typedef struct
 
 //Gino character definitions
 static const CharFrame char_gino_frame[] = {
-	{Gino_ArcMain_Idle0, {  0,  0,197,142}, { 42,183}}, //0 idle 1
-	{Gino_ArcMain_Idle1, {  0,  0,197,142}, { 42,183}}, //1 idle 2
-	{Gino_ArcMain_Idle2, {  0,  0,197,142}, { 42,183}}, //2 idle 3
-	{Gino_ArcMain_Idle3, {  0,  0,197,142}, { 42,183}}, //3 idle 4
-	{Gino_ArcMain_Idle4, {  0,  0,197,142}, { 42,183}}, //4 idle 5
-	{Gino_ArcMain_Idle5, {  0,  0,197,142}, { 42,183}}, //5 idle 6
+	{Gino_ArcMain_Idle0, {  0,  0,136,142}, { 42,183}}, //0 idle 1
+	{Gino_ArcMain_Idle1, {  0,  0,136,142}, { 42,183}}, //1 idle 2
+	{Gino_ArcMain_Idle2, {  0,  0,136,142}, { 42,183}}, //2 idle 3
+	{Gino_ArcMain_Idle3, {  0,  0,136,142}, { 42,183}}, //3 idle 4
+	{Gino_ArcMain_Idle4, {  0,  0,136,142}, { 42,183}}, //4 idle 5
+	{Gino_ArcMain_Idle5, {  0,  0,136,142}, { 42,183}}, //5 idle 6
 	
-	{Gino_ArcMain_Left0, {  0,  0,197,142}, { 42,183}}, //6 left 1
-	{Gino_ArcMain_Left1, {  0,  0,197,142}, { 42,183}}, //7 left 2
-	{Gino_ArcMain_Left2, {  0,  0,197,142}, { 42,183}}, //8 left 3
-	{Gino_ArcMain_Left3, {  0,  0,197,142}, { 42,183}}, //9 left 4
-	{Gino_ArcMain_Left4, {  0,  0,197,142}, { 42,183}}, //10 left 5
-	{Gino_ArcMain_Left5, {  0,  0,197,142}, { 42,183}}, //11 left 6
-	{Gino_ArcMain_Left6, {  0,  0,197,142}, { 42,183}}, //12 left 7
-	{Gino_ArcMain_Left7, {  0,  0,197,142}, { 42,183}}, //13 left 8
-	{Gino_ArcMain_Left8, {  0,  0,197,142}, { 42,183}}, //14 left 9
-	{Gino_ArcMain_Left9, {  0,  0,197,142}, { 42,183}}, //15 left 10
-	{Gino_ArcMain_Left10, {  0,  0,197,142}, { 42,183}}, //16 left 11
-	{Gino_ArcMain_Left11, {  0,  0,197,142}, { 42,183}}, //17 left 12
+	{Gino_ArcMain_Left0, {  0,  0,132,142}, { 42,183}}, //6 left 1
+	{Gino_ArcMain_Left1, {  0,  0,132,142}, { 42,183}}, //7 left 2
+	{Gino_ArcMain_Left2, {  0,  0,132,142}, { 42,183}}, //8 left 3
+	{Gino_ArcMain_Left3, {  0,  0,132,142}, { 42,183}}, //9 left 4
+	{Gino_ArcMain_Left4, {  0,  0,132,142}, { 42,183}}, //10 left 5
+	{Gino_ArcMain_Left5, {  0,  0,132,142}, { 42,183}}, //11 left 6
+	{Gino_ArcMain_Left6, {  0,  0,132,142}, { 42,183}}, //12 left 7
+	{Gino_ArcMain_Left7, {  0,  0,132,142}, { 42,183}}, //13 left 8
+	{Gino_ArcMain_Left8, {  0,  0,132,142}, { 42,183}}, //14 left 9
+	{Gino_ArcMain_Left9, {  0,  0,132,142}, { 42,183}}, //15 left 10
+	{Gino_ArcMain_Left10, {  0,  0,132,142}, { 42,183}}, //16 left 11
+	{Gino_ArcMain_Left11, {  0,  0,132,142}, { 42,183}}, //17 left 12
 	
-	{Gino_ArcMain_Down0, {  0,  0,197,142}, { 42,183}}, //18 down 1
-	{Gino_ArcMain_Down1, {  0,  0,197,142}, { 42,183}}, //19 down 2
-	{Gino_ArcMain_Down2, {  0,  0,197,142}, { 42,183}}, //20 down 3
-	{Gino_ArcMain_Down3, {  0,  0,197,142}, { 42,183}}, //21 down 4
-	{Gino_ArcMain_Down4, {  0,  0,197,142}, { 42,183}}, //22 down 5
-	{Gino_ArcMain_Down5, {  0,  0,197,142}, { 42,183}}, //23 down 6
-	{Gino_ArcMain_Down6, {  0,  0,197,142}, { 42,183}}, //24 down 7
-	{Gino_ArcMain_Down7, {  0,  0,197,142}, { 42,183}}, //25 down 8
-	{Gino_ArcMain_Down8, {  0,  0,197,142}, { 42,183}}, //26 down 9
-	{Gino_ArcMain_Down9, {  0,  0,197,142}, { 42,183}}, //27 down 10
-	{Gino_ArcMain_Down10, {  0,  0,197,142}, { 42,183}}, //28 down 11
-	{Gino_ArcMain_Down11, {  0,  0,197,142}, { 42,183}}, //29 down 12
-	{Gino_ArcMain_Down12, {  0,  0,197,142}, { 42,183}}, //30 down 13
-	{Gino_ArcMain_Down13, {  0,  0,197,142}, { 42,183}}, //31 down 14
-	{Gino_ArcMain_Down14, {  0,  0,197,142}, { 42,183}}, //32 down 15
+	{Gino_ArcMain_Down0, {  0,  0,136,142}, { 42,183}}, //18 down 1
+	{Gino_ArcMain_Down1, {  0,  0,136,142}, { 42,183}}, //19 down 2
+	{Gino_ArcMain_Down2, {  0,  0,148,142}, { 42,183}}, //20 down 3
+	{Gino_ArcMain_Down3, {  0,  0,136,142}, { 42,183}}, //21 down 4
+	{Gino_ArcMain_Down4, {  0,  0,136,142}, { 42,183}}, //22 down 5
+	{Gino_ArcMain_Down5, {  0,  0,140,142}, { 42,183}}, //23 down 6
+	{Gino_ArcMain_Down6, {  0,  0,136,142}, { 42,183}}, //24 down 7
+	{Gino_ArcMain_Down7, {  0,  0,140,142}, { 42,183}}, //25 down 8
+	{Gino_ArcMain_Down8, {  0,  0,136,142}, { 42,183}}, //26 down 9
+	{Gino_ArcMain_Down9, {  0,  0,136,142}, { 42,183}}, //27 down 10
+	{Gino_ArcMain_Down10, {  0,  0,136,142}, { 42,183}}, //28 down 11
+	{Gino_ArcMain_Down11, {  0,  0,136,142}, { 42,183}}, //29 down 12
+	{Gino_ArcMain_Down12, {  0,  0,136,142}, { 42,183}}, //30 down 13
+	{Gino_ArcMain_Down13, {  0,  0,140,142}, { 42,183}}, //31 down 14
+	{Gino_ArcMain_Down14, {  0,  0,136,142}, { 42,183}}, //32 down 15
 	
-	{Gino_ArcMain_Up0, {  0,  0,197,142}, { 42,183}}, //33 up 1
-	{Gino_ArcMain_Up1, {  0,  0,197,142}, { 42,183}}, //34 up 2
-	{Gino_ArcMain_Up2, {  0,  0,197,142}, { 42,183}}, //35 up 3
-	{Gino_ArcMain_Up3, {  0,  0,197,142}, { 42,183}}, //36 up 4
-	{Gino_ArcMain_Up4, {  0,  0,197,142}, { 42,183}}, //37 up 5
-	{Gino_ArcMain_Up5, {  0,  0,197,142}, { 42,183}}, //38 up 6
-	{Gino_ArcMain_Up6, {  0,  0,197,142}, { 42,183}}, //39 up 7
-	{Gino_ArcMain_Up7, {  0,  0,197,142}, { 42,183}}, //40 up 8
-	{Gino_ArcMain_Up8, {  0,  0,197,142}, { 42,183}}, //41 up 9
-	{Gino_ArcMain_Up9, {  0,  0,197,142}, { 42,183}}, //42 up 10
-	{Gino_ArcMain_Up10, {  0,  0,197,142}, { 42,183}}, //43 up 11
-	{Gino_ArcMain_Up11, {  0,  0,197,142}, { 42,183}}, //44 up 12
-	{Gino_ArcMain_Up12, {  0,  0,197,142}, { 42,183}}, //45 up 13
-	{Gino_ArcMain_Up13, {  0,  0,197,142}, { 42,183}}, //46 up 14
+	{Gino_ArcMain_Up0, {  0,  0,136,142}, { 42,183}}, //33 up 1
+	{Gino_ArcMain_Up1, {  0,  0,136,142}, { 42,183}}, //34 up 2
+	{Gino_ArcMain_Up2, {  0,  0,136,142}, { 42,183}}, //35 up 3
+	{Gino_ArcMain_Up3, {  0,  0,136,142}, { 42,183}}, //36 up 4
+	{Gino_ArcMain_Up4, {  0,  0,140,142}, { 42,183}}, //37 up 5
+	{Gino_ArcMain_Up5, {  0,  0,140,142}, { 42,183}}, //38 up 6
+	{Gino_ArcMain_Up6, {  0,  0,136,142}, { 42,183}}, //39 up 7
+	{Gino_ArcMain_Up7, {  0,  0,136,142}, { 42,183}}, //40 up 8
+	{Gino_ArcMain_Up8, {  0,  0,140,142}, { 42,183}}, //41 up 9
+	{Gino_ArcMain_Up9, {  0,  0,136,142}, { 42,183}}, //42 up 10
+	{Gino_ArcMain_Up10, {  0,  0,136,142}, { 42,183}}, //43 up 11
+	{Gino_ArcMain_Up11, {  0,  0,136,142}, { 42,183}}, //44 up 12
+	{Gino_ArcMain_Up12, {  0,  0,136,142}, { 42,183}}, //45 up 13
+	{Gino_ArcMain_Up13, {  0,  0,136,142}, { 42,183}}, //46 up 14
 	
 	{Gino_ArcMain_Right0, {  0,  0,197,142}, { 42,183}}, //47 right 1
 	{Gino_ArcMain_Right1, {  0,  0,197,142}, { 42,183}}, //48 right 2
@@ -173,22 +173,22 @@ static const CharFrame char_gino_frame[] = {
 	{Gino_ArcMain_Right7, {  0,  0,197,142}, { 42,183}}, //54 right 8
 	{Gino_ArcMain_Right8, {  0,  0,197,142}, { 42,183}}, //55 right 9
 	
-	{Gino_ArcMain_Bite0, {  0,  0,197,142}, { 42,183}}, //56 bite 1
-	{Gino_ArcMain_Bite1, {  0,  0,197,142}, { 42,183}}, //57 bite 2
-	{Gino_ArcMain_Bite2, {  0,  0,197,142}, { 42,183}}, //58 bite 3
-	{Gino_ArcMain_Bite3, {  0,  0,197,142}, { 42,183}}, //59 bite 4
-	{Gino_ArcMain_Bite4, {  0,  0,197,142}, { 42,183}}, //60 bite 5
-	{Gino_ArcMain_Bite5, {  0,  0,197,142}, { 42,183}}, //61 bite 6
-	{Gino_ArcMain_Bite6, {  0,  0,197,142}, { 42,183}}, //62 bite 7
-	{Gino_ArcMain_Bite7, {  0,  0,197,142}, { 42,183}}, //63 bite 8
-	{Gino_ArcMain_Bite8, {  0,  0,197,142}, { 42,183}}, //64 bite 9
-	{Gino_ArcMain_Bite9, {  0,  0,197,142}, { 42,183}}, //65 bite 10
-	{Gino_ArcMain_Bite10, {  0,  0,197,142}, { 42,183}}, //66 bite 11
-	{Gino_ArcMain_Bite11, {  0,  0,197,142}, { 42,183}}, //67 bite 12
-	{Gino_ArcMain_Bite12, {  0,  0,197,142}, { 42,183}}, //68 bite 13
-	{Gino_ArcMain_Bite13, {  0,  0,197,142}, { 42,183}}, //69 bite 14
-	{Gino_ArcMain_Bite14, {  0,  0,197,142}, { 42,183}}, //70 bite 15
-	{Gino_ArcMain_Bite15, {  0,  0,197,142}, { 42,183}}, //71 bite 16
+	{Gino_ArcMain_Bite0, {  0,  0,136,142}, { 42,183}}, //56 bite 1
+	{Gino_ArcMain_Bite1, {  0,  0,136,142}, { 42,183}}, //57 bite 2
+	{Gino_ArcMain_Bite2, {  0,  0,136,142}, { 42,183}}, //58 bite 3
+	{Gino_ArcMain_Bite3, {  0,  0,136,142}, { 42,183}}, //59 bite 4
+	{Gino_ArcMain_Bite4, {  0,  0,140,142}, { 42,183}}, //60 bite 5
+	{Gino_ArcMain_Bite5, {  0,  0,136,142}, { 42,183}}, //61 bite 6
+	{Gino_ArcMain_Bite6, {  0,  0,140,142}, { 42,183}}, //62 bite 7
+	{Gino_ArcMain_Bite7, {  0,  0,144,142}, { 42,183}}, //63 bite 8
+	{Gino_ArcMain_Bite8, {  0,  0,144,142}, { 42,183}}, //64 bite 9
+	{Gino_ArcMain_Bite9, {  0,  0,144,142}, { 42,183}}, //65 bite 10
+	{Gino_ArcMain_Bite10, {  0,  0,144,142}, { 42,183}}, //66 bite 11
+	{Gino_ArcMain_Bite11, {  0,  0,144,142}, { 42,183}}, //67 bite 12
+	{Gino_ArcMain_Bite12, {  0,  0,144,142}, { 42,183}}, //68 bite 13
+	{Gino_ArcMain_Bite13, {  0,  0,144,142}, { 42,183}}, //69 bite 14
+	{Gino_ArcMain_Bite14, {  0,  0,136,142}, { 42,183}}, //70 bite 15
+	{Gino_ArcMain_Bite15, {  0,  0,136,142}, { 42,183}}, //71 bite 16
 	{Gino_ArcMain_Bite16, {  0,  0,197,142}, { 42,183}}, //72 bite 17
 	{Gino_ArcMain_Bite17, {  0,  0,197,142}, { 42,183}}, //73 bite 18
 	{Gino_ArcMain_Bite18, {  0,  0,197,142}, { 42,183}}, //74 bite 19
