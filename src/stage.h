@@ -230,6 +230,7 @@ typedef struct
 	Event* events;
 	
 	fixed_t speed;
+	fixed_t spite;
 	fixed_t step_crochet, step_time;
 	fixed_t early_safe, late_safe, early_sus_safe, late_sus_safe;
 

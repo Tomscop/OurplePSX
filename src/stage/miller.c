@@ -24,6 +24,7 @@ typedef struct
 	IO_Data arc_fback, arc_fback_ptr[4];
 	
 	Gfx_Tex tex_back; //millerbg
+	Gfx_Tex tex_spite; //spite
 	
 	//Doggo state
 	Gfx_Tex tex_doggo;
@@ -279,7 +280,67 @@ void Back_Miller_DrawBG(StageBack *back)
 		FIXED_DEC(392 + screen.SCREEN_WIDEOADD,1),
 		FIXED_DEC(305,1)
 	};
-
+	
+	//Draw spite1
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	RECT spite1_src = {65, 0, 87, 34};
+	RECT_FIXED spite1_dst = {
+		FIXED_DEC(-53 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(207,1) - fy,
+		FIXED_DEC(58 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(23,1)
+	};
+	
+	//Draw spite2
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	RECT spite2_src = {153, 0, 47, 35};
+	RECT_FIXED spite2_dst = {
+		FIXED_DEC(-175 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(194,1) - fy,
+		FIXED_DEC(24 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(18,1)
+	};
+	
+	//Draw spite3
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	RECT spite3_src = {65, 36, 83, 80};
+	RECT_FIXED spite3_dst = {
+		FIXED_DEC(-167 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(106,1) - fy,
+		FIXED_DEC(52 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(50,1)
+	};
+	
+	//Draw spite4
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+	
+	RECT spite4_src = {149, 36, 104, 79};
+	RECT_FIXED spite4_dst = {
+		FIXED_DEC(-81 - screen.SCREEN_WIDEOADD2,1) - fx,
+		FIXED_DEC(68,1) - fy,
+		FIXED_DEC(87 + screen.SCREEN_WIDEOADD,1),
+		FIXED_DEC(66,1)
+	};
+	
+	Debug_StageMoveDebug(&spite1_dst, 9, fx, fy);
+	if (stage.spite <= 19)
+		Stage_BlendTex(&this->tex_spite, &spite1_src, &spite1_dst, stage.camera.bzoom,1);
+	Debug_StageMoveDebug(&spite2_dst, 10, fx, fy);
+	if (stage.spite <= 30)
+		Stage_BlendTex(&this->tex_spite, &spite2_src, &spite2_dst, stage.camera.bzoom,1);
+	Debug_StageMoveDebug(&spite3_dst, 11, fx, fy);
+	if (stage.spite <= 41)
+		Stage_BlendTex(&this->tex_spite, &spite3_src, &spite3_dst, stage.camera.bzoom,1);
+	Debug_StageMoveDebug(&spite4_dst, 12, fx, fy);
+	if (stage.spite <= 51)
+		Stage_BlendTex(&this->tex_spite, &spite4_src, &spite4_dst, stage.camera.bzoom,1);
 	Debug_StageMoveDebug(&millerbg_dst, 6, fx, fy);
 	Stage_DrawTex(&this->tex_back, &millerbg_src, &millerbg_dst, stage.camera.bzoom);
 	
@@ -318,6 +379,7 @@ StageBack *Back_Miller_New(void)
 	//Load background textures
 	IO_Data arc_back = IO_Read("\\MILLER\\BACK.ARC;1");
 	Gfx_LoadTex(&this->tex_back, Archive_Find(arc_back, "back.tim"), 0);
+	Gfx_LoadTex(&this->tex_spite, Archive_Find(arc_back, "spite.tim"), 0);
 	Mem_Free(arc_back);
 	
 	//Load doggo textures

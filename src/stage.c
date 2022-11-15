@@ -46,7 +46,6 @@ boolean noteshake;
 boolean show;
 fixed_t fade;
 fixed_t fade, fadespd;
-fixed_t spite;
 static u32 Sounds[10];
 
 #include "character/bf.h"
@@ -401,8 +400,12 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
-	
-			spite += 1;
+			
+			if (stage.spite != 52)
+			{
+				stage.spite += 1;
+				Audio_PlaySound(Sounds[8], 0x3fff);
+			}
 			
 			return;
 		}
@@ -1117,29 +1120,8 @@ static void Stage_DrawNotes(void)
 				
 				if (stage.prefs.downscroll)
 					note_dst.y = -note_dst.y - note_dst.h;
-				Stage_DrawTex(&stage.tex_spite, &note_src, &note_dst, stage.bump);
-
-			}
-			else if (note->type & NOTE_FLAG_MINE)
-			{
-				//Don't draw if already hit
-				if (note->type & NOTE_FLAG_HIT)
-					continue;
-				
-				//Draw note body
-				note_src.x = 0 + ((note->type & 0x1) << 5);
-				note_src.y = (note->type & 0x2) << 4;
-				note_src.w = 32;
-				note_src.h = 32;
-				
-				note_dst.x = note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
-				note_dst.y = y - FIXED_DEC(16,1);
-				note_dst.w = note_src.w << FIXED_SHIFT;
-				note_dst.h = note_src.h << FIXED_SHIFT;
-				
-				if (stage.prefs.downscroll)
-					note_dst.y = -note_dst.y - note_dst.h;
-				Stage_DrawTex(&stage.tex_spite, &note_src, &note_dst, stage.bump);
+				if (stage.spite != 52)
+					Stage_DrawTex(&stage.tex_spite, &note_src, &note_dst, stage.bump);
 			}
 			else
 			{
@@ -1513,6 +1495,17 @@ static void Stage_LoadSFX(void)
 		IO_FindFile(&file, text);
 		u32 *data = IO_ReadFile(&file);
 		Sounds[9] = Audio_LoadVAGData(data, file.size);
+		Mem_Free(data);
+	}
+	
+	//spite sound
+	if (stage.stage_id == StageId_6_3)
+	{
+		char text[0x80];
+		sprintf(text, "\\SOUNDS\\SPITE.VAG;1");
+		IO_FindFile(&file, text);
+		u32 *data = IO_ReadFile(&file);
+		Sounds[8] = Audio_LoadVAGData(data, file.size);
 		Mem_Free(data);
 	}
 }
@@ -2066,7 +2059,6 @@ void Stage_Tick(void)
 				
 				//FntPrint("step is %d", stage.song_step);
 				//^ makes step show on screen
-				FntPrint("spite is %d", spite);
 				
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
@@ -2196,7 +2188,7 @@ void Stage_Tick(void)
 			}
 			
 			if (stage.song_step <= 0)
-				spite = 0;
+				stage.spite = 0;
 			
 			if (stage.intro)
 				Stage_CountDown();
@@ -2555,7 +2547,16 @@ void Stage_Tick(void)
 							if ((stage.stage_id == StageId_6_3) && (stage.prefs.drain == 1))
 							{
 								if (stage.player_state[0].health >= 2000)
-									stage.player_state[0].health -= 700;
+									if (stage.spite <= 19)
+										stage.player_state[0].health -= 700;
+									else if ((stage.spite >= 20) && (stage.spite <= 30))
+										stage.player_state[0].health -= 550;
+									else if ((stage.spite >= 31) && (stage.spite <= 41))
+										stage.player_state[0].health -= 400;
+									else if ((stage.spite >= 42) && (stage.spite <= 51))
+										stage.player_state[0].health -= 250;
+									else if (stage.spite == 52)
+										stage.player_state[0].health -= 100;
 							}
 						}
 					}
@@ -2904,7 +2905,7 @@ void Stage_Tick(void)
 			stage.song_time = 0;
 			
 			//sound stuff
-			if (stage.stage_id == StageId_5_3)
+			if ((stage.stage_id == StageId_5_3) || (stage.stage_id == StageId_6_3))
 			{
 				CdlFILE file;
 				

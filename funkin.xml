@@ -369,6 +369,7 @@
 				<file name = "loss.vag" type = "data" source = "iso/sounds/stage/loss.ogg.vag"/>
 				<file name = "horn.vag" type = "data" source = "iso/sounds/stage/horn.ogg.vag"/>
 				<file name = "scream.vag" type = "data" source = "iso/sounds/stage/scream.ogg.vag"/>
+				<file name = "spite.vag" type = "data" source = "iso/sounds/stage/spite.ogg.vag"/>
 
 				<!-- Miss Sounds -->
 				<file name = "miss1.vag" type = "data" source = "iso/sounds/stage/miss1.VAG"/>

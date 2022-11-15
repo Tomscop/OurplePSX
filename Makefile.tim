@@ -281,6 +281,6 @@ iso/black2/memorys.arc: iso/black2/memorys0.tim iso/black2/memorys1.tim iso/blac
 iso/samroom/back.arc: iso/samroom/back0.tim iso/samroom/back1.tim
 
 # Miller
-iso/miller/back.arc: iso/miller/back.tim
+iso/miller/back.arc: iso/miller/back.tim iso/miller/spite.tim
 iso/miller/doggo.arc: iso/miller/doggo.tim
 iso/miller/fback.arc: iso/miller/fback0.tim iso/miller/fback1.tim iso/miller/fback2.tim iso/miller/hint.tim

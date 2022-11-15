@@ -217,7 +217,7 @@ void Char_HenryM_Tick(Character *character)
 		//FntPrint("opacity is %d", this->opacity);
 	}
 
-	else if (stage.song_step >= 984)
+	else if (stage.song_step >= 982)
 	{
 		Character_Draw(character, &this->tex, &char_henrym_frame[this->frame]);
 		this->character.health_i = 7;
