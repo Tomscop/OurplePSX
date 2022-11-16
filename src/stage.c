@@ -2126,8 +2126,8 @@ void Stage_Tick(void)
 				//Draw alert
 				if (stage.stage_id == StageId_5_3)
 				{
-					RECT alert_src = {0, 0, 72, 36};
-					RECT alert_dst = {0, 0, (screen.SCREEN_WIDTH), (screen.SCREEN_HEIGHT)};
+					RECT alert_src = {0, 0, 72, 54};
+					RECT alert_dst = {0, 0,321,241};
 					if ((stage.song_step >= 1316) && (stage.song_step <= 1824) && ((stage.song_beat % 2) == 1) || (stage.song_step >= 2476) && (stage.song_step <= 2735) && ((stage.song_beat % 2) == 1))
 						Gfx_BlendTex(&stage.tex_alert, &alert_src, &alert_dst, 1);
 				}
@@ -2389,7 +2389,7 @@ void Stage_Tick(void)
 							PausedState();
 							break;
 						case 1:
-							OptionsState(&note_x);
+							OptionsState(&note_x[0]);
 							break;
 					}
 				}

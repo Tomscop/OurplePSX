@@ -130,7 +130,7 @@ void Back_Jrs_DrawFG(StageBack *back)
 	fx = stage.camera.x;
 	fy = stage.camera.y;
 	
-	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step & 0x3 )== 0)
+	if (stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == -29))
 		Animatable_SetAnim(&this->rain_animatable, 0);
 		
 	Animatable_Animate(&this->rain_animatable, (void*)this, Jrs_Rain_SetFrame);

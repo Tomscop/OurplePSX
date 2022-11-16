@@ -180,7 +180,7 @@ Character *Char_Jackass_New(fixed_t x, fixed_t y)
 	this->character.health_bar = 0xFF075BFF;
 
 	this->character.focus_x = FIXED_DEC(-30,1);
-	this->character.focus_y = FIXED_DEC(-59,1);
+	this->character.focus_y = FIXED_DEC(-61,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	this->character.size = FIXED_DEC(1,1);
