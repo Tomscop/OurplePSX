@@ -15,7 +15,6 @@ void PausedState()
 	static const char *stage_options[] = {
 		"RESUME",
 		"RESTART SONG",
-		"OPTIONS",
 		"EXIT TO MENU"
 	};
 
@@ -33,11 +32,7 @@ void PausedState()
 				Trans_Start();
 				pause_select = 0;
 				break;
-			case 2: //Settings
-				stage.pause_scroll = -1;
-				stage.pause_state = 1;
-				break;
-			case 3: //Quit
+			case 2: //Quit
 				stage.trans = StageTrans_Menu;
 				Trans_Start();
 				pause_select = 0;

@@ -40,6 +40,7 @@ typedef struct
 	
 	//fade stuff
 	fixed_t fade, fadespd;
+	fixed_t fade2, fadespd2;
 	
 } Back_Miller;
 
@@ -228,8 +229,111 @@ void Back_Miller_DrawFG(StageBack *back)
 	
 	fixed_t fx, fy;
 	
+	//start fade2
+	if (stage.song_step == 76)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(440,1);
+	}
+	if (stage.song_step == 116)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 140)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 164)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 187)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 212)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 235)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 260)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 284)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 308)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 332)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 356)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+	if (stage.song_step == 380)
+	{
+		this->fade2 = FIXED_DEC(1,1);
+		this->fadespd2 = FIXED_DEC(175,1);
+	}
+
+	//end fade2
+	if (stage.song_step == 80)
+		this->fade2 = 0;
+	if (stage.song_step == 134)
+		this->fade2 = 0;
+	if (stage.song_step == 158)
+		this->fade2 = 0;
+	if (stage.song_step == 182)
+		this->fade2 = 0;
+	if (stage.song_step == 205)
+		this->fade2 = 0;
+	if (stage.song_step == 230)
+		this->fade2 = 0;
+	if (stage.song_step == 253)
+		this->fade2 = 0;
+	if (stage.song_step == 278)
+		this->fade2 = 0;
+	if (stage.song_step == 302)
+		this->fade2 = 0;
+	if (stage.song_step == 326)
+		this->fade2 = 0;
+	if (stage.song_step == 350)
+		this->fade2 = 0;
+	if (stage.song_step == 374)
+		this->fade2 = 0;
+	if (stage.song_step == 398)
+		this->fade2 = 0;
+
+	if (this->fade2 > 0)
+	{
+		RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+		u8 flash_col = this->fade2 >> FIXED_SHIFT;
+		Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+		this->fade2 += FIXED_MUL(this->fadespd2, timer_dt);
+	}
+	
 	//Animate and draw fback
-	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 40)))
+	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 16)))
 		Animatable_SetAnim(&this->fback_animatable, 12);
 	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 112)))
 		Animatable_SetAnim(&this->fback_animatable, 0);
@@ -262,10 +366,16 @@ void Back_Miller_DrawFG(StageBack *back)
 	
 	Animatable_Animate(&this->fback_animatable, (void*)this, Miller_Fback_SetFrame);
 	
-	if ((stage.song_step >= 40) && (stage.song_step <= 111))
+	if ((stage.song_step >= 18) && (stage.song_step <= 79))
 		Miller_Fback_Draw(this, FIXED_DEC(-137 + 41,1), FIXED_DEC(114 - 156,1));
-	if ((stage.song_step >= 112) && (stage.song_step <= 416))
+	
+	if ((stage.song_step >= 112) && (stage.song_step <= 133) || (stage.song_step >= 136) && (stage.song_step <= 157) || (stage.song_step >= 160) && (stage.song_step <= 181) || (stage.song_step >= 183) && (stage.song_step <= 204))
 		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(36 - 156,1));
+	if ((stage.song_step >= 208) && (stage.song_step <= 229) || (stage.song_step >= 231) && (stage.song_step <= 252) || (stage.song_step >= 256) && (stage.song_step <= 277) || (stage.song_step >= 280) && (stage.song_step <= 301))
+		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(36 - 156,1));
+	if ((stage.song_step >= 304) && (stage.song_step <= 325) || (stage.song_step >= 328) && (stage.song_step <= 349) || (stage.song_step >= 352) && (stage.song_step <= 373) || (stage.song_step >= 376) && (stage.song_step <= 397))
+		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(36 - 156,1));
+	
 	if ((stage.song_step >= 461) && (stage.song_step <= 480))
 		Miller_Fback_Draw(this, FIXED_DEC(-102 + 41,1), FIXED_DEC(65 - 156,1));
 	if (stage.song_step >= 4368)
@@ -472,6 +582,7 @@ StageBack *Back_Miller_New(void)
 	
 	//Initialize Fade
 	this->fade = this->fadespd = 0;
+	this->fade2 = this->fadespd2 = 0;
 	
 	return (StageBack*)this;
 }
