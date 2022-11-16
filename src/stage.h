@@ -214,6 +214,7 @@ typedef struct
 	Gfx_Tex tex_flashb;
 	Gfx_Tex tex_ded;
 	Gfx_Tex tex_alert;
+	Gfx_Tex tex_ty1;
 
 	//font
 	FontData font_cdr, font_bold;

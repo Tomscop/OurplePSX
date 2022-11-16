@@ -21,7 +21,7 @@ typedef struct
 	
 	//Textures
 	IO_Data arc_doggo, arc_doggo_ptr[1];
-	IO_Data arc_fback, arc_fback_ptr[4];
+	IO_Data arc_fback, arc_fback_ptr[12];
 	
 	Gfx_Tex tex_back; //millerbg
 	Gfx_Tex tex_spite; //spite
@@ -114,6 +114,48 @@ static const CharFrame fback_frame[] = {
 	{2, {  0, 95,125, 94}, {  0,  0}}, //10 old
 	{2, {126, 95,125, 94}, {  0,  0}}, //11 yippee
 	{3, {  0,  0,192, 83}, {  0,  0}}, //12 hint
+	{4, {  0,  0, 81,121}, {  0,  0}}, //13 open 1
+	{4, { 82,  0, 81,121}, {  0,  0}}, //14 open 2
+	{4, {164,  0, 81,121}, {  0,  0}}, //15 open 3
+	{4, {  0,122, 81,121}, {  0,  0}}, //16 open 4
+	{4, { 82,122, 81,121}, {  0,  0}}, //17 open 5
+	{4, {164,122, 81,121}, {  0,  0}}, //18 open 6
+	{5, {  0,  0, 81,121}, {  0,  0}}, //19 open 7
+	{5, { 82,  0, 81,121}, {  0,  0}}, //20 open 8
+	{5, {164,  0, 81,121}, {  0,  0}}, //21 open 9
+	{5, {  0,122, 81,121}, {  0,  0}}, //22 open 10
+	{5, { 82,122, 81,121}, {  0,  0}}, //23 open 11
+	{5, {164,122, 81,121}, {  0,  0}}, //24 open 12
+	{6, {  0,  0, 81,121}, {  0,  0}}, //25 open 13
+	{6, { 82,  0, 81,121}, {  0,  0}}, //26 open 14
+	{6, {164,  0, 81,121}, {  0,  0}}, //27 open 15
+	{6, {  0,122, 81,121}, {  0,  0}}, //28 open 16
+	{6, { 82,122, 81,121}, {  0,  0}}, //29 open 17
+	{6, {164,122, 81,121}, {  0,  0}}, //30 open 18
+	{7, {  0,  0, 81,121}, {  0,  0}}, //31 open 19
+	{7, { 82,  0, 81,121}, {  0,  0}}, //32 open 20
+	{7, {164,  0, 81,121}, {  0,  0}}, //33 open 21
+	{7, {  0,122, 81,121}, {  0,  0}}, //34 open 22
+	{7, { 82,122, 81,121}, {  0,  0}}, //35 open 23
+	{7, {164,122, 81,121}, {  0,  0}}, //36 open 24
+	{8, {  0,  0, 81,121}, {  0,  0}}, //37 open 25
+	{8, { 82,  0, 81,121}, {  0,  0}}, //38 open 26
+	{8, {164,  0, 81,121}, {  0,  0}}, //39 open 27
+	{8, {  0,122, 81,121}, {  0,  0}}, //40 open 28
+	{8, { 82,122, 81,121}, {  0,  0}}, //41 open 29
+	{8, {164,122, 81,121}, {  0,  0}}, //42 open 30
+	{9, {  0,  0, 81,121}, {  0,  0}}, //43 open 31
+	{9, { 82,  0, 81,121}, {  0,  0}}, //44 open 32
+	{9, {164,  0, 81,121}, {  0,  0}}, //45 open 33
+	{9, {  0,122, 81,121}, {  0,  0}}, //46 open 34
+	{9, { 82,122, 81,121}, {  0,  0}}, //47 open 35
+	{9, {164,122, 81,121}, {  0,  0}}, //48 open 36
+	{10, {  0,  0, 81,121}, {  0,  0}}, //49 open 37
+	{10, { 82,  0, 81,121}, {  0,  0}}, //50 open 38
+	{10, {164,  0, 81,121}, {  0,  0}}, //51 open 39
+	{10, {  0,122, 81,121}, {  0,  0}}, //52 open 40
+	{10, { 82,122, 81,121}, {  0,  0}}, //53 open 41
+	{11, {  0,  0,160,133}, {  0,  0}}, //54 ty0
 };
 
 static const Animation fback_anim[] = {
@@ -130,6 +172,8 @@ static const Animation fback_anim[] = {
 	{1, (const u8[]){10, ASCR_BACK, 1}}, //Old
 	{1, (const u8[]){11, ASCR_BACK, 1}}, //Yippee
 	{1, (const u8[]){12, ASCR_BACK, 1}}, //Hint
+	{1, (const u8[]){19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, ASCR_BACK, 1}}, //Open
+	{1, (const u8[]){54, ASCR_BACK, 1}}, //Ty0
 };
 
 //Fback functions
@@ -155,10 +199,17 @@ void Miller_Fback_Draw(Back_Miller *this, fixed_t x, fixed_t y)
     fixed_t ox = x - ((fixed_t)cframe->off[0] << FIXED_SHIFT);
 	fixed_t oy = y - ((fixed_t)cframe->off[1] << FIXED_SHIFT);
 	
-	if (stage.song_step >= 112)
+	if ((stage.song_step >= 112) && (stage.song_step <= 460))
 	{
 		RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
 		RECT_FIXED dst = { ox, oy, 320 << FIXED_SHIFT , 240 << FIXED_SHIFT };
+		Debug_StageMoveDebug(&dst, 8, stage.camera.x, stage.camera.y);
+		Stage_DrawTex(&this->tex_fback, &src, &dst, FIXED_DEC (1,1));
+	}
+	else if ((stage.song_step >= 461) && (stage.song_step <= 4367))
+	{
+		RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+		RECT_FIXED dst = { ox, oy, 122 << FIXED_SHIFT , 182 << FIXED_SHIFT };
 		Debug_StageMoveDebug(&dst, 8, stage.camera.x, stage.camera.y);
 		Stage_DrawTex(&this->tex_fback, &src, &dst, FIXED_DEC (1,1));
 	}
@@ -204,13 +255,21 @@ void Back_Miller_DrawFG(StageBack *back)
 		Animatable_SetAnim(&this->fback_animatable, 2);
 	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 376)))
 		Animatable_SetAnim(&this->fback_animatable, 3);
+	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 461)))
+		Animatable_SetAnim(&this->fback_animatable, 13);
+	if ((stage.flag & STAGE_FLAG_JUST_STEP && (stage.song_step == 4368)))
+		Animatable_SetAnim(&this->fback_animatable, 14);
 	
 	Animatable_Animate(&this->fback_animatable, (void*)this, Miller_Fback_SetFrame);
 	
-	if (stage.song_step <= 111)
+	if ((stage.song_step >= 40) && (stage.song_step <= 111))
 		Miller_Fback_Draw(this, FIXED_DEC(-137 + 41,1), FIXED_DEC(114 - 156,1));
 	if ((stage.song_step >= 112) && (stage.song_step <= 416))
 		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(36 - 156,1));
+	if ((stage.song_step >= 461) && (stage.song_step <= 480))
+		Miller_Fback_Draw(this, FIXED_DEC(-102 + 41,1), FIXED_DEC(65 - 156,1));
+	if (stage.song_step >= 4368)
+		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(89 - 156,1));
 	
 	//start fade
 	if (stage.song_step == 1824)
@@ -331,16 +390,16 @@ void Back_Miller_DrawBG(StageBack *back)
 	
 	Debug_StageMoveDebug(&spite1_dst, 9, fx, fy);
 	if (stage.spite <= 19)
-		Stage_BlendTex(&this->tex_spite, &spite1_src, &spite1_dst, stage.camera.bzoom,1);
+		Stage_DrawTex(&this->tex_spite, &spite1_src, &spite1_dst, stage.camera.bzoom);
 	Debug_StageMoveDebug(&spite2_dst, 10, fx, fy);
 	if (stage.spite <= 30)
-		Stage_BlendTex(&this->tex_spite, &spite2_src, &spite2_dst, stage.camera.bzoom,1);
+		Stage_DrawTex(&this->tex_spite, &spite2_src, &spite2_dst, stage.camera.bzoom);
 	Debug_StageMoveDebug(&spite3_dst, 11, fx, fy);
 	if (stage.spite <= 41)
-		Stage_BlendTex(&this->tex_spite, &spite3_src, &spite3_dst, stage.camera.bzoom,1);
+		Stage_DrawTex(&this->tex_spite, &spite3_src, &spite3_dst, stage.camera.bzoom);
 	Debug_StageMoveDebug(&spite4_dst, 12, fx, fy);
 	if (stage.spite <= 51)
-		Stage_BlendTex(&this->tex_spite, &spite4_src, &spite4_dst, stage.camera.bzoom,1);
+		Stage_DrawTex(&this->tex_spite, &spite4_src, &spite4_dst, stage.camera.bzoom);
 	Debug_StageMoveDebug(&millerbg_dst, 6, fx, fy);
 	Stage_DrawTex(&this->tex_back, &millerbg_src, &millerbg_dst, stage.camera.bzoom);
 	
@@ -392,6 +451,14 @@ StageBack *Back_Miller_New(void)
 	this->arc_fback_ptr[1] = Archive_Find(this->arc_fback, "fback1.tim");
 	this->arc_fback_ptr[2] = Archive_Find(this->arc_fback, "fback2.tim");
 	this->arc_fback_ptr[3] = Archive_Find(this->arc_fback, "hint.tim");
+	this->arc_fback_ptr[4] = Archive_Find(this->arc_fback, "open0.tim");
+	this->arc_fback_ptr[5] = Archive_Find(this->arc_fback, "open1.tim");
+	this->arc_fback_ptr[6] = Archive_Find(this->arc_fback, "open2.tim");
+	this->arc_fback_ptr[7] = Archive_Find(this->arc_fback, "open3.tim");
+	this->arc_fback_ptr[8] = Archive_Find(this->arc_fback, "open4.tim");
+	this->arc_fback_ptr[9] = Archive_Find(this->arc_fback, "open5.tim");
+	this->arc_fback_ptr[10] = Archive_Find(this->arc_fback, "open6.tim");
+	this->arc_fback_ptr[11] = Archive_Find(this->arc_fback, "ty0.tim");
 	
 	//Initialize doggo state
 	Animatable_Init(&this->doggo_animatable, doggo_anim);

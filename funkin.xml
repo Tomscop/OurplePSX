@@ -48,6 +48,7 @@
 				<file name = "count.tim" type = "data" source = "iso/stage/count.tim"/>
 				<file name = "border.tim" type = "data" source = "iso/stage/border.tim"/>
 				<file name = "spite.tim" type = "data" source = "iso/miller/spite.tim"/>
+				<file name = "ty1.tim" type = "data" source = "iso/miller/ty1.tim"/>
 			</dir>
 			
 			<!-- Week 1 assets -->

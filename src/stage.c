@@ -1716,9 +1716,12 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	else
 		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
 	
-	//Load Special Notes
+	//Load Miller stuff
 	if (stage.stage_id == StageId_6_3)
+	{
 		Gfx_LoadTex(&stage.tex_spite, IO_Read("\\STAGE\\SPITE.TIM;1"), GFX_LOADTEX_FREE);
+		Gfx_LoadTex(&stage.tex_ty1, IO_Read("\\STAGE\\TY1.TIM;1"), GFX_LOADTEX_FREE);
+	}
 	
 	sprintf(iconpath, "\\STAGE\\HUD1-%d.TIM;1", stage.stage_def->week);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read(iconpath), GFX_LOADTEX_FREE);
@@ -2663,6 +2666,14 @@ void Stage_Tick(void)
 				RECT border_src = {0, 0, 100, 240};
 				RECT border_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT)};
 				Gfx_DrawTex(&stage.tex_border, &border_src, &border_dst);
+			}
+			
+			//Draw border
+			if ((stage.stage_id == StageId_6_3) && (stage.song_step >= 4368))
+			{
+				RECT ty1_src = {0, 0, 160, 133};
+				RECT ty1_dst = {160, 53,160,133};
+				Gfx_DrawTex(&stage.tex_ty1, &ty1_src, &ty1_dst);
 			}
 			
 			//Draw stage foreground
