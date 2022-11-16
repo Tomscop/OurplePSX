@@ -64,7 +64,7 @@ static const CharFrame char_steven_frame[] =
 	{Steven_ArcMain_Steven2, {  0,102, 62, 84}, {-12,-17}}, //15 down miss 2
 
 	{Steven_ArcMain_Steven2, { 63,102, 59,104}, {-17,  3}}, //16 up miss 1
-	{Steven_ArcMain_Steven2, {161,112, 59,105}, {-17,  4}}, //17 up miss 2
+	{Steven_ArcMain_Steven2, {161, 83, 59,105}, {-17,  4}}, //17 up miss 2
 	
 	{Steven_ArcMain_Steven3, {  0,  0, 63,101}, {-16,  1}}, //18 right miss 1
 	{Steven_ArcMain_Steven3, { 64,  0, 63,101}, {-16,  1}}, //19 right miss 2

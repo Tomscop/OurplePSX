@@ -13,7 +13,6 @@ all: \
 	iso/stage/hud1-6.tim \
 	iso/stage/hud0weeb.tim \
 	iso/stage/scanline.tim \
-	iso/stage/flashb.tim \
 	iso/stage/count.tim \
 	iso/stage/border.tim \
 	iso/miller/spite.tim \
@@ -33,7 +32,7 @@ all: \
 	iso/henrytv/main.arc \
 	iso/bfp/main.arc \
 	iso/henryp/main.arc \
-	iso/sunny/main.arc \
+	iso/sbon/main.arc \
 	iso/matpat/main.arc \
 	iso/lphone/main.arc \
 	iso/fatjones/main.arc \
@@ -59,7 +58,7 @@ all: \
 	iso/jackass/main.arc \
 	iso/jackass/dead.tim \
 	iso/ngt/main.arc \
-	iso/gino/main.arc \
+	iso/sfred/main.arc \
 	iso/strap/main.arc \
 	iso/mangle/main.arc \
 	iso/criminal/main.arc \
@@ -135,8 +134,8 @@ iso/henryp/main.arc: iso/henryp/henryp0.tim iso/henryp/henryp1.tim iso/henryp/he
 # BFP
 iso/bfp/main.arc: iso/bfp/bfp0.tim
 
-# Sunny
-iso/sunny/main.arc: iso/sunny/idle0.tim iso/sunny/idle1.tim iso/sunny/idle2.tim iso/sunny/idle3.tim iso/sunny/idle4.tim iso/sunny/left0.tim iso/sunny/left1.tim iso/sunny/left2.tim iso/sunny/down0.tim iso/sunny/down1.tim iso/sunny/down2.tim iso/sunny/up0.tim iso/sunny/up1.tim iso/sunny/up2.tim iso/sunny/right0.tim iso/sunny/right1.tim iso/sunny/right2.tim
+# SBon
+iso/sbon/main.arc: iso/sbon/idle0.tim iso/sbon/idle1.tim iso/sbon/idle2.tim iso/sbon/idle3.tim iso/sbon/idle4.tim iso/sbon/left0.tim iso/sbon/left1.tim iso/sbon/left2.tim iso/sbon/down0.tim iso/sbon/down1.tim iso/sbon/down2.tim iso/sbon/up0.tim iso/sbon/up1.tim iso/sbon/up2.tim iso/sbon/right0.tim iso/sbon/right1.tim iso/sbon/right2.tim
 
 # Matpat
 iso/matpat/main.arc: iso/matpat/idle0.tim iso/matpat/idle1.tim iso/matpat/idle2.tim iso/matpat/idle3.tim iso/matpat/idle4.tim iso/matpat/left0.tim iso/matpat/left1.tim iso/matpat/left2.tim iso/matpat/left3.tim iso/matpat/left4.tim iso/matpat/left5.tim iso/matpat/down0.tim iso/matpat/down1.tim iso/matpat/up0.tim iso/matpat/up1.tim iso/matpat/right0.tim iso/matpat/right1.tim
@@ -198,8 +197,8 @@ iso/jackass/main.arc: iso/jackass/jka0.tim iso/jackass/jka1.tim iso/jackass/jka2
 # NGT
 iso/ngt/main.arc: iso/ngt/idle0.tim iso/ngt/idle1.tim iso/ngt/idle2.tim iso/ngt/left0.tim iso/ngt/left1.tim iso/ngt/down0.tim iso/ngt/down1.tim iso/ngt/up0.tim iso/ngt/up1.tim iso/ngt/right0.tim iso/ngt/right1.tim iso/ngt/turn0.tim iso/ngt/turn1.tim iso/ngt/turn2.tim iso/ngt/turn3.tim iso/ngt/turn4.tim iso/ngt/alt0.tim iso/ngt/alt1.tim
 
-# Gino
-iso/gino/main.arc: iso/gino/idle0.tim iso/gino/idle1.tim iso/gino/idle2.tim iso/gino/idle3.tim iso/gino/idle4.tim iso/gino/idle5.tim iso/gino/left0.tim iso/gino/left1.tim iso/gino/left2.tim iso/gino/left3.tim iso/gino/left4.tim iso/gino/left5.tim iso/gino/left6.tim iso/gino/left7.tim iso/gino/left8.tim iso/gino/left9.tim iso/gino/left10.tim iso/gino/left11.tim iso/gino/down0.tim iso/gino/down1.tim iso/gino/down2.tim iso/gino/down3.tim iso/gino/down4.tim iso/gino/down5.tim iso/gino/down6.tim iso/gino/down7.tim iso/gino/down8.tim iso/gino/down9.tim iso/gino/down10.tim iso/gino/down11.tim iso/gino/down12.tim iso/gino/down13.tim iso/gino/down14.tim iso/gino/up0.tim iso/gino/up1.tim iso/gino/up2.tim iso/gino/up3.tim iso/gino/up4.tim iso/gino/up5.tim iso/gino/up6.tim iso/gino/up7.tim iso/gino/up8.tim iso/gino/up9.tim iso/gino/up10.tim iso/gino/up11.tim iso/gino/up12.tim iso/gino/up13.tim iso/gino/right0.tim iso/gino/right1.tim iso/gino/right2.tim iso/gino/right3.tim iso/gino/right4.tim iso/gino/right5.tim iso/gino/right6.tim iso/gino/right7.tim iso/gino/right8.tim iso/gino/bite0.tim iso/gino/bite1.tim iso/gino/bite2.tim iso/gino/bite3.tim iso/gino/bite4.tim iso/gino/bite5.tim iso/gino/bite6.tim iso/gino/bite7.tim iso/gino/bite8.tim iso/gino/bite9.tim iso/gino/bite10.tim iso/gino/bite11.tim iso/gino/bite12.tim iso/gino/bite13.tim iso/gino/bite14.tim iso/gino/bite15.tim iso/gino/bite16.tim iso/gino/bite17.tim iso/gino/bite18.tim iso/gino/bite19.tim iso/gino/bite20.tim iso/gino/bite21.tim iso/gino/bite22.tim
+# SFred
+iso/sfred/main.arc: iso/sfred/idle0.tim iso/sfred/idle1.tim iso/sfred/idle2.tim iso/sfred/idle3.tim iso/sfred/idle4.tim iso/sfred/idle5.tim iso/sfred/left0.tim iso/sfred/left1.tim iso/sfred/left2.tim iso/sfred/left3.tim iso/sfred/left4.tim iso/sfred/left5.tim iso/sfred/left6.tim iso/sfred/left7.tim iso/sfred/left8.tim iso/sfred/left9.tim iso/sfred/left10.tim iso/sfred/left11.tim iso/sfred/down0.tim iso/sfred/down1.tim iso/sfred/down2.tim iso/sfred/down3.tim iso/sfred/down4.tim iso/sfred/down5.tim iso/sfred/down6.tim iso/sfred/down7.tim iso/sfred/down8.tim iso/sfred/down9.tim iso/sfred/down10.tim iso/sfred/down11.tim iso/sfred/down12.tim iso/sfred/down13.tim iso/sfred/down14.tim iso/sfred/up0.tim iso/sfred/up1.tim iso/sfred/up2.tim iso/sfred/up3.tim iso/sfred/up4.tim iso/sfred/up5.tim iso/sfred/up6.tim iso/sfred/up7.tim iso/sfred/up8.tim iso/sfred/up9.tim iso/sfred/up10.tim iso/sfred/up11.tim iso/sfred/up12.tim iso/sfred/up13.tim iso/sfred/right0.tim iso/sfred/right1.tim iso/sfred/right2.tim iso/sfred/right3.tim iso/sfred/right4.tim iso/sfred/right5.tim iso/sfred/right6.tim iso/sfred/right7.tim iso/sfred/right8.tim iso/sfred/bite0.tim iso/sfred/bite1.tim iso/sfred/bite2.tim iso/sfred/bite3.tim iso/sfred/bite4.tim iso/sfred/bite5.tim iso/sfred/bite6.tim iso/sfred/bite7.tim iso/sfred/bite8.tim iso/sfred/bite9.tim iso/sfred/bite10.tim iso/sfred/bite11.tim iso/sfred/bite12.tim iso/sfred/bite13.tim iso/sfred/bite14.tim iso/sfred/bite15.tim iso/sfred/bite16.tim iso/sfred/bite17.tim iso/sfred/bite18.tim iso/sfred/bite19.tim iso/sfred/bite20.tim iso/sfred/bite21.tim iso/sfred/bite22.tim
 
 # Springtrap
 iso/strap/main.arc: iso/strap/idle.tim iso/strap/left.tim iso/strap/down.tim iso/strap/up.tim iso/strap/right.tim
@@ -240,7 +239,7 @@ iso/jrs/green.arc: iso/jrs/green.tim
 iso/jrs/rain.arc: iso/jrs/rain0.tim iso/jrs/rain1.tim iso/jrs/rain2.tim
 
 # Deskroom
-iso/deskroom/back.arc: iso/deskroom/back0.tim iso/deskroom/back1.tim
+iso/deskroom/back.arc: iso/deskroom/back0.tim
 
 # Black
 iso/black/back.arc: iso/black/back0.tim
@@ -249,7 +248,7 @@ iso/black/back.arc: iso/black/back0.tim
 iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
 
 # OfficeG
-iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim iso/officeg/back2.tim
+iso/officeg/back.arc: iso/officeg/back0.tim iso/officeg/back1.tim
 
 # Stage01
 iso/stage01/back.arc: iso/stage01/0.tim iso/stage01/1.tim iso/stage01/2.tim iso/stage01/black.tim

@@ -70,6 +70,7 @@ void defaultSettings()
 	stage.prefs.eyes = 1;
 	stage.prefs.scanline = 1;
 	stage.prefs.drain = 1;
+	stage.prefs.flash = 1;
 
 	for (int i = 0; i < StageId_Max; i++)
 	{

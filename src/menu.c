@@ -686,7 +686,7 @@ void Menu_Tick(void)
 				{StageId_1_1, "    IGORSOU", false},
 				{StageId_1_1, "ALSO HELPED TOO IG LOL", false},
 				{StageId_1_1, "    UNSTOPABLE", false},
-				{StageId_1_1, "PSXFUNKIN DEV", false},
+				{StageId_1_1, "PSXFUNKIN CREATOR", false},
 				{StageId_1_1, "    CUCKYDEV", false},
 				{StageId_1_1, "UNSTOPABLE FORK DEVS", false},
 				{StageId_1_1, "    UNSTOPABLE", false},
@@ -851,6 +851,7 @@ void Menu_Tick(void)
 				{OptType_Boolean, "GHOST TAP", &stage.prefs.ghost, {.spec_boolean = {0}}},
 				{OptType_Boolean, "DOWNSCROLL", &stage.prefs.downscroll, {.spec_boolean = {0}}},
 				{OptType_Boolean, "MIDDLESCROLL", &stage.prefs.middlescroll, {.spec_boolean = {0}}},
+				{OptType_Boolean, "FLASHING LIGHTS", &stage.prefs.flash, {.spec_boolean = {0}}},
 				{OptType_Boolean, "FOLLOWED EYES", &stage.prefs.eyes, {.spec_boolean = {0}}},
 				{OptType_Boolean, "CRT SCANLINE", &stage.prefs.scanline, {.spec_boolean = {0}}},
 				{OptType_Boolean, "HEALTH DRAIN", &stage.prefs.drain, {.spec_boolean = {0}}},
@@ -862,7 +863,7 @@ void Menu_Tick(void)
 				{OptType_Boolean, "DEBUG MODE", &stage.prefs.debug, {.spec_boolean = {0}}},
 				//{OptType_Enum,    "GAMEMODE", &stage.mode, {.spec_enum = {COUNT_OF(gamemode_strs), gamemode_strs}}},
 			};
-			if (menu.select == 8 && pad_state.press & (PAD_CROSS | PAD_LEFT | PAD_RIGHT))
+			if (menu.select == 9 && pad_state.press & (PAD_CROSS | PAD_LEFT | PAD_RIGHT))
 				stage.pal_i = 1;
 
 			if (stage.mode == StageMode_2P)
@@ -872,7 +873,7 @@ void Menu_Tick(void)
 			if (menu.page_swap)
 				menu.scroll = COUNT_OF(menu_options) * FIXED_DEC(24 + screen.SCREEN_HEIGHT2,1);
 			
-			RECT save_src = {0, 121, 55, 7};
+			RECT save_src = {1, 120, 55, 7};
 			RECT save_dst = {screen.SCREEN_WIDTH / 2 + 30 - (121 / 2), screen.SCREEN_HEIGHT - 30, 53 * 2, 7 * 2};
 			Gfx_DrawTex(&menu.tex_story, &save_src, &save_dst);
 

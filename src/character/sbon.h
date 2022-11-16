@@ -4,12 +4,12 @@
   file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
-#ifndef PSXF_GUARD_GINO_H
-#define PSXF_GUARD_GINO_H
+#ifndef PSXF_GUARD_SBON_H
+#define PSXF_GUARD_SBON_H
 
 #include "../character.h"
 
-//Gino character functions
-Character *Char_Gino_New(fixed_t x, fixed_t y);
+//SBon character functions
+Character *Char_SBon_New(fixed_t x, fixed_t y);
 
 #endif

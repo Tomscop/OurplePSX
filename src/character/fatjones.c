@@ -50,13 +50,13 @@ static const CharFrame char_fatjones_frame[] = {
 	{FatJones_ArcMain_Idle4, {  0,  0,255,158}, { 42,183+4}}, //4 idle 5
 	{FatJones_ArcMain_Idle5, {  0,  0,255,158}, { 42,183+4}}, //5 idle 6
 	
-	{FatJones_ArcMain_Left, {  0,  0,255,158}, { 42,183+4}}, //6 left 1
+	{FatJones_ArcMain_Left, {  0,  0,255,158}, { 46,183+4}}, //6 left 1
 	
 	{FatJones_ArcMain_Down, {  0,  0,255,158}, { 42,183+4}}, //7 down 1
 	
 	{FatJones_ArcMain_Up, {  0,  0,255,158}, { 42,183+4}}, //8 up 1
 	
-	{FatJones_ArcMain_Right, {  0,  0,255,158}, { 42,183+4}}, //9 right 1
+	{FatJones_ArcMain_Right, {  0,  0,255,158}, { 36,183+4}}, //9 right 1
 };
 
 static const Animation char_fatjones_anim[CharAnim_Max] = {

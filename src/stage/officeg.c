@@ -22,8 +22,6 @@ typedef struct
 	//Textures
 	Gfx_Tex tex_back0; //officeg1
 	Gfx_Tex tex_back1; //officeg2
-	Gfx_Tex tex_back2; //black
-
 } Back_OfficeG;
 
 
@@ -33,22 +31,9 @@ void Back_OfficeG_DrawFG(StageBack *back)
 	{
 		Back_OfficeG *this = (Back_OfficeG*)back;
 		
-		fixed_t fx, fy;
-		
 		//Draw black
-		fx = stage.camera.x;
-		fy = stage.camera.y;
-	
-		RECT black_src = {0, 0, 255, 255};
-		RECT_FIXED black_dst = {
-			FIXED_DEC(-165 - screen.SCREEN_WIDEOADD2,1) - fx,
-			FIXED_DEC(-140,1) - fy,
-			FIXED_DEC(500 + screen.SCREEN_WIDEOADD,1),
-			FIXED_DEC(400,1)
-		};
-	
-		Debug_StageMoveDebug(&black_dst, 10, fx, fy);
-		Stage_DrawTex(&this->tex_back2, &black_src, &black_dst, stage.camera.bzoom);
+		RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+		Gfx_DrawRect(&screen_src, 0, 0, 0);
 	}
 }
 
@@ -110,7 +95,6 @@ StageBack *Back_OfficeG_New(void)
 	IO_Data arc_back = IO_Read("\\OFFICEG\\BACK.ARC;1");
 	Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
 	Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
-	Gfx_LoadTex(&this->tex_back2, Archive_Find(arc_back, "back2.tim"), 0);
 	Mem_Free(arc_back);
 	
 	return (StageBack*)this;

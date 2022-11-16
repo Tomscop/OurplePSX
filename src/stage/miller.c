@@ -229,6 +229,35 @@ void Back_Miller_DrawFG(StageBack *back)
 	
 	fixed_t fx, fy;
 	
+	//start fade
+	if (stage.song_step == 1824)
+	{
+		this->fade = FIXED_DEC(255,1);
+		this->fadespd = FIXED_DEC(110,1);
+	}
+	else if (stage.song_step == 2531)
+	{
+		this->fade = FIXED_DEC(255,1);
+		this->fadespd = FIXED_DEC(120,1);
+	}
+	else if (stage.song_step == 4368)
+	{
+		this->fade = FIXED_DEC(255,1);
+		this->fadespd = FIXED_DEC(675,1);
+	}
+
+	//end fade
+	if ((stage.song_step == 1919) || (stage.song_step == 2559) || (stage.song_step == 4372))
+		this->fade = 0;
+
+	if (this->fade > 0)
+	{
+		RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+		u8 flash_col = this->fade >> FIXED_SHIFT;
+		Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+		this->fade -= FIXED_MUL(this->fadespd, timer_dt);
+	}
+
 	//start fade2
 	if (stage.song_step == 76)
 	{
@@ -380,37 +409,6 @@ void Back_Miller_DrawFG(StageBack *back)
 		Miller_Fback_Draw(this, FIXED_DEC(-102 + 41,1), FIXED_DEC(65 - 156,1));
 	if (stage.song_step >= 4368)
 		Miller_Fback_Draw(this, FIXED_DEC(-201 + 41,1), FIXED_DEC(89 - 156,1));
-	
-	//start fade
-	if (stage.song_step == 1824)
-	{
-		this->fade = FIXED_DEC(255,1);
-		this->fadespd = FIXED_DEC(110,1);
-	}
-	else if (stage.song_step == 2531)
-	{
-		this->fade = FIXED_DEC(255,1);
-		this->fadespd = FIXED_DEC(120,1);
-	}
-
-	//end fade
-	if ((stage.song_step == 1919) || (stage.song_step == 2559))
-		this->fade = 0;
-
-	if (this->fade > 0)
-	{
-		RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
-		u8 flash_col = this->fade >> FIXED_SHIFT;
-		Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
-		this->fade -= FIXED_MUL(this->fadespd, timer_dt);
-	}
-	
-	//Draw blackf
-	RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
-	if ((stage.song_step <= 480) || (stage.song_step >= 4312) || (stage.song_step >= 3771) && (stage.song_step <= 3776) || (stage.song_step >= 4029) && (stage.song_step <= 4032))
-		Gfx_DrawRect(&screen_src, 0, 0, 0);
-	if ((stage.song_step >= 1776) && (stage.song_step <= 1824) || (stage.song_step >= 2464) && (stage.song_step <= 2531))
-		Gfx_DrawRect(&screen_src, 0, 0, 0);
 }
 
 void Back_Miller_DrawBG(StageBack *back)

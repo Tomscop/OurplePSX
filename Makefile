@@ -46,7 +46,7 @@ SRCS = src/main.c \
 	   src/character/henrytv.c \
 	   src/character/bfp.c \
 	   src/character/henryp.c \
-	   src/character/sunny.c \
+	   src/character/sbon.c \
 	   src/character/matpat.c \
 	   src/character/lphone.c \
        src/character/fatjones.c \
@@ -67,7 +67,7 @@ SRCS = src/main.c \
 	   src/character/cakebear.c \
 	   src/character/jackass.c \
 	   src/character/ngt.c \
-	   src/character/gino.c \
+	   src/character/sfred.c \
 	   src/character/strap.c \
 	   src/character/mangle.c \
 	   src/character/criminal.c \

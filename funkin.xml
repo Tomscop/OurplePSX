@@ -44,7 +44,6 @@
 				<file name = "hud1-6.tim" type = "data" source = "iso/stage/hud1-6.tim"/>
 				<file name = "hud0weeb.tim" type = "data" source = "iso/stage/hud0weeb.tim"/>
 				<file name = "scanline.tim" type = "data" source = "iso/stage/scanline.tim"/>
-				<file name = "flashb.tim" type = "data" source = "iso/stage/flashb.tim"/>
 				<file name = "count.tim" type = "data" source = "iso/stage/count.tim"/>
 				<file name = "border.tim" type = "data" source = "iso/stage/border.tim"/>
 				<file name = "spite.tim" type = "data" source = "iso/miller/spite.tim"/>
@@ -246,8 +245,8 @@
 				<!-- HenryP assets -->
 				<file name = "henryp.arc" type = "data" source = "iso/henryp/main.arc"/>
 				
-				<!-- Sunny assets -->
-				<file name = "sunny.arc" type = "data" source = "iso/sunny/main.arc"/>
+				<!-- SBon assets -->
+				<file name = "sbon.arc" type = "data" source = "iso/sbon/main.arc"/>
 				
 				<!-- Matpat assets -->
 				<file name = "matpat.arc" type = "data" source = "iso/matpat/main.arc"/>
@@ -316,8 +315,8 @@
 				<!-- NGT assets -->
 				<file name = "ngt.arc" type = "data" source = "iso/ngt/main.arc"/>
 				
-				<!-- Gino assets -->
-				<file name = "gino.arc" type = "data" source = "iso/gino/main.arc"/>
+				<!-- SFred assets -->
+				<file name = "sfred.arc" type = "data" source = "iso/sfred/main.arc"/>
 				
 				<!-- Springtrap assets -->
 				<file name = "strap.arc" type = "data" source = "iso/strap/main.arc"/>

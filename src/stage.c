@@ -57,7 +57,7 @@ static u32 Sounds[10];
 #include "character/henrytv.h"
 #include "character/bfp.h"
 #include "character/henryp.h"
-#include "character/sunny.h"
+#include "character/sbon.h"
 #include "character/matpat.h"
 #include "character/lphone.h"
 #include "character/fatjones.h"
@@ -78,7 +78,7 @@ static u32 Sounds[10];
 #include "character/cakebear.h"
 #include "character/jackass.h"
 #include "character/ngt.h"
-#include "character/gino.h"
+#include "character/sfred.h"
 #include "character/strap.h"
 #include "character/mangle.h"
 #include "character/criminal.h"
@@ -1727,8 +1727,6 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read(iconpath), GFX_LOADTEX_FREE);
     if ((stage.stage_id != StageId_5_3) && (stage.stage_id != StageId_6_2))
 	   Gfx_LoadTex(&stage.tex_countdown, IO_Read("\\STAGE\\COUNT.TIM;1"), GFX_LOADTEX_FREE);
-	if (id == StageId_1_3)
-		Gfx_LoadTex(&stage.tex_flashb, IO_Read("\\STAGE\\FLASHB.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_1_3 || id == StageId_1_4 || id == StageId_4_1 || id == StageId_4_3 || id == StageId_5_3)
 		Gfx_LoadTex(&stage.tex_scanline, IO_Read("\\STAGE\\SCANLINE.TIM;1"), GFX_LOADTEX_FREE);
 	if (id == StageId_5_2 || id == StageId_6_1 || id == StageId_6_3)
@@ -2067,9 +2065,8 @@ void Stage_Tick(void)
 				//Draw FlashB
 				if ((stage.stage_id == StageId_1_3 && stage.song_step >= 256 && stage.song_step <= 271) || (stage.stage_id == StageId_1_3 && stage.song_step >= 2192 && stage.song_step <= 2239))
 				{
-					RECT flashb_src = {0, 0, 256, 256};
-					RECT flashb_dst = {0, 0, (screen.SCREEN_WIDTH + 10), (screen.SCREEN_HEIGHT + 1)};
-					Gfx_DrawTex(&stage.tex_flashb, &flashb_src, &flashb_dst);
+					RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+					Gfx_DrawRect(&screen_src, 0, 0, 0);
 				}
 				
 				//Draw white fade
@@ -2098,13 +2095,14 @@ void Stage_Tick(void)
 					fade = FIXED_DEC(255,1);
 					fadespd = FIXED_DEC(325,1);
 				}
-				if (fade > 0)
-				{
-					RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
-					u8 flash_col = fade >> FIXED_SHIFT;
-					Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 1);
-					fade -= FIXED_MUL(fadespd, timer_dt);
-				}
+				if (stage.prefs.flash != 0)
+					if (fade > 0)
+					{
+						RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+						u8 flash_col = fade >> FIXED_SHIFT;
+						Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 1);
+						fade -= FIXED_MUL(fadespd, timer_dt);
+					}
 				
 				//Draw scanline
 				if (stage.prefs.scanline == true)
@@ -2668,7 +2666,11 @@ void Stage_Tick(void)
 				Gfx_DrawTex(&stage.tex_border, &border_src, &border_dst);
 			}
 			
-			//Draw border
+			//Draw stage foreground
+			if (stage.back->draw_fg != NULL)
+				stage.back->draw_fg(stage.back);
+			
+			//Draw ty1
 			if ((stage.stage_id == StageId_6_3) && (stage.song_step >= 4368))
 			{
 				RECT ty1_src = {0, 0, 160, 133};
@@ -2676,9 +2678,15 @@ void Stage_Tick(void)
 				Gfx_DrawTex(&stage.tex_ty1, &ty1_src, &ty1_dst);
 			}
 			
-			//Draw stage foreground
-			if (stage.back->draw_fg != NULL)
-				stage.back->draw_fg(stage.back);
+			//Draw blackf
+			if (stage.stage_id == StageId_6_3)
+			{
+				RECT screen_src = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+				if ((stage.song_step <= 480) || (stage.song_step >= 4312) || (stage.song_step >= 3771) && (stage.song_step <= 3776) || (stage.song_step >= 4029) && (stage.song_step <= 4032))
+					Gfx_DrawRect(&screen_src, 0, 0, 0);
+				if ((stage.song_step >= 1776) && (stage.song_step <= 1824) || (stage.song_step >= 2464) && (stage.song_step <= 2531))
+					Gfx_DrawRect(&screen_src, 0, 0, 0);
+			}
 			
 			//Tick foreground objects
 			ObjectList_Tick(&stage.objlist_fg);

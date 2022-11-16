@@ -4,12 +4,12 @@
   file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
-#ifndef PSXF_GUARD_SUNNY_H
-#define PSXF_GUARD_SUNNY_H
+#ifndef PSXF_GUARD_SFRED_H
+#define PSXF_GUARD_SFRED_H
 
 #include "../character.h"
 
-//Sunny character functions
-Character *Char_Sunny_New(fixed_t x, fixed_t y);
+//SFred character functions
+Character *Char_SFred_New(fixed_t x, fixed_t y);
 
 #endif
