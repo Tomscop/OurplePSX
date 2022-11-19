@@ -66,9 +66,9 @@ static const CharFrame char_bfp_frame[] =
 	{BFP_ArcMain_BFP0, { 90,156, 44, 51}, { 53, 92}}, //17 right miss 2
 };
 static const Animation char_bfp_anim[PlayerAnim_Max] = {
-	{8, (const u8[]){ 0, 1, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){ 0, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 2,  3, ASCR_CHGANI, CharAnim_Left}},         //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{2, (const u8[]){ 1, ASCR_BACK, 1}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 6,  7, ASCR_CHGANI, CharAnim_Down}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){10, 11, ASCR_CHGANI, CharAnim_Up}},         //CharAnim_Up
@@ -133,6 +133,24 @@ void Char_BFP_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
+			
+		if (character->idle2 == 1)
+		{
+			if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 3)
+			character->set_anim(character, CharAnim_LeftAlt);
+		}
 	}
 
 	
@@ -177,6 +195,7 @@ Character *Char_BFP_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
+	this->character.idle2 = 1;
 	
 	this->character.health_i = 1;
 

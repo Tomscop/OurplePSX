@@ -68,9 +68,9 @@ static const CharFrame char_cassidy_frame[] =
 	{Cassidy_ArcMain_Cassidy1, {168, 69, 55, 68}, { 53, 92}}, //19 right miss 2
 };
 static const Animation char_cassidy_anim[PlayerAnim_Max] = {
-	{4, (const u8[]){ 0,  1,  2, 3, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{1, (const u8[]){ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},             //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
+	{1, (const u8[]){ 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},             //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Up
@@ -135,6 +135,24 @@ void Char_Cassidy_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
+			
+		if (character->idle2 == 1)
+		{
+			if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 3)
+			character->set_anim(character, CharAnim_LeftAlt);
+		}
 	}
 	
 	//Animate and draw character
@@ -181,6 +199,7 @@ Character *Char_Cassidy_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
+	this->character.idle2 = 1;
 	
 	this->character.health_i = 2;
 

@@ -53,9 +53,9 @@ static const CharFrame char_henryp_frame[] = {
 };
 
 static const Animation char_henryp_anim[CharAnim_Max] = {
-	{8, (const u8[]){ 0, 1, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){ 0, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 2,  3, ASCR_CHGANI, CharAnim_Left}},         //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{0, (const u8[]){ 1, ASCR_BACK, 1}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 4,  5, ASCR_CHGANI, CharAnim_Down}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){ 6,  7, ASCR_CHGANI, CharAnim_Up}},         //CharAnim_Up
@@ -129,6 +129,7 @@ Character *Char_HenryP_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = 0;
+	this->character.idle2 = 1;
 	
 	this->character.health_i = 4;
 

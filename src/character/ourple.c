@@ -162,9 +162,9 @@ static const CharFrame char_ourple_frame2[] =
 	{Ourple_ArcMain_RightAlt2, {  0,  0,129,162}, { 53, 92}}, //31 right alt 2
 };
 static const Animation char_ourple_anim[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, 4, 5, 6, 7, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){26,27, ASCR_BACK, 1}},             //CharAnim_Left
-	{2, (const u8[]){30,31, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){14,15, ASCR_BACK, 1}},             //CharAnim_Down
 	{2, (const u8[]){18,19, ASCR_BACK, 1}},       //CharAnim_DownAlt
 	{2, (const u8[]){20,21, ASCR_BACK, 1}},             //CharAnim_Up
@@ -179,9 +179,9 @@ static const Animation char_ourple_anim[PlayerAnim_Max] = {
 };
 
 static const Animation char_ourple_anim2[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, 4, 5, 6, 7, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Left
-	{2, (const u8[]){12,13, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){14,15, ASCR_BACK, 1}},             //CharAnim_Down
 	{2, (const u8[]){18,19, ASCR_BACK, 1}},       //CharAnim_DownAlt
 	{2, (const u8[]){20,21, ASCR_BACK, 1}},             //CharAnim_Up
@@ -206,7 +206,7 @@ void Char_Ourple_SetFrame(void *user, u8 frame)
 		//Check if new art shall be loaded
 		CharFrame *cframe;
 
- 			if (stage.stage_id == StageId_1_1 && stage.song_step >= 568 && stage.song_step <= 576)
+ 			if ((stage.stage_id == StageId_1_1) && (stage.song_step >= 568) && (stage.song_step <= 576))
 				cframe = &char_ourple_frame2[this->frame = frame];
 			else
 				cframe = &char_ourple_frame[this->frame = frame];
@@ -426,6 +426,24 @@ void Char_Ourple_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
+			
+		if (character->idle2 == 1)
+		{
+			if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 3)
+			character->set_anim(character, CharAnim_LeftAlt);
+		}
 	}
 
 	
@@ -476,6 +494,7 @@ Character *Char_Ourple_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
+	this->character.idle2 = 1;
 	
 	if (stage.stage_id == StageId_2_1)
 	this->character.health_i = 3;

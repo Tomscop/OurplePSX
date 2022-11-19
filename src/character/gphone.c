@@ -135,6 +135,24 @@ void Char_GPhone_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
+			
+		if (character->idle2 == 1)
+		{
+			if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 3)
+			character->set_anim(character, CharAnim_LeftAlt);
+		}
 	}
 	
 	//Stage specific animations
@@ -190,6 +208,7 @@ Character *Char_GPhone_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = 0;
+	this->character.idle2 = 0;
 	
 	this->character.health_i = 7;
 

@@ -377,6 +377,24 @@ void Char_BF_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
+			
+		if (character->idle2 == 1)
+		{
+			if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != PlayerAnim_LeftMiss &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != PlayerAnim_DownMiss &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != PlayerAnim_UpMiss &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt &&
+		     character->animatable.anim != PlayerAnim_RightMiss) &&
+			(stage.song_step & 0x7) == 3)
+			character->set_anim(character, CharAnim_LeftAlt);
+		}
 	}
 	
 	//Animate and draw character
@@ -432,6 +450,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
+	this->character.idle2 = 0;
 	
 	if (stage.stage_id == StageId_2_2 || stage.stage_id == StageId_3_3 || stage.stage_id == StageId_4_4)
 		this->character.health_i = 1;
