@@ -68,15 +68,15 @@ static const CharFrame char_cassidy_frame[] =
 	{Cassidy_ArcMain_Cassidy1, {168, 69, 55, 68}, { 53, 92}}, //19 right miss 2
 };
 static const Animation char_cassidy_anim[PlayerAnim_Max] = {
-	{1, (const u8[]){ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, ASCR_BACK, 1}}, //CharAnim_Idle
+	{1, (const u8[]){ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
 	{2, (const u8[]){ 4, 5, ASCR_BACK, 1}},             //CharAnim_Left
-	{1, (const u8[]){ 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{1, (const u8[]){ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 6, 7, ASCR_BACK, 1}},             //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
 	{2, (const u8[]){ 10, 11, ASCR_BACK, 1}},             //CharAnim_Right
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
+	{1, (const u8[]){ 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, ASCR_BACK, 1}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){ 12, 13, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
 	{1, (const u8[]){ 14, 15, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
@@ -105,53 +105,24 @@ void Char_Cassidy_Tick(Character *character)
 {
 	Char_Cassidy *this = (Char_Cassidy*)character;
 
-	//Handle animation updates
-	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
-	    (character->animatable.anim != CharAnim_Left &&
-	     character->animatable.anim != CharAnim_LeftAlt &&
-	     character->animatable.anim != CharAnim_Down &&
-	     character->animatable.anim != CharAnim_DownAlt &&
-	     character->animatable.anim != CharAnim_Up &&
-	     character->animatable.anim != CharAnim_UpAlt &&
-	     character->animatable.anim != CharAnim_Right &&
-	     character->animatable.anim != CharAnim_RightAlt))
-		Character_CheckEndSing(character);
-	
-	if (stage.flag & STAGE_FLAG_JUST_STEP)
+	//Perform idle dance
+	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 	{
-		//Perform idle dance
-		if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != CharAnim_LeftAlt &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 0)
-			character->set_anim(character, CharAnim_Idle);
-			
-		if (character->idle2 == 1)
+		Character_CheckEndSing(character);
+		
+		if (stage.flag & STAGE_FLAG_JUST_STEP)
 		{
-			if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 3)
-			character->set_anim(character, CharAnim_LeftAlt);
+			if ((Animatable_Ended(&character->animatable) || character->animatable.anim == CharAnim_LeftAlt || character->animatable.anim == CharAnim_RightAlt) &&
+				(character->animatable.anim != CharAnim_Left &&
+				 character->animatable.anim != CharAnim_Down &&
+				 character->animatable.anim != CharAnim_Up &&
+				 character->animatable.anim != CharAnim_Right &&
+				 character->animatable.anim != PlayerAnim_LeftMiss &&
+				 character->animatable.anim != PlayerAnim_DownMiss &&
+				 character->animatable.anim != PlayerAnim_UpMiss &&
+				 character->animatable.anim != PlayerAnim_RightMiss) &&
+				(stage.song_step & 0x3) == 0)
+				character->set_anim(character, CharAnim_Idle);
 		}
 	}
 	
@@ -166,8 +137,19 @@ void Char_Cassidy_SetAnim(Character *character, u8 anim)
 	Char_Cassidy *this = (Char_Cassidy*)character;
 	
 	//Set animation
+	if (anim == CharAnim_Idle)
+	{
+		if (character->animatable.anim == CharAnim_LeftAlt)
+			anim = CharAnim_RightAlt;
+		else
+			anim = CharAnim_LeftAlt;
+		character->sing_end = FIXED_DEC(0x7FFF,1);
+	}
+	else
+	{
+		Character_CheckStartSing(character);
+	}
 	Animatable_SetAnim(&character->animatable, anim);
-	Character_CheckStartSing(character);
 }
 
 void Char_Cassidy_Free(Character *character)
@@ -199,7 +181,6 @@ Character *Char_Cassidy_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
-	this->character.idle2 = 1;
 	
 	this->character.health_i = 2;
 

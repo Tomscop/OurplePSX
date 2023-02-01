@@ -137,7 +137,7 @@ void Char_NGT_Tick(Character *character)
 			Character_PerformIdle(character);
 	
 	if (stage.song_step >= 1024)
-		Animatable_Init(&this->character.animatable, char_ngt_anim2);	
+		Animatable_Init(&this->character.animatable, char_ngt_anim2);
 	if (stage.song_step >= 1032)
 		Animatable_Init(&this->character.animatable, char_ngt_anim3);
 	
@@ -182,7 +182,6 @@ Character *Char_NGT_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = 0;
-	this->character.idle2 = 0;
 	
 	this->character.health_i = 4;
 

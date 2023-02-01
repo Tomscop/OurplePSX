@@ -114,63 +114,17 @@ static const CharFrame char_ourple_frame[] =
 	{Ourple_ArcMain_RightAlt1, {  0,  0,129,162}, { 53, 92}}, //30 right alt 1
 	{Ourple_ArcMain_RightAlt2, {  0,  0,129,162}, { 53, 92}}, //31 right alt 2
 };
-static const CharFrame char_ourple_frame2[] = 
-{
-	{Ourple_ArcMain_Idle1, {  0,  0,129,162}, { 53, 92}}, //0 idle 1
-	{Ourple_ArcMain_Idle2, {  0,  0,129,162}, { 53, 92}}, //1 idle 2
-	{Ourple_ArcMain_Idle3, {  0,  0,129,162}, { 53, 92}}, //2 idle 3
-	{Ourple_ArcMain_Idle4, {  0,  0,129,162}, { 53, 92}}, //3 idle 4
-	{Ourple_ArcMain_Idle5, {  0,  0,129,162}, { 53, 92}}, //4 idle 5
-	{Ourple_ArcMain_Idle6, {  0,  0,129,162}, { 53, 92}}, //5 idle 6
-	{Ourple_ArcMain_Idle7, {  0,  0,129,162}, { 53, 92}}, //6 idle 7
-	{Ourple_ArcMain_Idle8, {  0,  0,129,162}, { 53, 92}}, //7 idle 8
-	
-	{Ourple_ArcMain_LeftAlt1, {  0,  0,129,162}, { 53, 92}}, //8 left alt 1
-	{Ourple_ArcMain_LeftAlt2, {  0,  0,129,162}, { 53, 92}}, //9 left alt 2
-	
-	{Ourple_ArcMain_LeftMiss1, {  0,  0,129,162}, { 53, 92}}, //10 left miss 1
-	{Ourple_ArcMain_LeftMiss2, {  0,  0,129,162}, { 53, 92}}, //11 left miss 2
-	
-	{Ourple_ArcMain_LeftAlt1, {  0,  0,129,162}, { 53, 92}}, //12 left alt 1
-	{Ourple_ArcMain_LeftAlt2, {  0,  0,129,162}, { 53, 92}}, //13 left alt 2
-	
-	{Ourple_ArcMain_DownAlt1, {  0,  0,129,162}, { 53, 92}}, //14 down alt 1
-	{Ourple_ArcMain_DownAlt2, {  0,  0,129,162}, { 53, 92}}, //15 down alt 2
-	
-	{Ourple_ArcMain_DownMiss1, {  0,  0,129,162}, { 53, 92}}, //16 down miss 1
-	{Ourple_ArcMain_DownMiss2, {  0,  0,129,162}, { 53, 92}}, //17 down miss 2
-	
-	{Ourple_ArcMain_DownAlt1, {  0,  0,129,162}, { 53, 92}}, //18 down alt 1
-	{Ourple_ArcMain_DownAlt2, {  0,  0,129,162}, { 53, 92}}, //19 down alt 2
-	
-	{Ourple_ArcMain_UpAlt1, {  0,  0,129,162}, { 53, 92}}, //20 up alt 1
-	{Ourple_ArcMain_UpAlt2, {  0,  0,129,162}, { 53, 92}}, //21 up alt 2
-	
-	{Ourple_ArcMain_UpMiss1, {  0,  0,129,162}, { 53, 92}}, //22 up miss 1
-	{Ourple_ArcMain_UpMiss2, {  0,  0,129,162}, { 53, 92}}, //23 up miss 2
-	
-	{Ourple_ArcMain_UpAlt1, {  0,  0,129,162}, { 53, 92}}, //24 up alt 1
-	{Ourple_ArcMain_UpAlt2, {  0,  0,129,162}, { 53, 92}}, //25 up alt 2
-	
-	{Ourple_ArcMain_RightAlt1, {  0,  0,129,162}, { 53, 92}}, //26 right alt 1
-	{Ourple_ArcMain_RightAlt2, {  0,  0,129,162}, { 53, 92}}, //27 right alt 2
-	
-	{Ourple_ArcMain_RightMiss1, {  0,  0,129,162}, { 53, 92}}, //28 right miss 1
-	{Ourple_ArcMain_RightMiss2, {  0,  0,129,162}, { 53, 92}}, //29 right miss 2
-	
-	{Ourple_ArcMain_RightAlt1, {  0,  0,129,162}, { 53, 92}}, //30 right alt 1
-	{Ourple_ArcMain_RightAlt2, {  0,  0,129,162}, { 53, 92}}, //31 right alt 2
-};
+
 static const Animation char_ourple_anim[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
 	{2, (const u8[]){26,27, ASCR_BACK, 1}},             //CharAnim_Left
-	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){14,15, ASCR_BACK, 1}},             //CharAnim_Down
 	{2, (const u8[]){18,19, ASCR_BACK, 1}},       //CharAnim_DownAlt
 	{2, (const u8[]){20,21, ASCR_BACK, 1}},             //CharAnim_Up
 	{2, (const u8[]){24,25, ASCR_BACK, 1}},       //CharAnim_UpAlt
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Right
-	{2, (const u8[]){12,13, ASCR_BACK, 1}},       //CharAnim_RightAlt
+	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){28,29, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
 	{1, (const u8[]){16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
@@ -179,14 +133,31 @@ static const Animation char_ourple_anim[PlayerAnim_Max] = {
 };
 
 static const Animation char_ourple_anim2[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}}, //CharAnim_Idle
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
 	{2, (const u8[]){ 8, 9, ASCR_BACK, 1}},             //CharAnim_Left
-	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 0, 1, 2, 3, ASCR_BACK, 1}},       //CharAnim_LeftAlt
 	{2, (const u8[]){14,15, ASCR_BACK, 1}},             //CharAnim_Down
 	{2, (const u8[]){18,19, ASCR_BACK, 1}},       //CharAnim_DownAlt
 	{2, (const u8[]){20,21, ASCR_BACK, 1}},             //CharAnim_Up
 	{2, (const u8[]){24,25, ASCR_BACK, 1}},       //CharAnim_UpAlt
 	{2, (const u8[]){26,27, ASCR_BACK, 1}},             //CharAnim_Right
+	{2, (const u8[]){ 4, 5, 6, 7, ASCR_BACK, 1}},       //CharAnim_RightAlt
+	
+	{1, (const u8[]){ 10,11, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 16,17, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){ 22,23, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){ 28,29, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+};
+
+static const Animation char_ourple_anim3[PlayerAnim_Max] = {
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){12,13, ASCR_BACK, 1}},             //CharAnim_Left
+	{2, (const u8[]){12,13, ASCR_BACK, 1}},       //CharAnim_LeftAlt
+	{2, (const u8[]){18,19, ASCR_BACK, 1}},             //CharAnim_Down
+	{2, (const u8[]){18,19, ASCR_BACK, 1}},       //CharAnim_DownAlt
+	{2, (const u8[]){24,25, ASCR_BACK, 1}},             //CharAnim_Up
+	{2, (const u8[]){24,25, ASCR_BACK, 1}},       //CharAnim_UpAlt
+	{2, (const u8[]){30,31, ASCR_BACK, 1}},             //CharAnim_Right
 	{2, (const u8[]){30,31, ASCR_BACK, 1}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){ 10,11, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
@@ -204,14 +175,7 @@ void Char_Ourple_SetFrame(void *user, u8 frame)
 	if (frame != this->frame)
 	{
 		//Check if new art shall be loaded
-		CharFrame *cframe;
-
- 			if ((stage.stage_id == StageId_1_1) && (stage.song_step >= 568) && (stage.song_step <= 576))
-				cframe = &char_ourple_frame2[this->frame = frame];
-			else
-				cframe = &char_ourple_frame[this->frame = frame];
-			
-			
+		const CharFrame *cframe = &char_ourple_frame[this->frame = frame];
 		if (cframe->tex != this->tex_id)
 			Gfx_LoadTex(&this->tex, this->arc_ptr[this->tex_id = cframe->tex], 0);
 	}
@@ -396,56 +360,33 @@ void Char_Ourple_Tick(Character *character)
 		}
 	}
 
-	//Handle animation updates
-	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
-	    (character->animatable.anim != CharAnim_Left &&
-	     character->animatable.anim != CharAnim_LeftAlt &&
-	     character->animatable.anim != CharAnim_Down &&
-	     character->animatable.anim != CharAnim_DownAlt &&
-	     character->animatable.anim != CharAnim_Up &&
-	     character->animatable.anim != CharAnim_UpAlt &&
-	     character->animatable.anim != CharAnim_Right &&
-	     character->animatable.anim != CharAnim_RightAlt))
-		Character_CheckEndSing(character);
-	
-	if (stage.flag & STAGE_FLAG_JUST_STEP)
+	//Perform idle dance
+	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 	{
-		//Perform idle dance
-		if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != CharAnim_LeftAlt &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 0)
-			character->set_anim(character, CharAnim_Idle);
-			
-		if (character->idle2 == 1)
+		Character_CheckEndSing(character);
+		
+		if (stage.flag & STAGE_FLAG_JUST_STEP)
 		{
-			if (Animatable_Ended(&character->animatable) &&
-			(character->animatable.anim != CharAnim_Left &&
-		     character->animatable.anim != PlayerAnim_LeftMiss &&
-		     character->animatable.anim != CharAnim_Down &&
-		     character->animatable.anim != CharAnim_DownAlt &&
-		     character->animatable.anim != PlayerAnim_DownMiss &&
-		     character->animatable.anim != CharAnim_Up &&
-		     character->animatable.anim != CharAnim_UpAlt &&
-		     character->animatable.anim != PlayerAnim_UpMiss &&
-		     character->animatable.anim != CharAnim_Right &&
-		     character->animatable.anim != CharAnim_RightAlt &&
-		     character->animatable.anim != PlayerAnim_RightMiss) &&
-			(stage.song_step & 0x7) == 3)
-			character->set_anim(character, CharAnim_LeftAlt);
+			if ((Animatable_Ended(&character->animatable) || character->animatable.anim == CharAnim_LeftAlt || character->animatable.anim == CharAnim_RightAlt) &&
+				(character->animatable.anim != CharAnim_Left &&
+				 character->animatable.anim != CharAnim_Down &&
+				 character->animatable.anim != CharAnim_Up &&
+				 character->animatable.anim != CharAnim_Right &&
+				 character->animatable.anim != PlayerAnim_LeftMiss &&
+				 character->animatable.anim != PlayerAnim_DownMiss &&
+				 character->animatable.anim != PlayerAnim_UpMiss &&
+				 character->animatable.anim != PlayerAnim_RightMiss) &&
+				(stage.song_step & 0x3) == 0)
+				character->set_anim(character, CharAnim_Idle);
 		}
 	}
-
+	
+	if ((stage.stage_id == StageId_1_1) && (stage.song_step >= 568) && (stage.song_step <= 576))
+		Animatable_Init(&this->character.animatable, char_ourple_anim3);
+	else if ((stage.stage_id == StageId_1_1) && (stage.song_step >= 1152) && (stage.song_step <= 1199))
+		Animatable_Init(&this->character.animatable, char_ourple_anim3);
+	else if (stage.stage_id == StageId_1_1)
+		Animatable_Init(&this->character.animatable, char_ourple_anim2);
 	
 	//Animate and draw character
 	Animatable_Animate(&character->animatable, (void*)this, Char_Ourple_SetFrame);
@@ -459,8 +400,19 @@ void Char_Ourple_Tick(Character *character)
 void Char_Ourple_SetAnim(Character *character, u8 anim)
 {
 	//Set animation
+	if (anim == CharAnim_Idle)
+	{
+		if (character->animatable.anim == CharAnim_LeftAlt)
+			anim = CharAnim_RightAlt;
+		else
+			anim = CharAnim_LeftAlt;
+		character->sing_end = FIXED_DEC(0x7FFF,1);
+	}
+	else
+	{
+		Character_CheckStartSing(character);
+	}
 	Animatable_SetAnim(&character->animatable, anim);
-	Character_CheckStartSing(character);
 }
 
 void Char_Ourple_Free(Character *character)
@@ -494,7 +446,6 @@ Character *Char_Ourple_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
-	this->character.idle2 = 1;
 	
 	if (stage.stage_id == StageId_2_1)
 	this->character.health_i = 3;

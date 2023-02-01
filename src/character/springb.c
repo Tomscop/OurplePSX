@@ -63,15 +63,15 @@ static const CharFrame char_springb_frame[] = {
 };
 
 static const Animation char_springb_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 1, 2, 3, 4, 5, 5, 6, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{2, (const u8[]){ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
 	{2, (const u8[]){ 7, 8, ASCR_BACK, 1}},         //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+	{3, (const u8[]){ 0, 1, 2, 3, 3, ASCR_BACK, 1}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){ 11, 12, ASCR_BACK, 1}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){ 13, 14, ASCR_BACK, 1}},         //CharAnim_Right
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+	{3, (const u8[]){ 4, 5, 6, 3, 3, ASCR_BACK, 1}},   //CharAnim_RightAlt
 };
 
 //SpringB character functions
@@ -99,7 +99,20 @@ void Char_SpringB_Tick(Character *character)
 	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
-		Character_PerformIdle(character);
+	{
+		Character_CheckEndSing(character);
+		
+		if (stage.flag & STAGE_FLAG_JUST_STEP)
+		{
+			if ((Animatable_Ended(&character->animatable) || character->animatable.anim == CharAnim_LeftAlt || character->animatable.anim == CharAnim_RightAlt) &&
+				(character->animatable.anim != CharAnim_Left &&
+				 character->animatable.anim != CharAnim_Down &&
+				 character->animatable.anim != CharAnim_Up &&
+				 character->animatable.anim != CharAnim_Right) &&
+				(stage.song_step & 0x3) == 0)
+				character->set_anim(character, CharAnim_Idle);
+		}
+	}
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_SpringB_SetFrame);
@@ -109,8 +122,19 @@ void Char_SpringB_Tick(Character *character)
 void Char_SpringB_SetAnim(Character *character, u8 anim)
 {
 	//Set animation
+	if (anim == CharAnim_Idle)
+	{
+		if (character->animatable.anim == CharAnim_LeftAlt)
+			anim = CharAnim_RightAlt;
+		else
+			anim = CharAnim_LeftAlt;
+		character->sing_end = FIXED_DEC(0x7FFF,1);
+	}
+	else
+	{
+		Character_CheckStartSing(character);
+	}
 	Animatable_SetAnim(&character->animatable, anim);
-	Character_CheckStartSing(character);
 }
 
 void Char_SpringB_Free(Character *character)

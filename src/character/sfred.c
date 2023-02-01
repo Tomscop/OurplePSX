@@ -199,7 +199,7 @@ static const CharFrame char_sfred_frame[] = {
 };
 
 static const Animation char_sfred_anim[CharAnim_Max] = {
-	{1, (const u8[]){ 0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 2, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
+	{1, (const u8[]){ 0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 2, ASCR_BACK, 1}}, //CharAnim_Idle
 	{2, (const u8[]){ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ASCR_BACK, 1}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, ASCR_BACK, 1}},         //CharAnim_Down
@@ -232,11 +232,32 @@ void Char_SFred_Tick(Character *character)
 {
 	Char_SFred *this = (Char_SFred*)character;
 	
-	//Perform idle dance
-	if(character->animatable.anim  != CharAnim_RightAlt)
+	//Handle animation updates
+	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
+	    (character->animatable.anim != CharAnim_Left &&
+	     character->animatable.anim != CharAnim_LeftAlt &&
+	     character->animatable.anim != CharAnim_Down &&
+	     character->animatable.anim != CharAnim_DownAlt &&
+	     character->animatable.anim != CharAnim_Up &&
+	     character->animatable.anim != CharAnim_UpAlt &&
+	     character->animatable.anim != CharAnim_Right &&
+	     character->animatable.anim != CharAnim_RightAlt))
+		Character_CheckEndSing(character);
+	
+	if (stage.flag & STAGE_FLAG_JUST_STEP)
 	{
-		if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
-			Character_PerformIdle(character);
+		//Perform idle dance
+		if (Animatable_Ended(&character->animatable) &&
+			(character->animatable.anim != CharAnim_Left &&
+		     character->animatable.anim != CharAnim_LeftAlt &&
+		     character->animatable.anim != CharAnim_Down &&
+		     character->animatable.anim != CharAnim_DownAlt &&
+		     character->animatable.anim != CharAnim_Up &&
+		     character->animatable.anim != CharAnim_UpAlt &&
+		     character->animatable.anim != CharAnim_Right &&
+		     character->animatable.anim != CharAnim_RightAlt) &&
+			(stage.song_step & 0x3) == 0)
+			character->set_anim(character, CharAnim_Idle);
 	}
 	
 	//Stage specific animations

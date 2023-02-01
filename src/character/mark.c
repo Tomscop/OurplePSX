@@ -210,7 +210,6 @@ Character *Char_Mark_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
-	this->character.idle2 = 0;
 	
 	this->character.health_i = 6;
 
